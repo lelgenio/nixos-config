@@ -45,8 +45,9 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
-      services.flatpak.enable = true;
+  # services.printing.enable = true;
+      
+  services.flatpak.enable = true;
   virtualisation.docker.enable = true;
 
   # Enable sound with pipewire.
@@ -56,7 +57,7 @@
   services.pipewire.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lelgenio = {
@@ -108,7 +109,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8

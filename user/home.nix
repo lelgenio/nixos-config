@@ -24,8 +24,12 @@
     exa
     fd
     ripgrep
+    ffmpeg
+    imagemagick
+    mpv
   ];
 
+  programs.fish.enable = true;
 
   programs.firefox = {
     enable = true;
