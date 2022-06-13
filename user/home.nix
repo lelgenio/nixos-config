@@ -8,6 +8,50 @@ let
     tabL = "u";
     tabR = "Y";
   };
+  font = {
+    mono = "Hack Nerd Font";
+    interface = "Liberation Sans";
+    size = {
+      small = "12";
+      medium = "14";
+      big = "16";
+    };
+  };
+  accents = {
+    red = "#F44336";
+  };
+  themes = {
+    dark = {
+      background =  "~/.local/share/backgrounds/assembly_dark.png";
+      opacity= "98";
+      color = {
+        type= "dark";
+        bg= "#202020";
+        bg_light= "#404040";
+        bg_dark= "#191919";
+        txt= "#FFFFFF";
+        nontxt= "#252525";
+        random_range= "[a-f]";
+        normal = {
+            black= "#404040";
+            red= "#AB4642";
+            green= "#A1B56C";
+            yellow= "#E6C547";
+            blue= "#6C99DA";
+            magenta= "#C397D8";
+            cyan= "#70C0BA";
+            white= "#EAEAEA";
+
+            #non standard
+            orange= "#FF7500";
+            brown= "#A07040";
+        };
+      };
+    };
+  };
+  
+  accent_color = accents.red;
+  color = themes.dark.color;
 in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -37,6 +81,13 @@ in {
     ffmpeg
     imagemagick
     mpv
+
+    liberation_ttf
+    hack-font
+    font-awesome_5
+    fira-code
+    
+    (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
   ];
 
   programs.fish.enable = true;
@@ -64,13 +115,14 @@ in {
 
   programs.command-not-found.enable = true;
 
-
   # home.file = {
   #   ".config/sway/config".source = ./sway;
   # };
 
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
+    systemd.target = "sway-session.target";
     settings = [{
       layer = "top";
       modules-left = [ 
@@ -81,6 +133,137 @@ in {
       ];
       modules-right = [];
     }];
+    style = ''
+      /* {%@@ set bg_rgb = hex2rgb(color.bg) @@%} */
+      * {
+          font: ${ font.size.medium }px "${ font.interface }", Font Awesome, Fira Code Nerd Font;
+          border-radius:0;
+          margin:0;
+          padding: 0;
+          transition-duration:0;
+      }
+
+      window#waybar {
+          /* background-color: rgba(30,30,30,.9); */
+          transition-duration: .5s;
+          /* TODO: background opacity */
+          background-color: ${color.bg};
+          /*{%@@ if bar_pos == "top" @@%}
+              border-bottom:
+          {%@@ else @@%}
+              border-top:
+          {%@@ endif @@%}*/
+          border-bottom:
+            2px solid ${ color.bg_dark };
+      }
+
+      window#waybar.solo {
+          background-color: ${ color.bg };
+      }
+
+      #workspaces button {
+          color: ${ color.bg_light };
+
+          min-width:50px;
+          background-color: transparent;
+          border: 3px solid transparent;
+      }
+
+      #workspaces button.focused {
+          color: ${ color.txt };
+
+          /*{%@@ if bar_pos == "top" @@%}
+              border-top:
+          {%@@ else @@%}
+              border-bottom:
+          {%@@ endif @@%}*/
+              border-top:
+              3px solid ${ accent_color };
+          /* border-bottom: 3px solid transparent; */
+      }
+
+      /*Window Title*/
+      #window {
+          color: ${ color.txt };
+          margin:0 4px;
+      }
+
+      #mode {
+          color: ${ accent_color };
+      }
+
+      #mpd,
+      #custom-mpd,
+      #tray,
+      #clock,
+      #network,
+      #battery,
+      #backlight,
+      #bluetooth,
+      #pulseaudio,
+      #custom-mail,
+      #custom-spigot,
+      #custom-updates,
+      #custom-weather,
+      #custom-unpushed,
+      #custom-transmissionD,
+      #custom-transmissionS,
+      #custom-delugeD,
+      #custom-delugeS,
+      #custom-caffeine
+      {
+          margin: 0 7px;
+          color: ${ color.txt };
+          opacity:.7;
+      }
+
+      #battery{
+          margin-right:15px;
+      }
+
+      #clock,
+      #custom-weather
+      {
+          font-size: ${ font.size.big }px;
+      }
+      #network,
+      #pulseaudio,
+      #custom-caffeine
+      {
+          margin-top:-1px;
+          font-size:16px;
+      }
+
+      #mpd,
+      #window,
+      #workspaces
+      {
+          font-weight:normal;
+      }
+
+
+      #custom-unpushed,
+      #custom-recording {
+          min-width:15px;
+          color: #ee4040;
+      }
+
+      #tray {
+          padding: 0;
+          margin: 0;
+      }
+
+      #language {
+          font-size: ${ font.size.medium }px;
+          color: ${ color.bg_light };
+      }
+
+      #custom-sleep {
+          color: ${ accent_color };
+          font-size: ${ font.size.big }px;
+          font-weight: bold;
+      }
+    '';
   };
 
 

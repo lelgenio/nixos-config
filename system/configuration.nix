@@ -140,6 +140,8 @@ in
 
     pavucontrol
 
+    tdesktop
+
     # recomended by nixwiki
     alacritty # gpu accelerated terminal
     sway
