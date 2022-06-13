@@ -54,7 +54,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "i15"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -75,7 +75,7 @@ in
 
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -85,7 +85,14 @@ in
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-      
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    gtkUsePortal = true;
+  };
   services.flatpak.enable = true;
   virtualisation.docker.enable = true;
 
@@ -131,6 +138,8 @@ in
     kakoune
     kak-lsp
 
+    pavucontrol
+
     # recomended by nixwiki
     alacritty # gpu accelerated terminal
     sway
@@ -148,6 +157,12 @@ in
     bemenu # wayland clone of dmenu
     mako # notification system developed by swaywm maintainer
   ];
+
+  # enable sway window manager
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
