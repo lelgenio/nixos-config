@@ -18,7 +18,10 @@ let
     };
   };
   accents = {
-    red = "#F44336";
+    red = {
+      color = "#F44336";
+      fg = "#ffffff";
+    };
   };
   themes = {
     dark = {
@@ -50,7 +53,7 @@ let
     };
   };
   
-  accent_color = accents.red;
+  accent = accents.red;
   color = themes.dark.color;
 in {
   # Home Manager needs a bit of information about you and the
@@ -178,7 +181,7 @@ in {
               border-bottom:
           {%@@ endif @@%}*/
               border-top:
-              3px solid ${ accent_color };
+              3px solid ${ accent.color };
           /* border-bottom: 3px solid transparent; */
       }
 
@@ -189,7 +192,7 @@ in {
       }
 
       #mode {
-          color: ${ accent_color };
+          color: ${ accent.color };
       }
 
       #mpd,
@@ -259,7 +262,7 @@ in {
       }
 
       #custom-sleep {
-          color: ${ accent_color };
+          color: ${ accent.color };
           font-size: ${ font.size.big }px;
           font-weight: bold;
       }
@@ -271,6 +274,29 @@ in {
     enable = true;
     config = {
       bars = [{ command = "waybar"; }];
+      window.titlebar = false;
+      gaps = {
+        smartGaps = true;
+        smartBorders = "on";
+        inner = 5;
+      };
+      colors = 
+        let 
+          acc =     accent.color;
+          fg_acc =     accent.fg;
+          fg_color =   color.txt;
+          bg_color =   color.bg_dark;
+          alert =      "#000000";
+          client = border: background: text: indicator: childBorder: {
+            inherit border background text indicator childBorder;
+          };
+        in
+        {
+          focused =          client acc        acc        fg_acc     acc        acc;
+          focusedInactive =  client bg_color   bg_color   fg_color   bg_color   bg_color;
+          unfocused =        client bg_color   bg_color   fg_color   bg_color   bg_color;
+          urgent =           client alert      alert      fg_color   alert      alert;
+        };
       input."type:touchpad" = {
         # Disable While Typing
         dwt = "disabled";
@@ -465,5 +491,10 @@ in {
         ];  
       };
     };
+  };
+
+  services.kdeconnect = {
+    enable = true;
+    indicator = true;
   };
 }
