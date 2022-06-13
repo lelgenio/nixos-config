@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let 
   key = {
       left = "n";
@@ -323,6 +323,21 @@ in {
           "${mod}+Shift+0" =
             "move container to workspace number 10";
         };
+        prev_next_binds = 
+          let 
+            join_dict_arr = builtins.foldl' (a: v: a//v) {};
+            maybe_window = key: 
+              if (lib.strings.hasInfix "button" key) 
+              then "--whole-window"
+              else "";
+            prev_binds = map (key:
+              {"${maybe_window key} ${mod}+${key}" = "workspace prev_on_output";}
+            ) [ key.tabL "bracketleft" "Prior" "button9" "button4" ];
+            next_binds = map (key:
+              {"${maybe_window key} ${mod}+${key}" = "workspace next_on_output";}
+            ) [ key.tabR "bracketright" "Next" "button8" "button5" ];
+          in 
+            join_dict_arr  (prev_binds ++ next_binds);
         movement_binds = {
           "${mod}+${key.left}" = "focus left";
           "${mod}+${key.down}" = "focus down";
@@ -386,11 +401,7 @@ in {
           XF86AudioPrev = "exec playerctl previous";
         };
       in {
-        "${mod}+Prior" = "workspace prev_on_output";
-        "${mod}+Next" = "workspace next_on_output";
-        "${mod}+${key.tabL}" = "workspace prev_on_output";
-        "${mod}+${key.tabR}" = "workspace next_on_output";
-
+        
         "${mod}+Return" = "exec ${terminal}";
         "${mod}+x" = "kill";
         "${mod}+s" = "exec ${menu}";
@@ -418,6 +429,7 @@ in {
         "${mod}+r" = "mode resize";
       }
       // workspace_binds
+      // prev_next_binds
       // movement_binds
       # // map (key: "$mod+${key} workspace prev_on_output") [ key.tabL "bracketleft" "Prior" "button9" "button4" ]
       # // map (key: "$mod+${key} workspace next_on_output") [ key.tabL "bracketleft" "Prior" "button9" "button4" ]
