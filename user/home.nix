@@ -89,8 +89,9 @@ in {
     hack-font
     font-awesome_5
     fira-code
-    
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
+
+    (orchis-theme.override { tweaks = [ "compact" "solid" ]; })
   ];
 
   programs.fish.enable = true;
@@ -102,18 +103,19 @@ in {
     #   darkreader
     #   ublock-origin
     # ];
-    # profiles = {
-    #   main = {
-    #     isDefault = true;
-    #     settings = {
-    #       "devtools.theme" = "dark";
-    #       "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-    #     };
-    #     userChrome = ''
-    #       #tabbrowser-tabs { visibility: collapse !important; } 
-    #     '';
-    #   };
-    # };
+    profiles = {
+      main = {
+        isDefault = true;
+        settings = {
+          "devtools.theme" = "dark";
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "browser.tabs.inTitlebar" = 0;
+        };
+        userChrome = ''
+          #tabbrowser-tabs { visibility: collapse !important; } 
+        '';
+      };
+    };
   };
 
   programs.command-not-found.enable = true;
@@ -314,7 +316,7 @@ in {
       let 
         mod = "Mod4";
         floating.modifier = "Mod4";
-        menu = "bemenu-run";
+        menu = "bemenu-run --bottom";
         terminal = "alacritty";
         workspace_binds = {
           "${mod}+1" = "workspace number 1";
