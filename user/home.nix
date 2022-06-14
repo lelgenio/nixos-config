@@ -52,6 +52,8 @@ let
       };
     };
   };
+
+  orchis_theme_compact = (pkgs.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
   
   accent = accents.red;
   color = themes.dark.color;
@@ -85,13 +87,15 @@ in {
     imagemagick
     mpv
 
+    xfce.thunar
+
     liberation_ttf
     hack-font
     font-awesome_5
     fira-code
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
 
-    (orchis-theme.override { tweaks = [ "compact" "solid" ]; })
+    orchis_theme_compact    
   ];
 
   programs.fish.enable = true;
@@ -498,5 +502,21 @@ in {
   services.kdeconnect = {
     enable = true;
     indicator = true;
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Orchis-Red-Dark-Compact";
+      package = orchis_theme_compact;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    cursorTheme = {
+      name = "capitaine-cursors";
+      package = pkgs.capitaine-cursors;
+    };
   };
 }

@@ -158,6 +158,9 @@ in
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     bemenu # wayland clone of dmenu
     mako # notification system developed by swaywm maintainer
+  
+    (orchis-theme.override { tweaks = [ "compact" "solid" ]; })
+  
   ];
 
   # enable sway window manager
