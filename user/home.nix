@@ -53,6 +53,16 @@ let
     };
   };
 
+
+  # TODO: fix
+  papirus_red = (pkgs.papirus-icon-theme.overrideAttrs (old: rec {
+    preInstall = ''
+      for f in {,e}Papirus*/*/folder-red*; do
+        ln -vsf "$f" "$\{f/-red/}"
+      done
+    '';
+  }));
+
   orchis_theme_compact = (pkgs.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
   
   accent = accents.red;
@@ -96,6 +106,7 @@ in {
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
 
     orchis_theme_compact    
+    papirus_red
   ];
 
   programs.fish.enable = true;
@@ -516,7 +527,7 @@ in {
     };
     cursorTheme = {
       name = "capitaine-cursors";
-      package = pkgs.capitaine-cursors;
+      package = papirus_red;
     };
   };
 }
