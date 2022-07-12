@@ -86,6 +86,12 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };
+
   home.packages = with pkgs; [
     kanshi
     alacritty
@@ -114,10 +120,12 @@ in {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
-    # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-    #   darkreader
-    #   ublock-origin
-    # ];
+    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      darkreader
+      ublock-origin
+      tree-style-tab
+      sponsorblock
+    ];
     profiles = {
       main = {
         isDefault = true;
@@ -290,7 +298,7 @@ in {
   wayland.windowManager.sway = {
     enable = true;
     config = {
-      bars = [{ command = "waybar"; }];
+      bars = [ ];
       window.titlebar = false;
       gaps = {
         smartGaps = true;
