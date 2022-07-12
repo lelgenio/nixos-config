@@ -17,7 +17,17 @@
       nixosConfigurations = {
         i15 = lib.nixosSystem {
           inherit system;
-          modules = [ ./system/configuration.nix ];
+          modules = [
+            ./system/configuration.nix 
+            ./system/i15-hardware-configuration.nix
+          ];
+        };        
+        monolith = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./system/configuration.nix 
+            ./system/monolith-hardware-configuration.nix
+          ];
         };
       };
 
