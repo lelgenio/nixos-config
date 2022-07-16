@@ -38,4 +38,6 @@
   # networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  networking.hostName = "monolith"; # Define your hostname.
 }
