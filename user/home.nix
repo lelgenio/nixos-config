@@ -78,7 +78,7 @@ in {
   #   };
   # };
   home.packages = with pkgs; [
-    helix
+    pkgs.unstable.helix
     kanshi
     alacritty
     exa
@@ -100,9 +100,43 @@ in {
   programs.fish.enable = true;
   programs.helix = {
     enable = true;
+    package = pkgs.unstable.helix;
     settings = {
       theme = "gruvbox";
+      editor = {
+        whitespace.render = "all";
+        whitespace.characters = {
+          space = " ";
+          tab = "▏";
+          newline = "¬";
+        };
+      };
+      keys.normal = {
+         # basic movement
+         n = "move_char_left";
+         e = "move_line_down";
+         i = "move_line_up";
+         o = "move_char_right";
+         # search
+         l	= "search_next";
+         L	= "search_prev";
+         # edits
+         s = "insert_mode";
+         # open newline
+         h	=	"open_below";
+         H	=	"open_above";
+         # selections
+         k     = "select_regex";
+         K     = "split_selection";
+         "C-k" = "split_selection_on_newline";
+         # goto mode
+         g.n = "goto_line_start";
+         g.o = "goto_line_start";
+       };
     };
+  };
+  home.sessionVariables = {
+    EDITOR = "hx";
   };
   programs.firefox = {
     enable = true;
