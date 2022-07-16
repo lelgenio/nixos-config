@@ -106,8 +106,8 @@ in {
       editor = {
         whitespace.render = "all";
         whitespace.characters = {
-          space = " ";
-          tab = "▏";
+          space = "·";
+          tab = "→";
           newline = "¬";
         };
       };
@@ -132,6 +132,9 @@ in {
          # goto mode
          g.n = "goto_line_start";
          g.o = "goto_line_start";
+       };
+       keys.insert = {
+         "A-k" = "normal_mode";
        };
     };
   };
