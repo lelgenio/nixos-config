@@ -99,11 +99,11 @@ in {
   ];
   programs.fish.enable = true;
   programs.helix = {
-      enable = true;
-      settings = {
-        theme = "gruvbox";
-      };
+    enable = true;
+    settings = {
+      theme = "gruvbox";
     };
+  };
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;

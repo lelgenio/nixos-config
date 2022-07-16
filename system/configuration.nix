@@ -60,6 +60,35 @@ in
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
   # services.xserver.displayManager.autologin.user = "lelgenio";
+  services.greetd =  let
+    swayConfig = pkgs.writeText "greetd-sway-config" ''
+      # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
+      exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway; swaymsg exit"
+      bindsym Mod4+shift+e exec swaynag \
+        -t warning \
+        -m 'What do you want to do?' \
+        -b 'Poweroff' 'systemctl poweroff' \
+        -b 'Reboot' 'systemctl reboot'
+      input "*" {
+        repeat_delay 200
+        repeat_rate 30
+        xkb_layout us(colemak)
+        xkb_numlock enabled
+        xkb_options lv3:lsgt_switch,grp:shifts_toggle
+      }
+    '';
+  in {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "${pkgs.sway}/bin/sway";
+        user = "lelgenio";
+      };
+      default_session = {
+        command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
+      };
+    };
+  };
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -92,7 +121,7 @@ in
     extraGroups = [ "networkmanager" "wheel" "docker"];
     shell = pkgs.fish;
   };
-  services.getty.autologinUser = "lelgenio";
+  # services.getty.autologinUser = "lelgenio";
   programs.fish.enable = true;
   services.syncthing = {
     enable = true;
