@@ -129,6 +129,11 @@ in
     dataDir = "/home/lelgenio/";
     configDir = "/home/lelgenio/.config/syncthing";
   };
+  # TODO: enable thunar plugins
+  # programs.thunar.enable = true;
+  # programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
