@@ -19,7 +19,11 @@
       options = [ "subvol=nixos" ];
     };
 
-  boot.initrd.luks.devices."main".device = "/dev/disk/by-label/CRYPTROOT";
+  boot.initrd.luks.reusePassphrases = true;
+  boot.initrd.luks.devices = {
+    "main".device = "/dev/disk/by-label/CRYPT_ROOT";
+    "data".device = "/dev/disk/by-label/CRYPT_DATA";
+  };
 
   fileSystems."/boot/efi" =
     { device = "/dev/disk/by-label/NIXBOOT";
@@ -32,9 +36,20 @@
       options = [ "subvol=home" ];
     };
 
+  fileSystems."/home/lelgenio/Games" =
+    { device = "/dev/disk/by-label/BTRFS_DATA";
+      fsType = "btrfs";
+      options = [ "subvol=@games" "nofail" ];
+    };
+
+  fileSystems."/home/lelgenio/Downloads/Torrents" =
+    { device = "/dev/disk/by-label/BTRFS_DATA";
+      fsType = "btrfs";
+      options = [ "subvol=@torrents" "nofail" ];
+    };
+
   swapDevices = [ ];
   
-  # TODO: desativar o GPP0 no wakeup acpi
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
   '';
