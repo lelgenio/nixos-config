@@ -1,0 +1,15 @@
+$ nix --extra-experimental-features nix-command flakes build --out-link /tmp/nixos-rebuild.rAHLyE/nixos-rebuild .#nixosConfigurations."monolith".config.system.build.nixos-rebuild --verbose
+warning: Git tree '/home/lelgenio/projects/nixos-config' is dirty
+evaluating file '/nix/store/vqny2ayx5bjs9w29n0kimmxq2rax061b-source/flake.nix'
+$ exec /nix/store/n05m4wrq8hiwlv1n87q5zfvv4ginp299-nixos-rebuild/bin/nixos-rebuild switch --verbose --flake .#
+building the system configuration...
+Building in flake mode.
+$ nix --extra-experimental-features nix-command flakes build .#nixosConfigurations."monolith".config.system.build.toplevel --verbose --out-link /tmp/nixos-rebuild.3us5Ex/result
+warning: Git tree '/home/lelgenio/projects/nixos-config' is dirty
+evaluating file '/nix/store/vqny2ayx5bjs9w29n0kimmxq2rax061b-source/flake.nix'
+$ sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER -- nix-env -p /nix/var/nix/profiles/system --set /nix/store/zghfi9sjbzjczd21ksnfxys76cqggirq-nixos-system-monolith-22.05.20220714.c06d5fa
+$ sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER -- /nix/store/zghfi9sjbzjczd21ksnfxys76cqggirq-nixos-system-monolith-22.05.20220714.c06d5fa/bin/switch-to-configuration switch
+leaving systemd-boot 250.4 in place (250.4 is not newer)
+stopping the following units: -.mount, boot-efi.mount, home.mount
+Failed to stop -.mount: Job type stop is not applicable for unit -.mount.
+Terminated

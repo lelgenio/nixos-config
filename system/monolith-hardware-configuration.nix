@@ -14,25 +14,30 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/876ccabe-511b-4cd4-9d4e-5da899c940ca";
+    { device = "/dev/disk/by-label/BTRFS_ROOT";
       fsType = "btrfs";
       options = [ "subvol=nixos" ];
     };
 
-  boot.initrd.luks.devices."main".device = "/dev/disk/by-uuid/325ca6b7-0bcd-469d-bfb1-ba5667342871";
+  boot.initrd.luks.devices."main".device = "/dev/disk/by-label/CRYPTROOT";
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/FF2D-8819";
+    { device = "/dev/disk/by-label/NIXBOOT";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/876ccabe-511b-4cd4-9d4e-5da899c940ca";
+    { device = "/dev/disk/by-label/BTRFS_ROOT";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
   swapDevices = [ ];
+  
+  # TODO: desativar o GPP0 no wakeup acpi
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
+  '';
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
