@@ -564,4 +564,5 @@ in {
     style.package = pkgs.libsForQt5.qtstyleplugins;
     style.name = "gtk2";
   };
+  programs.mangohud.enable = true;
 }
