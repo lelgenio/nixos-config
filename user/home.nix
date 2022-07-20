@@ -505,6 +505,12 @@ in {
     enable = true;
     indicator = true;
   };
+  home.pointerCursor = {
+    name = "capitaine-cursors";
+    package = pkgs.capitaine-cursors;
+    x11.enable = true;
+    gtk.enable = true;
+  };
   gtk = {
     enable = true;
     theme = {
@@ -514,10 +520,6 @@ in {
     iconTheme = {
       name = "Papirus-Dark";
       package = papirus_red;
-    };
-    cursorTheme = {
-      name = "capitaine-cursors";
-      package = pkgs.capitaine-cursors;
     };
   };
   qt = {
