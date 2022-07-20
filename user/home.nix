@@ -181,7 +181,9 @@ in {
       modules-center = [
         "clock"
       ];
-      modules-right = [];
+      modules-right = [
+        "tray"
+      ];
     }];
     style = ''
       /* {%@@ set bg_rgb = hex2rgb(color.bg) @@%} */
