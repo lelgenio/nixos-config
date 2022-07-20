@@ -109,9 +109,11 @@ in
   virtualisation.docker.enable = true;
   # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.enable = true;
   security.rtkit.enable = true;
   services.pipewire.enable = true;
+  # services.pipewire.media-session.enable = true;
+  services.pipewire.pulse.enable = true;
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -168,6 +170,7 @@ in
     bemenu # wayland clone of dmenu
     mako # notification system developed by swaywm maintainer
     (orchis-theme.override { tweaks = [ "compact" "solid" ]; })
+    pulseaudio
   ];
   # enable sway window manager
   programs.sway = {
