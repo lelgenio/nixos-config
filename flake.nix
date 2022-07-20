@@ -26,7 +26,7 @@
       common_modules = [
         ./system/configuration.nix
         # nur.nixosModules.nur
-        ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+        ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable nur.overlay ]; })
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
