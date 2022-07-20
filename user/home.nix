@@ -517,7 +517,13 @@ in {
     };
     cursorTheme = {
       name = "capitaine-cursors";
-      package = papirus_red;
+      package = pkgs.capitaine-cursors;
     };
+  };
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style.package = pkgs.libsForQt5.qtstyleplugins;
+    style.name = "gtk2";
   };
 }
