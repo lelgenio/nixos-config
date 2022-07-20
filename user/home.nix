@@ -1,5 +1,5 @@
-{ config, pkgs, lib, ... }:
-let
+  { config, pkgs, lib, ... }:
+  let
   key = {
       left = "n";
       down = "e";
@@ -56,7 +56,7 @@ let
   orchis_theme_compact = (pkgs.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
   accent = accents.red;
   color = themes.dark.color;
-in {
+  in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "lelgenio";
@@ -83,12 +83,19 @@ in {
     alacritty
     exa
     fd
+    sd
     ripgrep
     yt-dlp
     ffmpeg
     imagemagick
     mpv
     xfce.thunar
+
+    # chat
+    tdesktop
+    discord
+
+    # Theming
     liberation_ttf
     hack-font
     font-awesome_5
@@ -96,6 +103,12 @@ in {
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
     orchis_theme_compact
     papirus_red
+
+    # Programming
+    vscode
+    cargo
+    rust-analyzer
+    gcc
   ];
   programs.fish.enable = true;
   programs.helix = {
@@ -485,6 +498,7 @@ in {
         };
       in {
         "${mod}+Return" = "exec ${terminal}";
+        "${mod}+Ctrl+Return" = "exec thunar";
         "${mod}+x" = "kill";
         "${mod}+s" = "exec ${menu}";
         "${mod}+b" = "splith";
@@ -568,5 +582,46 @@ in {
     style.package = pkgs.libsForQt5.qtstyleplugins;
     style.name = "gtk2";
   };
+    
   programs.mangohud.enable = true;
+    
+  systemd.user.services = {
+    firefox = {
+      Unit = {
+        Description = "Firefox Web browser";
+        Documentation = "https://github.com/Alexays/Waybar/wiki";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.discord}/bin/discord";
+        Restart = "on-failure";
+      };
+      Install = { WantedBy = [ "sway-session.target" ]; };
+    };
+    discord = {
+      Unit = {
+        Description = "Discord Internet voice chat";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.discord}/bin/discord";
+        Restart = "on-failure";
+      };
+      Install = { WantedBy = [ "sway-session.target" ]; };
+    };
+    telegram = {
+      Unit = {
+        Description = "Telegram Internet chat";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.tdesktop}/bin/telegram-desktop";
+        Restart = "on-failure";
+      };
+      Install = { WantedBy = [ "sway-session.target" ]; };
+    };
+  };
 }
