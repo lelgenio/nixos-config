@@ -131,7 +131,29 @@ in {
          "C-k" = "split_selection_on_newline";
          # goto mode
          g.n = "goto_line_start";
-         g.o = "goto_line_start";
+         g.o = "goto_line_end";
+       };
+      keys.select = {
+         # basic movement
+         n = "extend_char_left";
+         e = "extend_line_down";
+         i = "extend_line_up";
+         o = "extend_char_right";
+         # search
+         l	= "search_next";
+         L	= "search_prev";
+         # edits
+         s = "insert_mode";
+         # open newline
+         h	=	"open_below";
+         H	=	"open_above";
+         # selections
+         k     = "select_regex";
+         K     = "split_selection";
+         "C-k" = "split_selection_on_newline";
+         # goto mode
+         g.n = "goto_line_start";
+         g.o = "goto_line_end";
        };
        keys.insert = {
          "A-k" = "normal_mode";
