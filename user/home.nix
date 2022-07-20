@@ -368,7 +368,7 @@ in {
         tap = "enabled";
       };
       input."*" = {
-        xkb_layout = "us(colemak)";
+        xkb_layout = "us(colemak),br";
         xkb_options = "lv3:lsgt_switch,grp:shifts_toggle";
         xkb_numlock = "enabled";
         repeat_rate = "30";
@@ -480,6 +480,9 @@ in {
           XF86AudioNext = "exec playerctl next";
           XF86AudioPrev = "exec playerctl previous";
         };
+        system_binds = {
+          "Ctrl+${mod}+z" = "exec systemctl suspend";
+        };
       in {
         "${mod}+Return" = "exec ${terminal}";
         "${mod}+x" = "kill";
@@ -503,6 +506,7 @@ in {
       // workspace_binds
       // prev_next_binds
       // movement_binds
+      // system_binds
       # // map (key: "$mod+${key} workspace prev_on_output") [ key.tabL "bracketleft" "Prior" "button9" "button4" ]
       # // map (key: "$mod+${key} workspace next_on_output") [ key.tabL "bracketleft" "Prior" "button9" "button4" ]
       ;
