@@ -177,13 +177,25 @@ in {
       layer = "top";
       modules-left = [
         "sway/workspaces"
+        "sway/mode"
       ];
       modules-center = [
         "clock"
       ];
       modules-right = [
         "tray"
+        "network"
       ];
+      "network" = {
+          "interval"= 5;
+          "tooltip"=false;
+          "on-click"= "terminal iwd";
+          "format-wifi"= "{icon}";
+          "format-icons"=[ "" "" "" "" "" ];
+          "format-ethernet"= "";
+          "format-linked"= "";
+          "format-disconnected"= "";
+      };
     }];
     style = ''
       /* {%@@ set bg_rgb = hex2rgb(color.bg) @@%} */
