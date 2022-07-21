@@ -1,9 +1,10 @@
-{ config, pkgs, lib, ... }: let
+{ config, pkgs, lib, ... }:
+let
   key = {
-      left = "n";
-      down = "e";
-      up = "i";
-      right = "o";
+    left = "n";
+    down = "e";
+    up = "i";
+    right = "o";
     tabL = "u";
     tabR = "Y";
   };
@@ -24,35 +25,37 @@
   };
   themes = {
     dark = {
-      background =  "~/.local/share/backgrounds/assembly_dark.png";
-      opacity= "98";
+      background = "~/.local/share/backgrounds/assembly_dark.png";
+      opacity = "98";
       color = {
-        type= "dark";
-        bg= "#202020";
-        bg_light= "#404040";
-        bg_dark= "#191919";
-        txt= "#FFFFFF";
-        nontxt= "#252525";
-        random_range= "[a-f]";
+        type = "dark";
+        bg = "#202020";
+        bg_light = "#404040";
+        bg_dark = "#191919";
+        txt = "#FFFFFF";
+        nontxt = "#252525";
+        random_range = "[a-f]";
         normal = {
-            black= "#404040";
-            red= "#AB4642";
-            green= "#A1B56C";
-            yellow= "#E6C547";
-            blue= "#6C99DA";
-            magenta= "#C397D8";
-            cyan= "#70C0BA";
-            white= "#EAEAEA";
-            #non standard
-            orange= "#FF7500";
-            brown= "#A07040";
+          black = "#404040";
+          red = "#AB4642";
+          green = "#A1B56C";
+          yellow = "#E6C547";
+          blue = "#6C99DA";
+          magenta = "#C397D8";
+          cyan = "#70C0BA";
+          white = "#EAEAEA";
+          #non standard
+          orange = "#FF7500";
+          brown = "#A07040";
         };
       };
     };
   };
   papirus_red = (pkgs.unstable.papirus-icon-theme.override { color = "red"; });
-  orchis_theme_compact = (pkgs.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
-  nerdfonts_fira_hack = (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
+  orchis_theme_compact =
+    (pkgs.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
+  nerdfonts_fira_hack =
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
   accent = accents.red;
   color = themes.dark.color;
   pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
@@ -60,12 +63,12 @@
     output=$(printf "HDMI\nHeadphones" | bemenu -b)
     vol=$(${pkgs.pamixer}/bin/pamixer --get-volume)
     case "$output" in
-      HDMI)
-        pactl set-default-sink alsa_output.pci-0000_07_00.1.hdmi-stereo-extra1
-        ;;
-      Headphones)
-        pactl set-default-sink alsa_output.pci-0000_09_00.4.analog-stereo
-        ;;
+        HDMI)
+            pactl set-default-sink alsa_output.pci-0000_07_00.1.hdmi-stereo-extra1
+            ;;
+        Headphones)
+            pactl set-default-sink alsa_output.pci-0000_09_00.4.analog-stereo
+            ;;
     esac
     ${pkgs.pamixer}/bin/pamixer --set-volume "$vol"
   '';
@@ -115,7 +118,7 @@ in {
     hack-font
     font-awesome_5
     fira-code
-    nerdfonts_fira_hack 
+    nerdfonts_fira_hack
     # Programming
     vscode
     cargo
@@ -138,57 +141,53 @@ in {
         };
       };
       keys.normal = {
-         # basic movement
-         n = "move_char_left";
-         e = "move_line_down";
-         i = "move_line_up";
-         o = "move_char_right";
-         # search
-         l	= "search_next";
-         L	= "search_prev";
-         # edits
-         s = "insert_mode";
-         # open newline
-         h	=	"open_below";
-         H	=	"open_above";
-         # selections
-         k     = "select_regex";
-         K     = "split_selection";
-         "C-k" = "split_selection_on_newline";
-         # goto mode
-         g.n = "goto_line_start";
-         g.o = "goto_line_end";
-       };
+        # basic movement
+        n = "move_char_left";
+        e = "move_line_down";
+        i = "move_line_up";
+        o = "move_char_right";
+        # search
+        l = "search_next";
+        L = "search_prev";
+        # edits
+        s = "insert_mode";
+        # open newline
+        h = "open_below";
+        H = "open_above";
+        # selections
+        k = "select_regex";
+        K = "split_selection";
+        "C-k" = "split_selection_on_newline";
+        # goto mode
+        g.n = "goto_line_start";
+        g.o = "goto_line_end";
+      };
       keys.select = {
-         # basic movement
-         n = "extend_char_left";
-         e = "extend_line_down";
-         i = "extend_line_up";
-         o = "extend_char_right";
-         # search
-         l	= "search_next";
-         L	= "search_prev";
-         # edits
-         s = "insert_mode";
-         # open newline
-         h	=	"open_below";
-         H	=	"open_above";
-         # selections
-         k     = "select_regex";
-         K     = "split_selection";
-         "C-k" = "split_selection_on_newline";
-         # goto mode
-         g.n = "goto_line_start";
-         g.o = "goto_line_end";
-       };
-       keys.insert = {
-         "A-k" = "normal_mode";
-       };
+        # basic movement
+        n = "extend_char_left";
+        e = "extend_line_down";
+        i = "extend_line_up";
+        o = "extend_char_right";
+        # search
+        l = "search_next";
+        L = "search_prev";
+        # edits
+        s = "insert_mode";
+        # open newline
+        h = "open_below";
+        H = "open_above";
+        # selections
+        k = "select_regex";
+        K = "split_selection";
+        "C-k" = "split_selection_on_newline";
+        # goto mode
+        g.n = "goto_line_start";
+        g.o = "goto_line_end";
+      };
+      keys.insert = { "A-k" = "normal_mode"; };
     };
   };
-  home.sessionVariables = {
-    EDITOR = "hx";
-  };
+  home.sessionVariables = { EDITOR = "hx"; };
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
@@ -223,102 +222,94 @@ in {
     systemd.target = "sway-session.target";
     settings = [{
       layer = "top";
-      modules-left = [
-        "sway/workspaces"
-        "sway/mode"
-      ];
-      modules-center = [
-        "clock"
-      ];
-      modules-right = [
-        "pulseaudio"
-        "network"
-      ];
-      "network" = {
-          "interval"= 5;
-          "tooltip" = false;
-          "on-click" = "terminal iwd";
-          "format-wifi" = "{icon}";
-          "format-icons" = [ "" "" "" "" "" ];
-          "format-ethernet" =  "";
-          "format-linked" = "";
-          "format-disconnected" = "";
+      modules-left = [ "sway/workspaces" "sway/mode" ];
+      modules-center = [ "clock" ];
+      modules-right = [ "pulseaudio" "network" ];
+      network = {
+        interval = 5;
+        tooltip = false;
+        on-click = "terminal iwd";
+        format-wifi = "{icon}";
+        format-icons = [ "" "" "" "" "" ];
+        format-ethernet = "";
+        format-linked = "";
+        format-disconnected = "";
       };
-      "clock" = {
-          "interval"=60;
-          "format"="<b>{:%H:%M %a %d/%m}</b>";
-          "tooltip"=false;
+      clock = {
+        interval = 60;
+        format = "<b>{:%H:%M %a %d/%m}</b>";
+        tooltip = false;
       };
-      "pulseaudio"= {
-          "interval"= 5;
-          "tooltip"=false;
-          "scroll-step"= 10;
-          "format"= "{icon}";
-          "format-bluetooth"= "";
-          "format-bluetooth-muted"= "";
-          "format-muted"= "ﱝ";
-          "format-icons"= {
-              "headphone"= [" 奄" " 奔" " 墳"];
-              "handsfree"= "";
-              "headset"= "";
-              "phone"= "";
-              "portable"= "";
-              "car"= "";
-              "default"= ["奄" "奔" "墳"];
-          };
-          "on-click"= "pavucontrol";
-          "on-click-right"= "pulse-sink";
+      pulseaudio = {
+        interval = 5;
+        tooltip = false;
+        scroll-step = 10;
+        format = "{icon}";
+        format-bluetooth = "";
+        format-bluetooth-muted = "";
+        format-muted = "ﱝ";
+        format-icons = {
+          headphone = [ " 奄" " 奔" " 墳" ];
+          handsfree = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = [ "奄" "奔" "墳" ];
+        };
+        on-click = "pavucontrol";
+        on-click-right = "pulse-sink";
       };
     }];
     style = ''
       /* {%@@ set bg_rgb = hex2rgb(color.bg) @@%} */
       * {
-          font: ${ font.size.medium }px "${ font.interface }", Font Awesome, Fira Code Nerd Font;
-          border-radius:0;
-          margin:0;
-          padding: 0;
-          transition-duration:0;
+              font: ${font.size.medium}px "${font.interface}", Font Awesome, Fira Code Nerd Font;
+              border-radius:0;
+              margin:0;
+              padding: 0;
+              transition-duration:0;
       }
       window#waybar {
-          /* background-color: rgba(30,30,30,.9); */
-          transition-duration: .5s;
-          /* TODO: background opacity */
-          background-color: ${color.bg};
-          /*{%@@ if bar_pos == "top" @@%}
+              /* background-color: rgba(30,30,30,.9); */
+              transition-duration: .5s;
+              /* TODO: background opacity */
+              background-color: ${color.bg};
+              /*{%@@ if bar_pos == "top" @@%}
+                      border-bottom:
+              {%@@ else @@%}
+                      border-top:
+              {%@@ endif @@%}*/
               border-bottom:
-          {%@@ else @@%}
-              border-top:
-          {%@@ endif @@%}*/
-          border-bottom:
-            2px solid ${ color.bg_dark };
+                  2px solid ${color.bg_dark};
       }
       window#waybar.solo {
-          background-color: ${ color.bg };
+              background-color: ${color.bg};
       }
       #workspaces button {
-          color: ${ color.bg_light };
-          min-width:50px;
-          background-color: transparent;
-          border: 3px solid transparent;
+              color: ${color.bg_light};
+              min-width:50px;
+              background-color: transparent;
+              border: 3px solid transparent;
       }
       #workspaces button.focused {
-          color: ${ color.txt };
-          /*{%@@ if bar_pos == "top" @@%}
-              border-top:
-          {%@@ else @@%}
-              border-bottom:
-          {%@@ endif @@%}*/
-              border-top:
-              3px solid ${ accent.color };
-          /* border-bottom: 3px solid transparent; */
+              color: ${color.txt};
+              /*{%@@ if bar_pos == "top" @@%}
+                      border-top:
+              {%@@ else @@%}
+                      border-bottom:
+              {%@@ endif @@%}*/
+                      border-top:
+                      3px solid ${accent.color};
+              /* border-bottom: 3px solid transparent; */
       }
       /*Window Title*/
       #window {
-          color: ${ color.txt };
-          margin:0 4px;
+              color: ${color.txt};
+              margin:0 4px;
       }
       #mode {
-          color: ${ accent.color };
+              color: ${accent.color};
       }
       #mpd,
       #custom-mpd,
@@ -340,48 +331,48 @@ in {
       #custom-delugeS,
       #custom-caffeine
       {
-          margin: 0 7px;
-          color: ${ color.txt };
-          opacity:.7;
+              margin: 0 7px;
+              color: ${color.txt};
+              opacity:.7;
       }
       #battery{
-          margin-right:15px;
+              margin-right:15px;
       }
       #clock,
       #custom-weather
       {
-          font-size: ${ font.size.big }px;
+              font-size: ${font.size.big}px;
       }
       #network,
       #pulseaudio,
       #custom-caffeine
       {
-          margin-top:-1px;
-          font-size:16px;
+              margin-top:-1px;
+              font-size:16px;
       }
       #mpd,
       #window,
       #workspaces
       {
-          font-weight:normal;
+              font-weight:normal;
       }
       #custom-unpushed,
       #custom-recording {
-          min-width:15px;
-          color: #ee4040;
+              min-width:15px;
+              color: #ee4040;
       }
       #tray {
-          padding: 0;
-          margin: 0;
+              padding: 0;
+              margin: 0;
       }
       #language {
-          font-size: ${ font.size.medium }px;
-          color: ${ color.bg_light };
+              font-size: ${font.size.medium}px;
+              color: ${color.bg_light};
       }
       #custom-sleep {
-          color: ${ accent.color };
-          font-size: ${ font.size.big }px;
-          font-weight: bold;
+              color: ${accent.color};
+              font-size: ${font.size.big}px;
+              font-weight: bold;
       }
     '';
   };
@@ -395,23 +386,21 @@ in {
         smartBorders = "on";
         inner = 5;
       };
-      colors =
-        let
-          acc =     accent.color;
-          fg_acc =     accent.fg;
-          fg_color =   color.txt;
-          bg_color =   color.bg_dark;
-          alert =      "#000000";
-          client = border: background: text: indicator: childBorder: {
-            inherit border background text indicator childBorder;
-          };
-        in
-        {
-          focused =          client acc        acc        fg_acc     acc        acc;
-          focusedInactive =  client bg_color   bg_color   fg_color   bg_color   bg_color;
-          unfocused =        client bg_color   bg_color   fg_color   bg_color   bg_color;
-          urgent =           client alert      alert      fg_color   alert      alert;
+      colors = let
+        acc = accent.color;
+        fg_acc = accent.fg;
+        fg_color = color.txt;
+        bg_color = color.bg_dark;
+        alert = "#000000";
+        client = border: background: text: indicator: childBorder: {
+          inherit border background text indicator childBorder;
         };
+      in {
+        focused = client acc acc fg_acc acc acc;
+        focusedInactive = client bg_color bg_color fg_color bg_color bg_color;
+        unfocused = client bg_color bg_color fg_color bg_color bg_color;
+        urgent = client alert alert fg_color alert alert;
+      };
       input."type:touchpad" = {
         # Disable While Typing
         dwt = "disabled";
@@ -427,23 +416,21 @@ in {
       };
       assigns = {
         "10" = [
-          {app_id=".*[Tt]elegram.*";}
-          {class=".*[Tt]elegram.*";}
-          {class="Jitsi Meet";}
-          {class="discord";}
-          {title="Discord";}
+          { app_id = ".*[Tt]elegram.*"; }
+          { class = ".*[Tt]elegram.*"; }
+          { class = "Jitsi Meet"; }
+          { class = "discord"; }
+          { title = "Discord"; }
         ];
       };
-      modes = let
-        return_mode = lib.mapAttrs (k: v: "${v}; mode default");
+      modes = let return_mode = lib.mapAttrs (k: v: "${v}; mode default");
       in {
         audio = return_mode {
           "escape" = "";
           "s" = "exec ${pulse_sink}/bin/pulse_sink";
         };
       };
-      keybindings =
-      let
+      keybindings = let
         mod = "Mod4";
         floating.modifier = "Mod4";
         menu = "bemenu-run --bottom";
@@ -459,42 +446,31 @@ in {
           "${mod}+8" = "workspace number 8";
           "${mod}+9" = "workspace number 9";
           "${mod}+0" = "workspace number 10";
-          "${mod}+Shift+1" =
-            "move container to workspace number 1";
-          "${mod}+Shift+2" =
-            "move container to workspace number 2";
-          "${mod}+Shift+3" =
-            "move container to workspace number 3";
-          "${mod}+Shift+4" =
-            "move container to workspace number 4";
-          "${mod}+Shift+5" =
-            "move container to workspace number 5";
-          "${mod}+Shift+6" =
-            "move container to workspace number 6";
-          "${mod}+Shift+7" =
-            "move container to workspace number 7";
-          "${mod}+Shift+8" =
-            "move container to workspace number 8";
-          "${mod}+Shift+9" =
-            "move container to workspace number 9";
-          "${mod}+Shift+0" =
-            "move container to workspace number 10";
+          "${mod}+Shift+1" = "move container to workspace number 1";
+          "${mod}+Shift+2" = "move container to workspace number 2";
+          "${mod}+Shift+3" = "move container to workspace number 3";
+          "${mod}+Shift+4" = "move container to workspace number 4";
+          "${mod}+Shift+5" = "move container to workspace number 5";
+          "${mod}+Shift+6" = "move container to workspace number 6";
+          "${mod}+Shift+7" = "move container to workspace number 7";
+          "${mod}+Shift+8" = "move container to workspace number 8";
+          "${mod}+Shift+9" = "move container to workspace number 9";
+          "${mod}+Shift+0" = "move container to workspace number 10";
         };
-        prev_next_binds =
-          let
-            join_dict_arr = builtins.foldl' (a: v: a//v) {};
-            maybe_window = key:
-              if (lib.strings.hasInfix "button" key)
-              then "--whole-window"
-              else "";
-            prev_binds = map (key:
-              {"${maybe_window key} ${mod}+${key}" = "workspace prev_on_output";}
-            ) [ key.tabL "bracketleft" "Prior" "button9" "button4" ];
-            next_binds = map (key:
-              {"${maybe_window key} ${mod}+${key}" = "workspace next_on_output";}
-            ) [ key.tabR "bracketright" "Next" "button8" "button5" ];
-          in
-            join_dict_arr  (prev_binds ++ next_binds);
+        prev_next_binds = let
+          join_dict_arr = builtins.foldl' (a: v: a // v) { };
+          maybe_window = key:
+            if (lib.strings.hasInfix "button" key) then
+              "--whole-window"
+            else
+              "";
+          prev_binds = map (key: {
+            "${maybe_window key} ${mod}+${key}" = "workspace prev_on_output";
+          }) [ key.tabL "bracketleft" "Prior" "button9" "button4" ];
+          next_binds = map (key: {
+            "${maybe_window key} ${mod}+${key}" = "workspace next_on_output";
+          }) [ key.tabR "bracketright" "Next" "button8" "button5" ];
+        in join_dict_arr (prev_binds ++ next_binds);
         movement_binds = {
           "${mod}+${key.left}" = "focus left";
           "${mod}+${key.down}" = "focus down";
@@ -538,19 +514,20 @@ in {
           "${mod}+mod1+Shift+Right" = "move workspace output right";
         };
         audio_binds = {
-          XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
-          XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
+          XF86AudioRaiseVolume =
+            "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
+          XF86AudioLowerVolume =
+            "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
           XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
-          XF86AudioMicMute = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+          XF86AudioMicMute =
+            "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
           # Control media
           XF86AudioPlay = "exec playerctl play-pause";
           XF86AudioPause = "exec playerctl play-pause";
           XF86AudioNext = "exec playerctl next";
           XF86AudioPrev = "exec playerctl previous";
         };
-        system_binds = {
-          "Ctrl+${mod}+z" = "exec systemctl suspend";
-        };
+        system_binds = { "Ctrl+${mod}+z" = "exec systemctl suspend"; };
       in {
         "${mod}+Return" = "exec ${terminal}";
         "${mod}+Ctrl+Return" = "exec thunar";
@@ -572,11 +549,7 @@ in {
         # "${mod}+Shift+e" =
         #   "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
         "${mod}+r" = "mode resize";
-      }
-      // workspace_binds
-      // prev_next_binds
-      // movement_binds
-      // audio_binds
+      } // workspace_binds // prev_next_binds // movement_binds // audio_binds
       // system_binds
       # // map (key: "$mod+${key} workspace prev_on_output") [ key.tabL "bracketleft" "Prior" "button9" "button4" ]
       # // map (key: "$mod+${key} workspace next_on_output") [ key.tabL "bracketleft" "Prior" "button9" "button4" ]
@@ -588,17 +561,18 @@ in {
     enable = true;
     profiles = {
       sedetary = {
-        outputs = [{
-          criteria = "eDP-1";
-          status = "disable";
-          position = "1920,312";
-        } {
-          criteria = "HDMI-A-1";
-          position = "0,0";
-        }];
-        exec = [
-          "xrdb .Xresources"
+        outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+            position = "1920,312";
+          }
+          {
+            criteria = "HDMI-A-1";
+            position = "0,0";
+          }
         ];
+        exec = [ "xrdb .Xresources" ];
       };
       nomad = {
         outputs = [{
@@ -606,9 +580,7 @@ in {
           status = "enable";
           position = "1920,312";
         }];
-        exec = [
-          "xrdb .Xresources"
-        ];
+        exec = [ "xrdb .Xresources" ];
       };
     };
   };

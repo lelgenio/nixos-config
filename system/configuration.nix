@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }:
 let
- # bash script to let dbus know about important env variables and
+  # bash script to let dbus know about important env variables and
   # propogate them to relevent services run at the end of sway config
   # see
   # https://github.com/emersion/xdg-desktop-portal-wlr/wiki/"It-doesn't-work"-Troubleshooting-Checklist
@@ -26,20 +26,19 @@ let
   # using the XDG_DATA_DIR environment variable
   # run at the end of sway config
   configure-gtk = pkgs.writeTextFile {
-      name = "configure-gtk";
-      destination = "/bin/configure-gtk";
-      executable = true;
-      text = let
-        schema = pkgs.gsettings-desktop-schemas;
-        datadir = "${schema}/share/gsettings-schemas/${schema.name}";
-      in ''
-        export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
-        gnome_schema=org.gnome.desktop.interface
-        gsettings set $gnome_schema gtk-theme 'Dracula'
-      '';
+    name = "configure-gtk";
+    destination = "/bin/configure-gtk";
+    executable = true;
+    text = let
+      schema = pkgs.gsettings-desktop-schemas;
+      datadir = "${schema}/share/gsettings-schemas/${schema.name}";
+    in ''
+      export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+      gnome_schema=org.gnome.desktop.interface
+      gsettings set $gnome_schema gtk-theme 'Dracula'
+    '';
   };
-in
-{
+in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -60,7 +59,7 @@ in
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
   # services.xserver.displayManager.autologin.user = "lelgenio";
-  services.greetd =  let
+  services.greetd = let
     swayConfig = pkgs.writeText "greetd-sway-config" ''
       # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
       exec "XDG_CURRENT_DESKTOP=sway GTK_THEME=Orchis-Red-Dark-Compact ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway; swaymsg exit"
@@ -120,7 +119,7 @@ in
   users.users.lelgenio = {
     isNormalUser = true;
     description = "Leonardo Eugênio";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
   };
   # services.getty.autologinUser = "lelgenio";
@@ -141,8 +140,8 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
     git
     pinentry-curses
     firefox
@@ -161,7 +160,7 @@ in
     wayland
     glib # gsettings
     dracula-theme # gtk theme
-    gnome3.adwaita-icon-theme  # default gnome cursors
+    gnome3.adwaita-icon-theme # default gnome cursors
     swaylock
     swayidle
     grim # screenshot functionality

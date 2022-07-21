@@ -5,7 +5,7 @@
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nur.url = github:nix-community/NUR;
+    nur.url = "github:nix-community/NUR";
   };
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let
@@ -26,7 +26,9 @@
       common_modules = [
         ./system/configuration.nix
         # nur.nixosModules.nur
-        ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable nur.overlay ]; })
+        ({ config, pkgs, ... }: {
+          nixpkgs.overlays = [ overlay-unstable nur.overlay ];
+        })
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -41,15 +43,13 @@
       nixosConfigurations = {
         i15 = lib.nixosSystem {
           inherit system;
-          modules = [
-            ./system/i15-hardware-configuration.nix
-          ] ++ common_modules;
+          modules = [ ./system/i15-hardware-configuration.nix ]
+            ++ common_modules;
         };
         monolith = lib.nixosSystem {
           inherit system;
-          modules = [
-            ./system/monolith-hardware-configuration.nix
-          ] ++ common_modules;
+          modules = [ ./system/monolith-hardware-configuration.nix ]
+            ++ common_modules;
         };
       };
     };
