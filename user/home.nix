@@ -52,6 +52,7 @@
   };
   papirus_red = (pkgs.unstable.papirus-icon-theme.override { color = "red"; });
   orchis_theme_compact = (pkgs.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
+  nerdfonts_fira_hack = (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
   accent = accents.red;
   color = themes.dark.color;
   pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
@@ -95,6 +96,7 @@ in {
     # desktop
     kanshi
     xfce.thunar
+    pass
     # media
     yt-dlp
     ffmpeg
@@ -111,7 +113,7 @@ in {
     hack-font
     font-awesome_5
     fira-code
-    (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
+    nerdfonts_fira_hack 
     # Programming
     vscode
     cargo
