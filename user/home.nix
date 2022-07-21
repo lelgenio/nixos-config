@@ -1,5 +1,4 @@
-  { config, pkgs, lib, ... }:
-  let
+{ config, pkgs, lib, ... }: let
   key = {
       left = "n";
       down = "e";
@@ -51,12 +50,25 @@
       };
     };
   };
-  # TODO: fix
   papirus_red = (pkgs.unstable.papirus-icon-theme.override { color = "red"; });
   orchis_theme_compact = (pkgs.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
   accent = accents.red;
   color = themes.dark.color;
-  in {
+  pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
+    #!/bin/sh
+    output=$(printf "HDMI\nHeadphones" | bemenu -b)
+    vol=$(${pkgs.pamixer}/bin/pamixer --get-volume)
+    case "$output" in
+      HDMI)
+        pactl set-default-sink alsa_output.pci-0000_07_00.1.hdmi-stereo-extra1
+        ;;
+      Headphones)
+        pactl set-default-sink alsa_output.pci-0000_09_00.4.analog-stereo
+        ;;
+    esac
+    ${pkgs.pamixer}/bin/pamixer --set-volume "$vol"
+  '';
+in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "lelgenio";
@@ -72,43 +84,40 @@
   home.stateVersion = "22.05";
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  # nixpkgs.config.packageOverrides = pkgs: {
-  #   nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-  #     inherit pkgs;
-  #   };
-  # };
   home.packages = with pkgs; [
-    pkgs.unstable.helix
-    kanshi
     alacritty
     exa
     fd
+    # text manipulation
+    pkgs.unstable.helix
     sd
     ripgrep
+    # desktop
+    kanshi
+    xfce.thunar
+    # media
     yt-dlp
     ffmpeg
     imagemagick
     mpv
-    xfce.thunar
-
     # chat
     tdesktop
     discord
-
     # Theming
+    orchis_theme_compact
+    papirus_red
+    ## fonts
     liberation_ttf
     hack-font
     font-awesome_5
     fira-code
     (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
-    orchis_theme_compact
-    papirus_red
-
     # Programming
     vscode
     cargo
     rust-analyzer
     gcc
+    pulse_sink
   ];
   programs.fish.enable = true;
   programs.helix = {
@@ -387,6 +396,23 @@
         repeat_rate = "30";
         repeat_delay = "200";
       };
+      assigns = {
+        "10" = [
+          {app_id=".*[Tt]elegram.*";}
+          {class=".*[Tt]elegram.*";}
+          {class="Jitsi Meet";}
+          {class="discord";}
+          {title="Discord";}
+        ];
+      };
+      modes = let
+        return_mode = lib.mapAttrs (k: v: "${v}; mode default");
+      in {
+        audio = return_mode {
+          "escape" = "";
+          "s" = "exec ${pulse_sink}/bin/pulse_sink";
+        };
+      };
       keybindings =
       let
         mod = "Mod4";
@@ -501,6 +527,7 @@
         "${mod}+Ctrl+Return" = "exec thunar";
         "${mod}+x" = "kill";
         "${mod}+s" = "exec ${menu}";
+        "${mod}+m" = "mode audio";
         "${mod}+b" = "splith";
         "${mod}+v" = "splitv";
         "${mod}+f" = "fullscreen toggle";
@@ -582,9 +609,7 @@
     style.package = pkgs.libsForQt5.qtstyleplugins;
     style.name = "gtk2";
   };
-    
   programs.mangohud.enable = true;
-    
   systemd.user.services = {
     firefox = {
       Unit = {
