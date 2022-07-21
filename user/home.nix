@@ -234,13 +234,17 @@ in {
       ];
       "network" = {
           "interval"= 5;
-          "tooltip"=false;
-          "on-click"= "terminal iwd";
-          "format-wifi"= "{icon}";
-          "format-icons"=[ "" "" "" "" "" ];
-          "format-ethernet"= "";
-          "format-linked"= "";
-          "format-disconnected"= "";
+          "tooltip" = false;
+          "on-click" = "terminal iwd";
+          "format-wifi" = "{icon}";
+          "format-icons" = [ "" "" "" "" "" ];
+          "format-ethernet" =  "";
+          "format-linked" = "";
+          "format-disconnected" = "";
+      };
+      "tray" = {
+        "spacing" = 7;
+        "icon-size" = 19;
       };
     }];
     style = ''
