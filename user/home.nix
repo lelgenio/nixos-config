@@ -108,6 +108,8 @@ in {
     # Theming
     orchis_theme_compact
     papirus_red
+    libsForQt5.qtstyleplugins
+    qt5.qtsvg
     ## fonts
     liberation_ttf
     hack-font
@@ -229,7 +231,7 @@ in {
         "clock"
       ];
       modules-right = [
-        "tray"
+        "pulseaudio"
         "network"
       ];
       "network" = {
@@ -242,9 +244,30 @@ in {
           "format-linked" = "";
           "format-disconnected" = "";
       };
-      "tray" = {
-        "spacing" = 7;
-        "icon-size" = 19;
+      "clock" = {
+          "interval"=60;
+          "format"="<b>{:%H:%M %a %d/%m}</b>";
+          "tooltip"=false;
+      };
+      "pulseaudio"= {
+          "interval"= 5;
+          "tooltip"=false;
+          "scroll-step"= 10;
+          "format"= "{icon}";
+          "format-bluetooth"= "";
+          "format-bluetooth-muted"= "";
+          "format-muted"= "ﱝ";
+          "format-icons"= {
+              "headphone"= [" 奄" " 奔" " 墳"];
+              "handsfree"= "";
+              "headset"= "";
+              "phone"= "";
+              "portable"= "";
+              "car"= "";
+              "default"= ["奄" "奔" "墳"];
+          };
+          "on-click"= "pavucontrol";
+          "on-click-right"= "pulse-sink";
       };
     }];
     style = ''
@@ -553,6 +576,7 @@ in {
       // workspace_binds
       // prev_next_binds
       // movement_binds
+      // audio_binds
       // system_binds
       # // map (key: "$mod+${key} workspace prev_on_output") [ key.tabL "bracketleft" "Prior" "button9" "button4" ]
       # // map (key: "$mod+${key} workspace next_on_output") [ key.tabL "bracketleft" "Prior" "button9" "button4" ]
@@ -615,6 +639,7 @@ in {
     style.package = pkgs.libsForQt5.qtstyleplugins;
     style.name = "gtk2";
   };
+
   programs.mangohud.enable = true;
   systemd.user.services = {
     firefox = {
