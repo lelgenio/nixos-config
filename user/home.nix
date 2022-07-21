@@ -235,6 +235,25 @@ in {
         format-linked = "";
         format-disconnected = "";
       };
+      "sway/workspaces" = {
+        enable-bar-scroll = true;
+        format = "{icon}";
+        format-icons = {
+          "1" = "";
+          "2" = "";
+          "3" = "";
+          "4" = "";
+          "5" = "";
+          "6" = "";
+          "7" = "";
+          "8" = "";
+          "9" = "";
+          "10" = "";
+          urgent = "";
+          focused = "";
+          default = "";
+        };
+      };
       clock = {
         interval = 60;
         format = "<b>{:%H:%M %a %d/%m}</b>";
