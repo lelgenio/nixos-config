@@ -576,6 +576,10 @@ in {
       terminal = pkgs.alacritty.executable;
     };
   };
+  services.gammastep = {
+    enable = true;
+    provider = "geoclue2";
+  };
   services.kanshi = {
     enable = true;
     profiles = {

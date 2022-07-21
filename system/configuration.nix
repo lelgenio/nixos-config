@@ -176,6 +176,7 @@ in {
     enable = true;
     wrapperFeatures.gtk = true;
   };
+  services.geoclue2.enable = true;
   # programs.qt5ct.enable = true;
   programs.steam.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
