@@ -105,6 +105,8 @@ in {
     ffmpeg
     imagemagick
     mpv
+    mpc-cli
+    pulse_sink
     # chat
     tdesktop
     discord
@@ -124,7 +126,7 @@ in {
     cargo
     rust-analyzer
     gcc
-    pulse_sink
+    nixfmt
   ];
   programs.fish.enable = true;
   programs.helix = {
@@ -610,6 +612,10 @@ in {
   services.kdeconnect = {
     enable = true;
     indicator = true;
+  };
+  services.mpd = {
+    enable = true;
+    musicDirectory = "~/Música";
   };
   home.pointerCursor = {
     name = "capitaine-cursors";
