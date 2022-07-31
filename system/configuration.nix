@@ -101,8 +101,8 @@ in {
     enable = true;
     wlr.enable = true;
     # gtk portal needed to make gtk apps happy
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    gtkUsePortal = true;
+    # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    # gtkUsePortal = false;
   };
   services.flatpak.enable = true;
   virtualisation.docker.enable = true;
