@@ -6,8 +6,11 @@
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
+    
+    # my stuff
+    dhist.url = "github:lelgenio/dhist";
   };
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nur, dhist, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -27,7 +30,12 @@
         ./system/configuration.nix
         # nur.nixosModules.nur
         ({ config, pkgs, ... }: {
-          nixpkgs.overlays = [ overlay-unstable nur.overlay ];
+          nixpkgs.overlays = [ 
+            overlay-unstable nur.overlay
+            (_: _: {
+              dhist = dhist.packages.${system}.dhist;
+            })
+          ];
         })
         home-manager.nixosModules.home-manager
         {

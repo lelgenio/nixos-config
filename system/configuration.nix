@@ -35,7 +35,7 @@ let
     in ''
       export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
       gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'Dracula'
+      # gsettings set $gnome_schema gtk-theme 'Dracula'
     '';
   };
 in {
@@ -156,10 +156,12 @@ in {
     alacritty # gpu accelerated terminal
     sway
     dbus-sway-environment
+    pkgs.xdg-desktop-portal
+    pkgs.xdg-desktop-portal-wlr
     configure-gtk
     wayland
     glib # gsettings
-    dracula-theme # gtk theme
+    # dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
     swaylock
     swayidle

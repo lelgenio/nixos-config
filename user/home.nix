@@ -100,6 +100,7 @@ in {
     kanshi
     xfce.thunar
     pass
+    dhist
     # media
     yt-dlp
     ffmpeg
