@@ -789,6 +789,56 @@ in {
       };
     };
   };
+  programs.mako = {
+    enable = true;
+    borderSize = 2;
+    padding="5";
+    margin="15";
+    layer = "overlay";
+
+    backgroundColor = color.bg;
+    borderColor = accent.color;
+    progressColor = "over ${accent.color}88";
+
+    defaultTimeout=10000;
+      # # {{@@ header() @@}}
+      # # text
+      # font={{@@ font.interface @@}} {{@@ font.size.small @@}}
+      # text-color={{@@ color.txt @@}}
+
+      # # colors
+      # background-color={{@@ color.bg @@}}{{@@ opacity | clamp_to_hex @@}}
+      # border-color={{@@ accent_color @@}}
+      # progress-color=over {{@@ accent_color @@}}88
+
+      # # decoration
+      # border-size=2
+      # padding=5
+      # margin=15
+
+      # # features
+      # icons=1
+      # markup=1
+      # actions=1
+      # default-timeout=10000
+
+      # # position
+      # layer=overlay
+
+      # [app-name=volumesh]
+      # default-timeout=5000
+      # group-by=app-name
+      # format=<b>%s</b>\n%b
+
+      # [app-name=dotdrop]
+      # default-timeout=5000
+      # group-by=app-name
+      # format=<b>%s</b>\n%b
+
+      # # vim: ft=ini
+
+
+  };
   services.kdeconnect = {
     enable = true;
     indicator = true;
@@ -856,6 +906,18 @@ in {
       };
       Service = {
         ExecStart = "${pkgs.tdesktop}/bin/telegram-desktop";
+        Restart = "on-failure";
+      };
+      Install = { WantedBy = [ "sway-session.target" ]; };
+    };
+    mako = {
+      Unit = {
+        Description = "Notification daemon";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.mako}/bin/mako";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "sway-session.target" ]; };
