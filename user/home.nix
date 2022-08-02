@@ -81,7 +81,7 @@ let
     # bmenu *       - use as dmenu, -p for custom prompt (man bemenu)
     # bmenu run     - select from .desktop files and run it
     # bmenu start   - internal option
-    
+
     set swaymsg ${pkgs.sway}/bin/swaymsg
     set swaymsg ${pkgs.sway}/bin/swaymsg
 
@@ -128,16 +128,16 @@ let
 
         set fn "${font.mono} ${font.size.small}"
 
-        set tb "${ color.bg }${theme.opacityHex}"
-        set tf "${ accent.color   }"
+        set tb "${color.bg}${theme.opacityHex}"
+        set tf "${accent.color}"
 
-        set fb "${ color.bg       }${theme.opacityHex}"
-        set ff "${ color.txt      }"
+        set fb "${color.bg}${theme.opacityHex}"
+        set ff "${color.txt}"
 
-        set nb "${ color.bg       }${theme.opacityHex}"
-        set nf "${ color.txt      }"
-        set hb "${ accent.color   }"
-        set hf "${ accent.fg      }"
+        set nb "${color.bg}${theme.opacityHex}"
+        set nf "${color.txt}"
+        set hb "${accent.color}"
+        set hf "${accent.fg}"
 
     ${pkgs.dhist}/bin/dhist wrap -- ${pkgs.bemenu}/bin/bemenu \
         $focused_output\
@@ -216,32 +216,30 @@ in {
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-        set -g __accent_color "${accent.color}"
-        alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
+      set -g __accent_color "${accent.color}"
+      alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
     '';
     shellAbbrs = {
-        sv = "sudo systemct";
-        suv = "sudo systemct --user";
-        # git abbrs
-        g    = "git";
-        ga   = "git add";
-        gs   = "git status";
-        gsh  = "git show";
-        gl   = "git log";
-        gg   = "git graph";
-        gd   = "git diff";
-        gds  = "git diff --staged";
-        gc   = "git commit";
-        gca  = "git commit --all";
-        gcf  = "git commit --fixup";
-        gp   = "git push -u origin (git branch --show-current)";
-        gw   = "git switch";
-        gr   = "cd (git root)";
-        gri  = "git rebase --interactive FETCH_HEAD";
+      sv = "sudo systemct";
+      suv = "sudo systemct --user";
+      # git abbrs
+      g = "git";
+      ga = "git add";
+      gs = "git status";
+      gsh = "git show";
+      gl = "git log";
+      gg = "git graph";
+      gd = "git diff";
+      gds = "git diff --staged";
+      gc = "git commit";
+      gca = "git commit --all";
+      gcf = "git commit --fixup";
+      gp = "git push -u origin (git branch --show-current)";
+      gw = "git switch";
+      gr = "cd (git root)";
+      gri = "git rebase --interactive FETCH_HEAD";
     };
-    functions = {
-      fish_greeting = "";
-    };
+    functions = { fish_greeting = ""; };
   };
   programs.zoxide = {
     enable = true;
@@ -255,30 +253,30 @@ in {
   programs.alacritty = {
     enable = true;
     settings = {
-      colors= {
-        primary= {
-          background= "${ color.bg  }";
-          foreground= "${ color.txt }";
+      colors = {
+        primary = {
+          background = "${color.bg}";
+          foreground = "${color.txt}";
         };
-        cursor= {
-          text= "#000000";
-          cursor= "${ accent.color }";
+        cursor = {
+          text = "#000000";
+          cursor = "${accent.color}";
         };
-        normal= {
-          black=   "${ color.normal.black    }";
-          red=     "${ color.normal.red      }";
-          green=   "${ color.normal.green    }";
-          yellow=  "${ color.normal.yellow   }";
-          blue=    "${ color.normal.blue     }";
-          magenta= "${ color.normal.magenta  }";
-          cyan=    "${ color.normal.cyan     }";
-          white=   "${ color.normal.white    }";
+        normal = {
+          black = "${color.normal.black}";
+          red = "${color.normal.red}";
+          green = "${color.normal.green}";
+          yellow = "${color.normal.yellow}";
+          blue = "${color.normal.blue}";
+          magenta = "${color.normal.magenta}";
+          cyan = "${color.normal.cyan}";
+          white = "${color.normal.white}";
         };
       };
-      draw_bold_text_with_bright_colors= false;
-      window= {
-        opacity= theme.opacity / 100.0;
-        dynamic_padding= true;
+      draw_bold_text_with_bright_colors = false;
+      window = {
+        opacity = theme.opacity / 100.0;
+        dynamic_padding = true;
       };
     };
   };
@@ -575,11 +573,7 @@ in {
         unfocused = client bg_color bg_color fg_color bg_color bg_color;
         urgent = client alert alert fg_color alert alert;
       };
-      output = {
-        "*" = {
-          bg = "${theme.background} fill";
-        };
-      };
+      output = { "*" = { bg = "${theme.background} fill"; }; };
       input."type:touchpad" = {
         # Disable While Typing
         dwt = "disabled";
@@ -735,6 +729,24 @@ in {
       ;
       terminal = pkgs.alacritty.executable;
     };
+  };
+  services.swayidle = {
+    enable = true;
+    timeouts = [
+      {
+        timeout = 360;
+        command = "swaylock -f";
+      }
+      {
+        timeout = 1800;
+        command = "mpc status | grep \"^\[playing\]\" > /dev/null || swaymsg \"output * dpms off\"";
+        resumeCommand = "swaymsg \"output * dpms on\"";
+      }
+    ];
+    events = [{
+      event = "before-sleep";
+      command = "swaylock -f";
+    }];
   };
   services.gammastep = {
     enable = true;
