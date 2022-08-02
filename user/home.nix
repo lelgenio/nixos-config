@@ -62,7 +62,7 @@ let
   color = theme.color;
   pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
     #!/bin/sh
-    output=$(printf "HDMI\nHeadphones" | bemenu -b)
+    output=$(printf "HDMI\nHeadphones" | ${bmenu}/bin/bmenu -b)
     vol=$(${pkgs.pamixer}/bin/pamixer --get-volume)
     case "$output" in
         HDMI)

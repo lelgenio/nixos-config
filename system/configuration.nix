@@ -172,6 +172,11 @@ in {
     mako # notification system developed by swaywm maintainer
     (orchis-theme.override { tweaks = [ "compact" "solid" ]; })
     pulseaudio
+
+    docker-compose
+    gnumake
+    mariadb
+    php74
   ];
   # enable sway window manager
   programs.sway = {
