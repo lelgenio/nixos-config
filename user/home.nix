@@ -243,6 +243,7 @@ in {
   home.file = {
     # ".config/sway/config".source = ./sway;
     ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
+    ".local/share/backgrounds".source = ./backgrounds;
   };
   programs.alacritty = {
     enable = true;
@@ -566,6 +567,11 @@ in {
         focusedInactive = client bg_color bg_color fg_color bg_color bg_color;
         unfocused = client bg_color bg_color fg_color bg_color bg_color;
         urgent = client alert alert fg_color alert alert;
+      };
+      output = {
+        "*" = {
+          bg = "${theme.background} fill";
+        };
       };
       input."type:touchpad" = {
         # Disable While Typing
