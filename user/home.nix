@@ -213,7 +213,18 @@ in {
     gcc
     nixfmt
   ];
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+        set -g __accent_color "${accent.color}"
+        alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
+    '';
+  };
+  home.file = {
+    # ".config/sway/config".source = ./sway;
+    ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
+  };
+
   programs.helix = {
     enable = true;
     package = pkgs.unstable.helix;
