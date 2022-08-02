@@ -219,6 +219,26 @@ in {
         set -g __accent_color "${accent.color}"
         alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
     '';
+    shellAbbrs = {
+        sv = "sudo systemct";
+        suv = "sudo systemct --user";
+        # git abbrs
+        g    = "git";
+        ga   = "git add";
+        gs   = "git status";
+        gsh  = "git show";
+        gl   = "git log";
+        gg   = "git graph";
+        gd   = "git diff";
+        gds  = "git diff --staged";
+        gc   = "git commit";
+        gca  = "git commit --all";
+        gcf  = "git commit --fixup";
+        gp   = "git push -u origin (git branch --show-current)";
+        gw   = "git switch";
+        gr   = "cd (git root)";
+        gri  = "git rebase --interactive FETCH_HEAD";
+    };
   };
   home.file = {
     # ".config/sway/config".source = ./sway;
