@@ -1,0 +1,131 @@
+#!/bin/sh
+
+# depends on: awk, pactl, pacmd, notify-send
+
+MAX_VOL=150
+STEP=10
+
+notify() {
+    volume=$(get_vol_$TARGET)
+
+    if is_muted_$TARGET; then
+        s="Muted"
+    else
+        s="Volume"
+    fi
+
+    s=$(echo "${TARGET} ${s}" | sed 's/^\(.\)/\U\1/')
+
+    notify-send "${s}" "${volume}%" \
+        --app-name=volumesh \
+        --hint=int:value:"$volume"
+
+}
+
+round() {
+    awk '{
+        print int($1/'$STEP')*'$STEP';
+    }'
+}
+
+round_vol() {
+    rounded=$(get_vol_$TARGET | round)
+    newvol=$(min $MAX_VOL $rounded)
+}
+
+min() {
+    printf '%i\n' ${@} | sort -n | head -n1
+}
+
+# Pulse{{{
+get_vol_pulse() {
+    pamixer --get-volume
+}
+
+is_muted_pulse() {
+    pamixer --get-mute >/dev/null
+}
+
+change_vol_pulse() {
+    pamixer "-$1" "$(min 120 $2)"
+    round_vol
+    pamixer --set-volume "${newvol}"
+    if 
+        test -n "$VOLUME_CHANGE_SOUND"
+    then
+        paplay "$VOLUME_CHANGE_SOUND"
+    fi
+}
+
+toggle_mute_pulse() {
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+}
+#}}}
+# Mpd {{{
+
+get_vol_mpd() {
+    env LC_ALL=C mpc vol |
+        sed -e 's/^.*://g' -e 's/%.*$//g' -e 's/ //g'
+}
+
+is_muted_mpd() {
+    env LC_ALL=C mpc status | grep '\[paused\]' 1>/dev/null
+}
+change_vol_mpd() {
+    mpc vol "${1}${2}" &>/dev/null
+    round_vol
+    mpc vol "${newvol}" &>/dev/null
+}
+
+toggle_mute_mpd() {
+    mpc toggle
+}
+#}}}
+usage() {
+    local CNAME=$(basename $0)
+    echo "${CNAME} [-m][-di <amount>]"
+    echo "${CNAME} [-m][-t]"
+    echo ""
+    echo "Options:"
+    echo "  -m --mpd          Target mpd instead of PulseAudio"
+    echo "  -i --increase     <amount> of volume to increase"
+    echo "  -d --decrease     <amount> of volume to decrease"
+    echo "  -t --toggle       Mute/Unmute target"
+    echo "  -h --help         Show This help message"
+
+    exit "$1"
+}
+TARGET=pulse
+
+while [ $# -gt 0 ]; do
+    case $1 in
+        -m | --mpd)
+            TARGET=mpd
+            shift
+            ;;
+        -i | --increase)
+            shift
+            change_vol_$TARGET i $1
+            shift
+            ;;
+        -d | --decrease)
+            shift
+            change_vol_$TARGET d $1
+            shift
+            ;;
+        -t | --toggle)
+            toggle_mute_$TARGET
+            shift
+            ;;
+        -h | --help)
+            usage 0
+            ;;
+        *)
+            usage 1
+            ;;
+    esac
+done
+
+notify
+
+# vim: fdm=marker

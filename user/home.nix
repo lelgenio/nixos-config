@@ -155,6 +155,7 @@ let
 
     # vim: ft=fish
   '';
+  volumesh = pkgs.writeShellScriptBin "volumesh" (builtins.readFile ./scripts/volumesh);
 in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -185,6 +186,9 @@ in {
     pass
     dhist
     bmenu
+    volumesh
+    pamixer
+    libnotify
     # media
     yt-dlp
     ffmpeg
@@ -340,7 +344,10 @@ in {
       keys.insert = { "A-k" = "normal_mode"; };
     };
   };
-  home.sessionVariables = { EDITOR = "hx"; };
+  home.sessionVariables = { 
+    EDITOR = "hx";
+    VOLUME_CHANGE_SOUND = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
+  };
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
@@ -598,7 +605,10 @@ in {
       };
       modes = let return_mode = lib.mapAttrs (k: v: "${v}; mode default");
       in {
-        audio = return_mode {
+        audio = {
+              ${key.tabL} = "volumes decrease";
+        } // return_mode {
+          "space" = "exec mpc toggle";
           "escape" = "";
           "s" = "exec ${pulse_sink}/bin/pulse_sink";
         };
