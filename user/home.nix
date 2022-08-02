@@ -26,7 +26,7 @@ let
   themes = {
     dark = {
       background = "~/.local/share/backgrounds/assembly_dark.png";
-      opacity = "98";
+      opacity = 98;
       opacityHex = "ee";
       color = {
         type = "dark";
@@ -244,7 +244,36 @@ in {
     # ".config/sway/config".source = ./sway;
     ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
   };
-
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      colors= {
+        primary= {
+          background= "${ color.bg  }";
+          foreground= "${ color.txt }";
+        };
+        cursor= {
+          text= "#000000";
+          cursor= "${ accent.color }";
+        };
+        normal= {
+          black=   "${ color.normal.black    }";
+          red=     "${ color.normal.red      }";
+          green=   "${ color.normal.green    }";
+          yellow=  "${ color.normal.yellow   }";
+          blue=    "${ color.normal.blue     }";
+          magenta= "${ color.normal.magenta  }";
+          cyan=    "${ color.normal.cyan     }";
+          white=   "${ color.normal.white    }";
+        };
+      };
+      draw_bold_text_with_bright_colors= false;
+      window= {
+        opacity= theme.opacity / 100.0;
+        dynamic_padding= true;
+      };
+    };
+  };
   programs.helix = {
     enable = true;
     package = pkgs.unstable.helix;
