@@ -596,9 +596,9 @@ in {
           "s" = "exec ${pulse_sink}/bin/pulse_sink";
         };
       };
+      floating.modifier = "Mod4";
       keybindings = let
         mod = "Mod4";
-        floating.modifier = "Mod4";
         menu = "bmenu run";
         terminal = "alacritty";
         workspace_binds = {
