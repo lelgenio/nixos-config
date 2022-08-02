@@ -239,6 +239,13 @@ in {
         gr   = "cd (git root)";
         gri  = "git rebase --interactive FETCH_HEAD";
     };
+    functions = {
+      fish_greeting = "";
+    };
+  };
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
   };
   home.file = {
     # ".config/sway/config".source = ./sway;
