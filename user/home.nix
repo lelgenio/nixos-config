@@ -601,6 +601,7 @@ in {
           { class = "Jitsi Meet"; }
           { class = "discord"; }
           { title = "Discord"; }
+          { class = "WebCord"; }
         ];
       };
       modes = let return_mode = lib.mapAttrs (k: v: "${v}; mode default");
@@ -839,6 +840,12 @@ in {
 
 
   };
+  home.activation = {
+   install_flatpaks = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      $DRY_RUN_CMD flatpak $VERBOSE_ARG remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 
+      $DRY_RUN_CMD flatpak $VERBOSE_ARG install -y flathub io.github.spacingbat3.webcord 
+    '';
+  };
   services.kdeconnect = {
     enable = true;
     indicator = true;
@@ -881,7 +888,7 @@ in {
         After = [ "graphical-session.target" ];
       };
       Service = {
-        ExecStart = "${pkgs.discord}/bin/discord";
+        ExecStart = "${pkgs.firefox}/bin/firefox";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "sway-session.target" ]; };
@@ -893,7 +900,7 @@ in {
         After = [ "graphical-session.target" ];
       };
       Service = {
-        ExecStart = "${pkgs.discord}/bin/discord";
+        ExecStart = "/usr/bin/env flatpak run io.github.spacingbat3.webcord";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "sway-session.target" ]; };
