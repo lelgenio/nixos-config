@@ -196,9 +196,12 @@ in {
     mpv
     mpc-cli
     pulse_sink
+    #games
+    lutris
+    steam
     # chat
     tdesktop
-    discord
+    # discord # I'm using webcord, see home.activation
     # Theming
     orchis_theme_compact
     papirus_red
