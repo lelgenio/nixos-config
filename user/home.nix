@@ -765,7 +765,7 @@ in {
       command = "swaylock -f";
     }];
   };
-  home.file.".config/swaylock/config".text = ''
+  xdg.configFile."swaylock/config".text = ''
       image=${theme.background}
       font=${font.interface}
       font-size=${font.size.medium}
