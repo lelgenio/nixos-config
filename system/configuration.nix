@@ -177,6 +177,11 @@ in {
     gnumake
     mariadb
     php74
+    nodejs
+    nodePackages.yarn
+    nodePackages.less
+    nodePackages.less-plugin-clean-css
+    nodePackages.uglify-js
   ];
   # enable sway window manager
   programs.sway = {

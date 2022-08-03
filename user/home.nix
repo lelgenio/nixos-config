@@ -203,6 +203,7 @@ in {
     # chat
     tdesktop
     # discord # I'm using webcord, see home.activation
+    thunderbird
     # Theming
     orchis_theme_compact
     papirus_red
