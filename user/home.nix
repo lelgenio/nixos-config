@@ -155,7 +155,8 @@ let
 
     # vim: ft=fish
   '';
-  volumesh = pkgs.writeShellScriptBin "volumesh" (builtins.readFile ./scripts/volumesh);
+  volumesh =
+    pkgs.writeShellScriptBin "volumesh" (builtins.readFile ./scripts/volumesh);
 in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -347,9 +348,10 @@ in {
       keys.insert = { "A-k" = "normal_mode"; };
     };
   };
-  home.sessionVariables = { 
+  home.sessionVariables = {
     EDITOR = "hx";
-    VOLUME_CHANGE_SOUND = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
+    VOLUME_CHANGE_SOUND =
+      "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
   };
   programs.firefox = {
     enable = true;
@@ -610,7 +612,7 @@ in {
       modes = let return_mode = lib.mapAttrs (k: v: "${v}; mode default");
       in {
         audio = {
-              ${key.tabL} = "volumes decrease";
+          ${key.tabL} = "volumes decrease";
         } // return_mode {
           "space" = "exec mpc toggle";
           "escape" = "";
@@ -753,8 +755,9 @@ in {
       }
       {
         timeout = 1800;
-        command = "mpc status | grep \"^\[playing\]\" > /dev/null || swaymsg \"output * dpms off\"";
-        resumeCommand = "swaymsg \"output * dpms on\"";
+        command = ''
+          mpc status | grep "^[playing]" > /dev/null || swaymsg "output * dpms off"'';
+        resumeCommand = ''swaymsg "output * dpms on"'';
       }
     ];
     events = [{
@@ -762,6 +765,24 @@ in {
       command = "swaylock -f";
     }];
   };
+  home.file.".config/swaylock/config".text = ''
+      image=${theme.background}
+      font=${font.interface}
+      font-size=${font.size.medium}
+      indicator-thickness=20
+      color=${color.bg}
+      inside-color=#FFFFFF00
+      bs-hl-color=${color.normal.red}
+      ring-color=${color.normal.green}
+      key-hl-color=${accent.color}
+      # divisor lines
+      separator-color=#aabbcc00
+      line-color=#aabbcc00
+      line-clear-color=#aabbcc00
+      line-caps-lock-color=#aabbcc00
+      line-ver-color=#aabbcc00
+      line-wrong-color=#aabbcc00
+  '';
   services.gammastep = {
     enable = true;
     provider = "geoclue2";
@@ -796,55 +817,54 @@ in {
   programs.mako = {
     enable = true;
     borderSize = 2;
-    padding="5";
-    margin="15";
+    padding = "5";
+    margin = "15";
     layer = "overlay";
 
     backgroundColor = color.bg;
     borderColor = accent.color;
     progressColor = "over ${accent.color}88";
 
-    defaultTimeout=10000;
-      # # {{@@ header() @@}}
-      # # text
-      # font={{@@ font.interface @@}} {{@@ font.size.small @@}}
-      # text-color={{@@ color.txt @@}}
+    defaultTimeout = 10000;
+    # # {{@@ header() @@}}
+    # # text
+    # font={{@@ font.interface @@}} {{@@ font.size.small @@}}
+    # text-color={{@@ color.txt @@}}
 
-      # # colors
-      # background-color={{@@ color.bg @@}}{{@@ opacity | clamp_to_hex @@}}
-      # border-color={{@@ accent_color @@}}
-      # progress-color=over {{@@ accent_color @@}}88
+    # # colors
+    # background-color={{@@ color.bg @@}}{{@@ opacity | clamp_to_hex @@}}
+    # border-color={{@@ accent_color @@}}
+    # progress-color=over {{@@ accent_color @@}}88
 
-      # # decoration
-      # border-size=2
-      # padding=5
-      # margin=15
+    # # decoration
+    # border-size=2
+    # padding=5
+    # margin=15
 
-      # # features
-      # icons=1
-      # markup=1
-      # actions=1
-      # default-timeout=10000
+    # # features
+    # icons=1
+    # markup=1
+    # actions=1
+    # default-timeout=10000
 
-      # # position
-      # layer=overlay
+    # # position
+    # layer=overlay
 
-      # [app-name=volumesh]
-      # default-timeout=5000
-      # group-by=app-name
-      # format=<b>%s</b>\n%b
+    # [app-name=volumesh]
+    # default-timeout=5000
+    # group-by=app-name
+    # format=<b>%s</b>\n%b
 
-      # [app-name=dotdrop]
-      # default-timeout=5000
-      # group-by=app-name
-      # format=<b>%s</b>\n%b
+    # [app-name=dotdrop]
+    # default-timeout=5000
+    # group-by=app-name
+    # format=<b>%s</b>\n%b
 
-      # # vim: ft=ini
-
+    # # vim: ft=ini
 
   };
   home.activation = {
-   install_flatpaks = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    install_flatpaks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       $DRY_RUN_CMD flatpak $VERBOSE_ARG remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 
       $DRY_RUN_CMD flatpak $VERBOSE_ARG install -y flathub io.github.spacingbat3.webcord 
     '';
