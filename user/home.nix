@@ -163,6 +163,21 @@ let
   '';
   volumesh =
     pkgs.writeShellScriptBin "volumesh" (builtins.readFile ./scripts/volumesh);
+  _lock = pkgs.writeShellScriptBin "_lock" ''
+    swaylock -f
+    systemctl --user start swayidle.service
+  '';
+  _suspend = pkgs.writeShellScriptBin "_suspend" ''
+    ${_lock}/bin/_lock
+    systemctl suspend
+  '';
+  _sway_idle_toggle = pkgs.writeShellScriptBin "_sway_idle_toggle" ''
+    if pidof swayidle > /dev/null; then
+        systemctl --user stop swayidle.service
+    else
+        systemctl --user start swayidle.service
+    fi
+  '';
 in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -499,7 +514,7 @@ in {
       layer = "top";
       modules-left = [ "sway/workspaces" "sway/mode" ];
       modules-center = [ "clock" ];
-      modules-right = [ "pulseaudio" "network" ];
+      modules-right = [ "custom/caffeine" "pulseaudio" "network" ];
       network = {
         interval = 5;
         tooltip = false;
@@ -532,6 +547,13 @@ in {
       clock = {
         interval = 60;
         format = "<b>{:%H:%M %a %d/%m}</b>";
+        tooltip = false;
+      };
+      "custom/caffeine" = {
+        format = "{}";
+        exec = "pidof swayidle > /dev/null && echo 鈴 || echo ";
+        on-click = "_sway_idle_toggle";
+        interval = 1;
         tooltip = false;
       };
       pulseaudio = {
@@ -828,7 +850,10 @@ in {
           XF86AudioNext = "exec playerctl next";
           XF86AudioPrev = "exec playerctl previous";
         };
-        system_binds = { "Ctrl+${mod}+z" = "exec systemctl suspend"; };
+        system_binds = {
+          "--locked Ctrl+${mod}+z" = "exec ${_suspend}/bin/_suspend";
+          "${mod}+Alt+c" = "exec ${_sway_idle_toggle}/bin/_sway_idle_toggle";
+        };
       in {
         "${mod}+Return" = "exec ${terminal}";
         "${mod}+Ctrl+Return" = "exec thunar";
