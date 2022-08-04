@@ -1,20 +1,26 @@
 { config, pkgs, lib, ... }:
 let
   key = {
+    layout = "colemak";
+    hints = "arstwfuyneio";
     left = "n";
     down = "e";
     up = "i";
     right = "o";
+    next = "l";
     tabL = "u";
     tabR = "Y";
+    insertMode = "s";
+    insertQuit = "kk";
+    menu = "s";
   };
   font = {
     mono = "Hack Nerd Font";
     interface = "Liberation Sans";
     size = {
-      small = "12";
-      medium = "14";
-      big = "16";
+      small = 12;
+      medium = 14;
+      big = 16;
     };
   };
   accents = {
@@ -126,7 +132,7 @@ let
     # s  selected
     # sc scrollbar
 
-        set fn "${font.mono} ${font.size.small}"
+        set fn "${font.mono} ${toString font.size.small}"
 
         set tb "${color.bg}${theme.opacityHex}"
         set tf "${accent.color}"
@@ -217,7 +223,9 @@ in {
     nerdfonts_fira_hack
     # Programming
     vscode
-    cargo
+    rustup
+    # cargo
+    # cargo-edit
     rust-analyzer
     gcc
     nixfmt
@@ -262,6 +270,10 @@ in {
   programs.alacritty = {
     enable = true;
     settings = {
+      font = {
+        size = font.size.small;
+        normal = { family = font.mono; };
+      };
       colors = {
         primary = {
           background = "${color.bg}";
@@ -287,6 +299,103 @@ in {
         opacity = theme.opacity / 100.0;
         dynamic_padding = true;
       };
+
+      hints = {
+        alphabet = key.hints;
+        enabled = [{
+          regex = let
+            mimes =
+              "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)";
+            # I fucking hate regex, look at this bullshit
+            delimiters = ''^\\u0000-\\u001F\\u007F-\\u009F<>"\\s{-}\\^⟨⟩`'';
+          in "${mimes}[${delimiters}]+";
+          command = "xdg-open";
+          post_processing = true;
+          mouse = {
+            enabled = true;
+            mods = "None";
+          };
+          binding = {
+            key = "U";
+            mods = "Control|Shift";
+          };
+        }];
+      };
+      mouse = { hide_when_typing = true; };
+      key_bindings = [
+        {
+          key = lib.toUpper key.up;
+          mode = "Vi|~Search";
+          action = "Up";
+        }
+        {
+          key = lib.toUpper key.down;
+          mode = "Vi|~Search";
+          action = "Down";
+        }
+        {
+          key = lib.toUpper key.left;
+          mode = "Vi|~Search";
+          action = "Left";
+        }
+        {
+          key = lib.toUpper key.right;
+          mode = "Vi|~Search";
+          action = "Right";
+        }
+        {
+          key = lib.toUpper key.insertMode;
+          mode = "Vi|~Search";
+          action = "ScrollToBottom";
+        }
+        {
+          key = lib.toUpper key.insertMode;
+          mode = "Vi|~Search";
+          action = "ToggleViMode";
+        }
+        {
+          key = lib.toUpper key.next;
+          mode = "Vi|~Search";
+          action = "SearchNext";
+        }
+        {
+          key = "Up";
+          mods = "Control|Shift";
+          mode = "~Alt";
+          action = "ScrollLineUp";
+        }
+        {
+          key = "Down";
+          mods = "Control|Shift";
+          mode = "~Alt";
+          action = "ScrollLineDown";
+        }
+        {
+          key = "PageUp";
+          mods = "Control|Shift";
+          mode = "~Alt";
+          action = "ScrollHalfPageUp";
+        }
+        {
+          key = "PageDown";
+          mods = "Control|Shift";
+          mode = "~Alt";
+          action = "ScrollHalfPageDown";
+        }
+        {
+          key = "N";
+          mods = "Control|Shift";
+          action = "SpawnNewInstance";
+        }
+        # {%@@ if key.layout == "colemak" @@%}
+        {
+          key = "T";
+          mode = "Vi|~Search";
+          action = "SemanticRightEnd";
+        }
+        # {%@@ endif @@%}
+      ];
+
     };
   };
   programs.helix = {
@@ -449,7 +558,9 @@ in {
     style = ''
       /* {%@@ set bg_rgb = hex2rgb(color.bg) @@%} */
       * {
-              font: ${font.size.medium}px "${font.interface}", Font Awesome, Fira Code Nerd Font;
+              font: ${
+                toString font.size.medium
+              }px "${font.interface}", Font Awesome, Fira Code Nerd Font;
               border-radius:0;
               margin:0;
               padding: 0;
@@ -526,7 +637,7 @@ in {
       #clock,
       #custom-weather
       {
-              font-size: ${font.size.big}px;
+              font-size: ${toString font.size.big}px;
       }
       #network,
       #pulseaudio,
@@ -551,12 +662,12 @@ in {
               margin: 0;
       }
       #language {
-              font-size: ${font.size.medium}px;
+              font-size: ${toString font.size.medium}px;
               color: ${color.bg_light};
       }
       #custom-sleep {
               color: ${accent.color};
-              font-size: ${font.size.big}px;
+              font-size: ${toString font.size.big}px;
               font-weight: bold;
       }
     '';
@@ -767,22 +878,22 @@ in {
     }];
   };
   xdg.configFile."swaylock/config".text = ''
-      image=${theme.background}
-      font=${font.interface}
-      font-size=${font.size.medium}
-      indicator-thickness=20
-      color=${color.bg}
-      inside-color=#FFFFFF00
-      bs-hl-color=${color.normal.red}
-      ring-color=${color.normal.green}
-      key-hl-color=${accent.color}
-      # divisor lines
-      separator-color=#aabbcc00
-      line-color=#aabbcc00
-      line-clear-color=#aabbcc00
-      line-caps-lock-color=#aabbcc00
-      line-ver-color=#aabbcc00
-      line-wrong-color=#aabbcc00
+    image=${theme.background}
+    font=${font.interface}
+    font-size=${toString font.size.medium}
+    indicator-thickness=20
+    color=${color.bg}
+    inside-color=#FFFFFF00
+    bs-hl-color=${color.normal.red}
+    ring-color=${color.normal.green}
+    key-hl-color=${accent.color}
+    # divisor lines
+    separator-color=#aabbcc00
+    line-color=#aabbcc00
+    line-clear-color=#aabbcc00
+    line-caps-lock-color=#aabbcc00
+    line-ver-color=#aabbcc00
+    line-wrong-color=#aabbcc00
   '';
   services.gammastep = {
     enable = true;

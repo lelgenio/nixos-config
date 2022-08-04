@@ -6,7 +6,16 @@
   boot.initrd.availableKernelModules =
     [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "amdgpu" ];
+
+  hardware.opengl.driSupport = true;
+  # For 32 bit applications
+  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
+  # For 32 bit applications 
+  # Only available on unstable
+  hardware.opengl.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+
   boot.extraModulePackages = [ ];
   fileSystems."/" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
