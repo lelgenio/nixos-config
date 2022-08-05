@@ -11,6 +11,10 @@ hook global BufCreate .*\.py %{
     set global indentwidth 4
 }
 
+hook global BufCreate .*\.nix %{
+    set global indentwidth 2
+}
+
 #################################################################
 # Spaces
 #################################################################
