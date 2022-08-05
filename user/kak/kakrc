@@ -1,0 +1,19 @@
+# {{@@ header() @@}}
+#  _  __     _
+# | |/ /__ _| | _____  _   _ _ __   ___
+# | ' // _` | |/ / _ \| | | | '_ \ / _ \
+# | . \ (_| |   < (_) | |_| | | | |  __/
+# |_|\_\__,_|_|\_\___/ \__,_|_| |_|\___|
+
+
+set global scrolloff 10,20
+set global autoreload yes
+set global startup_info_version 20200901
+
+source "%val{config}/rc/plug.kak"
+source "%val{config}/rc/keys.kak"
+source "%val{config}/rc/usermode.kak"
+source "%val{config}/rc/hooks.kak"
+source "%val{config}/rc/filetypes.kak"
+source "%val{config}/rc/indent.kak"
+source "%val{config}/colors.kak"
