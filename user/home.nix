@@ -1,71 +1,12 @@
 { config, pkgs, lib, ... }:
 let
-  key = {
-    layout = "colemak";
-    hints = "arstwfuyneio";
-    left = "n";
-    down = "e";
-    up = "i";
-    right = "o";
-    next = "l";
-    tabL = "u";
-    tabR = "Y";
-    insertMode = "s";
-    insertQuit = "kk";
-    menu = "s";
-  };
-  font = {
-    mono = "Hack Nerd Font";
-    interface = "Liberation Sans";
-    size = {
-      small = 12;
-      medium = 14;
-      big = 16;
-    };
-  };
-  accents = {
-    red = {
-      color = "#F44336";
-      fg = "#ffffff";
-    };
-  };
-  themes = {
-    dark = {
-      background = "~/.local/share/backgrounds/assembly_dark.png";
-      opacity = 98;
-      opacityHex = "ee";
-      color = {
-        type = "dark";
-        bg = "#202020";
-        bg_light = "#404040";
-        bg_dark = "#191919";
-        txt = "#FFFFFF";
-        nontxt = "#252525";
-        random_range = "[a-f]";
-        normal = {
-          black = "#404040";
-          red = "#AB4642";
-          green = "#A1B56C";
-          yellow = "#E6C547";
-          blue = "#6C99DA";
-          magenta = "#C397D8";
-          cyan = "#70C0BA";
-          white = "#EAEAEA";
-          #non standard
-          orange = "#FF7500";
-          brown = "#A07040";
-        };
-      };
-    };
-  };
+  inherit (import ./variables.nix) key theme color accent font;
+
   papirus_red = (pkgs.unstable.papirus-icon-theme.override { color = "red"; });
   orchis_theme_compact =
     (pkgs.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
   nerdfonts_fira_hack =
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
-  accent = accents.red;
-  theme = themes.dark;
-  color = theme.color;
   pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
     #!/bin/sh
     output=$(printf "HDMI\nHeadphones" | ${bmenu}/bin/bmenu -b)
@@ -179,6 +120,9 @@ let
     fi
   '';
 in {
+  imports = [
+    ./waybar.nix
+  ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "lelgenio";
@@ -627,194 +571,6 @@ in {
   # home.file = {
   #   ".config/sway/config".source = ./sway;
   # };
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-    systemd.target = "sway-session.target";
-    settings = [{
-      layer = "top";
-      modules-left = [ "sway/workspaces" "sway/mode" ];
-      modules-center = [ "clock" ];
-      modules-right = [ "custom/caffeine" "pulseaudio" "network" ];
-      network = {
-        interval = 5;
-        tooltip = false;
-        on-click = "terminal iwd";
-        format-wifi = "{icon}";
-        format-icons = [ "" "" "" "" "" ];
-        format-ethernet = "";
-        format-linked = "";
-        format-disconnected = "";
-      };
-      "sway/workspaces" = {
-        enable-bar-scroll = true;
-        format = "{icon}";
-        format-icons = {
-          "1" = "";
-          "2" = "";
-          "3" = "";
-          "4" = "";
-          "5" = "";
-          "6" = "";
-          "7" = "";
-          "8" = "";
-          "9" = "";
-          "10" = "";
-          urgent = "";
-          focused = "";
-          default = "";
-        };
-      };
-      clock = {
-        interval = 60;
-        format = "<b>{:%H:%M %a %d/%m}</b>";
-        tooltip = false;
-      };
-      "custom/caffeine" = {
-        format = "{}";
-        exec = "pidof swayidle > /dev/null && echo 鈴 || echo ";
-        on-click = "_sway_idle_toggle";
-        interval = 1;
-        tooltip = false;
-      };
-      pulseaudio = {
-        interval = 5;
-        tooltip = false;
-        scroll-step = 10;
-        format = "{icon}";
-        format-bluetooth = "";
-        format-bluetooth-muted = "";
-        format-muted = "ﱝ";
-        format-icons = {
-          headphone = [ " 奄" " 奔" " 墳" ];
-          handsfree = "";
-          headset = "";
-          phone = "";
-          portable = "";
-          car = "";
-          default = [ "奄" "奔" "墳" ];
-        };
-        on-click = "pavucontrol";
-        on-click-right = "pulse-sink";
-      };
-    }];
-    style = ''
-      /* {%@@ set bg_rgb = hex2rgb(color.bg) @@%} */
-      * {
-              font: ${
-                toString font.size.medium
-              }px "${font.interface}", Font Awesome, Fira Code Nerd Font;
-              border-radius:0;
-              margin:0;
-              padding: 0;
-              transition-duration:0;
-      }
-      window#waybar {
-              /* background-color: rgba(30,30,30,.9); */
-              transition-duration: .5s;
-              /* TODO: background opacity */
-              background-color: ${color.bg};
-              /*{%@@ if bar_pos == "top" @@%}
-                      border-bottom:
-              {%@@ else @@%}
-                      border-top:
-              {%@@ endif @@%}*/
-              border-bottom:
-                  2px solid ${color.bg_dark};
-      }
-      window#waybar.solo {
-              background-color: ${color.bg};
-      }
-      #workspaces button {
-              color: ${color.bg_light};
-              min-width:50px;
-              background-color: transparent;
-              border: 3px solid transparent;
-      }
-      #workspaces button.focused {
-              color: ${color.txt};
-              /*{%@@ if bar_pos == "top" @@%}
-                      border-top:
-              {%@@ else @@%}
-                      border-bottom:
-              {%@@ endif @@%}*/
-                      border-top:
-                      3px solid ${accent.color};
-              /* border-bottom: 3px solid transparent; */
-      }
-      /*Window Title*/
-      #window {
-              color: ${color.txt};
-              margin:0 4px;
-      }
-      #mode {
-              color: ${accent.color};
-      }
-      #mpd,
-      #custom-mpd,
-      #tray,
-      #clock,
-      #network,
-      #battery,
-      #backlight,
-      #bluetooth,
-      #pulseaudio,
-      #custom-mail,
-      #custom-spigot,
-      #custom-updates,
-      #custom-weather,
-      #custom-unpushed,
-      #custom-transmissionD,
-      #custom-transmissionS,
-      #custom-delugeD,
-      #custom-delugeS,
-      #custom-caffeine
-      {
-              margin: 0 7px;
-              color: ${color.txt};
-              opacity:.7;
-      }
-      #battery{
-              margin-right:15px;
-      }
-      #clock,
-      #custom-weather
-      {
-              font-size: ${toString font.size.big}px;
-      }
-      #network,
-      #pulseaudio,
-      #custom-caffeine
-      {
-              margin-top:-1px;
-              font-size:16px;
-      }
-      #mpd,
-      #window,
-      #workspaces
-      {
-              font-weight:normal;
-      }
-      #custom-unpushed,
-      #custom-recording {
-              min-width:15px;
-              color: #ee4040;
-      }
-      #tray {
-              padding: 0;
-              margin: 0;
-      }
-      #language {
-              font-size: ${toString font.size.medium}px;
-              color: ${color.bg_light};
-      }
-      #custom-sleep {
-              color: ${accent.color};
-              font-size: ${toString font.size.big}px;
-              font-weight: bold;
-      }
-    '';
-  };
   wayland.windowManager.sway = {
     enable = true;
     config = {
