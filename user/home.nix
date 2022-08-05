@@ -283,9 +283,7 @@ in {
     # ".config/sway/config".source = ./sway;
     ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
     ".local/share/backgrounds".source = ./backgrounds;
-    ".config/kak/rc".source = ./kak/rc;
-    ".config/kak/kakrc".source = ./kak/kakrc;
-    ".config/kak/colors.kak".text =let 
+    ".config/kak/kakrc".text = let
       colors = lib.mapAttrs (_: lib.replaceStrings ["#"] ["rgb:"]) {
          accent_fg    = accent.fg        ;
          accent_color = accent.color     ;
@@ -295,7 +293,21 @@ in {
          orange  = color.normal.orange   ;
          brown  = color.normal.brown     ;
       };
-    in with colors; ''
+      in with colors;
+        lib.concatStringsSep "\n" (map (lib.readFile) [
+            ./kak/filetypes.kak
+            ./kak/hooks.kak
+            ./kak/indent.kak
+            ./kak/keys.kak
+            ./kak/plug.kak
+            ./kak/usermode.kak
+        ]) +''
+
+        set global scrolloff 10,20
+        set global autoreload yes
+        set global startup_info_version 20200901
+
+        '' + ''
         face global crosshairs_line     default,${ bg_dark }
         face global crosshairs_column   default+b
 
@@ -1107,8 +1119,8 @@ in {
   };
   home.activation = {
     install_flatpaks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      $DRY_RUN_CMD flatpak $VERBOSE_ARG remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo 
-      $DRY_RUN_CMD flatpak $VERBOSE_ARG install -y flathub io.github.spacingbat3.webcord 
+      $DRY_RUN_CMD flatpak $VERBOSE_ARG remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      $DRY_RUN_CMD flatpak $VERBOSE_ARG install -y flathub io.github.spacingbat3.webcord
     '';
   };
   services.kdeconnect = {
