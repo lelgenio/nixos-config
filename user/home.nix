@@ -10,12 +10,7 @@ let
   volumesh =
     pkgs.writeShellScriptBin "volumesh" (builtins.readFile ./scripts/volumesh);
 in {
-  imports = [
-    ./waybar.nix
-    ./helix.nix
-    ./kakoune.nix
-    ./sway.nix
-  ];
+  imports = [ ./waybar.nix ./helix.nix ./kakoune.nix ./sway.nix ./git.nix ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "lelgenio";
@@ -35,6 +30,8 @@ in {
     alacritty
     exa
     fd
+    _diffr
+    kak-pager
     # text manipulation
     sd
     ripgrep

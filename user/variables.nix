@@ -66,4 +66,28 @@ in rec {
       big = 16;
     };
   };
+
+  username = "lelgenio";
+  mail = {
+    personal = {
+      from = "Leonardo Eugênio";
+      user = "lelgenio@disroot.org";
+      imap = "disroot.org";
+      smtp = "disroot.org";
+      pass = "disroot.org";
+    };
+    work = {
+      from = "Leonardo Eugênio";
+      user = "leonardo@wopus.com.br";
+      imap = "imap.wopus.com.br";
+      smtp = "smtp.wopus.com.br";
+      pass = "Work/wopus_email";
+    };
+  };
+  nextcloud = {
+    name = "disroot";
+    user = "lelgenio";
+    host = "cloud.disroot.org";
+    pass = "disroot.org";
+  };
 }

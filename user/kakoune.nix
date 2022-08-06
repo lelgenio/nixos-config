@@ -125,6 +125,8 @@ in {
     ];
     home.sessionVariables = {
       EDITOR = "kak";
+      # Some plugins(kak_ansi) like to compile stuff
+      CC = "cc";
     };
   };
 }
