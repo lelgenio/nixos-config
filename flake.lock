@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "alacritty-sixel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1651472856,
+        "narHash": "sha256-8SQgnB6q7sXeXcIzum/NAUj3mju7IERreXHMvt2cQEc=",
+        "owner": "microo8",
+        "repo": "alacritty-sixel",
+        "rev": "513e6a90c2fd0a019b214dab96c4e211d151a2f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "microo8",
+        "repo": "alacritty-sixel",
+        "type": "github"
+      }
+    },
     "dhist": {
       "inputs": {
         "fenix": "fenix",
@@ -140,6 +156,7 @@
     },
     "root": {
       "inputs": {
+        "alacritty-sixel": "alacritty-sixel",
         "dhist": "dhist",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",

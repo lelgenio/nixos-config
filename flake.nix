@@ -7,10 +7,13 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
 
+    alacritty-sixel.url = "github:microo8/alacritty-sixel";
+    alacritty-sixel.flake = false;
+
     # my stuff
     dhist.url = "github:lelgenio/dhist";
   };
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nur, dhist, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, alacritty-sixel, nur, dhist, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -33,12 +36,19 @@
           nixpkgs.overlays = [
             overlay-unstable
             nur.overlay
-            (_: _: {
+            (_: old-pkgs: {
               dhist = dhist.packages.${system}.dhist;
               bmenu = import ./bmenu.nix { inherit config pkgs lib; };
               _diffr = import ./diffr.nix { inherit config pkgs lib; };
               kak-pager = import ./kak-pager.nix { inherit config pkgs lib; };
               terminal = import ./terminal.nix { inherit config pkgs lib; };
+              alacritty = (old-pkgs.alacritty.overrideAttrs (old-alacritty: rec {
+                src = alacritty-sixel;
+                cargoDeps = old-alacritty.cargoDeps.overrideAttrs (old-pkgs.lib.const {
+                  inherit src;
+                  outputHash = "sha256-aNatd4LC4lv0bDpVfUONdtEn9OPahVBZ9ch14pWWCnM=";
+                });
+              }));
             })
           ];
         })
