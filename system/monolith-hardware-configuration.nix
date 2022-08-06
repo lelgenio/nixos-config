@@ -12,9 +12,10 @@
   # For 32 bit applications
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
-  # For 32 bit applications 
+  # For 32 bit applications
   # Only available on unstable
   hardware.opengl.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+  environment.variables = { AMD_VULKAN_ICD = "RADV"; };
 
   boot.extraModulePackages = [ ];
   fileSystems."/" = {

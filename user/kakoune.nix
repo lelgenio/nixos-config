@@ -1,10 +1,10 @@
-{ config, pkgs, lib, font, ... }: let
-  inherit (import ./variables.nix) key theme color accent font;
+{ config, pkgs, lib, font, ... }:
+let inherit (import ./variables.nix) key theme color accent font;
 in {
   config = {
     programs.kakoune = {
-        enable = true;
-        extraConfig = let
+      enable = true;
+      extraConfig = let
         colors = lib.mapAttrs (_: lib.replaceStrings [ "#" ] [ "rgb:" ]) {
           accent_fg = accent.fg;
           accent_color = accent.color;
@@ -120,12 +120,7 @@ in {
         Hint = "blue";
       }));
     };
-    home.packages = with pkgs; [
-      kakoune
-      terminal
-      ranger
-      bmenu
-    ];
+    home.packages = with pkgs; [ kakoune terminal ranger bmenu ];
     home.sessionVariables = {
       EDITOR = "kak";
       # Some plugins(kak_ansi) like to compile stuff

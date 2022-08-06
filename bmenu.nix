@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
-let
-  inherit (import ./user/variables.nix) key theme color accent font;
+let inherit (import ./user/variables.nix) key theme color accent font;
 in pkgs.writeScriptBin "bmenu" ''
   #!${pkgs.fish}/bin/fish
 

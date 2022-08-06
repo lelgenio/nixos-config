@@ -10,7 +10,7 @@
     # my stuff
     dhist.url = "github:lelgenio/dhist";
   };
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nur, dhist, ... } :
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nur, dhist, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -29,9 +29,10 @@
       common_modules = [
         ./system/configuration.nix
         # nur.nixosModules.nur
-        ({ config, pkgs, ... } : {
+        ({ config, pkgs, ... }: {
           nixpkgs.overlays = [
-            overlay-unstable nur.overlay
+            overlay-unstable
+            nur.overlay
             (_: _: {
               dhist = dhist.packages.${system}.dhist;
               bmenu = import ./bmenu.nix { inherit config pkgs lib; };

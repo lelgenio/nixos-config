@@ -1,5 +1,5 @@
-{ config, pkgs, lib, font, ... }: let
-  inherit (import ./variables.nix) key theme color accent font;
+{ config, pkgs, lib, font, ... }:
+let inherit (import ./variables.nix) key theme color accent font;
 in {
   config = {
     programs.helix = {
@@ -62,8 +62,6 @@ in {
         keys.insert = { "A-k" = "normal_mode"; };
       };
     };
-    home.packages = with pkgs; [
-      pkgs.unstable.helix
-    ];
+    home.packages = with pkgs; [ pkgs.unstable.helix ];
   };
 }

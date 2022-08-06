@@ -93,10 +93,7 @@ in {
         };
         floating = {
           modifier = "Mod4";
-          criteria = [
-            { class = "file_picker"; }
-            { app_id = "file_picker"; }
-          ];
+          criteria = [ { class = "file_picker"; } { app_id = "file_picker"; } ];
         };
         keybindings = let
           mod = "Mod4";
