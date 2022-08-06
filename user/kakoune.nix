@@ -121,7 +121,10 @@ in {
       }));
     };
     home.packages = with pkgs; [
-      pkgs.unstable.helix
+      kakoune
+      terminal
+      ranger
+      bmenu
     ];
     home.sessionVariables = {
       EDITOR = "kak";

@@ -28,6 +28,7 @@ in {
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
     alacritty
+    terminal # see flake.nix
     exa
     fd
     _diffr

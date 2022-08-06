@@ -91,7 +91,13 @@ in {
             "s" = "exec ${pulse_sink}/bin/pulse_sink";
           };
         };
-        floating.modifier = "Mod4";
+        floating = {
+          modifier = "Mod4";
+          criteria = [
+            { class = "file_picker"; }
+            { app_id = "file_picker"; }
+          ];
+        };
         keybindings = let
           mod = "Mod4";
           menu = "${pkgs.bmenu}/bin/bmenu run";
