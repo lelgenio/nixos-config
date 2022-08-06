@@ -154,6 +154,23 @@
         "type": "github"
       }
     },
+    "ranger-sixel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1659456427,
+        "narHash": "sha256-tRK6Mga/R1e1LB1E4/NXMFFuRAaTP228Sr/ts+eYR/0=",
+        "owner": "remi6397",
+        "repo": "ranger",
+        "rev": "ea9ae8870e63fe52d2003ff49185dbc7cb2bcb42",
+        "type": "github"
+      },
+      "original": {
+        "owner": "remi6397",
+        "ref": "feature/sixel",
+        "repo": "ranger",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "alacritty-sixel": "alacritty-sixel",
@@ -161,7 +178,8 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nur": "nur"
+        "nur": "nur",
+        "ranger-sixel": "ranger-sixel"
       }
     },
     "rust-analyzer-src": {

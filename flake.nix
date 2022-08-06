@@ -10,10 +10,13 @@
     alacritty-sixel.url = "github:microo8/alacritty-sixel";
     alacritty-sixel.flake = false;
 
+    ranger-sixel.url = "github:remi6397/ranger/feature/sixel";
+    ranger-sixel.flake = false;
+
     # my stuff
     dhist.url = "github:lelgenio/dhist";
   };
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, alacritty-sixel, nur, dhist, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, alacritty-sixel, ranger-sixel, nur, dhist, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -48,6 +51,13 @@
                   inherit src;
                   outputHash = "sha256-aNatd4LC4lv0bDpVfUONdtEn9OPahVBZ9ch14pWWCnM=";
                 });
+              }));
+              ranger = (old-pkgs.ranger.overridePythonAttrs (old-ranger: rec {
+                src = ranger-sixel;
+                checkInputs = [];
+                propagatedBuildInputs = with pkgs.python3Packages;
+                  old-ranger.propagatedBuildInputs ++
+                  [ astroid  pylint pytest ];
               }));
             })
           ];
