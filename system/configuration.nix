@@ -60,9 +60,16 @@ in {
   # services.xserver.desktopManager.gnome.enable = true;
   # services.xserver.displayManager.autologin.user = "lelgenio";
   services.greetd = let
+    greetd_main_script = pkgs.writeShellScriptBin "main" ''
+      ${dbus-sway-environment}/bin/dbus-sway-environment
+      ${configure-gtk}/bin/configure-gtk
+      export XDG_CURRENT_DESKTOP=sway GTK_THEME=Orchis-Red-Dark-Compact
+      ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway
+      swaymsg exit
+    '';
     swayConfig = pkgs.writeText "greetd-sway-config" ''
       # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
-      exec "XDG_CURRENT_DESKTOP=sway GTK_THEME=Orchis-Red-Dark-Compact ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway; swaymsg exit"
+      exec "${greetd_main_script}/bin/main"
       bindsym Mod4+shift+e exec swaynag \
         -t warning \
         -m 'What do you want to do?' \
