@@ -74,6 +74,7 @@ in {
     rustup
     # cargo
     # cargo-edit
+    # cargo-feature
     rust-analyzer
     gcc
     nixfmt
@@ -112,6 +113,7 @@ in {
     enable = true;
     enableFishIntegration = true;
   };
+  programs.direnv.enable = true;
   home.file = {
     ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
     ".local/share/backgrounds".source = ./backgrounds;
