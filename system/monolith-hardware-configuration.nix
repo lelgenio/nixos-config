@@ -75,7 +75,9 @@
   fileSystems."/swap" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=swap" ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
+    options = [
+      "subvol=swap"
+    ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
   };
   swapDevices = [{
     device = "/swap/swapfile";

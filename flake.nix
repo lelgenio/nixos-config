@@ -16,7 +16,8 @@
     # my stuff
     dhist.url = "github:lelgenio/dhist";
   };
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, alacritty-sixel, ranger-sixel, nur, dhist, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, alacritty-sixel
+    , ranger-sixel, nur, dhist, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -45,19 +46,21 @@
               _diffr = import ./diffr.nix { inherit config pkgs lib; };
               kak-pager = import ./kak-pager.nix { inherit config pkgs lib; };
               terminal = import ./terminal.nix { inherit config pkgs lib; };
-              alacritty = (old-pkgs.alacritty.overrideAttrs (old-alacritty: rec {
-                src = alacritty-sixel;
-                cargoDeps = old-alacritty.cargoDeps.overrideAttrs (old-pkgs.lib.const {
-                  inherit src;
-                  outputHash = "sha256-aNatd4LC4lv0bDpVfUONdtEn9OPahVBZ9ch14pWWCnM=";
-                });
-              }));
+              alacritty = (old-pkgs.alacritty.overrideAttrs
+                (old-alacritty: rec {
+                  src = alacritty-sixel;
+                  cargoDeps = old-alacritty.cargoDeps.overrideAttrs
+                    (old-pkgs.lib.const {
+                      inherit src;
+                      outputHash =
+                        "sha256-aNatd4LC4lv0bDpVfUONdtEn9OPahVBZ9ch14pWWCnM=";
+                    });
+                }));
               ranger = (old-pkgs.ranger.overridePythonAttrs (old-ranger: rec {
                 src = ranger-sixel;
-                checkInputs = [];
+                checkInputs = [ ];
                 propagatedBuildInputs = with pkgs.python3Packages;
-                  old-ranger.propagatedBuildInputs ++
-                  [ astroid  pylint pytest ];
+                  old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
               }));
             })
           ];

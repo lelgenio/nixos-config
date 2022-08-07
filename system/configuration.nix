@@ -118,13 +118,19 @@ in {
   };
   services.flatpak.enable = true;
   virtualisation.docker.enable = true;
-  # Enable sound with pipewire.
+  security.rtkit.enable = true;
+
+  ## Enable sound with pipewire.
   sound.enable = true;
   # hardware.pulseaudio.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire.enable = true;
-  # services.pipewire.media-session.enable = true;
-  services.pipewire.pulse.enable = true;
+  services.pipewire = {
+    enable = true;
+    wireplumber.enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    jack.enable = true;
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
