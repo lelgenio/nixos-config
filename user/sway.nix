@@ -105,6 +105,19 @@ in {
           # Output: {v1=1;v2=2;}
           mergeAttrsSet = lib.foldAttrs (n: _: n) { };
 
+          forEachMerge = list: func: mergeAttrsSet (lib.forEach list func);
+
+          # same as imap0 but reversed inputs
+          iforEach0 = (list: func: lib.imap0 func list);
+
+          # Usefull for translating an imperative foreach into declarative attrset creation
+          # iforEach0mergeAttrsSet ["val1" "val2"] (i: v: {
+          #     ${i} = v;
+          # })
+          # Ouput: {val1 = 1; val2 = 2;}
+          iforEach0mergeAttrsSet = list: func:
+            mergeAttrsSet (iforEach0 list func);
+
           # mod+1 to swich to workspace 1
           # mod+shift+1 to move to workspace 1
           workspace_binds = let
@@ -149,48 +162,38 @@ in {
             ];
           in mergeAttrsSet (prev_binds ++ next_binds);
 
-          movement_binds = {
-            "${mod}+${key.left}" = "focus left";
-            "${mod}+${key.down}" = "focus down";
-            "${mod}+${key.up}" = "focus up";
-            "${mod}+${key.right}" = "focus right";
-            "${mod}+Left" = "focus left";
-            "${mod}+Down" = "focus down";
-            "${mod}+Up" = "focus up";
-            "${mod}+Right" = "focus right";
-            "${mod}+Shift+${key.left}" = "move left";
-            "${mod}+Shift+${key.down}" = "move down";
-            "${mod}+Shift+${key.up}" = "move up";
-            "${mod}+Shift+${key.right}" = "move right";
-            "${mod}+Shift+Left" = "move left";
-            "${mod}+Shift+Down" = "move down";
-            "${mod}+Shift+Up" = "move up";
-            "${mod}+Shift+Right" = "move right";
-            "${mod}+Control+${key.left}" = "resize shrink width";
-            "${mod}+Control+${key.down}" = "resize grow height";
-            "${mod}+Control+${key.up}" = "resize shrink height";
-            "${mod}+Control+${key.right}" = "resize grow width";
-            "${mod}+Control+Left" = "resize shrink width";
-            "${mod}+Control+Down" = "resize grow height";
-            "${mod}+Control+Up" = "resize shrink height";
-            "${mod}+Control+Right" = "resize grow width";
-            "${mod}+mod1+${key.left}" = "focus output left";
-            "${mod}+mod1+${key.down}" = "focus output down";
-            "${mod}+mod1+${key.up}" = "focus output up";
-            "${mod}+mod1+${key.right}" = "focus output right";
-            "${mod}+mod1+Left" = "focus output left";
-            "${mod}+mod1+Down" = "focus output down";
-            "${mod}+mod1+Up" = "focus output up";
-            "${mod}+mod1+Right" = "focus output right";
-            "${mod}+mod1+Shift+${key.left}" = "move workspace output left";
-            "${mod}+mod1+Shift+${key.down}" = "move workspace output down";
-            "${mod}+mod1+Shift+${key.up}" = "move workspace output up";
-            "${mod}+mod1+Shift+${key.right}" = "move workspace output right";
-            "${mod}+mod1+Shift+Left" = "move workspace output left";
-            "${mod}+mod1+Shift+Down" = "move workspace output down";
-            "${mod}+mod1+Shift+Up" = "move workspace output up";
-            "${mod}+mod1+Shift+Right" = "move workspace output right";
-          };
+          # focus, move, resize, (focus and move output)
+          # for every direction with both arrow keys and vim keys
+          movement_binds = let
+            directions = [ "Left" "Up" "Right" "Down" ];
+            makeVimKeys = (k: key.${lib.toLower k});
+            makeArrowKeys = (k: k);
+            makeResizeCommand = direction:
+              {
+                Left = "shrink width 20px";
+                Up = "shrink height 20px";
+                Right = "grow width 20px";
+                Down = "grow height 20px";
+              }.${direction};
+          in forEachMerge [ makeVimKeys makeArrowKeys ] (prefixFun:
+            forEachMerge directions (direction:
+              let
+                resize_cmd = makeResizeCommand direction;
+                keyBind = prefixFun direction;
+              in {
+                #  Move focus
+                "${mod}+${keyBind}" = "focus ${direction}";
+                #  Move window
+                "${mod}+Shift+${keyBind}" = "move ${direction}";
+                #  Resize window
+                "${mod}+Control+${keyBind}" = "resize ${resize_cmd}";
+                #  focus output
+                "${mod}+mod1+${keyBind}" = "focus output ${direction}";
+                #  Move workspace to output
+                "${mod}+mod1+Shift+${keyBind}" =
+                  "move workspace output ${direction}";
+              }));
+
           audio_binds = {
             XF86AudioRaiseVolume =
               "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
