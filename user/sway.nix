@@ -126,9 +126,12 @@ in {
                 "--whole-window"
               else
                 "";
-            prev_binds = map (key: {
-              "${maybe_window key} ${mod}+${key}" = "workspace prev_on_output";
-            }) [
+            makePrevNextBindFunction = (prev_or_next:
+              map (key: {
+                "${maybe_window key} ${mod}+${key}" =
+                  "workspace ${prev_or_next}_on_output";
+              }));
+            prev_binds = makePrevNextBindFunction "prev" [
               key.tabL
               "bracketleft"
               "Prior"
@@ -136,10 +139,16 @@ in {
               "button4"
               "Shift+Tab"
             ];
-            next_binds = map (key: {
-              "${maybe_window key} ${mod}+${key}" = "workspace next_on_output";
-            }) [ key.tabR "bracketright" "Next" "button8" "button5" "Tab" ];
+            next_binds = makePrevNextBindFunction "next" [
+              key.tabR
+              "bracketright"
+              "Next"
+              "button8"
+              "button5"
+              "Tab"
+            ];
           in mergeAttrsSet (prev_binds ++ next_binds);
+
           movement_binds = {
             "${mod}+${key.left}" = "focus left";
             "${mod}+${key.down}" = "focus down";
