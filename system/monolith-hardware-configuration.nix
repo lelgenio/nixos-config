@@ -47,7 +47,6 @@
     fsType = "btrfs";
     options = [ "subvol=@torrents" "nofail" ];
   };
-  swapDevices = [ ];
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
   '';
@@ -60,4 +59,26 @@
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "monolith"; # Define your hostname.
+
+  # swap
+  systemd.services = {
+    create-swapfile = {
+      serviceConfig.Type = "oneshot";
+      wantedBy = [ "swap-swapfile.swap" ];
+      script = ''
+        ${pkgs.coreutils}/bin/truncate -s 0 /swap/swapfile
+        ${pkgs.e2fsprogs}/bin/chattr +C /swap/swapfile
+        ${pkgs.btrfs-progs}/bin/btrfs property set /swap/swapfile compression none
+      '';
+    };
+  };
+  fileSystems."/swap" = {
+    device = "/dev/disk/by-label/BTRFS_ROOT";
+    fsType = "btrfs";
+    options = [ "subvol=swap" ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
+  };
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = (1024 * 16) + (1024 * 2); # RAM size + 2 GB
+  }];
 }
