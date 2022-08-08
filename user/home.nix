@@ -52,6 +52,8 @@ in {
     volumesh
     pamixer
     libnotify
+    wpass
+    screenshotsh
     # media
     yt-dlp
     ffmpeg

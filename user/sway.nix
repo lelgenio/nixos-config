@@ -249,7 +249,19 @@ in {
             "--locked Ctrl+${mod}+z" = "exec ${_suspend}/bin/_suspend";
             "${mod}+Alt+c" = "exec ${_sway_idle_toggle}/bin/_sway_idle_toggle";
           };
+          screenshot_binds = {
+            # Screens to file
+            "Print" = "exec ${pkgs.screenshotsh}/bin/screenshotsh def";
+            # Screen area to file
+            "Shift+Print" = "exec ${pkgs.screenshotsh}/bin/screenshotsh area";
+            # Screen area to clipboard
+            "Control+Shift+Print" =
+              "exec ${pkgs.screenshotsh}/bin/screenshotsh area-clip";
+            # Focused monitor to clipboard
+            "Control+Print" = "exec ${pkgs.screenshotsh}/bin/screenshotsh clip";
+          };
           other_binds = {
+            "${mod}+p" = "exec ${pkgs.wpass}";
             "${mod}+s" = "exec ${menu}";
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+Ctrl+Return" = "exec thunar";
@@ -270,6 +282,7 @@ in {
           audio_binds
           system_binds
           parenting_binds
+          screenshot_binds
         ];
         terminal = pkgs.alacritty.executable;
       };
