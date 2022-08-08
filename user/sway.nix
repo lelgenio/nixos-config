@@ -77,7 +77,9 @@ in {
         };
         # setup cursor based on home.pointerCursor
         seat."*" = {
-          xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
+          xcursor_theme = "${config.home.pointerCursor.name} ${
+              toString config.home.pointerCursor.size
+            }";
         };
         assigns = {
           "2" = [

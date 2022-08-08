@@ -77,13 +77,11 @@
       nixosConfigurations = {
         i15 = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/i15.nix ]
-            ++ common_modules;
+          modules = [ ./hosts/i15.nix ] ++ common_modules;
         };
         monolith = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/monolith.nix ]
-            ++ common_modules;
+          modules = [ ./hosts/monolith.nix ] ++ common_modules;
         };
       };
     };

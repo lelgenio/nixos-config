@@ -10,7 +10,14 @@ let
   volumesh =
     pkgs.writeShellScriptBin "volumesh" (builtins.readFile ./scripts/volumesh);
 in {
-  imports = [ ./waybar.nix ./helix.nix ./kakoune.nix ./sway.nix ./git.nix ];
+  imports = [
+    ./waybar.nix
+    ./helix.nix
+    ./kakoune.nix
+    ./sway.nix
+    ./git.nix
+    ./qutebrowser
+  ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "lelgenio";
