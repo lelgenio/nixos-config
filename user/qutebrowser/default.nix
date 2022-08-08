@@ -49,6 +49,15 @@ in {
       settings = {
         hints.chars = key.hints;
 
+        content.blocking.adblock.lists = [
+          "https://easylist.to/easylist/easylist.txt"
+          "https://easylist.to/easylist/easyprivacy.txt"
+          "https://easylist-downloads.adblockplus.org/easylistdutch.txt"
+          "https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt"
+          "https://www.i-dont-care-about-cookies.eu/abp/"
+          "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt"
+        ];
+
         colors = {
 
           ########################################################
@@ -58,26 +67,26 @@ in {
           tabs = let
             tabs_defaults = {
               odd = {
-                fg =  color.txt ;
-                bg =  color.bg ;
+                fg = color.txt;
+                bg = color.bg;
               };
               even = {
-                fg =  color.txt ;
-                bg =  color.bg_dark ;
+                fg = color.txt;
+                bg = color.bg_dark;
               };
               selected = {
                 odd = {
-                  fg =  accent.fg ;
-                  bg =  accent.color ;
+                  fg = accent.fg;
+                  bg = accent.color;
                 };
                 even = {
-                  fg =  accent.fg ;
-                  bg =  accent.color ;
+                  fg = accent.fg;
+                  bg = accent.color;
                 };
               };
             };
           in {
-            bar = { bg =  color.bg ; };
+            bar = { bg = color.bg; };
             pinned = tabs_defaults;
           } // tabs_defaults;
 
@@ -86,28 +95,28 @@ in {
           ########################################################
 
           completion = {
-            fg =  color.txt ;
-            even = { bg =  color.bg ; };
-            odd = { bg =  color.bg ; };
-            scrollbar = { bg =  color.bg_dark ; };
-            match = { fg =  accent.color ; };
+            fg = color.txt;
+            even = { bg = color.bg; };
+            odd = { bg = color.bg; };
+            scrollbar = { bg = color.bg_dark; };
+            match = { fg = accent.color; };
             category = {
-              fg =  color.txt ;
-              bg =  color.bg_dark ;
+              fg = color.txt;
+              bg = color.bg_dark;
               border = {
-                top =  color.bg_dark ;
-                bottom =  color.bg_dark ;
+                top = color.bg_dark;
+                bottom = color.bg_dark;
               };
             };
             item = {
               selected = {
-                fg =  accent.fg ;
-                bg =  accent.color ;
+                fg = accent.fg;
+                bg = accent.color;
                 border = {
-                  top =  color.bg_dark ;
-                  bottom =  color.bg_dark ;
+                  top = color.bg_dark;
+                  bottom = color.bg_dark;
                 };
-                match = { fg =  color.txt ; };
+                match = { fg = color.txt; };
               };
             };
           };
@@ -118,33 +127,33 @@ in {
 
           statusbar = {
             normal = {
-              fg =  color.txt ;
-              bg =  color.bg ;
+              fg = color.txt;
+              bg = color.bg;
             };
             insert = {
-              fg =  color.normal.green ;
-              bg =  color.bg ;
+              fg = color.normal.green;
+              bg = color.bg;
             };
             passthrough = {
-              fg =  color.normal.blue ;
-              bg =  color.bg ;
+              fg = color.normal.blue;
+              bg = color.bg;
             };
             command = {
-              fg =  color.txt ;
-              bg =  color.bg ;
+              fg = color.txt;
+              bg = color.bg;
             };
             caret = {
               selection = {
-                fg =  accent.fg ;
-                bg =  accent.color ;
+                fg = accent.fg;
+                bg = accent.color;
               };
             };
             url = {
               success = {
-                https = { fg =  color.txt ; };
-                http = { fg =  color.normal.red ; };
+                https = { fg = color.txt; };
+                http = { fg = color.normal.red; };
               };
-              hover = { fg =  color.normal.cyan ; };
+              hover = { fg = color.normal.cyan; };
             };
           };
           ########################################################
@@ -152,9 +161,9 @@ in {
           ########################################################
 
           downloads = {
-            start = { bg =  color.normal.blue ; };
-            stop = { bg =  color.normal.green ; };
-            bar = { bg =  color.bg ; };
+            start = { bg = color.normal.blue; };
+            stop = { bg = color.normal.green; };
+            bar = { bg = color.bg; };
           };
 
           ########################################################
@@ -162,9 +171,9 @@ in {
           ########################################################
 
           hints = {
-            fg =  color.txt ;
-            bg =  color.bg ;
-            match = { fg =  accent.color ; };
+            fg = color.txt;
+            bg = color.bg;
+            match = { fg = accent.color; };
           };
 
           ########################################################
@@ -172,9 +181,9 @@ in {
           ########################################################
 
           keyhint = {
-            fg =  color.txt ;
+            fg = color.txt;
             bg = "rgba({{@@ hex2rgb(color.bg) @@}};, {{@@ opacity @@}};)";
-            suffix = { fg =  accent.color ; };
+            suffix = { fg = accent.color; };
           };
 
           ########################################################
@@ -183,14 +192,14 @@ in {
 
           contextmenu = {
             menu = {
-              fg =  color.txt ;
-              bg =  color.bg ;
+              fg = color.txt;
+              bg = color.bg;
             };
             selected = {
-              fg =  accent.fg ;
-              bg =  accent.color ;
+              fg = accent.fg;
+              bg = accent.color;
             };
-            disabled = { fg =  color.bg_light ; };
+            disabled = { fg = color.bg_light; };
           };
 
           ########################################################
@@ -200,7 +209,7 @@ in {
           # {%@@ if color.type == "dark" @@%};#
 
           webpage = {
-            bg =  color.bg ;
+            bg = color.bg;
             preferred_color_scheme = "dark";
             darkmode = {
               enabled = true;
@@ -218,9 +227,59 @@ in {
       #   config.source("config/config.py")
       # '';
     };
-    # home.file = {
-    #   ".config/qutebrowser/config".source = ./config;
-    # };
+    home.file = {
+      # ".config/qutebrowser/config".source = ./config;
+      ".config/qutebrowser/greasemonkey/darkreader.js".text = ''
+        // ==UserScript==
+        // @name          Dark Reader (Unofficial)
+        // @icon          https://darkreader.org/images/darkreader-icon-256x256.png
+        // @namespace     DarkReader
+        // @description	  Inverts the brightness of pages to reduce eye strain
+        // @version       4.7.15
+        // @author        https://github.com/darkreader/darkreader#contributors
+        // @homepageURL   https://darkreader.org/ | https://github.com/darkreader/darkreader
+        // @run-at        document-end
+        // @grant         none
+        // @include       http*
+        // @require       https://cdn.jsdelivr.net/npm/darkreader/darkreader.min.js
+        // @noframes
+        // ==/UserScript==
+
+        DarkReader.enable({
+        	brightness: 100,
+        	contrast: 100,
+        	sepia: 0
+        });
+      '';
+      ".config/qutebrowser/greasemonkey/youtube.js".text = ''
+        // ==UserScript==
+        // @name         Auto Skip YouTube Ads
+        // @version      1.0.2
+        // @description  Speed up and skip YouTube ads automatically
+        // @author       codiac-killer
+        // @match        *://*.youtube.com/*
+        // @exclude      *://*.youtube.com/subscribe_embed?*
+        // ==/UserScript==
+
+        let main = new MutationObserver(() => {
+        	// Get skip button and click it
+        	let btn = document.getElementsByClassName("ytp-ad-skip-button ytp-button").item(0)
+        	if (btn) {
+        		btn.click()
+        	}
+
+        	// (unskipable ads) If skip button didn't exist / was not clicked speed up video
+        	const ad = [...document.querySelectorAll('.ad-showing')][0];
+        	if (ad) {
+        		// Speed up and mute
+        		document.querySelector('video').playbackRate = 16;
+        		document.querySelector('video').muted = true;
+        	}
+        })
+
+        main.observe(document.getElementsByClassName("video-ads ytp-ad-module").item(0), {attributes: true, characterData: true, childList: true})
+      '';
+    };
   };
 }
 
