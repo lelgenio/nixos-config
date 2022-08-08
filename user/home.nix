@@ -279,6 +279,11 @@ in {
           "devtools.theme" = "dark";
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "browser.tabs.inTitlebar" = 0;
+
+          "media.ffmpeg.vaapi.enabled" = true;
+          "media.ffvpx.enabled" = false;
+          "media.av1.enabled" = false;
+          "gfx.webrender.all" = true;
         };
         userChrome = ''
           #tabbrowser-tabs { visibility: collapse !important; }
