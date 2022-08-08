@@ -194,6 +194,20 @@ in {
                   "move workspace output ${direction}";
               }));
 
+          parenting_binds = {
+            "${mod}+equal" = "focus parent";
+            "${mod}+minus" = "focus child";
+            "${mod}+r" = "layout toggle split";
+            "${mod}+t" = "layout toggle split tabbed stacking";
+            "${mod}+b" = "splith";
+            "${mod}+v" = "splitv";
+            "${mod}+a" = "focus parent";
+
+            ## TODO:
+            # "${mod}+Shift+minus" = "move scratchpad";
+            # "${mod}+minus" = "scratchpad show";
+          };
+
           audio_binds = {
             XF86AudioRaiseVolume =
               "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
@@ -212,30 +226,28 @@ in {
             "--locked Ctrl+${mod}+z" = "exec ${_suspend}/bin/_suspend";
             "${mod}+Alt+c" = "exec ${_sway_idle_toggle}/bin/_sway_idle_toggle";
           };
-        in {
-          "${mod}+Return" = "exec ${terminal}";
-          "${mod}+Ctrl+Return" = "exec thunar";
-          "${mod}+x" = "kill";
-          "${mod}+s" = "exec ${menu}";
-          "${mod}+m" = "mode audio";
-          "${mod}+b" = "splith";
-          "${mod}+v" = "splitv";
-          "${mod}+t" = "layout toggle split tabbed stacking";
-          "${mod}+r" = "layout toggle split";
-          "${mod}+f" = "fullscreen toggle";
-          "${mod}+a" = "focus parent";
-          # "${mod}+s" = "layout stacking";
-          "${mod}+w" = "layout tabbed";
-          # "${mod}+e" = "layout toggle split";
-          "${mod}+Shift+space" = "floating toggle";
-          "${mod}+space" = "focus mode_toggle";
-          "${mod}+Shift+minus" = "move scratchpad";
-          "${mod}+minus" = "scratchpad show";
-          "${mod}+Shift+c" = "reload";
-          # "${mod}+Shift+e" =
-          #   "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-        } // workspace_binds // prev_next_binds // movement_binds // audio_binds
-        // system_binds;
+          other_binds = {
+            "${mod}+s" = "exec ${menu}";
+            "${mod}+Return" = "exec ${terminal}";
+            "${mod}+Ctrl+Return" = "exec thunar";
+            "${mod}+x" = "kill";
+            "${mod}+m" = "mode audio";
+            "${mod}+f" = "fullscreen toggle";
+            "${mod}+Shift+space" = "floating toggle";
+            "${mod}+space" = "focus mode_toggle";
+            "${mod}+Shift+c" = "reload";
+            # "${mod}+Shift+e" =
+            #   "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+          };
+        in mergeAttrsSet [
+          other_binds
+          workspace_binds
+          prev_next_binds
+          movement_binds
+          audio_binds
+          system_binds
+          parenting_binds
+        ];
         terminal = pkgs.alacritty.executable;
       };
     };
