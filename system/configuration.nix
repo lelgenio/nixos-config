@@ -200,6 +200,10 @@ in {
     nodePackages.less
     nodePackages.less-plugin-clean-css
     nodePackages.uglify-js
+
+    trunk
+    wasm-bindgen-cli
+    nodePackages.sass
   ];
   # enable sway window manager
   programs.sway = {
