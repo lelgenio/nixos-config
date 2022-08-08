@@ -58,6 +58,10 @@ in {
           urgent = client alert alert fg_color alert alert;
         };
         output = { "*" = { bg = "${theme.background} fill"; }; };
+        fonts = {
+          names = [ font.interface ];
+          size = font.size.medium * 1.0;
+        };
         input."type:touchpad" = {
           # Disable While Typing
           dwt = "disabled";
