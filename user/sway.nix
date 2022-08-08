@@ -80,6 +80,19 @@ in {
           xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
         };
         assigns = {
+          "2" = [
+            { class = "qutebrowser"; }
+            { app_id = "qutebrowser"; }
+            { class = "firefox"; }
+            { app_id = "firefox"; }
+            { class = "Chromium"; }
+            { app_id = "chromium"; }
+          ];
+          "9" = [
+            { class = ".*[Ss]team.*"; }
+            { app_id = ".*[Ss]team.*"; }
+            { app_id = "[Ll]utris"; }
+          ];
           "10" = [
             { app_id = ".*[Tt]elegram.*"; }
             { class = ".*[Tt]elegram.*"; }
