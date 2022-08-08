@@ -71,6 +71,10 @@ in {
           repeat_rate = "30";
           repeat_delay = "200";
         };
+        # setup cursor based on home.pointerCursor
+        seat."*" = {
+          xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
+        };
         assigns = {
           "10" = [
             { app_id = ".*[Tt]elegram.*"; }

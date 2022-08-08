@@ -296,9 +296,8 @@ in {
   };
   home.pointerCursor = {
     name = "capitaine-cursors";
+    size = 32;
     package = pkgs.capitaine-cursors;
-    x11.enable = true;
-    gtk.enable = true;
   };
   gtk = {
     enable = true;
