@@ -41,11 +41,8 @@
             overlay-unstable
             nur.overlay
             (_: old-pkgs: {
+              uservars = import ./user/variables.nix;
               dhist = dhist.packages.${system}.dhist;
-              bmenu = import ./bmenu.nix { inherit config pkgs lib; };
-              _diffr = import ./diffr.nix { inherit config pkgs lib; };
-              kak-pager = import ./kak-pager.nix { inherit config pkgs lib; };
-              terminal = import ./terminal.nix { inherit config pkgs lib; };
               alacritty = (old-pkgs.alacritty.overrideAttrs
                 (old-alacritty: rec {
                   src = alacritty-sixel;
@@ -59,10 +56,11 @@
               ranger = (old-pkgs.ranger.overridePythonAttrs (old-ranger: rec {
                 src = ranger-sixel;
                 checkInputs = [ ];
-                propagatedBuildInputs = with pkgs.python3Packages;
+                propagatedBuildInputs = with old-pkgs.python3Packages;
                   old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
               }));
             })
+            (import ./scripts { inherit config pkgs lib; })
           ];
         })
         home-manager.nixosModules.home-manager
