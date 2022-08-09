@@ -1,9 +1,6 @@
 { config, pkgs, lib, ... }:
 pkgs.writeShellScriptBin "wpass" ''
-  # passmenu, for wayland
-  # depends: wtype, pass
-
-  shopt -s nullglob globstar
+  set -xe
 
   wtype=${pkgs.wtype}/bin/wtype
   dmenu=${pkgs.bmenu}/bin/bmenu
@@ -24,7 +21,7 @@ pkgs.writeShellScriptBin "wpass" ''
 
       test -n "$entry" || exit 0
 
-      username=`${pkgs.pass}/bin/pass show "$entry" 2>/dev/null | perl -ne 'print $1 if /^(login|user|email): (.*)/'`
+      username=`${pkgs.pass}/bin/pass show "$entry" 2>/dev/null | perl -ne 'print $2 if /^(login|user|email): (.*)/'`
       password=`${pkgs.pass}/bin/pass show "$entry" 2>/dev/null | head -n 1`
 
       action=`printf "Autotype\nUsername -> $username\nPassword" | "$dmenu" -p Action`

@@ -261,7 +261,7 @@ in {
             "Control+Print" = "exec ${pkgs.screenshotsh}/bin/screenshotsh clip";
           };
           other_binds = {
-            "${mod}+p" = "exec ${pkgs.wpass}";
+            "${mod}+p" = "exec ${pkgs.wpass}/bin/wpass";
             "${mod}+s" = "exec ${menu}";
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+Ctrl+Return" = "exec thunar";
