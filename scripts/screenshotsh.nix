@@ -3,6 +3,9 @@ pkgs.writeShellScriptBin "screenshotsh" ''
   export XCURSOR_SIZE=40
   export XCURSOR_THEME='capitaine-cursors-light' # ${pkgs.capitaine-cursors}
 
+  screenshot="${pkgs.grim}/bin/grim"
+  copy="${pkgs.wl-clipboard}/bin/wl-copy -t image/png"
+
   if which xdg-user-dir >/dev/null 2>&1; then
       DESTFOLDER="$(${pkgs.capitaine-cursors}/bin/xdg-user-dir PICTURES)"
   else
@@ -20,18 +23,18 @@ pkgs.writeShellScriptBin "screenshotsh" ''
   case $1 in
       def)
           # Screenshot to file
-          ${pkgs.grim}/bin/grim "$DESTFILE"
+          $screenshot "$DESTFILE"
           echo "$DESTFILE"
           ;;
 
       area)
           # Screen area to file
-          ${pkgs.grim}/bin/grim -g "$(slurp -d -b 30303088)" "$DESTFILE"
+          $screenshot -g "$(slurp -d -b 30303088)" "$DESTFILE"
           echo "$DESTFILE"
           ;;
       area-clip)
           # Screen area to clipboard
-          ${pkgs.grim}/bin/grim -g "$(slurp -d -b 30303088)" - | ${pkgs.wl-clipboard}/bin/wl-copy
+          $screenshot -g "$(slurp -d -b 30303088)" - | $copy
           ;;
 
       clip)
@@ -40,8 +43,8 @@ pkgs.writeShellScriptBin "screenshotsh" ''
               ${pkgs.jq}/bin/jq -r '.[] | select(.focused) | .name')
 
           test -n "$cur_output" &&
-              ${pkgs.grim}/bin/grim -o "$cur_output" - | ${pkgs.wl-clipboard}/bin/wl-copy ||
-              ${pkgs.grim}/bin/grim - | ${pkgs.wl-clipboard}/bin/wl-copy
+              $screenshot -o "$cur_output" - | $copy ||
+              $screenshot - | $copy
           ;;
   esac
 ''
