@@ -17,6 +17,7 @@ in {
     ./sway.nix
     ./git.nix
     ./qutebrowser
+    ./gpg.nix
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -54,6 +55,7 @@ in {
     libnotify
     wpass
     screenshotsh
+    _gpg-unlock
     # media
     yt-dlp
     ffmpeg
