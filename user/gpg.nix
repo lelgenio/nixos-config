@@ -31,7 +31,7 @@
           After = [ "graphical-session.target" ];
         };
         Timer = {
-          OnBootSec = "30";
+          OnBootSec = "0";
           OnUnitActiveSec = "30";
           Unit = "gpg_unlock.service";
         };
