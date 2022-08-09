@@ -18,9 +18,7 @@
           PartOf = [ "graphical-session.target" ];
           After = [ "graphical-session.target" ];
         };
-        Service = {
-          ExecStart = "${pkgs._gpg-unlock}/bin/_gpg-unlock";
-        };
+        Service = { ExecStart = "${pkgs._gpg-unlock}/bin/_gpg-unlock"; };
       };
     };
     systemd.user.timers = {

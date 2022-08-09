@@ -97,6 +97,7 @@ in {
     interactiveShellInit = ''
       set -g __accent_color "${accent.color}"
       alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
+      fzf_key_bindings
     '';
     shellAbbrs = {
       v = "kak";
@@ -122,11 +123,9 @@ in {
     };
     functions = { fish_greeting = ""; };
   };
-  programs.zoxide = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+  programs.zoxide.enable = true;
   programs.direnv.enable = true;
+  programs.fzf.enable = true;
   home.file = {
     ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
     ".local/share/backgrounds".source = ./backgrounds;
@@ -265,6 +264,22 @@ in {
   home.sessionVariables = {
     VOLUME_CHANGE_SOUND =
       "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
+    FZF_DEFAULT_OPTS = let
+      colors = {
+        "bg+" = color.bg_light;
+        "hl+" = color.normal.green;
+        gutter = color.bg;
+        prompt = accent.color;
+        pointer = accent.color;
+        spinner = accent.color;
+      };
+      makeKeyValue = (k: v: "${k}:${v}");
+      makeOptList = lib.mapAttrsToList makeKeyValue colors;
+      makeColorValue = lib.strings.concatStringsSep "," makeOptList;
+      color_opts = "--color=${makeColorValue}";
+      preview_opts =
+        "--preview '${pkgs.bat}/bin/bat --style=numbers --color=always {}'";
+    in "${preview_opts} ${color_opts}";
   };
   programs.firefox = {
     enable = true;
