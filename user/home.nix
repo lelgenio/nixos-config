@@ -41,6 +41,7 @@ in {
     fd
     _diffr
     kak-pager
+    br # bulk rename
     # text manipulation
     sd
     ripgrep

@@ -7,4 +7,5 @@
   wpass = import ./wpass.nix { inherit config pkgs lib; };
   screenshotsh = import ./screenshotsh.nix { inherit config pkgs lib; };
   _gpg-unlock = import ./_gpg-unlock.nix { inherit config pkgs lib; };
+  br = import ./br.nix { inherit config pkgs lib; };
 })
