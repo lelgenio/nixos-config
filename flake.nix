@@ -13,11 +13,14 @@
     ranger-sixel.url = "github:remi6397/ranger/feature/sixel";
     ranger-sixel.flake = false;
 
+    material-wifi-icons.url = "github:dcousens/material-wifi-icons";
+    material-wifi-icons.flake = false;
+
     # my stuff
     dhist.url = "github:lelgenio/dhist";
   };
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, alacritty-sixel
-    , ranger-sixel, nur, dhist, ... }:
+    , ranger-sixel, material-wifi-icons, nur, dhist, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -59,6 +62,15 @@
                 propagatedBuildInputs = with old-pkgs.python3Packages;
                   old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
               }));
+              material-wifi-icons = pkgs.stdenv.mkDerivation rec {
+                name = "material-wifi-icons";
+                src = material-wifi-icons;
+                installPhase = let dest = "$out/share/fonts/${name}";
+                in ''
+                  mkdir -p ${dest}
+                  cp material-wifi.ttf ${dest}
+                '';
+              };
             })
             (import ./scripts { inherit config pkgs lib; })
           ];

@@ -94,6 +94,22 @@
         "type": "github"
       }
     },
+    "material-wifi-icons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1537083724,
+        "narHash": "sha256-neh+keoYyKum2K1lutE4HKVscA+TeWccikB85osbX/8=",
+        "owner": "dcousens",
+        "repo": "material-wifi-icons",
+        "rev": "d56927c95ca17aa3e0dda15b23840ba3ad3f44cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dcousens",
+        "repo": "material-wifi-icons",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1659219666,
@@ -176,6 +192,7 @@
         "alacritty-sixel": "alacritty-sixel",
         "dhist": "dhist",
         "home-manager": "home-manager",
+        "material-wifi-icons": "material-wifi-icons",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
