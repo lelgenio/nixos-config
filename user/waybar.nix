@@ -8,9 +8,31 @@ in {
       systemd.target = "sway-session.target";
       settings = [{
         layer = "top";
-        modules-left = [ "sway/workspaces" "sway/mode" ];
+        modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "custom/caffeine" "pulseaudio" "network" ];
+        modules-right = [
+          "sway/language"
+          "mpd"
+          "tray"
+          "custom/caffeine"
+          "pulseaudio"
+          "network"
+          "battery"
+        ];
+        battery = {
+          tooltip = true;
+          states = {
+            full = 100;
+            good = 95;
+            warning = 25;
+          };
+          format = "{icon} ";
+          format-charging = "";
+          format-plugged = "";
+          format-full = "";
+          format-warning = "{icon}  {time}";
+          format-icons = [ "" "" "" "" "" "" ];
+        };
         network = {
           interval = 5;
           tooltip = false;
@@ -40,11 +62,30 @@ in {
             default = "";
           };
         };
+        "sway/window" = { max-length = 40; };
+    "tray"= {
+        "spacing"= 7;
+        "icon-size"=19;
+    };
         clock = {
           interval = 60;
           format = "<b>{:%H:%M %a %d/%m}</b>";
           tooltip = false;
         };
+        mpd = {
+          format = "{stateIcon} {title} - {artist}";
+          format-paused = "{stateIcon}";
+          format-stopped = "";
+          state-icons = {
+            paused = "";
+            playing = "";
+          };
+          tooltip = false;
+          on-click = "mpc toggle";
+          on-scroll-up = "mpc vol +10";
+          on-scroll-down = "mpc vol -10";
+        };
+        "sway/language" = { format = "{short} {variant}"; };
         "custom/caffeine" = {
           format = "{}";
           exec = "pidof swayidle > /dev/null && echo 鈴 || echo ";

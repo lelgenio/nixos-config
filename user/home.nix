@@ -326,6 +326,16 @@ in {
   services.mpd = {
     enable = true;
     musicDirectory = "~/Música";
+    extraConfig = ''
+      restore_paused "yes"
+      auto_update "yes"
+      audio_output {
+          type    "pulse"
+          name    "My Pulse Output"
+          mixer_type  "hardware"
+      }
+      filesystem_charset    "UTF-8"
+    '';
   };
   home.pointerCursor = {
     name = "capitaine-cursors";
