@@ -286,6 +286,9 @@ in {
         ];
         terminal = pkgs.alacritty.executable;
       };
+      extraConfig = ''
+        for_window [title=.*] inhibit_idle fullscreen
+      '';
     };
     services.swayidle = {
       enable = true;

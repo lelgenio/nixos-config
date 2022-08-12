@@ -7,8 +7,6 @@
       pinentryFlavor = "gtk2";
       extraConfig = ''
         allow-preset-passphrase
-        allow-loopback-pinentry
-        pinentry-mode loopback
       '';
     };
     systemd.user.services = {
