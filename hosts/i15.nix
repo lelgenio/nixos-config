@@ -19,7 +19,7 @@
   };
 
   fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-label/NIXROOT";
+    device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
   };
 
