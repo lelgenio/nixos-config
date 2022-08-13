@@ -19,6 +19,7 @@ in {
     ./qutebrowser
     ./gpg.nix
     ./rofi.nix
+    ./rnnoise.nix
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -64,6 +65,8 @@ in {
     imagemagick
     mpv
     mpc-cli
+    helvum
+    gimp
     # pulse_sink
     #games
     lutris
