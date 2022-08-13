@@ -264,6 +264,7 @@ in {
   };
 
   home.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "gtk3";
     VOLUME_CHANGE_SOUND =
       "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
     FZF_DEFAULT_OPTS = let
@@ -282,6 +283,9 @@ in {
       preview_opts =
         "--preview '${pkgs.bat}/bin/bat --style=numbers --color=always {}'";
     in "${preview_opts} ${color_opts}";
+  };
+  programs.bash = {
+    enable = true;
   };
   programs.firefox = {
     enable = true;
@@ -353,12 +357,12 @@ in {
       package = papirus_red;
     };
   };
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
-    style.package = pkgs.libsForQt5.qtstyleplugins;
-    style.name = "gtk2";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "gtk";
+  #   # style.package = pkgs.libsForQt5.qtstyleplugins;
+  #   # style.name = "gtk2";
+  # };
 
   programs.mangohud = {
     enable = true;
