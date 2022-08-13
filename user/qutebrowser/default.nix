@@ -228,7 +228,8 @@ in {
       # '';
     };
     home.file = {
-      # ".config/qutebrowser/config".source = ./config;
+      # For some stupid reason qutebrowser crashes if this dir does not exist
+      ".local/share/qutebrowser/greasemonkey/.keep".text = "";
       ".config/qutebrowser/greasemonkey/darkreader.js".text = ''
         // ==UserScript==
         // @name          Dark Reader (Unofficial)
