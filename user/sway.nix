@@ -104,13 +104,24 @@ in {
             { class = "WebCord"; }
           ];
         };
-        modes = let return_mode = lib.mapAttrs (k: v: "${v}; mode default");
+        modes = let
+          locked_binds =
+            lib.mapAttrs' (k: v: lib.nameValuePair "--locked ${k}" v);
+          code_binds =
+            lib.mapAttrs' (k: v: lib.nameValuePair "--to-code ${k}" v);
+          return_mode = lib.mapAttrs (k: v: "${v}; mode default");
         in {
-          audio = {
-            ${key.tabL} = "volumes decrease";
-          } // return_mode {
+          audio = code_binds (locked_binds {
+            ${key.tabR} = "exec volumesh -i 10";
+            ${key.tabL} = "exec volumesh -d 10";
+            ${key.right} = "exec mpc next";
+            ${key.left} = "exec mpc prev";
+            ${key.up} = "exec volumesh --mpd -i 10";
+            ${key.down} = "exec volumesh --mpd -d 10";
+          }) // return_mode {
             "space" = "exec mpc toggle";
             "escape" = "";
+            "q" = "";
             "s" = "exec ${pulse_sink}/bin/pulse_sink";
           };
         };
@@ -365,25 +376,24 @@ in {
       margin = "15";
       layer = "overlay";
 
+      font = "${font.interface} ${toString font.size.small}";
+      textColor = color.txt;
+
       backgroundColor = color.bg;
       borderColor = accent.color;
       progressColor = "over ${accent.color}88";
 
       defaultTimeout = 10000;
+
+      extraConfig = ''
+        [app-name=volumesh]
+        default-timeout=5000
+        group-by=app-name
+        format=<b>%s</b>\n%b
+      '';
+
       # # {{@@ header() @@}}
       # # text
-      # font={{@@ font.interface @@}} {{@@ font.size.small @@}}
-      # text-color={{@@ color.txt @@}}
-
-      # # colors
-      # background-color={{@@ color.bg @@}}{{@@ opacity | clamp_to_hex @@}}
-      # border-color={{@@ accent_color @@}}
-      # progress-color=over {{@@ accent_color @@}}88
-
-      # # decoration
-      # border-size=2
-      # padding=5
-      # margin=15
 
       # # features
       # icons=1
@@ -393,18 +403,6 @@ in {
 
       # # position
       # layer=overlay
-
-      # [app-name=volumesh]
-      # default-timeout=5000
-      # group-by=app-name
-      # format=<b>%s</b>\n%b
-
-      # [app-name=dotdrop]
-      # default-timeout=5000
-      # group-by=app-name
-      # format=<b>%s</b>\n%b
-
-      # # vim: ft=ini
 
     };
 

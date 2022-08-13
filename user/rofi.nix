@@ -27,7 +27,7 @@ in {
           # foreground-color = mkLiteral color.txt;
           text-color = mkLiteral color.txt;
           # background-color = mkLiteral color.bg;
-          background-color= mkLiteral  "transparent";
+          background-color = mkLiteral "transparent";
           # width = 512;
         };
 
@@ -54,20 +54,19 @@ in {
         # };
         "#element" = {
           # text-color = mkLiteral "#252525";
-          background-color= mkLiteral "transparent";
+          background-color = mkLiteral "transparent";
           padding = mkLiteral "3px 10px";
         };
         "#element selected" = {
           # text-color = mkLiteral "#252525";
           background-color = mkLiteral accent.color;
         };
-        element-icon=  {
-            # background-color= inherit;
-            # text-color=       inherit;
-            margin-right = mkLiteral "20px";
-            size = 24;
+        element-icon = {
+          # background-color= inherit;
+          # text-color=       inherit;
+          margin-right = mkLiteral "20px";
+          size = 24;
         };
-
 
       };
 

@@ -38,26 +38,26 @@ min() {
 }
 
 # Pulse{{{
-get_vol_pulse() {
+get_vol_system() {
     pamixer --get-volume
 }
 
-is_muted_pulse() {
+is_muted_system() {
     pamixer --get-mute >/dev/null
 }
 
-change_vol_pulse() {
+change_vol_system() {
     pamixer "-$1" "$(min 120 $2)"
     round_vol
     pamixer --set-volume "${newvol}"
-    if 
+    if
         test -n "$VOLUME_CHANGE_SOUND"
     then
         paplay "$VOLUME_CHANGE_SOUND"
     fi
 }
 
-toggle_mute_pulse() {
+toggle_mute_system() {
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 }
 #}}}
@@ -95,7 +95,7 @@ usage() {
 
     exit "$1"
 }
-TARGET=pulse
+TARGET=system
 
 while [ $# -gt 0 ]; do
     case $1 in
