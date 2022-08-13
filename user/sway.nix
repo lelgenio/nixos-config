@@ -3,7 +3,7 @@ let
   inherit (import ./variables.nix) key theme color accent font;
   pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
     #!/bin/sh
-    output=$(printf "HDMI\nHeadphones" | ${pkgs.bmenu}/bin/bmenu -b)
+    output=$(printf "HDMI\nHeadphones" | rofi -dmenu)
     vol=$(${pkgs.pamixer}/bin/pamixer --get-volume)
     case "$output" in
         HDMI)
@@ -120,7 +120,7 @@ in {
         };
         keybindings = let
           mod = "Mod4";
-          menu = "${pkgs.bmenu}/bin/bmenu run";
+          menu = "rofi -show drun";
           terminal = "alacritty";
 
           # Utility funcion

@@ -3,7 +3,8 @@ pkgs.writeShellScriptBin "wpass" ''
   set -xe
 
   wtype=${pkgs.wtype}/bin/wtype
-  dmenu=${pkgs.bmenu}/bin/bmenu
+  # dmenu=${pkgs.bmenu}/bin/bmenu
+  dmenu="rofi -dmenu"
 
   find_file() {
     ${pkgs.fd}/bin/fd --strip-cwd-prefix '\.gpg$' |

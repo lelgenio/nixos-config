@@ -63,10 +63,10 @@ in {
           };
         };
         "sway/window" = { max-length = 40; };
-    "tray"= {
-        "spacing"= 7;
-        "icon-size"=19;
-    };
+        "tray" = {
+          "spacing" = 7;
+          "icon-size" = 19;
+        };
         clock = {
           interval = 60;
           format = "<b>{:%H:%M %a %d/%m}</b>";

@@ -56,48 +56,48 @@ map global find 'd' ': find_delete<ret>' -docstring 'file to delete'
 
 define-command -override -hidden find_file \
 %{ evaluate-commands %sh{
-    for line in `fd --strip-cwd-prefix -tf -HE .git | bmenu`; do
+    for line in `fd --strip-cwd-prefix -tf -HE .git | rofi -dmenu`; do
         echo "edit '$line'"
     done
 } }
 
 define-command -override -hidden find_delete \
 %{ nop %sh{
-    fd --strip-cwd-prefix -H -E .git -t f | bmenu | xargs -r trash
+    fd --strip-cwd-prefix -H -E .git -t f | rofi -dmenu | xargs -r trash
 } }
 
 define-command -override -hidden find_git_file \
 %{ evaluate-commands %sh{
-    for line in `git ls-files | bmenu`; do
+    for line in `git ls-files | rofi -dmenu`; do
         echo "edit -existing '$line'"
     done
 } }
 
 define-command -override -hidden find_git_modified \
 %{ evaluate-commands %sh{
-    for line in `git status --porcelain | sd '^.. ' ''| bmenu`; do
+    for line in `git status --porcelain | sd '^.. ' ''| rofi -dmenu`; do
         echo "edit -existing '$line'"
     done
 } }
 
 define-command -override -hidden find_dir \
 %{ cd %sh{
-    for line in `fd --strip-cwd-prefix -Htd | bmenu`; do
+    for line in `fd --strip-cwd-prefix -Htd | rofi -dmenu`; do
         echo "edit '$line'"
     done
 } }
 
 define-command -override -hidden find_buffer \
 %{ evaluate-commands %sh{
-    for line in `printf "%s\n" $kak_buflist | bmenu`; do
+    for line in `printf "%s\n" $kak_buflist | rofi -dmenu`; do
         echo "buffer '$line'"
     done
 } }
 
 define-command -override -hidden find_ripgrep \
 %{ evaluate-commands %sh{
-    patter=$( bmenu -p "Regex")
-    rg --column -n "$patter" | bmenu |
+    patter=$( rofi -dmenu -p "Regex")
+    rg --column -n "$patter" | rofi -dmenu |
         perl -ne 'print "edit \"$1\" \"$2\" \"$3\" " if /(.+):(\d+):(\d+):/'
 } }
 
@@ -108,7 +108,7 @@ define-command -override -hidden find_line \
             line=$(
                 printf "%s\n" "$kak_reg_a" |
                 nl -ba -w1 |
-                bmenu -p "Line" |
+                rofi -dmenu -p "Line" |
                 cut -f1
             )
             test -n "$line" && echo "${line}gx"

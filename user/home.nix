@@ -18,6 +18,7 @@ in {
     ./git.nix
     ./qutebrowser
     ./gpg.nix
+    ./rofi.nix
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -284,9 +285,7 @@ in {
         "--preview '${pkgs.bat}/bin/bat --style=numbers --color=always {}'";
     in "${preview_opts} ${color_opts}";
   };
-  programs.bash = {
-    enable = true;
-  };
+  programs.bash = { enable = true; };
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
