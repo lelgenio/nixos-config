@@ -243,11 +243,9 @@ in {
           };
 
           audio_binds = {
-            XF86AudioRaiseVolume =
-              "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
-            XF86AudioLowerVolume =
-              "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
-            XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+            XF86AudioRaiseVolume = "exec volumesh -i 10";
+            XF86AudioLowerVolume = "exec volumesh -d 10";
+            XF86AudioMute = "exec volumesh -m";
             XF86AudioMicMute =
               "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
             # Control media
