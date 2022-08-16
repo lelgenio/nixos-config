@@ -4,12 +4,12 @@ pkgs.writeShellScriptBin "wpass" ''
 
   wtype=${pkgs.wtype}/bin/wtype
   # dmenu=${pkgs.bmenu}/bin/bmenu
-  dmenu="rofi -dmenu"
+  dmenu="rofi -dmenu -i"
 
   find_file() {
     ${pkgs.fd}/bin/fd --strip-cwd-prefix '\.gpg$' |
     ${pkgs.sd}/bin/sd ".gpg$" "" |
-    "$dmenu" -p "Password" $@
+    $dmenu -p "Password" $@
   }
 
   main() {
@@ -25,7 +25,7 @@ pkgs.writeShellScriptBin "wpass" ''
       username=`${pkgs.pass}/bin/pass show "$entry" 2>/dev/null | perl -ne 'print $2 if /^(login|user|email): (.*)/'`
       password=`${pkgs.pass}/bin/pass show "$entry" 2>/dev/null | head -n 1`
 
-      action=`printf "Autotype\nUsername -> $username\nPassword" | "$dmenu" -p Action`
+      action=`printf "Autotype\nUsername -> $username\nPassword" | $dmenu -p Action`
 
       case $action in
           Autotype)
