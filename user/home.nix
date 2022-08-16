@@ -67,6 +67,7 @@ in {
     mpc-cli
     helvum
     gimp
+    libreoffice
     # pulse_sink
     #games
     lutris
