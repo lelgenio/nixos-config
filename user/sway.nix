@@ -3,7 +3,7 @@ let
   inherit (import ./variables.nix) key theme color accent font;
   pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
     #!/bin/sh
-    output=$(printf "HDMI\nHeadphones" | rofi -dmenu)
+    output=$(printf "HDMI\nHeadphones" | rofi -dmenu -i -p "Output:")
     vol=$(${pkgs.pamixer}/bin/pamixer --get-volume)
     case "$output" in
         HDMI)
