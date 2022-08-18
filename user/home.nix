@@ -59,6 +59,7 @@ in {
     wpass
     screenshotsh
     _gpg-unlock
+    xdg-utils
     # media
     yt-dlp
     ffmpeg
@@ -67,6 +68,8 @@ in {
     mpc-cli
     helvum
     gimp
+    kdenlive
+    blender
     libreoffice
     # pulse_sink
     #games
@@ -95,7 +98,7 @@ in {
     cargo-edit
     cargo-feature
     cargo-watch
-    rust-analyzer
+    pkgs.unstable.rust-analyzer
     gcc
     nixfmt
   ];
@@ -108,6 +111,7 @@ in {
     '';
     shellAbbrs = {
       v = "kak";
+      ns = "nix develop --command $SHELL";
       # system
       sv = "sudo systemct";
       suv = "sudo systemct --user";

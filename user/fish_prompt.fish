@@ -168,6 +168,11 @@ function fish_prompt
         _fish_prompt_accent "$hostname"
     end
 
+    if test -n "$IN_NIX_SHELL"
+        _fish_prompt_normal " with "
+        _fish_prompt_accent "nix"
+    end
+
     fish_git_prompt
 
     # Line break

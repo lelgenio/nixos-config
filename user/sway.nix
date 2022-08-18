@@ -32,7 +32,29 @@ let
   '';
 in {
   config = {
-    wayland.windowManager.sway = {
+    wayland.windowManager.sway = let
+      mod = "Mod4";
+      menu = "rofi -show drun";
+      terminal = "alacritty";
+
+      # Utility funcion
+      # Input: [{v1=1;} {v2=2;}]
+      # Output: {v1=1;v2=2;}
+      mergeAttrsSet = lib.foldAttrs (n: _: n) { };
+
+      forEachMerge = list: func: mergeAttrsSet (lib.forEach list func);
+
+      # same as imap0 but reversed inputs
+      iforEach0 = (list: func: lib.imap0 func list);
+
+      # Usefull for translating an imperative foreach into declarative attrset creation
+      # iforEach0mergeAttrsSet ["val1" "val2"] (i: v: {
+      #     ${i} = v;
+      # })
+      # Ouput: {val1 = 1; val2 = 2;}
+      iforEach0mergeAttrsSet = list: func:
+        mergeAttrsSet (iforEach0 list func);
+    in {
       enable = true;
       config = {
         bars = [ ];
@@ -124,34 +146,15 @@ in {
             "q" = "";
             "s" = "exec ${pulse_sink}/bin/pulse_sink";
           };
+          passthrough = {
+              "${mod}+escape" = "mode default;exec notify-send 'Passthrough off'";
+          };
         };
         floating = {
           modifier = "Mod4";
           criteria = [ { class = "file_picker"; } { app_id = "file_picker"; } ];
         };
         keybindings = let
-          mod = "Mod4";
-          menu = "rofi -show drun";
-          terminal = "alacritty";
-
-          # Utility funcion
-          # Input: [{v1=1;} {v2=2;}]
-          # Output: {v1=1;v2=2;}
-          mergeAttrsSet = lib.foldAttrs (n: _: n) { };
-
-          forEachMerge = list: func: mergeAttrsSet (lib.forEach list func);
-
-          # same as imap0 but reversed inputs
-          iforEach0 = (list: func: lib.imap0 func list);
-
-          # Usefull for translating an imperative foreach into declarative attrset creation
-          # iforEach0mergeAttrsSet ["val1" "val2"] (i: v: {
-          #     ${i} = v;
-          # })
-          # Ouput: {val1 = 1; val2 = 2;}
-          iforEach0mergeAttrsSet = list: func:
-            mergeAttrsSet (iforEach0 list func);
-
           # mod+1 to swich to workspace 1
           # mod+shift+1 to move to workspace 1
           workspace_binds = let
@@ -276,6 +279,7 @@ in {
             "${mod}+Ctrl+Return" = "exec thunar";
             "${mod}+x" = "kill";
             "${mod}+m" = "mode audio";
+            "${mod}+escape" = "mode passthrough;exec notify-send 'Passthrough on'";
             "${mod}+f" = "fullscreen toggle";
             "${mod}+Shift+space" = "floating toggle";
             "${mod}+space" = "focus mode_toggle";
