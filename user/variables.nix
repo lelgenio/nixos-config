@@ -90,4 +90,6 @@ in rec {
     host = "cloud.disroot.org";
     pass = "disroot.org";
   };
+
+  dmenu = "bmenu";
 }

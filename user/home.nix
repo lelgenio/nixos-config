@@ -53,6 +53,8 @@ in {
     pass
     dhist
     bmenu
+    wdmenu
+    wlauncher
     volumesh
     pamixer
     libnotify

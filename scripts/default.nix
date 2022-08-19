@@ -1,11 +1,15 @@
 { config, lib, ... }:
-(pkgs: _: {
-  bmenu = import ./bmenu.nix { inherit config pkgs lib; };
-  _diffr = import ./diffr.nix { inherit config pkgs lib; };
-  kak-pager = import ./kak-pager.nix { inherit config pkgs lib; };
-  terminal = import ./terminal.nix { inherit config pkgs lib; };
-  wpass = import ./wpass.nix { inherit config pkgs lib; };
-  screenshotsh = import ./screenshotsh.nix { inherit config pkgs lib; };
-  _gpg-unlock = import ./_gpg-unlock.nix { inherit config pkgs lib; };
-  br = import ./br.nix { inherit config pkgs lib; };
-})
+(pkgs: _:
+  let import_script = (_: path: import (path) { inherit config pkgs lib; });
+  in lib.mapAttrs import_script {
+    wdmenu = ./wdmenu.nix;
+    wlauncher = ./wlauncher.nix;
+    bmenu = ./bmenu.nix;
+    _diffr = ./diffr.nix;
+    kak-pager = ./kak-pager.nix;
+    terminal = ./terminal.nix;
+    wpass = ./wpass.nix;
+    screenshotsh = ./screenshotsh.nix;
+    _gpg-unlock = ./_gpg-unlock.nix;
+    br = ./br.nix;
+  })

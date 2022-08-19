@@ -56,48 +56,48 @@ map global find 'd' ': find_delete<ret>' -docstring 'file to delete'
 
 define-command -override -hidden find_file \
 %{ evaluate-commands %sh{
-    for line in `fd --strip-cwd-prefix -tf -HE .git | rofi -dmenu -i -p "File: "`; do
+    for line in `fd --strip-cwd-prefix -tf -HE .git | wdmenu -i -p "File: "`; do
         echo "edit '$line'"
     done
 } }
 
 define-command -override -hidden find_delete \
 %{ nop %sh{
-    fd --strip-cwd-prefix -H -E .git -t f | rofi -dmenu -i | xargs -r trash
+    fd --strip-cwd-prefix -H -E .git -t f | wdmenu -i | xargs -r trash
 } }
 
 define-command -override -hidden find_git_file \
 %{ evaluate-commands %sh{
-    for line in `git ls-files | rofi -dmenu -i`; do
+    for line in `git ls-files | wdmenu -i`; do
         echo "edit -existing '$line'"
     done
 } }
 
 define-command -override -hidden find_git_modified \
 %{ evaluate-commands %sh{
-    for line in `git status --porcelain | sd '^.. ' ''| rofi -dmenu -i`; do
+    for line in `git status --porcelain | sd '^.. ' ''| wdmenu -i`; do
         echo "edit -existing '$line'"
     done
 } }
 
 define-command -override -hidden find_dir \
 %{ cd %sh{
-    for line in `fd --strip-cwd-prefix -Htd | rofi -dmenu -i`; do
+    for line in `fd --strip-cwd-prefix -Htd | wdmenu -i`; do
         echo "edit '$line'"
     done
 } }
 
 define-command -override -hidden find_buffer \
 %{ evaluate-commands %sh{
-    for line in `printf "%s\n" $kak_buflist | rofi -dmenu -i`; do
+    for line in `printf "%s\n" $kak_buflist | wdmenu -i`; do
         echo "buffer '$line'"
     done
 } }
 
 define-command -override -hidden find_ripgrep \
 %{ evaluate-commands %sh{
-    patter=$( rofi -dmenu -i -p "Regex")
-    rg --column -n "$patter" | rofi -dmenu -i |
+    patter=$( wdmenu -i -p "Regex")
+    rg --column -n "$patter" | wdmenu -i |
         perl -ne 'print "edit \"$1\" \"$2\" \"$3\" " if /(.+):(\d+):(\d+):/'
 } }
 
@@ -108,7 +108,7 @@ define-command -override -hidden find_line \
             line=$(
                 printf "%s\n" "$kak_reg_a" |
                 nl -ba -w1 |
-                rofi -dmenu -i -p "Line" |
+                wdmenu -i -p "Line" |
                 cut -f1
             )
             test -n "$line" && echo "${line}gx"

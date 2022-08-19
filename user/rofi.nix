@@ -32,7 +32,8 @@ in {
         };
 
         "#window" = {
-          background-color = mkLiteral "${color.bg}${lib.toHexString (theme.opacity * 255 / 100)}";
+          background-color = mkLiteral
+            "${color.bg}${lib.toHexString (theme.opacity * 255 / 100)}";
           # children = map mkLiteral [ "prompt" "entry" ];
           border = mkLiteral "2px solid";
           border-color = mkLiteral accent.color;

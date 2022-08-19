@@ -3,7 +3,7 @@ let
   inherit (import ./variables.nix) key theme color accent font;
   pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
     #!/bin/sh
-    output=$(printf "HDMI\nHeadphones" | rofi -dmenu -i -p "Output:")
+    output=$(printf "HDMI\nHeadphones" | wdmenu -i -p "Output:")
     vol=$(${pkgs.pamixer}/bin/pamixer --get-volume)
     case "$output" in
         HDMI)
@@ -34,7 +34,7 @@ in {
   config = {
     wayland.windowManager.sway = let
       mod = "Mod4";
-      menu = "rofi -show drun";
+      menu = "wlauncher";
       terminal = "alacritty";
 
       # Utility funcion
@@ -52,8 +52,7 @@ in {
       #     ${i} = v;
       # })
       # Ouput: {val1 = 1; val2 = 2;}
-      iforEach0mergeAttrsSet = list: func:
-        mergeAttrsSet (iforEach0 list func);
+      iforEach0mergeAttrsSet = list: func: mergeAttrsSet (iforEach0 list func);
     in {
       enable = true;
       config = {
@@ -147,7 +146,7 @@ in {
             "s" = "exec ${pulse_sink}/bin/pulse_sink";
           };
           passthrough = {
-              "${mod}+escape" = "mode default;exec notify-send 'Passthrough off'";
+            "${mod}+escape" = "mode default;exec notify-send 'Passthrough off'";
           };
         };
         floating = {
@@ -279,7 +278,8 @@ in {
             "${mod}+Ctrl+Return" = "exec thunar";
             "${mod}+x" = "kill";
             "${mod}+m" = "mode audio";
-            "${mod}+escape" = "mode passthrough;exec notify-send 'Passthrough on'";
+            "${mod}+escape" =
+              "mode passthrough;exec notify-send 'Passthrough on'";
             "${mod}+f" = "fullscreen toggle";
             "${mod}+Shift+space" = "floating toggle";
             "${mod}+space" = "focus mode_toggle";
