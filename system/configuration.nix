@@ -48,6 +48,11 @@ in {
     "vm.max_map_count" = 1048576; # Needed by DayZ
   };
 
+  programs.adb.enable = true;
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -137,7 +142,7 @@ in {
   users.users.lelgenio = {
     isNormalUser = true;
     description = "Leonardo Eugênio";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "adbusers" ];
     shell = pkgs.fish;
   };
   # services.getty.autologinUser = "lelgenio";

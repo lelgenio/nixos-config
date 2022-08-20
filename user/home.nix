@@ -96,6 +96,7 @@ in {
     # Programming
     vscode
     rustup
+    android-studio
     # cargo
     cargo-edit
     cargo-feature
