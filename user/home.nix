@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs,... }:
 let
   inherit (import ./variables.nix) key theme color accent font;
 
@@ -15,11 +15,13 @@ in {
     ./helix.nix
     ./kakoune.nix
     ./sway.nix
+    ./hyprland.nix
     ./git.nix
     ./qutebrowser
     ./gpg.nix
     ./rofi.nix
     ./rnnoise.nix
+    inputs.hyprland.homeManagerModules.default
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -39,6 +41,7 @@ in {
   home.packages = with pkgs; [
     alacritty
     terminal # see flake.nix
+    waybar
     exa
     fd
     _diffr

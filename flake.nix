@@ -7,6 +7,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     alacritty-sixel.url = "github:microo8/alacritty-sixel";
     alacritty-sixel.flake = false;
 
@@ -19,8 +24,7 @@
     # my stuff
     dhist.url = "github:lelgenio/dhist";
   };
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, alacritty-sixel
-    , ranger-sixel, material-wifi-icons, nur, dhist, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -39,16 +43,21 @@
       common_modules = [
         ./system/configuration.nix
         # nur.nixosModules.nur
+        inputs.hyprland.nixosModules.default
+        {
+          programs.hyprland.enable = true;
+          # programs.hyprland.package = null;
+        }
         ({ config, pkgs, ... }: {
           nixpkgs.overlays = [
             overlay-unstable
             nur.overlay
             (_: old-pkgs: {
               uservars = import ./user/variables.nix;
-              dhist = dhist.packages.${system}.dhist;
+              dhist = inputs.dhist.packages.${system}.dhist;
               alacritty = (old-pkgs.alacritty.overrideAttrs
                 (old-alacritty: rec {
-                  src = alacritty-sixel;
+                  src = inputs.alacritty-sixel;
                   cargoDeps = old-alacritty.cargoDeps.overrideAttrs
                     (old-pkgs.lib.const {
                       inherit src;
@@ -57,14 +66,14 @@
                     });
                 }));
               ranger = (old-pkgs.ranger.overridePythonAttrs (old-ranger: rec {
-                src = ranger-sixel;
+                src = inputs.ranger-sixel;
                 checkInputs = [ ];
                 propagatedBuildInputs = with old-pkgs.python3Packages;
                   old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
               }));
               material-wifi-icons = pkgs.stdenv.mkDerivation rec {
                 name = "material-wifi-icons";
-                src = material-wifi-icons;
+                src = inputs.material-wifi-icons;
                 installPhase = let dest = "$out/share/fonts/${name}";
                 in ''
                   mkdir -p ${dest}
@@ -83,6 +92,9 @@
           home-manager.backupFileExtension = "bkp";
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+          };
         }
       ];
     in {

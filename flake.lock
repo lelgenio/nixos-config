@@ -94,6 +94,27 @@
         "type": "github"
       }
     },
+    "hyprland": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ],
+        "wlroots": "wlroots"
+      },
+      "locked": {
+        "lastModified": 1661019364,
+        "narHash": "sha256-syJlCuf3idpfdgvYPkWJMgaixGhJPcVeYx8Bl3Z1CvY=",
+        "owner": "hyprwm",
+        "repo": "Hyprland",
+        "rev": "08e874bcf91e524059ceaf8a757c463d412b7136",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "Hyprland",
+        "type": "github"
+      }
+    },
     "material-wifi-icons": {
       "flake": false,
       "locked": {
@@ -192,6 +213,7 @@
         "alacritty-sixel": "alacritty-sixel",
         "dhist": "dhist",
         "home-manager": "home-manager",
+        "hyprland": "hyprland",
         "material-wifi-icons": "material-wifi-icons",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
@@ -214,6 +236,24 @@
         "ref": "nightly",
         "repo": "rust-analyzer",
         "type": "github"
+      }
+    },
+    "wlroots": {
+      "flake": false,
+      "locked": {
+        "host": "gitlab.freedesktop.org",
+        "lastModified": 1660930713,
+        "narHash": "sha256-bY7q1NqG/sjCUAWPn/Ne9NCigLlPlH5Lk1WCMqv3rTU=",
+        "owner": "wlroots",
+        "repo": "wlroots",
+        "rev": "7c575922c05e4d5fd9a403c2aa631a54c7531d44",
+        "type": "gitlab"
+      },
+      "original": {
+        "host": "gitlab.freedesktop.org",
+        "owner": "wlroots",
+        "repo": "wlroots",
+        "type": "gitlab"
       }
     }
   },
