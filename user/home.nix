@@ -44,6 +44,8 @@ in {
     waybar
     exa
     fd
+    p7zip
+    deluge
     _diffr
     kak-pager
     br # bulk rename
