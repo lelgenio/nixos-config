@@ -237,6 +237,13 @@ in {
   networking.firewall.enable = false;
   security.sudo.wheelNeedsPassword = false;
   nix = {
+    binaryCaches = [
+      "https://cache.nixos.org/"
+      "https://lelgenio.cachix.org"
+    ];
+    binaryCachePublicKeys = [
+      "lelgenio.cachix.org-1:W8tMlmDFLU/V+6DlChXjekxoHZpjgVHZpmusC4cueBc="
+    ];
     settings = {
       substituters = ["https://hyprland.cachix.org"];
       trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];

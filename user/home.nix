@@ -116,6 +116,16 @@ in {
       set -g __accent_color "${accent.color}"
       alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
       fzf_key_bindings
+      set_color red
+      if not test -d "$HOME/.password-store/"
+        echo "Password Store not yet setup"
+      end
+      if not test -f "$HOME/.ssh/id_rsa"
+        echo "SSH keys not yet setup"
+      end
+      if not rustc --version &> /dev/null
+        rustup default stable &>/dev/null &
+      end
     '';
     shellAbbrs = {
       v = "kak";
