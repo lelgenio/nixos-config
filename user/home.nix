@@ -2,18 +2,12 @@
 let
   inherit (import ./variables.nix) key theme color accent font;
 
-  papirus_red = (pkgs.unstable.papirus-icon-theme.override { color = "red"; });
-  orchis_theme_compact =
-    (pkgs.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
-  nerdfonts_fira_hack =
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
-  volumesh =
-    pkgs.writeShellScriptBin "volumesh" (builtins.readFile ./scripts/volumesh);
 in {
   imports = [
     ./waybar.nix
     ./helix.nix
     ./kakoune.nix
+    ./fish.nix
     ./sway.nix
     ./hyprland.nix
     ./git.nix
@@ -41,7 +35,6 @@ in {
   home.packages = with pkgs; [
     alacritty
     terminal # see flake.nix
-    waybar
     exa
     fd
     p7zip
@@ -56,17 +49,8 @@ in {
     kanshi
     xfce.thunar
     pass
-    dhist
-    bmenu
-    wdmenu
-    wlauncher
-    volumesh
-    pamixer
-    libnotify
     wpass
-    screenshotsh
     _gpg-unlock
-    xdg-utils
     # media
     yt-dlp
     ffmpeg
@@ -110,55 +94,6 @@ in {
     gcc
     nixfmt
   ];
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set -g __accent_color "${accent.color}"
-      alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
-      fzf_key_bindings
-      set_color red
-      if not test -d "$HOME/.password-store/"
-        echo "Password Store not yet setup"
-      end
-      if not test -f "$HOME/.ssh/id_rsa"
-        echo "SSH keys not yet setup"
-      end
-      if not rustc --version &> /dev/null
-        rustup default stable &>/dev/null &
-      end
-    '';
-    shellAbbrs = {
-      v = "kak";
-      ns = "nix develop --command $SHELL";
-      # system
-      sv = "sudo systemct";
-      suv = "sudo systemct --user";
-      # git abbrs
-      g = "git";
-      ga = "git add";
-      gs = "git status";
-      gsh = "git show";
-      gl = "git log";
-      gg = "git graph";
-      gd = "git diff";
-      gds = "git diff --staged";
-      gc = "git commit";
-      gca = "git commit --all";
-      gcf = "git commit --fixup";
-      gp = "git push -u origin (git branch --show-current)";
-      gw = "git switch";
-      gr = "cd (git root)";
-      gri = "git rebase --interactive FETCH_HEAD";
-    };
-    functions = { fish_greeting = ""; };
-  };
-  programs.zoxide.enable = true;
-  programs.direnv.enable = true;
-  programs.fzf.enable = true;
-  home.file = {
-    ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
-    ".local/share/backgrounds".source = ./backgrounds;
-  };
   programs.alacritty = {
     enable = true;
     settings = {
@@ -341,7 +276,6 @@ in {
       };
     };
   };
-  programs.command-not-found.enable = true;
   home.activation = {
     install_flatpaks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       $DRY_RUN_CMD flatpak $VERBOSE_ARG remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
@@ -375,11 +309,11 @@ in {
     enable = true;
     theme = {
       name = "Orchis-Red-Dark-Compact";
-      package = orchis_theme_compact;
+      package = pkgs.orchis_theme_compact;
     };
     iconTheme = {
       name = "Papirus-Dark";
-      package = papirus_red;
+      package = pkgs.papirus_red;
     };
   };
   # qt = {
@@ -477,18 +411,6 @@ in {
       };
       Service = {
         ExecStart = "${pkgs.tdesktop}/bin/telegram-desktop";
-        Restart = "on-failure";
-      };
-      Install = { WantedBy = [ "sway-session.target" ]; };
-    };
-    mako = {
-      Unit = {
-        Description = "Notification daemon";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.mako}/bin/mako";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "sway-session.target" ]; };

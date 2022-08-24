@@ -405,8 +405,35 @@ in {
 
       # # position
       # layer=overlay
-
     };
-
+    home.packages = with pkgs; [
+      waybar
+      dhist
+      bmenu
+      wdmenu
+      wlauncher
+      volumesh
+      pamixer
+      libnotify
+      xdg-utils
+      screenshotsh
+    ];
+    systemd.user.services = {
+      mako = {
+        Unit = {
+          Description = "Notification daemon";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.mako}/bin/mako";
+          Restart = "on-failure";
+        };
+        Install = { WantedBy = [ "sway-session.target" ]; };
+      };
+    };
+    home.file = {
+      ".local/share/backgrounds".source = ./backgrounds;
+    };
   };
 }

@@ -80,6 +80,15 @@
                   cp material-wifi.ttf ${dest}
                 '';
               };
+              papirus_red =
+                (pkgs.unstable.papirus-icon-theme.override { color = "red"; });
+              orchis_theme_compact = (pkgs.orchis-theme.override {
+                tweaks = [ "compact" "solid" ];
+              });
+              nerdfonts_fira_hack =
+                (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
+              volumesh = pkgs.writeShellScriptBin "volumesh"
+                (builtins.readFile ./user/scripts/volumesh);
             })
             (import ./scripts { inherit config pkgs lib; })
           ];
@@ -92,9 +101,7 @@
           home-manager.backupFileExtension = "bkp";
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-          };
+          home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];
     in {
