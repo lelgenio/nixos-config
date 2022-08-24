@@ -19,6 +19,9 @@ in {
           rustup default stable &>/dev/null &
         end
       '';
+      shellAliases = {
+        rm = "trash";
+      };
       shellAbbrs = {
         v = "kak";
         ns = "nix develop --command $SHELL";
@@ -51,5 +54,8 @@ in {
       ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
     };
     programs.command-not-found.enable = true;
+    home.packages = with pkgs; [
+      trash-cli
+    ];
   };
 }
