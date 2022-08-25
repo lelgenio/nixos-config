@@ -1,0 +1,285 @@
+snippet_support = true
+verbosity = 2
+
+[server]
+# exit session if no requests were received during given period in seconds
+# works only in unix sockets mode (-s/--session)
+# set to 0 to disable
+timeout = 1800 # seconds = 30 minutes
+
+[language.bash]
+filetypes = ["sh"]
+roots = [".git", ".hg"]
+command = "bash-language-server"
+args = ["start"]
+
+[language.c_cpp]
+filetypes = ["c", "cpp"]
+roots = [ "compile_commands.json", ".clangd", ".git" ]
+command = "clangd"
+
+[language.crystal]
+filetypes = ["crystal"]
+roots = ["shard.yml"]
+command = "scry"
+
+[language.css]
+filetypes = ["css"]
+roots = ["package.json"]
+command = "vscode-css-languageserver"
+args = ["--stdio"]
+
+[language.less]
+filetypes = ["less"]
+roots = ["package.json", ".git"]
+command = "vscode-css-languageserver"
+args = ["--stdio"]
+
+[language.d]
+filetypes = ["d", "di"]
+roots = [".git", "dub.sdl", "dub.json"]
+command = "dls"
+
+[language.dart]
+# start shell to find path to dart analysis server source
+filetypes = ["dart"]
+roots = ["pubspec.yaml", ".git"]
+command = "sh"
+args = ["-c", "dart $(dirname $(which dart))/snapshots/analysis_server.dart.snapshot --lsp"]
+
+[language.elm]
+filetypes = ["elm"]
+roots = ["elm.json"]
+command = "elm-language-server"
+args = ["--stdio"]
+
+# [language.elm.initialization_options]
+# runtime = "node"
+# elmPath = "elm"
+# elmFormatPath = "elm-format"
+# elmTestPath = "elm-test"
+
+[language.go]
+filetypes = ["go"]
+roots = ["Gopkg.toml", "go.mod", ".git", ".hg"]
+command = "gopls"
+offset_encoding = "utf-8"
+
+[language.haskell]
+filetypes = ["haskell"]
+roots = ["Setup.hs", "stack.yaml", "*.cabal"]
+command = "haskell-language-server-wrapper"
+args = ["--lsp"]
+
+[language.html]
+filetypes = ["html"]
+roots = ["package.json"]
+command = "vscode-html-languageserver"
+args = ["--stdio"]
+
+[language.javascript]
+filetypes = ["javascript"]
+roots = [".flowconfig"]
+command = "flow"
+args = ["lsp"]
+
+[language.typescript]
+filetypes = ["typescript"]
+roots = ["package.json"]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+[language.json]
+filetypes = ["json"]
+roots = ["package.json"]
+command = "vscode-json-languageserver"
+args = ["--stdio"]
+
+[language.latex]
+filetypes = ["latex"]
+roots = [".git"]
+command = "texlab"
+
+[language.nim]
+filetypes = ["nim"]
+roots = ["*.nimble", ".git"]
+command = "nimlsp"
+
+[language.nix]
+filetypes = ["nix"]
+roots = ["flake.nix", "shell.nix", ".git"]
+command = "rnix-lsp"
+
+[language.ocaml]
+filetypes = ["ocaml"]
+roots = ["Makefile", "opam", "*.opam", "dune"]
+command = "ocaml-language-server"
+args = ["--stdio"]
+
+[language.php]
+filetypes = ["php"]
+roots = [".htaccess", "composer.json"]
+command = "intelephense"
+args = ["--stdio"]
+settings_section = "intelephense"
+[language.php.settings]
+intelephense.format.braces = "k&r"
+intelephense.storagePath = "/tmp/intelephense"
+intelephense.environment.includePaths = [
+    "./vendor",
+    "./vendor/autoload",
+    "./vendor/laravel/framework/",
+    "./vendor/laravel/framework/src/",
+    "./vendor/laravel/framework/src/Illuminate/"
+]
+intelephense.files.exclude = [
+    "**/.git/**",
+    "**/.svn/**",
+    "**/.hg/**",
+    "**/CVS/**",
+    "**/.DS_Store/**",
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/resources/views/**"
+]
+
+[language.python]
+filetypes = ["python"]
+roots = ["requirements.txt", "setup.py", ".git", ".hg"]
+command = "pyls"
+offset_encoding = "utf-8"
+
+[language.reason]
+filetypes = ["reason"]
+roots = ["package.json", "Makefile", ".git", ".hg"]
+command = "ocaml-language-server"
+args = ["--stdio"]
+
+[language.ruby]
+filetypes = ["ruby"]
+roots = ["Gemfile"]
+command = "solargraph"
+args = ["stdio"]
+
+# [language.rust]
+# filetypes = ["rust"]
+# roots = ["Cargo.toml"]
+# command = "sh"
+# args = [
+#     "-c",
+#     """
+#         if path=$(rustup which rls 2>/dev/null); then
+#             "$path"
+#         else
+#             rls
+#         fi
+#     """,
+# ]
+
+[language.rust]
+filetypes = ["rust"]
+roots = ["rust-toolchain.toml", "rust-toolchain", "Cargo.toml"]
+command = "sh"
+args = [
+    "-c",
+    """
+        if path=$(rustup which rust-analyzer 2>/dev/null); then
+            "$path"
+        else
+            rust-analyzer
+        fi
+    """,
+]
+[language.rust.settings.rust-analyzer]
+## this can use too much space and processing power
+# checkOnSave.extraArgs = ["--target-dir", "./target/check"]
+hoverActions.enable = false # kak-lsp doesn't support this at the moment
+# procMacro.enable = true
+# cargo.loadOutDirsFromCheck = true
+
+[language.terraform]
+filetypes = ["terraform"]
+roots = ["*.tf"]
+command = "terraform-ls"
+args = ["serve"]
+
+[language.godot]
+filetypes = ["gd", "gdscript", "gdscript3"]
+roots = ["project.godot", ".git/"]
+command = "nc"
+args = [ "localhost", "6008"]
+
+[language.clojure]
+filetypes = ["clojure"]
+roots = ["project.clj", ".git/"]
+command = "clojure-lsp"
+args = []
+
+
+
+
+[semantic_scopes]
+# Map textmate scopes to kakoune faces for semantic highlighting
+# the underscores are translated to dots, and indicate nesting.
+# That is, if variable_other_field is omitted, it will try the face for
+# variable_other and then variable
+#
+# To see a list of available scopes in the debug buffer, run lsp-semantic-available-scopes
+variable = "variable"
+entity_name_function = "function"
+entity_name_type = "type"
+variable_other_enummember = "variable"
+entity_name_namespace = "module"
+
+[semantic_modifiers]
+documentation = "documentation"
+readonly = "default+d"
+
+
+
+[[semantic_tokens]]
+token = "comment"
+face = "documentation"
+modifiers = ["documentation"]
+
+[[semantic_tokens]]
+token = "comment"
+face = "comment"
+
+[[semantic_tokens]]
+token = "function"
+face = "function"
+
+[[semantic_tokens]]
+token = "keyword"
+face = "keyword"
+
+[[semantic_tokens]]
+token = "namespace"
+face = "module"
+
+[[semantic_tokens]]
+token = "operator"
+face = "operator"
+
+[[semantic_tokens]]
+token = "string"
+face = "string"
+
+[[semantic_tokens]]
+token = "type"
+face = "type"
+
+[[semantic_tokens]]
+token = "variable"
+face = "default+d"
+modifiers = ["readonly"]
+
+[[semantic_tokens]]
+token = "variable"
+face = "default+d"
+modifiers = ["constant"]
+
+[[semantic_tokens]]
+token = "variable"
+face = "variable"
