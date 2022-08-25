@@ -28,6 +28,9 @@ in {
         # system
         sv = "sudo systemct";
         suv = "sudo systemct --user";
+        # docker abbrs
+        d = "docker";
+        dc = "docker-compose";
         # git abbrs
         g = "git";
         ga = "git add";
