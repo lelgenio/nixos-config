@@ -45,6 +45,7 @@ in {
     # text manipulation
     sd
     ripgrep
+    translate-shell
     # desktop
     kanshi
     xfce.thunar
