@@ -58,6 +58,12 @@ hook global BufCreate .*\.(tera|askama)\.?.* %[
     add-highlighter buffer/jinja ref jinja
 ]
 
+hook global WinSetOption filetype=rust %[
+  require-module rust
+  require-module html
+  add-highlighter shared/rust/html region -recurse '\{' 'html!\s*\{\K' '(?=\})' ref html
+]
+
 hook global WinSetOption filetype=sql %[
     set buffer comment_line '--'
 ]
