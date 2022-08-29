@@ -143,6 +143,7 @@ in {
             "space" = "exec mpc toggle";
             "escape" = "";
             "q" = "";
+            "m" = "exec volumesh -t";
             "s" = "exec ${pulse_sink}/bin/pulse_sink";
           };
           passthrough = {
@@ -247,7 +248,7 @@ in {
           audio_binds = {
             XF86AudioRaiseVolume = "exec volumesh -i 10";
             XF86AudioLowerVolume = "exec volumesh -d 10";
-            XF86AudioMute = "exec volumesh -m";
+            XF86AudioMute = "exec volumesh -t";
             XF86AudioMicMute =
               "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
             # Control media
