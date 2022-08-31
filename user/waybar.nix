@@ -231,8 +231,6 @@ in {
         }
       '';
     };
-    home.packages = with pkgs; [
-      waybar
-    ];
+    home.packages = with pkgs; [ waybar ];
   };
 }

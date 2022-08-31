@@ -6,16 +6,20 @@
   boot.initrd.availableKernelModules =
     [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" "amdgpu" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    # "amdgpu"
+  ];
 
   hardware.opengl.driSupport = true;
-  # For 32 bit applications
+  # # For 32 bit applications
   hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
-  # For 32 bit applications
-  # Only available on unstable
-  hardware.opengl.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
-  environment.variables = { AMD_VULKAN_ICD = "RADV"; };
+
+  # hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
+  # # For 32 bit applications
+  # # Only available on unstable
+  # hardware.opengl.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+  # environment.variables = { AMD_VULKAN_ICD = "RADV"; };
 
   boot.extraModulePackages = [ ];
   fileSystems."/" = {

@@ -122,9 +122,6 @@
       '';
     };
     home.file.".config/eww".source = ./eww;
-    home.packages = with pkgs; [
-      eww-wayland
-      jq
-    ];
+    home.packages = with pkgs; [ eww-wayland jq ];
   };
 }

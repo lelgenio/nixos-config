@@ -120,9 +120,7 @@ in {
         Hint = "blue";
       }));
     };
-    home.file = {
-      ".config/kak-lsp/kak-lsp.toml".source = ./kak/kak-lsp.toml;
-    };
+    home.file = { ".config/kak-lsp/kak-lsp.toml".source = ./kak/kak-lsp.toml; };
     home.packages = with pkgs; [ kakoune terminal ranger bmenu ];
     home.sessionVariables = {
       EDITOR = "kak";

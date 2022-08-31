@@ -49,9 +49,7 @@ in {
   };
 
   programs.adb.enable = true;
-  services.udev.packages = [
-    pkgs.android-udev-rules
-  ];
+  services.udev.packages = [ pkgs.android-udev-rules ];
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Configure network proxy if necessary
@@ -237,16 +235,14 @@ in {
   networking.firewall.enable = false;
   security.sudo.wheelNeedsPassword = false;
   nix = {
-    binaryCaches = [
-      "https://cache.nixos.org/"
-      "https://lelgenio.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "lelgenio.cachix.org-1:W8tMlmDFLU/V+6DlChXjekxoHZpjgVHZpmusC4cueBc="
-    ];
+    binaryCaches = [ "https://cache.nixos.org/" "https://lelgenio.cachix.org" ];
+    binaryCachePublicKeys =
+      [ "lelgenio.cachix.org-1:W8tMlmDFLU/V+6DlChXjekxoHZpjgVHZpmusC4cueBc=" ];
     settings = {
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
     };
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
     extraOptions = ''

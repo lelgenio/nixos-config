@@ -1,6 +1,5 @@
-{ config, pkgs, lib, inputs,... }:
-let
-  inherit (import ./variables.nix) key theme color accent font;
+{ config, pkgs, lib, inputs, ... }:
+let inherit (import ./variables.nix) key theme color accent font;
 
 in {
   imports = [

@@ -433,8 +433,6 @@ in {
         Install = { WantedBy = [ "sway-session.target" ]; };
       };
     };
-    home.file = {
-      ".local/share/backgrounds".source = ./backgrounds;
-    };
+    home.file = { ".local/share/backgrounds".source = ./backgrounds; };
   };
 }
