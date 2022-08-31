@@ -169,6 +169,7 @@ in {
     vscode
     micro
     fd
+    du-dust
     kakoune
     kak-lsp
     pavucontrol
