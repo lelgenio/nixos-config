@@ -59,6 +59,7 @@ in {
     mpc-cli
     helvum
     gimp
+    inkscape
     kdenlive
     blender
     libreoffice
