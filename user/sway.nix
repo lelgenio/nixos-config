@@ -1,6 +1,14 @@
 { config, pkgs, lib, ... }:
 let
   inherit (import ./variables.nix) key theme color accent font;
+  color_picker = pkgs.writeShellScript "color_picker" ''
+    grim -g "$(slurp -b aabbcc00 -p)" - |
+        convert - txt:- |
+        grep -oE '#[0-9A-Fa-f]{6}' |
+        wl-copy -n
+
+    notify-send "$(wl-paste)" "Copied to clipboard"
+  '';
   pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
     #!/bin/sh
     output=$(printf "HDMI\nHeadphones" | wdmenu -i -p "Output:")
@@ -275,6 +283,7 @@ in {
           other_binds = {
             "${mod}+p" = "exec ${pkgs.wpass}/bin/wpass";
             "${mod}+s" = "exec ${menu}";
+            "${mod}+c" = "exec ${color_picker}";
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+Ctrl+Return" = "exec thunar";
             "${mod}+x" = "kill";
