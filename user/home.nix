@@ -379,19 +379,6 @@ in {
     };
   };
   systemd.user.services = {
-    firefox = {
-      Unit = {
-        Description = "Firefox Web browser";
-        Documentation = "https://github.com/Alexays/Waybar/wiki";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.firefox}/bin/firefox";
-        Restart = "on-failure";
-      };
-      Install = { WantedBy = [ "sway-session.target" ]; };
-    };
     discord = {
       Unit = {
         Description = "Discord Internet voice chat";
