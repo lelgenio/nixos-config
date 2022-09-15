@@ -37,6 +37,7 @@ in {
     exa
     fd
     p7zip
+    speedtest-cli
     deluge
     _diffr
     kak-pager
