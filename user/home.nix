@@ -64,6 +64,7 @@ in {
     kdenlive
     blender
     libreoffice
+    godot
     # pulse_sink
     #games
     lutris
