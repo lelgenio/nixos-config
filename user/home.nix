@@ -229,6 +229,7 @@ in {
   };
 
   home.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
     QT_QPA_PLATFORMTHEME = "gtk3";
     VOLUME_CHANGE_SOUND =
       "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
