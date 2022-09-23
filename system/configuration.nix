@@ -199,6 +199,7 @@ in {
     gnumake
     mariadb
     php74
+    nodePackages.intelephense
     nodejs
     nodePackages.yarn
     nodePackages.less
