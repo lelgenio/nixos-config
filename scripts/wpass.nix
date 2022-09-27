@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
 pkgs.writeShellScriptBin "wpass" ''
+  _gpg-unlock
   set -xe
 
   wtype=${pkgs.wtype}/bin/wtype
