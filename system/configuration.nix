@@ -201,6 +201,7 @@ in {
     mariadb
     php74
     nodePackages.intelephense
+    nodePackages.typescript-language-server
     nodejs
     nodePackages.yarn
     nodePackages.less

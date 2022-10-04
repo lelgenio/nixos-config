@@ -35,6 +35,7 @@ in {
   home.packages = with pkgs; [
     alacritty
     terminal # see flake.nix
+    btop
     exa
     fd
     p7zip
@@ -90,11 +91,11 @@ in {
     # Programming
     vscode
     rustup
-    android-studio
     # cargo
     cargo-edit
     cargo-feature
     cargo-watch
+    cargo-expand
     pkgs.unstable.rust-analyzer
     gcc
     nixfmt
