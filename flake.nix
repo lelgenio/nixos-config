@@ -42,6 +42,7 @@
       lib = nixpkgs.lib;
       common_modules = [
         ./system/configuration.nix
+        ./system/gitlab-runner.nix
         # nur.nixosModules.nur
         inputs.hyprland.nixosModules.default
         {
