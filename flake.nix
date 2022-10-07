@@ -12,11 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    alacritty-sixel.url = "github:microo8/alacritty-sixel";
-    alacritty-sixel.flake = false;
+    # alacritty-sixel.url = "github:microo8/alacritty-sixel";
+    # alacritty-sixel.flake = false;
 
-    ranger-sixel.url = "github:remi6397/ranger/feature/sixel";
-    ranger-sixel.flake = false;
+    # ranger-sixel.url = "github:remi6397/ranger/feature/sixel";
+    # ranger-sixel.flake = false;
 
     material-wifi-icons.url = "github:dcousens/material-wifi-icons";
     material-wifi-icons.flake = false;
@@ -56,22 +56,22 @@
             (_: old-pkgs: {
               uservars = import ./user/variables.nix;
               dhist = inputs.dhist.packages.${system}.dhist;
-              alacritty = (old-pkgs.alacritty.overrideAttrs
-                (old-alacritty: rec {
-                  src = inputs.alacritty-sixel;
-                  cargoDeps = old-alacritty.cargoDeps.overrideAttrs
-                    (old-pkgs.lib.const {
-                      inherit src;
-                      outputHash =
-                        "sha256-aNatd4LC4lv0bDpVfUONdtEn9OPahVBZ9ch14pWWCnM=";
-                    });
-                }));
-              ranger = (old-pkgs.ranger.overridePythonAttrs (old-ranger: rec {
-                src = inputs.ranger-sixel;
-                checkInputs = [ ];
-                propagatedBuildInputs = with old-pkgs.python3Packages;
-                  old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
-              }));
+              # alacritty = (old-pkgs.alacritty.overrideAttrs
+              #   (old-alacritty: rec {
+              #     src = inputs.alacritty-sixel;
+              #     cargoDeps = old-alacritty.cargoDeps.overrideAttrs
+              #       (old-pkgs.lib.const {
+              #         inherit src;
+              #         outputHash =
+              #           "sha256-2hMntoGHqoQT/Oqz261Ljif5xEuV8SnPH0m52bXdd2s=";
+              #       });
+              #   }));
+              # ranger = (old-pkgs.ranger.overridePythonAttrs (old-ranger: rec {
+              #   src = inputs.ranger-sixel;
+              #   checkInputs = [ ];
+              #   propagatedBuildInputs = with old-pkgs.python3Packages;
+              #     old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
+              # }));
               material-wifi-icons = pkgs.stdenv.mkDerivation rec {
                 name = "material-wifi-icons";
                 src = inputs.material-wifi-icons;
