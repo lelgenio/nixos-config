@@ -28,11 +28,11 @@ let
       opacityHex = "ee";
       color = {
         type = "dark";
-        bg = "#202020";
+        bg = "#191919";
         bg_light = "#404040";
-        bg_dark = "#191919";
+        bg_dark = "#181818";
         txt = "#FFFFFF";
-        nontxt = "#252525";
+        nontxt = "#232323";
         random_range = "[a-f]";
         normal = {
           black = "#404040";
