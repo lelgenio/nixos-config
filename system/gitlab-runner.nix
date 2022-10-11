@@ -8,10 +8,12 @@
       ci_test = {
         registrationConfigFile = "/srv/gitlab-runner/env/ci_test";
         dockerImage = "debian";
+        dockerPrivileged = true;
       };
       thoreb_builder = {
         registrationConfigFile = "/srv/gitlab-runner/env/thoreb_builder";
         dockerImage = "debian";
+        dockerPrivileged = true;
       };
     };
   };
