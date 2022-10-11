@@ -122,6 +122,7 @@ in {
   services.flatpak.enable = true;
   virtualisation.docker.enable = true;
   security.rtkit.enable = true;
+  services.sshd.enable = true;
 
   ## Enable sound with pipewire.
   sound.enable = true;
