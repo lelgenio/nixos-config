@@ -3,7 +3,7 @@
   virtualisation.docker.enable = true;
   services.gitlab-runner = with lib; {
     enable = true;
-    concurrent = 4;
+    concurrent = 1;
     services = {
       ci_test = {
         registrationConfigFile = "/srv/gitlab-runner/env/ci_test";
