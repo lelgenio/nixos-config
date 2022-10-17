@@ -170,6 +170,7 @@ in {
     vscode
     micro
     fd
+    bc
     du-dust
     kakoune
     kak-lsp
@@ -211,6 +212,7 @@ in {
 
     trunk
     wasm-bindgen-cli
+    sqlx-cli
     nodePackages.sass
   ];
   # enable sway window manager
@@ -241,6 +243,7 @@ in {
   security.sudo.wheelNeedsPassword = false;
   nix = {
     settings = {
+      auto-optimise-store = true;
       substituters = [ "https://hyprland.cachix.org" "https://lelgenio.cachix.org" ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="

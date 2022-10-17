@@ -18,6 +18,8 @@ in {
         if not rustc --version &> /dev/null
           rustup default stable &>/dev/null &
         end
+
+        bind \cy 'commandline | wl-copy -n'
       '';
       shellAliases = { rm = "trash"; };
       shellAbbrs = {

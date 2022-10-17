@@ -438,6 +438,8 @@ in {
       libnotify
       xdg-utils
       screenshotsh
+      wf-recorder
+      wtype
     ];
     systemd.user.services = {
       mako = {

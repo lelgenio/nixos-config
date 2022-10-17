@@ -39,6 +39,7 @@ in {
     exa
     fd
     p7zip
+    tealdeer
     speedtest-cli
     deluge
     _diffr
@@ -70,8 +71,8 @@ in {
     godot
     # pulse_sink
     #games
-    lutris
-    steam
+    # lutris-unwrapped
+    # steam
     # chat
     tdesktop
     # discord # I'm using webcord, see home.activation
@@ -88,6 +89,9 @@ in {
     fira-code
     nerdfonts_fira_hack
     material-wifi-icons
+    ## Network
+    nmap
+    miniupnpc
     # Programming
     vscode
     rustup
@@ -96,6 +100,7 @@ in {
     cargo-feature
     cargo-watch
     cargo-expand
+    cargo-sweep
     pkgs.unstable.rust-analyzer
     gcc
     nixfmt
