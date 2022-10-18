@@ -49,10 +49,11 @@
           programs.hyprland.enable = true;
           # programs.hyprland.package = null;
         }
-        ({ config, pkgs, ... }: {
+        (inputs@{ config, pkgs, ... }: {
           nixpkgs.overlays = [
             overlay-unstable
             nur.overlay
+            (import ./scripts inputs)
             (_: old-pkgs: {
               uservars = import ./user/variables.nix;
               dhist = inputs.dhist.packages.${system}.dhist;
@@ -89,7 +90,6 @@
               nerdfonts_fira_hack =
                 (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
             })
-            (import ./scripts { inherit config pkgs lib; })
           ];
         })
         home-manager.nixosModules.home-manager
