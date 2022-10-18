@@ -259,6 +259,10 @@ in {
       output_folder = "/home/lelgenio";
     };
   };
+  services.syncthing = {
+    enable = true;
+    tray.enable = true;
+  };
   systemd.user.services = {
     discord = {
       Unit = {

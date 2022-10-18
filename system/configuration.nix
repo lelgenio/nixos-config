@@ -146,12 +146,6 @@ in {
   };
   # services.getty.autologinUser = "lelgenio";
   programs.fish.enable = true;
-  services.syncthing = {
-    enable = true;
-    user = "lelgenio";
-    dataDir = "/home/lelgenio/";
-    configDir = "/home/lelgenio/.config/syncthing";
-  };
   # TODO: enable thunar plugins
   # programs.thunar.enable = true;
   # programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
@@ -159,8 +153,7 @@ in {
   services.tumbler.enable = true; # Thumbnail support for images
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
@@ -195,7 +188,7 @@ in {
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     bemenu # wayland clone of dmenu
     mako # notification system developed by swaywm maintainer
-    (orchis-theme.override { tweaks = [ "compact" "solid" ]; })
+    orchis_theme_compact
     pulseaudio
 
     docker-compose
