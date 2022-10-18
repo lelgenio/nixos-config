@@ -299,4 +299,22 @@ in {
     cache-pause-initial=true;
     cache-pause-wait=10;
   };
+
+  # My bemenu wrapper
+  xdg.configFile = {
+    "bmenu.conf".text = ''
+      set fn "${font.mono} ${toString font.size.small}"
+
+      set tb "${color.bg}${theme.opacityHex}"
+      set tf "${accent.color}"
+
+      set fb "${color.bg}${theme.opacityHex}"
+      set ff "${color.txt}"
+
+      set nb "${color.bg}${theme.opacityHex}"
+      set nf "${color.txt}"
+      set hb "${accent.color}"
+      set hf "${accent.fg}"
+    '';
+  };
 }

@@ -1,0 +1,47 @@
+#!/bin/sh
+
+set -e -u
+
+end(){
+    rm -r -- "$(dirname -- "$namebase")"
+    [ $# -ne 0 ] && echo $@ >&2
+    exit $#
+}
+
+if [ $# -ne 0 ] ; then
+    for i in "$@" ; do
+        printf "%s\n" "$i"
+    done  | "$0"
+    exit $?
+fi
+
+namebase="$(mktemp -d)/blkrn"
+echo '# Modify filenames without removing any line, quitting aborts' \
+    > "$namebase.2"
+tee -- "$namebase.1" >> "$namebase.2"
+exec </dev/tty >/dev/tty ||
+    end 'Interactive terminal needed'
+
+"$EDITOR" -- "$namebase.2"
+sed -i -- '1d' "$namebase.2"
+
+! diff -- "$namebase.1" "$namebase.2" &> /dev/null || end "no changes"
+[ `wc -l < "$namebase.1"` -eq `wc -l < "$namebase.2"` ] || end "Wrong number of lines"
+
+{
+    echo '# Please review/modify this script or empty it to do nothing'
+    echo 'run(){'
+    echo '    mkdir -p "$(dirname "$2")"'
+    echo '    mv -T -- "$1" "$2"'
+    echo '}'
+    while read -r l1 <&3 && read -r l2 <&4; do
+        [ "$l1" = "$l2" ] || printf "%s\n%s\n" "$l1" "$l2"
+    done 3<"$namebase.1" 4<"$namebase.2" |
+    sed 's/\([\\"$`]\)/\\\1/g;s/^.*$/"&"/' |
+    xargs -d"\n" -L2 echo 'run'
+} > "$namebase.sh"
+
+"$EDITOR" -- "$namebase.sh"
+sh -e -- "$namebase.sh"
+
+end # exit normaly
