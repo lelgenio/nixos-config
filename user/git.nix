@@ -20,9 +20,9 @@ in {
           autoStash = true;
         };
         pager = {
-          log = "${pkgs._diffr}/bin/diffr | ${pkgs.kak-pager}/bin/kak-pager";
-          show = "${pkgs._diffr}/bin/diffr | ${pkgs.kak-pager}/bin/kak-pager";
-          diff = "${pkgs._diffr}/bin/diffr | ${pkgs.kak-pager}/bin/kak-pager";
+          log = "${pkgs._diffr}/bin/_diffr | ${pkgs.kak-pager}/bin/kak-pager";
+          show = "${pkgs._diffr}/bin/_diffr | ${pkgs.kak-pager}/bin/kak-pager";
+          diff = "${pkgs._diffr}/bin/_diffr | ${pkgs.kak-pager}/bin/kak-pager";
         };
         alias = {
           graph = "log --graph --oneline --all";

@@ -16,21 +16,20 @@
         inherit name runtimeInputs;
         text = ''exec ${script_body} "$@"'';
         checkPhase = "";
-      })
-    );
+      }));
     create_scripts =
       lib.mapAttrs (name: deps: create_script name ./${name} deps);
   in create_scripts {
     br = [ ];
     bmenu = [ bemenu dhist fish j4-dmenu-desktop jq sway ];
+    _diffr = [ diffr ];
+    kak-pager = [ fish _diffr ];
+    terminal = [ alacritty ];
+    wpass = [ bmenu fd pass sd wl-clipboard wtype ];
+    screenshotsh =
+      [ capitaine-cursors grim jq sway wl-clipboard xdg-user-dirs ];
   } // lib.mapAttrs import_script {
     wdmenu = ./wdmenu.nix;
     wlauncher = ./wlauncher.nix;
-    # bmenu = ./bmenu.nix;
-    _diffr = ./diffr.nix;
-    kak-pager = ./kak-pager.nix;
-    terminal = ./terminal.nix;
-    wpass = ./wpass.nix;
-    screenshotsh = ./screenshotsh.nix;
     _gpg-unlock = ./_gpg-unlock.nix;
   })
