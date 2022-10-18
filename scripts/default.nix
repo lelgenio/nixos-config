@@ -28,6 +28,7 @@
     wpass = [ bmenu fd pass sd wl-clipboard wtype ];
     screenshotsh =
       [ capitaine-cursors grim jq sway wl-clipboard xdg-user-dirs ];
+    volumesh = [  pulseaudio libnotify  ];
   } // lib.mapAttrs import_script {
     wdmenu = ./wdmenu.nix;
     wlauncher = ./wlauncher.nix;

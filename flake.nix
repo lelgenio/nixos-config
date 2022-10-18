@@ -88,8 +88,6 @@
               });
               nerdfonts_fira_hack =
                 (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
-              volumesh = pkgs.writeShellScriptBin "volumesh"
-                (builtins.readFile ./user/scripts/volumesh);
             })
             (import ./scripts { inherit config pkgs lib; })
           ];
