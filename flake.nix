@@ -33,11 +33,6 @@
       };
       overlay-unstable = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-        # use this variant if unfree packages are needed:
-        # unstable = import nixpkgs-unstable {
-        #   inherit system;
-        #   config.allowUnfree = true;
-        # };
       };
       lib = nixpkgs.lib;
       common_modules = [
@@ -49,47 +44,12 @@
           programs.hyprland.enable = true;
           # programs.hyprland.package = null;
         }
-        (inputs@{ config, pkgs, ... }: {
+        (mod-inputs@{ config, pkgs, ... }: {
           nixpkgs.overlays = [
             overlay-unstable
             nur.overlay
-            (import ./scripts inputs)
-            (_: old-pkgs: {
-              uservars = import ./user/variables.nix;
-              dhist = inputs.dhist.packages.${system}.dhist;
-              # alacritty = (old-pkgs.alacritty.overrideAttrs
-              #   (old-alacritty: rec {
-              #     src = inputs.alacritty-sixel;
-              #     cargoDeps = old-alacritty.cargoDeps.overrideAttrs
-              #       (old-pkgs.lib.const {
-              #         inherit src;
-              #         outputHash =
-              #           "sha256-2hMntoGHqoQT/Oqz261Ljif5xEuV8SnPH0m52bXdd2s=";
-              #       });
-              #   }));
-              # ranger = (old-pkgs.ranger.overridePythonAttrs (old-ranger: rec {
-              #   src = inputs.ranger-sixel;
-              #   checkInputs = [ ];
-              #   propagatedBuildInputs = with old-pkgs.python3Packages;
-              #     old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
-              # }));
-              material-wifi-icons = pkgs.stdenv.mkDerivation rec {
-                name = "material-wifi-icons";
-                src = inputs.material-wifi-icons;
-                installPhase = let dest = "$out/share/fonts/${name}";
-                in ''
-                  mkdir -p ${dest}
-                  cp material-wifi.ttf ${dest}
-                '';
-              };
-              papirus_red =
-                (pkgs.unstable.papirus-icon-theme.override { color = "red"; });
-              orchis_theme_compact = (pkgs.orchis-theme.override {
-                tweaks = [ "compact" "solid" ];
-              });
-              nerdfonts_fira_hack =
-                (pkgs.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
-            })
+            (import ./scripts mod-inputs)
+            (import ./overlays (inputs // { inherit system; }))
           ];
         })
         home-manager.nixosModules.home-manager
