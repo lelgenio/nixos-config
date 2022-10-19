@@ -121,7 +121,14 @@ in {
       }));
     };
     home.file = { ".config/kak-lsp/kak-lsp.toml".source = ./kak/kak-lsp.toml; };
-    home.packages = with pkgs; [ kakoune terminal ranger bmenu ];
+    home.packages = with pkgs; [
+      kakoune
+      terminal
+      ranger
+      bmenu
+      kak-lsp
+      kak-pager
+    ];
     home.sessionVariables = {
       EDITOR = "kak";
       # Some plugins(kak_ansi) like to compile stuff

@@ -76,47 +76,13 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-    git
     pinentry-curses
-    firefox
-    vscode
-    micro
-    fd
-    bc
-    du-dust
-    kakoune
-    kak-lsp
     pavucontrol
-    tdesktop
-    # recomended by nixwiki
-    alacritty # gpu accelerated terminal
 
     glib # gsettings
     usbutils
     # dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
-
-    orchis_theme_compact
-    pulseaudio
-
-    docker-compose
-    gnumake
-    mariadb
-    php74
-    nodePackages.intelephense
-    nodePackages.typescript-language-server
-    nodejs
-    nodePackages.yarn
-    nodePackages.less
-    nodePackages.less-plugin-clean-css
-    nodePackages.uglify-js
-
-    trunk
-    wasm-bindgen-cli
-    sqlx-cli
-    nodePackages.sass
   ];
 
   services.geoclue2.enable = true;
