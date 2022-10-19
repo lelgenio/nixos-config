@@ -31,12 +31,10 @@
         inherit system;
         config = { allowUnfree = true; };
       };
-      overlay-unstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-      };
       lib = nixpkgs.lib;
       common_modules = [
         ./system/configuration.nix
+        ./system/sway.nix
         ./system/gitlab-runner.nix
         # nur.nixosModules.nur
         inputs.hyprland.nixosModules.default
@@ -44,14 +42,7 @@
           programs.hyprland.enable = true;
           # programs.hyprland.package = null;
         }
-        (mod-inputs@{ config, pkgs, ... }: {
-          nixpkgs.overlays = [
-            overlay-unstable
-            nur.overlay
-            (import ./scripts mod-inputs)
-            (import ./overlays (inputs // { inherit system; }))
-          ];
-        })
+        (import ./overlays (inputs // {inherit system;}))
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

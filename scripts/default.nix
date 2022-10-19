@@ -1,8 +1,7 @@
-{ config, lib, ... }:
-(pkgs: _:
-  with pkgs;
+(final: prev:
+  with prev;
   let
-    import_script = (_: path: import (path) { inherit config pkgs lib; });
+    import_script = (_: path: import (path) { inherit pkgs lib; });
     create_script = (name: text: runtimeInputs:
       let
         script_body = pkgs.writeTextFile {
@@ -21,13 +20,13 @@
       lib.mapAttrs (name: deps: create_script name ./${name} deps);
   in create_scripts {
     br = [ ];
-    bmenu = [ bemenu dhist fish j4-dmenu-desktop jq sway ];
+    bmenu = [ bemenu final.dhist fish j4-dmenu-desktop jq sway ];
     _diffr = [ diffr ];
-    kak-pager = [ fish _diffr ];
+    kak-pager = [ fish final._diffr ];
     terminal = [ alacritty ];
-    wpass = [ bmenu fd pass sd wl-clipboard wtype ];
+    wpass = [ final.bmenu fd pass sd wl-clipboard wtype ];
     screenshotsh =
-      [ capitaine-cursors grim jq sway wl-clipboard xdg-user-dirs ];
+      [ capitaine-cursors grim slurp jq sway wl-clipboard xdg-user-dirs ];
     volumesh = [  pulseaudio libnotify  ];
   } // lib.mapAttrs import_script {
     wdmenu = ./wdmenu.nix;

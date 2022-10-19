@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 pkgs.writeShellScriptBin "_gpg-unlock" ''
   ${pkgs.gnupg}/bin/gpg-connect-agent reloadagent /bye
 

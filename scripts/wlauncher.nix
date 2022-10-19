@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   inherit (pkgs.uservars) dmenu;
   available_menus = {
