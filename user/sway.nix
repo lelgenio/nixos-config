@@ -429,6 +429,7 @@ in {
       xdg-utils
       screenshotsh
       wf-recorder
+      wl-clipboard
       wtype
     ];
     systemd.user.services = {

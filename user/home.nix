@@ -18,6 +18,7 @@ in {
     ./mpv.nix
     ./mangohud.nix
     ./rnnoise.nix
+    ./mimeapps.nix
     inputs.hyprland.homeManagerModules.default
   ];
   # Home Manager needs a bit of information about you and the
@@ -47,8 +48,8 @@ in {
     ripgrep
     translate-shell
 
-    # xfce.thunar
-    gnome.nautilus
+    xfce.thunar
+    # gnome.nautilus
     pass
     wpass
     _gpg-unlock
