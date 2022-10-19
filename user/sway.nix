@@ -61,16 +61,6 @@ in {
       mergeAttrsSet = lib.foldAttrs (n: _: n) { };
 
       forEachMerge = list: func: mergeAttrsSet (lib.forEach list func);
-
-      # same as imap0 but reversed inputs
-      iforEach0 = (list: func: lib.imap0 func list);
-
-      # Usefull for translating an imperative foreach into declarative attrset creation
-      # iforEach0mergeAttrsSet ["val1" "val2"] (i: v: {
-      #     ${i} = v;
-      # })
-      # Ouput: {val1 = 1; val2 = 2;}
-      iforEach0mergeAttrsSet = list: func: mergeAttrsSet (iforEach0 list func);
     in {
       enable = true;
       config = {
