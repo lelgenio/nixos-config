@@ -9,20 +9,6 @@ let
 
     notify-send "$(wl-paste)" "Copied to clipboard"
   '';
-  pulse_sink = pkgs.writeShellScriptBin "pulse_sink" ''
-    #!/bin/sh
-    output=$(printf "HDMI\nHeadphones" | wdmenu -i -p "Output:")
-    vol=$(${pkgs.pamixer}/bin/pamixer --get-volume)
-    case "$output" in
-        HDMI)
-            pactl set-default-sink alsa_output.pci-0000_07_00.1.hdmi-stereo-extra1
-            ;;
-        Headphones)
-            pactl set-default-sink alsa_output.pci-0000_09_00.4.analog-stereo
-            ;;
-    esac
-    ${pkgs.pamixer}/bin/pamixer --set-volume "$vol"
-  '';
   _lock = pkgs.writeShellScriptBin "_lock" ''
     swaylock -f
     systemctl --user start swayidle.service
@@ -152,7 +138,7 @@ in {
             "escape" = "";
             "q" = "";
             "m" = "exec volumesh -t";
-            "s" = "exec ${pulse_sink}/bin/pulse_sink";
+            "s" = "exec ${pkgs.pulse_sink}/bin/pulse_sink";
           };
           passthrough = {
             "${mod}+escape" = "mode default;exec notify-send 'Passthrough off'";

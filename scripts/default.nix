@@ -24,10 +24,11 @@
     _diffr = [ diffr ];
     kak-pager = [ fish final._diffr ];
     terminal = [ alacritty ];
-    wpass = [ final.bmenu fd pass sd wl-clipboard wtype ];
+    wpass = [ final.wdmenu fd pass sd wl-clipboard wtype ];
     screenshotsh =
       [ capitaine-cursors grim slurp jq sway wl-clipboard xdg-user-dirs ];
     volumesh = [  pulseaudio libnotify  ];
+    pulse_sink = [  pulseaudio pamixer final.wdmenu ];
   } // lib.mapAttrs import_script {
     wdmenu = ./wdmenu.nix;
     wlauncher = ./wlauncher.nix;

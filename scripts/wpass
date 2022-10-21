@@ -4,7 +4,7 @@ set -xe
 find_file() {
   fd --strip-cwd-prefix '\.gpg$' |
   sd ".gpg$" "" |
-  bmenu -p "Password" $@
+  wdmenu -p "Password" $@
 }
 
 main() {
@@ -20,7 +20,7 @@ main() {
     username=`pass show "$entry" 2>/dev/null | perl -ne 'print $2 if /^(login|user|email): (.*)/'`
     password=`pass show "$entry" 2>/dev/null | head -n 1`
 
-    action=`printf "Autotype\nUsername -> $username\nPassword" | bmenu -p Action`
+    action=`printf "Autotype\nUsername -> $username\nPassword" | wdmenu -p Action`
 
     case $action in
         Autotype)

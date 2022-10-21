@@ -31,6 +31,9 @@ in {
   home.packages = with pkgs; [
     terminal # see flake.nix
 
+    pulse_sink
+    pulseaudio
+
     ## CLI
     btop
     exa
