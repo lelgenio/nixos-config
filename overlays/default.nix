@@ -5,25 +5,25 @@
     (import ./sway.nix)
     (final: prev: {
       unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system};
-
+    })
+    (final: prev: {
       uservars = import ../user/variables.nix;
       dhist = inputs.dhist.packages.${system}.dhist;
-      # alacritty = (old-pkgs.alacritty.overrideAttrs
-      #   (old-alacritty: rec {
-      #     src = inputs.alacritty-sixel;
-      #     cargoDeps = old-alacritty.cargoDeps.overrideAttrs
-      #       (old-pkgs.lib.const {
-      #         inherit src;
-      #         outputHash =
-      #           "sha256-2hMntoGHqoQT/Oqz261Ljif5xEuV8SnPH0m52bXdd2s=";
-      #       });
-      #   }));
-      # ranger = (old-pkgs.ranger.overridePythonAttrs (old-ranger: rec {
-      #   src = inputs.ranger-sixel;
-      #   checkInputs = [ ];
-      #   propagatedBuildInputs = with old-pkgs.python3Packages;
-      #     old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
-      # }));
+      alacritty = (prev.unstable.alacritty.overrideAttrs
+        (old-alacritty: rec {
+          src = inputs.alacritty-sixel;
+          cargoDeps = old-alacritty.cargoDeps.overrideAttrs
+            (prev.lib.const {
+              inherit src;
+              outputHash = "sha256-svZ/ySK09m4KVJE5LBLtD7ZEoExGwpFn4UP5tfhGKMc=";
+            });
+        }));
+      ranger = (prev.ranger.overridePythonAttrs (old-ranger: rec {
+        src = inputs.ranger-sixel;
+        checkInputs = [ ];
+        propagatedBuildInputs = with prev.python3Packages;
+          old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
+      }));
       material-wifi-icons = final.stdenv.mkDerivation rec {
         name = "material-wifi-icons";
         src = inputs.material-wifi-icons;

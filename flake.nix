@@ -12,11 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # alacritty-sixel.url = "github:microo8/alacritty-sixel";
-    # alacritty-sixel.flake = false;
+    alacritty-sixel.url = "github:ayosec/alacritty";
+    alacritty-sixel.flake = false;
 
-    # ranger-sixel.url = "github:remi6397/ranger/feature/sixel";
-    # ranger-sixel.flake = false;
+    ranger-sixel.url = "github:remi6397/ranger/feature/sixel";
+    ranger-sixel.flake = false;
 
     material-wifi-icons.url = "github:dcousens/material-wifi-icons";
     material-wifi-icons.flake = false;
