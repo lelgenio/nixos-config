@@ -57,19 +57,6 @@ in {
     wpass
     _gpg-unlock
 
-    ## media
-    yt-dlp
-    ffmpeg
-    imagemagick
-    mpc-cli
-    helvum
-    gimp
-    inkscape
-    kdenlive
-    blender
-    libreoffice
-    godot
-
     ## games
     # lutris-unwrapped
     # steam # It's enabled in the system config
