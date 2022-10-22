@@ -64,6 +64,12 @@
           inherit system;
           modules = [ ./hosts/monolith.nix ] ++ common_modules;
         };
+        pixie = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/pixie.nix ] ++ common_modules ++ (_: {
+            packages.media-packages.enable = false;
+          });
+        };
       };
     };
 }
