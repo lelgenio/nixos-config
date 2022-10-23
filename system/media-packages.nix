@@ -1,12 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   cfg = config.packages.media-packages;
 in {
   options.packages.media-packages = {
-    enable = mkEnableOption "media packages";
+    enable = lib.mkEnableOption "media packages";
   };
-  config = mkIf cfg.enable {
-    home.packages = with pkgs; [
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
       yt-dlp
       ffmpeg
       imagemagick
@@ -18,6 +18,6 @@ in {
       blender
       libreoffice
       godot
-    ]
+    ];
   };
 }
