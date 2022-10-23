@@ -26,7 +26,7 @@ in {
             "gfx.webrender.all" = true;
           };
           userChrome = ''
-            #tabbrowser-tabs { visibility: collapse !important; }
+            #titlebar { display: none !important; }
           '';
         };
       };
