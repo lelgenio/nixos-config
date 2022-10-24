@@ -20,6 +20,8 @@ in {
     ./rnnoise.nix
     ./mimeapps.nix
     ./chat.nix
+    ./syncthing.nix
+    ./bmenu.nix
     inputs.hyprland.homeManagerModules.default
   ];
   # Home Manager needs a bit of information about you and the
@@ -182,28 +184,6 @@ in {
   #   # style.package = pkgs.libsForQt5.qtstyleplugins;
   #   # style.name = "gtk2";
   # };
-
-  services.syncthing = {
-    enable = true;
-    tray.enable = true;
-  };
-  # My bemenu wrapper
-  xdg.configFile = {
-    "bmenu.conf".text = ''
-      set fn "${font.mono} ${toString font.size.small}"
-
-      set tb "${color.bg}${theme.opacityHex}"
-      set tf "${accent.color}"
-
-      set fb "${color.bg}${theme.opacityHex}"
-      set ff "${color.txt}"
-
-      set nb "${color.bg}${theme.opacityHex}"
-      set nf "${color.txt}"
-      set hb "${accent.color}"
-      set hf "${accent.fg}"
-    '';
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
