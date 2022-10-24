@@ -27,6 +27,11 @@
       options = [ "subvol=home" ];
     };
 
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/B1BB-15DD";
+      fsType = "vfat";
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -35,8 +40,10 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.br-8dc95a5ba1fd.useDHCP = lib.mkDefault true;
+  # networking.interfaces.br-ec6b6d3de853.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.veth74f3ffc.useDHCP = lib.mkDefault true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 

@@ -72,9 +72,11 @@
         };
         pixie = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/pixie.nix ] ++ common_modules ++ (_: {
-            packages.media-packages.enable = false;
-          });
+          modules = [ ./hosts/pixie.nix ] ++ common_modules ++ [{
+            packages.media-packages.enable = lib.mkOverride 0 false;
+            programs.steam.enable = lib.mkOverride 0 false;
+            services.flatpak.enable = lib.mkOverride 0 false;
+          }];
         };
       };
     };
