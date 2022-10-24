@@ -25,7 +25,7 @@ in {
           diff = "${pkgs._diffr}/bin/_diffr | ${pkgs.kak-pager}/bin/kak-pager";
         };
         alias = {
-          graph = "log --graph --oneline --all";
+          graph = "log --graph --oneline --branches";
           root = "rev-parse --show-toplevel";
         };
       };
