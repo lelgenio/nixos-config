@@ -22,6 +22,7 @@ in {
     ./chat.nix
     ./syncthing.nix
     ./bmenu.nix
+    ./fzf.nix
     inputs.hyprland.homeManagerModules.default
   ];
   # Home Manager needs a bit of information about you and the
@@ -125,22 +126,6 @@ in {
     QT_QPA_PLATFORMTHEME = "gtk3";
     VOLUME_CHANGE_SOUND =
       "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
-    FZF_DEFAULT_OPTS = let
-      colors = {
-        "bg+" = color.bg_light;
-        "hl+" = color.normal.green;
-        gutter = color.bg;
-        prompt = accent.color;
-        pointer = accent.color;
-        spinner = accent.color;
-      };
-      makeKeyValue = (k: v: "${k}:${v}");
-      makeOptList = lib.mapAttrsToList makeKeyValue colors;
-      makeColorValue = lib.strings.concatStringsSep "," makeOptList;
-      color_opts = "--color=${makeColorValue}";
-      preview_opts =
-        "--preview '${pkgs.bat}/bin/bat --style=numbers --color=always {}'";
-    in "${preview_opts} ${color_opts}";
   };
   programs.bash = { enable = true; };
 

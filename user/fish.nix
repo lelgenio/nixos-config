@@ -7,7 +7,6 @@ in {
       interactiveShellInit = ''
         set -g __accent_color "${accent.color}"
         alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
-        fzf_key_bindings
         set_color red
         if not test -d "$HOME/.password-store/"
           echo "Password Store not yet setup"
@@ -52,7 +51,6 @@ in {
     };
     programs.zoxide.enable = true;
     programs.direnv.enable = true;
-    programs.fzf.enable = true;
     home.file = {
       ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
     };
