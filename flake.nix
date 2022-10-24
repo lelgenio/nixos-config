@@ -7,6 +7,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
 
+    # mpvpaper
+    wegank = {
+      url = "github:wegank/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

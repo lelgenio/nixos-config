@@ -417,6 +417,8 @@ in {
       wf-recorder
       wl-clipboard
       wtype
+
+      mpvpaper
     ];
     systemd.user.services = {
       mako = {

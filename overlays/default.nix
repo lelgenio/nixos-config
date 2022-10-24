@@ -9,6 +9,7 @@
     (final: prev: {
       uservars = import ../user/variables.nix;
       dhist = inputs.dhist.packages.${system}.dhist;
+      mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
       alacritty = (prev.unstable.alacritty.overrideAttrs
         (old-alacritty: rec {
           src = inputs.alacritty-sixel;

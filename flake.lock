@@ -218,7 +218,8 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
-        "ranger-sixel": "ranger-sixel"
+        "ranger-sixel": "ranger-sixel",
+        "wegank": "wegank"
       }
     },
     "rust-analyzer-src": {
@@ -235,6 +236,26 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "wegank": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1666380152,
+        "narHash": "sha256-Uhnkh3FbbxmWmsGeG9MuF99lCpYBsA43E6y+wYzrkA4=",
+        "owner": "wegank",
+        "repo": "nur-packages",
+        "rev": "f2525c754dd627fe4a83d77c49dd0528dba72e35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wegank",
+        "repo": "nur-packages",
         "type": "github"
       }
     },

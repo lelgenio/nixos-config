@@ -114,10 +114,15 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      substituters = [ "https://hyprland.cachix.org" "https://lelgenio.cachix.org" ];
+      substituters = [
+        "https://hyprland.cachix.org"
+        "https://lelgenio.cachix.org"
+        "https://wegank.cachix.org"
+      ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "lelgenio.cachix.org-1:W8tMlmDFLU/V+6DlChXjekxoHZpjgVHZpmusC4cueBc="
+        "wegank.cachix.org-1:xHignps7GtkPP/gYK5LvA/6UFyz98+sgaxBSy7qK0Vs="
       ];
     };
     package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
