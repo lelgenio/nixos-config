@@ -19,6 +19,7 @@ in {
     ./mangohud.nix
     ./rnnoise.nix
     ./mimeapps.nix
+    ./chat.nix
     inputs.hyprland.homeManagerModules.default
   ];
   # Home Manager needs a bit of information about you and the
@@ -62,7 +63,6 @@ in {
     # steam # It's enabled in the system config
 
     ## chat
-    tdesktop
     thunderbird
     # discord # I'm using webcord, see home.activation
 
@@ -141,12 +141,7 @@ in {
     in "${preview_opts} ${color_opts}";
   };
   programs.bash = { enable = true; };
-  home.activation = {
-    install_flatpaks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      $DRY_RUN_CMD flatpak $VERBOSE_ARG remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
-      $DRY_RUN_CMD flatpak $VERBOSE_ARG install -y flathub io.github.spacingbat3.webcord || true
-    '';
-  };
+
   services.kdeconnect = {
     enable = true;
     indicator = true;
@@ -191,32 +186,6 @@ in {
   services.syncthing = {
     enable = true;
     tray.enable = true;
-  };
-  systemd.user.services = {
-    discord = {
-      Unit = {
-        Description = "Discord Internet voice chat";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "/usr/bin/env flatpak run io.github.spacingbat3.webcord";
-        Restart = "on-failure";
-      };
-      Install = { WantedBy = [ "sway-session.target" ]; };
-    };
-    telegram = {
-      Unit = {
-        Description = "Telegram Internet chat";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.tdesktop}/bin/telegram-desktop";
-        Restart = "on-failure";
-      };
-      Install = { WantedBy = [ "sway-session.target" ]; };
-    };
   };
   # My bemenu wrapper
   xdg.configFile = {
