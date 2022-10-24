@@ -12,6 +12,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.kernel.sysctl = {
     "vm.max_map_count" = 1048576; # Needed by DayZ
   };
