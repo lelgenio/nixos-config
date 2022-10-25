@@ -14,13 +14,17 @@ in {
         if not test -f "$HOME/.ssh/id_rsa"
           echo "SSH keys not yet setup"
         end
-        if not rustc --version &> /dev/null
+        if not command -qs rustc; or not rustc --version &> /dev/null
           rustup default stable &>/dev/null &
         end
+        set_color normal
 
         bind \cy 'commandline | wl-copy -n'
       '';
-      shellAliases = { rm = "trash"; };
+      shellAliases = {
+        rm = "trash";
+        tree = "exa -T";
+      };
       shellAbbrs = {
         v = "kak";
         ns = "nix develop --command $SHELL";
