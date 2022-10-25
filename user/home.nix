@@ -23,6 +23,7 @@ in {
     ./syncthing.nix
     ./bmenu.nix
     ./fzf.nix
+    ./ranger
     inputs.hyprland.homeManagerModules.default
   ];
   # Home Manager needs a bit of information about you and the

@@ -24,6 +24,9 @@
     ranger-sixel.url = "github:remi6397/ranger/feature/sixel";
     ranger-sixel.flake = false;
 
+    ranger-icons.url = "github:alexanderjeurissen/ranger_devicons";
+    ranger-icons.flake = false;
+
     material-wifi-icons.url = "github:dcousens/material-wifi-icons";
     material-wifi-icons.flake = false;
 

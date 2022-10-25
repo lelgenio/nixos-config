@@ -191,6 +191,22 @@
         "type": "github"
       }
     },
+    "ranger-icons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653224349,
+        "narHash": "sha256-YT7YFiTA2XtIoVzaVjUWMu6j4Nwo4iGzvOtjjWva/80=",
+        "owner": "alexanderjeurissen",
+        "repo": "ranger_devicons",
+        "rev": "49fe4753c89615a32f14b2f4c78bbd02ee76be3c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexanderjeurissen",
+        "repo": "ranger_devicons",
+        "type": "github"
+      }
+    },
     "ranger-sixel": {
       "flake": false,
       "locked": {
@@ -218,6 +234,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
+        "ranger-icons": "ranger-icons",
         "ranger-sixel": "ranger-sixel",
         "wegank": "wegank"
       }
