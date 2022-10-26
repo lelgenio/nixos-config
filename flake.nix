@@ -44,7 +44,6 @@
       common_modules = [
         ./system/configuration.nix
         ./system/sway.nix
-        ./system/gitlab-runner.nix
         # nur.nixosModules.nur
         inputs.hyprland.nixosModules.default
         {
@@ -71,7 +70,10 @@
         };
         monolith = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/monolith.nix ] ++ common_modules;
+          modules = [
+            ./hosts/monolith.nix
+            ./system/gitlab-runner.nix
+          ] ++ common_modules;
         };
         rainbow = lib.nixosSystem {
           inherit system;
