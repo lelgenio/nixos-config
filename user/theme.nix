@@ -14,7 +14,7 @@ in {
     enable = true;
     font = {
       name = font.interface;
-      size = font.size.medium;
+      size = font.size.small;
     };
     theme = {
       name = gtk_theme;
