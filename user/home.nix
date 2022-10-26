@@ -24,6 +24,7 @@ in {
     ./bmenu.nix
     ./fzf.nix
     ./ranger
+    ./theme.nix
     inputs.hyprland.homeManagerModules.default
   ];
   # Home Manager needs a bit of information about you and the
@@ -76,13 +77,6 @@ in {
     libsForQt5.qtstyleplugins
     qt5.qtsvg
 
-    ## fonts
-    liberation_ttf
-    hack-font
-    font-awesome_5
-    fira-code
-    nerdfonts_fira_hack
-    material-wifi-icons
 
     ## Network
     speedtest-cli
@@ -124,7 +118,6 @@ in {
   ];
 
   home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "gtk3";
     VOLUME_CHANGE_SOUND =
       "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
   };
@@ -148,29 +141,6 @@ in {
       filesystem_charset    "UTF-8"
     '';
   };
-  home.pointerCursor = {
-    name = "capitaine-cursors";
-    size = 32;
-    package = pkgs.capitaine-cursors;
-    gtk.enable = true;
-  };
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Orchis-Red-Dark-Compact";
-      package = pkgs.orchis_theme_compact;
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus_red;
-    };
-  };
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "gtk";
-  #   # style.package = pkgs.libsForQt5.qtstyleplugins;
-  #   # style.name = "gtk2";
-  # };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
