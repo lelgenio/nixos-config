@@ -30,7 +30,7 @@ let
         type = "dark";
         bg = "#191919";
         bg_light = "#404040";
-        bg_dark = "#181818";
+        bg_dark = "#141414";
         txt = "#FFFFFF";
         nontxt = "#232323";
         random_range = "[a-f]";
