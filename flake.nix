@@ -73,6 +73,10 @@
           inherit system;
           modules = [ ./hosts/monolith.nix ] ++ common_modules;
         };
+        rainbow = lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/rainbow.nix ] ++ common_modules;
+        };
         pixie = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/pixie.nix ] ++ common_modules ++ [{
