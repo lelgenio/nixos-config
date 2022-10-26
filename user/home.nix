@@ -152,6 +152,7 @@ in {
     name = "capitaine-cursors";
     size = 32;
     package = pkgs.capitaine-cursors;
+    gtk.enable = true;
   };
   gtk = {
     enable = true;
