@@ -57,6 +57,10 @@ in rec {
   color = theme.color;
   accent = accents.red;
 
+  gtk_theme = "Orchis-Red-Dark-Compact";
+  icon_theme = "Papirus-Dark";
+  cursor_theme = "capitaine-cursors";
+
   font = {
     mono = "Hack Nerd Font";
     interface = "Liberation Sans";

@@ -1,9 +1,5 @@
-{ config, pkgs, lib, inputs, ... }: let
-  font = pkgs.uservars.font;
-  gtk_theme = "Orchis-Red-Dark-Compact";
-  icon_theme = "Papirus-Dark";
-  cursor_theme = "capitaine-cursors";
-in {
+{ config, pkgs, lib, inputs, ... }:
+with pkgs.uservars; {
   home.pointerCursor = {
     name = cursor_theme;
     size = 32;

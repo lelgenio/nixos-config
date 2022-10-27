@@ -9,14 +9,13 @@
     enable = true;
     wlr.enable = true;
     # gtk portal needed to make gtk apps happy
-    # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    # gtkUsePortal = false;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    gtkUsePortal = true;
   };
   services.greetd = let
     greetd_main_script = pkgs.writeShellScriptBin "main" ''
       ${pkgs.dbus-sway-environment}/bin/dbus-sway-environment
-      ${pkgs.configure-gtk}/bin/configure-gtk
-      export XDG_CURRENT_DESKTOP=sway GTK_THEME=Orchis-Red-Dark-Compact
+      export XDG_CURRENT_DESKTOP=sway GTK_THEME="${pkgs.uservars.gtk_theme}" XCURSOR_THEME="${pkgs.uservars.cursor_theme}"
       ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway
       swaymsg exit
     '';
@@ -56,5 +55,10 @@
     wayland
     pkgs.xdg-desktop-portal
     pkgs.xdg-desktop-portal-wlr
+
+    ## Theme
+    capitaine-cursors
+    orchis_theme_compact
+    papirus_red
   ];
 }
