@@ -13,7 +13,7 @@ in {
         modules-right = [
           "sway/language"
           "mpd"
-          "tray"
+          # "tray"
           "custom/caffeine"
           "pulseaudio"
           "network"
