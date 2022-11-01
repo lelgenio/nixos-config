@@ -55,6 +55,7 @@ in {
     };
     programs.zoxide.enable = true;
     programs.direnv.enable = true;
+    programs.direnv.nix-direnv.enable = true;
     home.file = {
       ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
     };
