@@ -17,4 +17,5 @@
       };
     };
   };
+  systemd.services.gitlab-runner.serviceConfig.Nice = 10;
 }
