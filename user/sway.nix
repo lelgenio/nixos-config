@@ -408,6 +408,8 @@ in {
       wl-clipboard
       wtype
 
+      swappy
+
       mpvpaper
     ];
     systemd.user.services = {
