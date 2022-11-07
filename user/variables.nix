@@ -96,4 +96,5 @@ in rec {
   };
 
   dmenu = "bmenu";
+  desktop = "sway";
 }

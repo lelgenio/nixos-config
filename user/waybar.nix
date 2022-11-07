@@ -102,7 +102,8 @@ in {
           format-bluetooth-muted = "";
           format-muted = "ﱝ";
           format-icons = {
-            "alsa_output.pci-0000_09_00.4.analog-stereo" = [ " 奄" " 奔" " 墳" ];
+            "alsa_output.pci-0000_09_00.4.analog-stereo" =
+              [ " 奄" " 奔" " 墳" ];
 
             headphone = [ " 奄" " 奔" " 墳" ];
             handsfree = "";

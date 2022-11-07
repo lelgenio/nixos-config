@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
-let
-  cfg = config.packages.media-packages;
+let cfg = config.packages.media-packages;
 in {
   options.packages.media-packages = {
     enable = lib.mkEnableOption "media packages";

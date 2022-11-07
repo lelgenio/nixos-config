@@ -4,33 +4,33 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/mapper/pixie";
-      fsType = "btrfs";
-      options = [ "subvol=nixos" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/mapper/pixie";
+    fsType = "btrfs";
+    options = [ "subvol=nixos" ];
+  };
 
-  boot.initrd.luks.devices."pixie".device = "/dev/disk/by-uuid/f4ae5858-d2d6-4cd1-a054-bf5147a9a928";
+  boot.initrd.luks.devices."pixie".device =
+    "/dev/disk/by-uuid/f4ae5858-d2d6-4cd1-a054-bf5147a9a928";
 
-  fileSystems."/home" =
-    { device = "/dev/mapper/pixie";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/mapper/pixie";
+    fsType = "btrfs";
+    options = [ "subvol=home" ];
+  };
 
-  fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/B1BB-15DD";
-      fsType = "vfat";
-    };
+  fileSystems."/boot/efi" = {
+    device = "/dev/disk/by-uuid/B1BB-15DD";
+    fsType = "vfat";
+  };
 
   swapDevices = [ ];
 
@@ -45,7 +45,8 @@
   # networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.veth74f3ffc.useDHCP = lib.mkDefault true;
 
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   networking.hostName = "pixie"; # Define your hostname.
 }

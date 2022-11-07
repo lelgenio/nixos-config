@@ -1,5 +1,5 @@
 { config, pkgs, lib, inputs, ... }:
-let inherit (import ./variables.nix) key theme color accent font;
+let inherit (import ./variables.nix) key theme color accent font desktop;
 
 in {
   imports = [
@@ -8,7 +8,6 @@ in {
     ./kakoune.nix
     ./fish.nix
     ./firefox.nix
-    ./sway.nix
     ./hyprland.nix
     ./alacritty.nix
     ./git.nix
@@ -24,9 +23,9 @@ in {
     ./bmenu.nix
     ./fzf.nix
     ./ranger
-    ./theme.nix
     inputs.hyprland.homeManagerModules.default
-  ];
+  ] ++ lib.optional (desktop == "sway") ./sway.nix;
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "lelgenio";
@@ -77,13 +76,11 @@ in {
     libsForQt5.qtstyleplugins
     qt5.qtsvg
 
-
     ## Network
     speedtest-cli
     nmap
     miniupnpc
     deluge
-
 
     ## Programming
     vscode

@@ -29,9 +29,7 @@ in {
     };
   };
 
-  home.packages = with pkgs; [
-    tdesktop
-  ];
+  home.packages = with pkgs; [ tdesktop ];
 
   home.activation = {
     install_flatpaks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

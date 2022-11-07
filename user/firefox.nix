@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (import ./variables.nix) key theme color accent font;
+let inherit (import ./variables.nix) desktop;
 in {
   config = {
     programs.firefox = {
@@ -16,23 +16,21 @@ in {
         main = {
           isDefault = true;
           settings = {
-            "devtools.theme" = "dark";
+            "devtools.theme" = "auto";
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            "browser.tabs.inTitlebar" = 0;
+            "browser.tabs.inTitlebar" = if desktop == "sway" then 0 else 1;
 
             "media.ffmpeg.vaapi.enabled" = true;
-            "media.ffvpx.enabled" = false;
-            "media.av1.enabled" = false;
+            "media.ffvpx.enabled" = true;
+            "media.av1.enabled" = true;
             "gfx.webrender.all" = true;
           };
-          userChrome = ''
+          userChrome = lib.mkIf (desktop == "sway") ''
             #titlebar { display: none !important; }
           '';
         };
       };
     };
-    home.sessionVariables = {
-      MOZ_ENABLE_WAYLAND = "1";
-    };
+    home.sessionVariables = { MOZ_ENABLE_WAYLAND = "1"; };
   };
 }

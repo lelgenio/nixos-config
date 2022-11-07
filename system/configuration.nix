@@ -2,9 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, ... }: {
-  imports = [
-    ./media-packages.nix
-  ];
+  imports = [ ./media-packages.nix ];
   packages.media-packages.enable = true;
 
   # Bootloader.
@@ -31,12 +29,12 @@
   time.timeZone = "America/Sao_Paulo";
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.utf8";
-  # Enable the X11 windowing system.
-  services.xserver.enable = false;
+
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
   # services.xserver.displayManager.autologin.user = "lelgenio";
+
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -53,7 +51,7 @@
 
   ## Enable sound with pipewire.
   sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     wireplumber.enable = true;

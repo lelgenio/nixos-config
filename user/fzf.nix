@@ -1,5 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
-let inherit (import ./variables.nix) key theme color accent font;
+let
+  inherit (import ./variables.nix) key theme color accent font;
 
   colors = {
     "bg+" = color.bg_light;
@@ -21,14 +22,13 @@ in {
     enable = true;
 
     fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
-    fileWidgetOptions = [ "--preview '${pkgs.bat}/bin/bat --style=numbers --color=always {}'" ];
+    fileWidgetOptions =
+      [ "--preview '${pkgs.bat}/bin/bat --style=numbers --color=always {}'" ];
 
     changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
-    changeDirWidgetOptions = [ "--preview '${pkgs.exa}/bin/exa -T L3 | head -200'" ];
+    changeDirWidgetOptions =
+      [ "--preview '${pkgs.exa}/bin/exa -T L3 | head -200'" ];
 
-    defaultOptions = [
-      color_opts
-      preview_opts
-    ];
+    defaultOptions = [ color_opts preview_opts ];
   };
 }

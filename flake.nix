@@ -35,6 +35,7 @@
   };
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let
+      inherit (import ./user/variables.nix) desktop;
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -43,14 +44,13 @@
       lib = nixpkgs.lib;
       common_modules = [
         ./system/configuration.nix
-        ./system/sway.nix
         # nur.nixosModules.nur
         inputs.hyprland.nixosModules.default
         {
           programs.hyprland.enable = true;
           # programs.hyprland.package = null;
         }
-        (import ./overlays (inputs // {inherit system;}))
+        (import ./overlays (inputs // { inherit system; }))
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -61,7 +61,8 @@
           # arguments to home.nix
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
-      ];
+      ] ++ lib.optional (desktop == "sway") ./system/sway.nix
+        ++ lib.optional (desktop == "gnome") ./system/gnome.nix;
     in {
       nixosConfigurations = {
         i15 = lib.nixosSystem {
@@ -70,10 +71,8 @@
         };
         monolith = lib.nixosSystem {
           inherit system;
-          modules = [
-            ./hosts/monolith.nix
-            ./system/gitlab-runner.nix
-          ] ++ common_modules;
+          modules = [ ./hosts/monolith.nix ./system/gitlab-runner.nix ]
+            ++ common_modules;
         };
         rainbow = lib.nixosSystem {
           inherit system;

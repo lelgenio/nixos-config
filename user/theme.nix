@@ -34,7 +34,7 @@ with pkgs.uservars; {
       [Appearance]
       # color_scheme_path=/nix/store/f07mk0vrm47jxw3y5v99hxncy0w4vcyq-qt5ct-1.5/share/qt5ct/colors/darker.conf
       custom_palette=false
-      icon_theme=${ icon_theme }
+      icon_theme=${icon_theme}
       standard_dialogs=default
       style=kvantum-dark
 
@@ -46,18 +46,16 @@ with pkgs.uservars; {
   services.xsettingsd = {
     enable = true;
     settings = {
-      "Gtk/FontName" = "${ font.interface } ${toString font.size.small }";
-      "Net/ThemeName" = "${ gtk_theme }";
-      "Net/IconThemeName" = "${ icon_theme }";
-      "Gtk/CursorThemeName" = "${ cursor_theme }";
+      "Gtk/FontName" = "${font.interface} ${toString font.size.small}";
+      "Net/ThemeName" = "${gtk_theme}";
+      "Net/IconThemeName" = "${icon_theme}";
+      "Gtk/CursorThemeName" = "${cursor_theme}";
       "Gtk/CursorThemeSize" = 24;
-      "Net/SoundThemeName" = "freedesktop" ;
+      "Net/SoundThemeName" = "freedesktop";
     };
   };
 
-  home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-  };
+  home.sessionVariables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
   home.packages = with pkgs; [
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum

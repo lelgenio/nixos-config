@@ -25,6 +25,7 @@ let
     fi
   '';
 in {
+  imports = [ ./theme.nix ];
   config = {
     wayland.windowManager.sway = let
       mod = "Mod4";
