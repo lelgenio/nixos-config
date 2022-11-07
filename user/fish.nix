@@ -8,7 +8,7 @@ in {
         set -g __accent_color "${accent.color}"
         alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
         set_color red
-        if not test -d "$HOME/.password-store/"
+        if not test -d "$PASSWORD_STORE_DIR"
           echo "Password Store not yet setup"
         end
         if not test -f "$HOME/.ssh/id_rsa"

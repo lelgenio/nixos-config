@@ -23,6 +23,7 @@ in {
     ./bmenu.nix
     ./fzf.nix
     ./ranger
+    ./pass.nix
     inputs.hyprland.homeManagerModules.default
   ] ++ lib.optional (desktop == "sway") ./sway.nix;
 
@@ -56,15 +57,11 @@ in {
     ripgrep
     translate-shell
 
-    (xfce.thunar.override { thunarPlugins = with pkgs.xfce; [
-      thunar-volman
-      thunar-archive-plugin
-    ];})
+    (xfce.thunar.override {
+      thunarPlugins = with pkgs.xfce; [ thunar-volman thunar-archive-plugin ];
+    })
     mate.engrampa
     # gnome.nautilus
-    pass
-    wpass
-    _gpg-unlock
 
     ## games
     # lutris-unwrapped
