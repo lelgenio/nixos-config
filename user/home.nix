@@ -56,7 +56,11 @@ in {
     ripgrep
     translate-shell
 
-    xfce.thunar
+    (xfce.thunar.override { thunarPlugins = with pkgs.xfce; [
+      thunar-volman
+      thunar-archive-plugin
+    ];})
+    mate.engrampa
     # gnome.nautilus
     pass
     wpass
