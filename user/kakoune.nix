@@ -128,6 +128,7 @@ in {
       bmenu
       kak-lsp
       kak-pager
+      kak-man-pager
     ];
     home.sessionVariables = {
       EDITOR = "kak";

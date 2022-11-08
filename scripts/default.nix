@@ -23,6 +23,7 @@
     bmenu = [ bemenu final.dhist fish j4-dmenu-desktop jq sway ];
     _diffr = [ diffr ];
     kak-pager = [ fish final._diffr ];
+    kak-man-pager = [ final.kak-pager ];
     terminal = [ alacritty ];
     wpass = [ final.wdmenu fd pass sd wl-clipboard wtype ];
     screenshotsh =

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+col -b -x |
+kak -e '
+    map global normal q :q<ret>;
+    set buffer filetype man;
+    rmhl global/number-lines;
+    set global scrolloff 10,0
+'
