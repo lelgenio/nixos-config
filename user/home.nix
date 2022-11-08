@@ -109,6 +109,7 @@ in {
     cargo-sweep
     pkgs.unstable.rust-analyzer
     gcc
+    rnix-lsp
     nixfmt
 
     trunk
