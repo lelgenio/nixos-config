@@ -305,10 +305,16 @@ in {
           resumeCommand = ''swaymsg "output * dpms on"'';
         }
       ];
-      events = [{
-        event = "before-sleep";
-        command = "swaylock -f";
-      }];
+      events = [
+        {
+          event = "before-sleep";
+          command = "swaylock -f";
+        }
+        {
+          event = "after-resume";
+          command = ''swaymsg "output * dpms on"'';
+        }
+      ];
     };
     xdg.configFile."swaylock/config".text = ''
       image=${theme.background}
