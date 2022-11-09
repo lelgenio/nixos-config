@@ -26,6 +26,7 @@ in {
         tree = "exa -T";
       };
       shellAbbrs = {
+        off = "shutdown now";
         v = "kak";
         ns = "nix develop --command $SHELL";
         # system
