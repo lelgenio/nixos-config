@@ -48,7 +48,13 @@
   programs.firejail.enable = true;
 
   security.rtkit.enable = true;
-  services.sshd.enable = true;
+  services.openssh = {
+    enable = true;
+    kbdInteractiveAuthentication = false;
+    passwordAuthentication = false;
+    permitRootLogin = "no";
+    ports = [ 9022 ];
+  };
 
   ## Enable sound with pipewire.
   sound.enable = true;
