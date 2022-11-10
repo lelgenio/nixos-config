@@ -45,6 +45,7 @@
   # services.printing.enable = true;
   services.flatpak.enable = true;
   virtualisation.docker.enable = true;
+  programs.firejail.enable = true;
 
   security.rtkit.enable = true;
   services.sshd.enable = true;
