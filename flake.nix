@@ -30,6 +30,8 @@
     material-wifi-icons.url = "github:dcousens/material-wifi-icons";
     material-wifi-icons.flake = false;
 
+    sea-orm-cli.url = "github:lucperkins/nixpkgs/lperkins/sea-orm-cli";
+
     # my stuff
     dhist.url = "github:lelgenio/dhist";
   };

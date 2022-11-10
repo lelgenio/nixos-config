@@ -236,6 +236,7 @@
         "nur": "nur",
         "ranger-icons": "ranger-icons",
         "ranger-sixel": "ranger-sixel",
+        "sea-orm-cli": "sea-orm-cli",
         "wegank": "wegank"
       }
     },
@@ -253,6 +254,22 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "sea-orm-cli": {
+      "locked": {
+        "lastModified": 1659947860,
+        "narHash": "sha256-4ITn+Y73w4JQER2G66zhoXqaI2WYWMKmZfyDArODR7I=",
+        "owner": "lucperkins",
+        "repo": "nixpkgs",
+        "rev": "25e9cf3d503b3447b141fb70619e21495869918c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lucperkins",
+        "ref": "lperkins/sea-orm-cli",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },

@@ -114,6 +114,7 @@ in {
 
     trunk
     wasm-bindgen-cli
+    sea-orm-cli
     sqlx-cli
   ];
 
