@@ -101,6 +101,8 @@ in {
     nodePackages.less-plugin-clean-css
     nodePackages.uglify-js
 
+    flow # js lsp server
+
     # cargo
     cargo-edit
     cargo-feature
