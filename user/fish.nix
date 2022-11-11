@@ -5,6 +5,8 @@ in {
     programs.fish = {
       enable = true;
       interactiveShellInit = ''
+        set -U fish_features stderr-nocaret qmark-noglob regex-easyesc ampersand-nobg-in-token
+
         set -g __accent_color "${accent.color}"
         alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
         set_color red
