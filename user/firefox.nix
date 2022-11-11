@@ -5,13 +5,13 @@ in {
     programs.firefox = {
       enable = true;
       package = pkgs.firefox;
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        darkreader
-        ublock-origin
-        tree-style-tab
-        sponsorblock
-        duckduckgo-privacy-essentials
-      ];
+      # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+      #   darkreader
+      #   ublock-origin
+      #   tree-style-tab
+      #   sponsorblock
+      #   duckduckgo-privacy-essentials
+      # ];
       profiles = {
         main = {
           isDefault = true;
