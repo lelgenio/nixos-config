@@ -1,3 +1,10 @@
 #!/usr/bin/env bash
 
-sudo nixos-rebuild switch --print-build-logs --flake .# $@
+sudo nice ionice \
+    nixos-rebuild \
+    switch \
+    --verbose \
+    --show-trace \
+    --print-build-logs \
+    --flake .# \
+    $@
