@@ -15,6 +15,7 @@
     ./mpv.nix
     ./mangohud.nix
     ./rnnoise.nix
+    ./rtp-sink.nix
     ./mimeapps.nix
     ./chat.nix
     ./email.nix
