@@ -67,6 +67,22 @@
     jack.enable = true;
   };
 
+  services.blueman.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.bluezFull;
+    settings = {
+      General = {
+        DiscoverableTimeout = 0;
+        # Discoverable = true;
+        AlwaysPairable = true;
+      };
+      Policy = {
+        AutoEnable = true;
+      };
+    };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
@@ -74,7 +90,7 @@
   users.users.lelgenio = {
     isNormalUser = true;
     description = "Leonardo Eugênio";
-    extraGroups = [ "networkmanager" "wheel" "docker" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "adbusers" "bluetooth" ];
     shell = pkgs.fish;
   };
   # services.getty.autologinUser = "lelgenio";
