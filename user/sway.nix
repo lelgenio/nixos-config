@@ -263,6 +263,7 @@ in {
             "${mod}+c" = "exec ${color_picker}";
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+Ctrl+Return" = "exec thunar";
+            "${mod}+Ctrl+v" = "exec wl-paste | tesseract -l por - - | wl-copy";
             "${mod}+x" = "kill";
             "${mod}+m" = "mode audio";
             "${mod}+escape" =
@@ -416,6 +417,7 @@ in {
       wtype
 
       swappy
+      tesseract5
 
       mpvpaper
     ];
