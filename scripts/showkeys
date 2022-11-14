@@ -1,0 +1,10 @@
+#!/bin/sh
+
+pidof wshowkeys && pkill wshowkeys ||
+exec wshowkeys \
+    -a bottom -a right \
+    -F 'Inter 20' \
+    -b 202020AA \
+    -s DD5050 \
+    -t 1 \
+    -m 100

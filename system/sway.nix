@@ -9,6 +9,7 @@
     wrapperFeatures.gtk = true;
   };
   services.dbus.enable = true;
+  programs.wshowkeys.enable = true;
   xdg.portal = {
     enable = true;
     wlr.enable = true;

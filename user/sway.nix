@@ -265,6 +265,7 @@ in {
             "${mod}+Ctrl+Return" = "exec thunar";
             "${mod}+Shift+s" = "exec grim - | swappy -f -";
             "${mod}+Ctrl+v" = "exec wl-paste | tesseract -l por - - | wl-copy";
+            "${mod}+k" = "exec showkeys";
             "${mod}+x" = "kill";
             "${mod}+m" = "mode audio";
             "${mod}+escape" =
@@ -409,6 +410,7 @@ in {
       wdmenu
       wlauncher
       volumesh
+      showkeys
       pamixer
       libnotify
       xdg-utils

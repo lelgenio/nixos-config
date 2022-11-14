@@ -24,6 +24,7 @@
     _diffr = [ diffr ];
     kak-pager = [ fish final._diffr ];
     kak-man-pager = [ final.kak-pager ];
+    showkeys = [ ]; # This will not work unless programs.wshowkeys is enabled systemwide
     terminal = [ alacritty ];
     wpass = [ final.wdmenu fd pass sd wl-clipboard wtype ];
     screenshotsh =
