@@ -77,7 +77,7 @@
         };
         monolith = lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./hosts/monolith.nix ./system/gitlab-runner.nix ]
+          modules = [ ./hosts/monolith.nix ./system/gitlab-runner.nix ./system/btusb-kernel-patches.nix ]
             ++ common_modules;
         };
         rainbow = lib.nixosSystem {
