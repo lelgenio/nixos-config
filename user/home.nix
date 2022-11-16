@@ -81,6 +81,7 @@ in {
     ## Network
     speedtest-cli
     nmap
+    httpie
     miniupnpc
     deluge
 
