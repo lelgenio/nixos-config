@@ -56,9 +56,13 @@ in {
       };
       functions = { fish_greeting = ""; };
     };
-    programs.zoxide.enable = true;
-    programs.direnv.enable = true;
-    programs.direnv.nix-direnv.enable = true;
+    programs = {
+      zoxide.enable = true;
+      exa.enable = true;
+      exa.enableAliases = true;
+      direnv.enable = true;
+      direnv.nix-direnv.enable = true;
+    };
     home.file = {
       ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
     };
