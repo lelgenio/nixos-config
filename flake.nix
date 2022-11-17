@@ -44,6 +44,7 @@
         config = { allowUnfree = true; };
       };
       lib = nixpkgs.lib;
+      specialArgs = { inherit inputs; };
       common_modules = [
         ./system/configuration.nix
         # nur.nixosModules.nur
@@ -68,20 +69,20 @@
     in {
       nixosConfigurations = {
         i15 = lib.nixosSystem {
-          inherit system;
+          inherit system specialArgs;
           modules = [ ./hosts/i15.nix ] ++ common_modules;
         };
         monolith = lib.nixosSystem {
-          inherit system;
+          inherit system specialArgs;
           modules = [ ./hosts/monolith.nix ./system/gitlab-runner.nix ]
             ++ common_modules;
         };
         rainbow = lib.nixosSystem {
-          inherit system;
+          inherit system specialArgs;
           modules = [ ./hosts/rainbow.nix ] ++ common_modules;
         };
         pixie = lib.nixosSystem {
-          inherit system;
+          inherit system specialArgs;
           modules = [ ./hosts/pixie.nix ] ++ common_modules ++ [{
             packages.media-packages.enable = lib.mkOverride 0 false;
             programs.steam.enable = lib.mkOverride 0 false;
