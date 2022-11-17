@@ -4,7 +4,7 @@ _: {
       enable = true;
       config = {
         # ytdl-format='best';
-        ytdl_path = "yt-dlp";
+        # ytdl_path = "yt-dlp";
         ytdl-format = "bestvideo[height<=1080][vcodec!=vp9]+bestaudio/best";
         ytdl-raw-options =
           "cookies=~/.cache/cookies-youtube-com.txt,mark-watched=";
