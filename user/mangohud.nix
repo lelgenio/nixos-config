@@ -6,6 +6,7 @@ in {
       enable = true;
       enableSessionWide = true;
       settings = {
+        no_display = true;
         toggle_fps_limit = "F1";
 
         legacy_layout = "false";
@@ -55,6 +56,9 @@ in {
         toggle_logging = "Shift_L+F12";
         output_folder = "/home/lelgenio";
       };
+    };
+    home.sessionVariables = {
+      MANGOHUD_DLSYM = 1;
     };
   };
 }
