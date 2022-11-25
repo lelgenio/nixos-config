@@ -32,6 +32,9 @@
 
     sea-orm-cli.url = "github:lucperkins/nixpkgs/lperkins/sea-orm-cli";
 
+    nil-lsp.url = "github:oxalica/nil";
+    nil-lsp.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     # my stuff
     dhist.url = "github:lelgenio/dhist";
   };

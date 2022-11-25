@@ -108,7 +108,7 @@ command = "nimlsp"
 [language.nix]
 filetypes = ["nix"]
 roots = ["flake.nix", "shell.nix", ".git"]
-command = "rnix-lsp"
+command = "nil"
 
 [language.ocaml]
 filetypes = ["ocaml"]

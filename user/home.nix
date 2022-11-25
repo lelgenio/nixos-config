@@ -103,6 +103,7 @@ in {
     nodePackages.uglify-js
 
     flow # js lsp server
+    nil-lsp # nix lsp server
 
     # cargo
     cargo-edit
