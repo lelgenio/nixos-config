@@ -63,7 +63,15 @@ in {
           unfocused = client bg_color bg_color fg_color bg_color bg_color;
           urgent = client alert alert fg_color alert alert;
         };
-        output = { "*" = { bg = "${theme.background} fill"; }; };
+        output = {
+          "*" = {
+            adaptive_sync = "on";
+            bg = "${theme.background} fill";
+          };
+          "DP-1" = {
+            mode = "1920x1080@144.000Hz";
+          };
+        };
         fonts = {
           names = [ font.interface ];
           size = font.size.medium * 1.0;
