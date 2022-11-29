@@ -2,7 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, inputs, ... }: {
-  imports = [ ./media-packages.nix ];
+  imports = [
+    ./gamemode.nix
+    ./media-packages.nix
+  ];
   packages.media-packages.enable = true;
 
   # Bootloader.
