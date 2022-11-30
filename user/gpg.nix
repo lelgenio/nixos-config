@@ -28,9 +28,10 @@
         };
         Timer = {
           OnBootSec = "0";
-          OnUnitActiveSec = "30";
+          OnUnitActiveSec = "300";
           Unit = "gpg_unlock.service";
         };
+        Install = { WantedBy = [ "sway-session.target" ]; };
       };
     };
 

@@ -2,7 +2,7 @@
 pkgs.writeShellScriptBin "_gpg-unlock" ''
   ${pkgs.gnupg}/bin/gpg-connect-agent reloadagent /bye
 
-  set -xe
+  set -e
 
   test -f "$HOME/.config/.preset-password" || {
     notify-send "No preset password found"
