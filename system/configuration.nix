@@ -4,6 +4,7 @@
 { config, pkgs, inputs, ... }: {
   imports = [
     ./gamemode.nix
+    ./cachix.nix
     ./media-packages.nix
   ];
   packages.media-packages.enable = true;
