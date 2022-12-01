@@ -1,7 +1,13 @@
 set global idle_timeout 500
 
-hook global NormalIdle .* %{ try %{
-    palette-status
+hook global NormalIdle .* %{ evaluate-commands %sh{
+    hex_with_size() {
+        for i in  3 4 6 8; do
+            printf "[0-9a-f]{$i}|"
+        done
+    }
+    echo "$kak_selection" | grep -P "^#?($(hex_with_size))$" > /dev/null &&
+    echo 'palette-status'
 } }
 
 define-command -hidden -override git-try-show-diff %{
