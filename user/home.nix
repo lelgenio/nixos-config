@@ -3,6 +3,7 @@ let inherit (import ./variables.nix) key theme color accent font desktop;
 
 in {
   imports = [
+    ./controller.nix
     ./waybar.nix
     ./helix.nix
     ./kakoune.nix
