@@ -1,12 +1,26 @@
 #!/bin/sh
-output=$(printf "HDMI\nHeadphones" | wdmenu -i -p "Output:")
+
+list_sinks() {
+    env LC_ALL=C pactl list sinks
+}
+
+desc=$(
+    list_sinks |
+    grep -ie "description:" |
+    cut -d: -f2 |
+    sed 's/^ //g;s/ $//g;' |
+    wdmenu -i -p "Output:"
+)
+device=$(
+    list_sinks |
+    grep -C2 "Description: $desc"|
+    grep Name |
+    cut -d: -f2 |
+    xargs
+)
+
 vol=$(pamixer --get-volume)
-case "$output" in
-    HDMI)
-        pactl set-default-sink alsa_output.pci-0000_07_00.1.hdmi-stereo-extra1
-        ;;
-    Headphones)
-        pactl set-default-sink alsa_output.pci-0000_09_00.4.analog-stereo
-        ;;
-esac
+
+pactl set-default-sink "$device"
+
 pamixer --set-volume "$vol"
