@@ -27,6 +27,11 @@
           propagatedBuildInputs = with prev.python3Packages;
             old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
         }));
+        sway-unwrapped = prev.sway-unwrapped.overrideAttrs (old: {
+          patches = old.patches ++ [
+            ../patches/sway/fix-hide_cursor-clearing-focus.patch
+          ];
+        });
         material-wifi-icons = final.stdenv.mkDerivation rec {
           name = "material-wifi-icons";
           src = inputs.material-wifi-icons;

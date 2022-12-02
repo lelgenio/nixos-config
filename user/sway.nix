@@ -78,7 +78,7 @@ in {
         };
         input."type:touchpad" = {
           # Disable While Typing
-          dwt = "disabled";
+          dwt = "enabled";
           natural_scroll = "enabled";
           tap = "enabled";
         };
