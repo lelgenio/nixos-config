@@ -1,9 +1,9 @@
 { config, pkgs, lib, ... }: {
   boot.kernel.sysctl."net.ipv4.ip_forward" = true;
   virtualisation.docker.enable = true;
-  services.gitlab-runner = with lib; {
+  services.gitlab-runner = {
     enable = true;
-    concurrent = 4;
+    settings.concurrent = 4;
     services = {
       ci_test = {
         registrationConfigFile = "/srv/gitlab-runner/env/ci_test";

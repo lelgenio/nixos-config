@@ -18,7 +18,7 @@
           src = inputs.alacritty-sixel;
           cargoDeps = old-alacritty.cargoDeps.overrideAttrs (prev.lib.const {
             inherit src;
-            outputHash = "sha256-svZ/ySK09m4KVJE5LBLtD7ZEoExGwpFn4UP5tfhGKMc=";
+            outputHash = "sha256-jqjYMVkH32z5EFgafiOYAOc5Q/IYs0jjJeqRb0L6WsY=";
           });
         }));
         ranger = (prev.ranger.overridePythonAttrs (old-ranger: rec {

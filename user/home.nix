@@ -92,7 +92,7 @@ in {
     docker-compose
     gnumake
     mariadb
-    php74
+    # php74
     nodePackages.intelephense
     nodePackages.typescript-language-server
     nodejs
