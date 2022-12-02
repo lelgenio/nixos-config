@@ -412,6 +412,10 @@ in {
       # layer=overlay
     };
     home.packages = with pkgs; [
+      sway
+      swaybg
+      swaylock
+
       waybar
       dhist
       bmenu

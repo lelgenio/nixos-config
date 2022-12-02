@@ -23,7 +23,7 @@ let
   };
   themes = {
     dark = {
-      background = "~/.local/share/backgrounds/assembly_dark.png";
+      background = "~/.local/share/backgrounds/nixos_dark.png";
       opacity = 98;
       opacityHex = "ee";
       color = {
