@@ -1,6 +1,5 @@
 { config, pkgs, lib, inputs, ... }:
-let inherit (import ./variables.nix) key theme color accent font desktop;
-
+let inherit (import ./variables.nix) desktop;
 in {
   imports = [
     ./controller.nix

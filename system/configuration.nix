@@ -2,11 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, inputs, ... }: {
-  imports = [
-    ./gamemode.nix
-    ./cachix.nix
-    ./media-packages.nix
-  ];
+  imports = [ ./gamemode.nix ./cachix.nix ./media-packages.nix ];
   packages.media-packages.enable = true;
 
   # Bootloader.
@@ -81,9 +77,7 @@
         # Discoverable = true;
         AlwaysPairable = true;
       };
-      Policy = {
-        AutoEnable = true;
-      };
+      Policy = { AutoEnable = true; };
     };
   };
 

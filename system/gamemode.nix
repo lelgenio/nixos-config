@@ -2,9 +2,7 @@
   programs.gamemode.enable = true;
   programs.gamemode.enableRenice = true;
   programs.gamemode.settings = {
-    general = {
-      renice = 10;
-    };
+    general = { renice = 10; };
 
     # Warning: GPU optimisations have the potential to damage hardware
     gpu = {

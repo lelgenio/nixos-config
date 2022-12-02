@@ -5,10 +5,6 @@
       pass-secret-service.enable = true;
       password-store-sync.enable = true;
     };
-    home.packages = with pkgs; [
-      pass
-      wpass
-      _gpg-unlock
-    ];
+    home.packages = with pkgs; [ pass wpass _gpg-unlock ];
   };
 }

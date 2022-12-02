@@ -11,7 +11,8 @@
         uservars = import ../user/variables.nix;
         dhist = inputs.dhist.packages.${system}.dhist;
         mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
-        sea-orm-cli = inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;
+        sea-orm-cli =
+          inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;
         nil-lsp = inputs.nil-lsp.packages.${prev.system}.nil;
         alacritty = (prev.unstable.alacritty.overrideAttrs (old-alacritty: rec {
           src = inputs.alacritty-sixel;
