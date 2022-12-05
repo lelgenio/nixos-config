@@ -18,7 +18,7 @@ let
     systemctl suspend
   '';
   _sway_idle_toggle = pkgs.writeShellScriptBin "_sway_idle_toggle" ''
-    if pidof swayidle > /dev/null; then
+    if systemctl --user status swayidle > /dev/null; then
         systemctl --user stop swayidle.service
     else
         systemctl --user start swayidle.service

@@ -88,7 +88,7 @@ in {
         "sway/language" = { format = "{short} {variant}"; };
         "custom/caffeine" = {
           format = "{}";
-          exec = "pidof swayidle > /dev/null && echo 鈴 || echo ";
+          exec = "systemctl --user status swayidle > /dev/null && echo 鈴 || echo ";
           on-click = "_sway_idle_toggle";
           interval = 1;
           tooltip = false;
