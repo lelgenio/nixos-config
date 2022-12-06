@@ -15,7 +15,7 @@
   fileSystems."/" = {
     device = "/dev/disk/by-label/ROOT";
     fsType = "btrfs";
-    options = [ "subvol=nixos" ];
+    options = [ "subvol=nixos" "compress=zstd" "noatime" ];
   };
 
   fileSystems."/boot/efi" = {
