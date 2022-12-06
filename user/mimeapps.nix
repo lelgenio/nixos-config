@@ -49,6 +49,9 @@ in {
         settings = { Keywords = "Mail;E-mail;"; };
       };
     };
+    # workaround to allow overriding mimeapps file
+    # btw, whatever it was that decided that damn file should always be written is an asshole
+    xdg.configFile."mimeapps.list".force = true;
     xdg.mimeApps = let
 
       createMimeAssociation = (mime_prefix: application: mime_suffix: {
