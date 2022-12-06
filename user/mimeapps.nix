@@ -39,8 +39,8 @@ in {
         name = "Neomutt";
         genericName = "Email Client";
         comment = "View and Send Emails";
-        exec = "terminal neomutt %U";
-        terminal = false;
+        exec = "neomutt %U";
+        terminal = true;
         type = "Application";
         icon = "mutt";
         categories = [ "Network" "Email" ];

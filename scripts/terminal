@@ -15,6 +15,4 @@ while test $# -gt 0;do
     esac
 done
 
-test $# -gt 0 &&
-    exec alacritty --class "$CLASS" -e $@ ||
-    exec alacritty --class "$CLASS"
+exec alacritty --class "$CLASS" "$@"

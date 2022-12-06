@@ -118,7 +118,7 @@ define-command -override -hidden find_line \
 define-command -override -hidden tree \
 %{ evaluate-commands %sh{
     file=`mktemp`
-    terminal --class file_picker ranger --selectfile="$kak_buffile" --choosefiles="$file"
+    terminal --class file_picker -e ranger --selectfile="$kak_buffile" --choosefiles="$file"
     for line in `cat "$file"`; do
         echo "edit '$line'"
     done

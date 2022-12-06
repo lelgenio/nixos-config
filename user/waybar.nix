@@ -36,7 +36,7 @@ in {
         network = {
           interval = 5;
           tooltip = false;
-          on-click = "terminal iwd";
+          on-click = "terminal -e iwd";
           format-wifi = "{icon}";
           format-icons = [ "" "" "" "" "" ];
           format-ethernet = "";

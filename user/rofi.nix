@@ -43,7 +43,7 @@ in {
         "#listview" = {
           # fixed-height=0;
           border = mkLiteral "2px solid 0px 0px";
-          border-color = mkLiteral "@separatorcolor";
+          # border-color = mkLiteral "@separatorcolor";
           # spacing= 0 ;
         };
 
