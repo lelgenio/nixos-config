@@ -31,6 +31,7 @@
     material-wifi-icons.flake = false;
 
     sea-orm-cli.url = "github:lucperkins/nixpkgs/lperkins/sea-orm-cli";
+    webcord.url = "github:huantianad/nixpkgs/webcord";
 
     nil-lsp.url = "github:oxalica/nil";
     nil-lsp.inputs.nixpkgs.follows = "nixpkgs-unstable";

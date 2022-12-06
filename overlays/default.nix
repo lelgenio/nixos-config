@@ -13,6 +13,8 @@
         mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
         sea-orm-cli =
           inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;
+        webcord =
+          inputs.webcord.legacyPackages.${prev.system}.webcord;
         nil-lsp = inputs.nil-lsp.packages.${prev.system}.nil;
         alacritty = (prev.unstable.alacritty.overrideAttrs (old-alacritty: rec {
           src = inputs.alacritty-sixel;

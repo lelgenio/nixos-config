@@ -1,7 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
-let inherit (import ./variables.nix) key theme color accent font;
-in {
-
+{ config, pkgs, lib, inputs, ... }: {
   systemd.user.services = {
     discord = {
       Unit = {
@@ -10,7 +7,7 @@ in {
         After = [ "graphical-session.target" ];
       };
       Service = {
-        ExecStart = "/usr/bin/env flatpak run io.github.spacingbat3.webcord";
+        ExecStart = "${pkgs.webcord}/bin/webcord";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "sway-session.target" ]; };
@@ -29,13 +26,5 @@ in {
     };
   };
 
-  home.packages = with pkgs; [ tdesktop ];
-
-  home.activation = {
-    install_flatpaks = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      $DRY_RUN_CMD flatpak $VERBOSE_ARG remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
-      $DRY_RUN_CMD flatpak $VERBOSE_ARG install -y flathub io.github.spacingbat3.webcord || true
-    '';
-  };
-
+  home.packages = with pkgs; [ tdesktop webcord ];
 }

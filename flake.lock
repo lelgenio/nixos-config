@@ -276,6 +276,7 @@
         "ranger-icons": "ranger-icons",
         "ranger-sixel": "ranger-sixel",
         "sea-orm-cli": "sea-orm-cli",
+        "webcord": "webcord",
         "wegank": "wegank"
       }
     },
@@ -349,6 +350,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "webcord": {
+      "locked": {
+        "lastModified": 1670198705,
+        "narHash": "sha256-cf+JUnVqSSq3H6dhti927gKwkFvWjEV7aKdi+rSNpRs=",
+        "owner": "huantianad",
+        "repo": "nixpkgs",
+        "rev": "cf38762a26b34f91de025755aea4d72f99b89266",
+        "type": "github"
+      },
+      "original": {
+        "owner": "huantianad",
+        "ref": "webcord",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },

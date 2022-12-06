@@ -70,7 +70,6 @@ in {
 
     ## chat
     thunderbird
-    # discord # I'm using webcord, see home.activation
 
     ## Theming
     orchis_theme_compact
