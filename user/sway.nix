@@ -10,7 +10,7 @@ let
     notify-send "$(wl-paste)" "Copied to clipboard"
   '';
   _lock = pkgs.writeShellScriptBin "_lock" ''
-    swaylock -f
+    ${pkgs.swaylock}/bin/swaylock -f
     systemctl --user start swayidle.service
   '';
   _suspend = pkgs.writeShellScriptBin "_suspend" ''
@@ -307,19 +307,19 @@ in {
       timeouts = [
         {
           timeout = 360;
-          command = "swaylock -f";
+          command = "${pkgs.swaylock}/bin/swaylock -f";
         }
         {
           timeout = 1800;
           command = ''
-            mpc status | grep "^[playing]" > /dev/null || swaymsg "output * dpms off"'';
-          resumeCommand = ''swaymsg "output * dpms on"'';
+            mpc status | grep "^[playing]" > /dev/null || ${pkgs.sway}/bin/swaymsg "output * dpms off"'';
+          resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';
         }
       ];
       events = [
         {
           event = "before-sleep";
-          command = "swaylock -f";
+          command = "${pkgs.swaylock}/bin/swaylock -f";
         }
         {
           event = "after-resume";
