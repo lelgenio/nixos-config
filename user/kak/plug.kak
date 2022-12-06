@@ -76,6 +76,16 @@ plug 'kak-lsp/kak-lsp' do %{
         hook -once -always window WinSetOption filetype=.* %{
             remove-hooks window semantic-tokens
         }
+      decl -hidden -docstring "Timestamp of the last check" int last_modified
+      hook window RawKey .* %{
+          eval %sh{
+              if [ "${kak_opt_last_modified}" != "${kak_timestamp}" ]; then
+                  echo "unset-option buffer lsp_inlay_diagnostics"
+                  echo "unset-option buffer lsp_inlay_hints"
+              fi
+          }
+          set current last_modified %val{timestamp}
+      }
     }
 
     declare-option -hidden str modeline_progress ""
