@@ -4,7 +4,10 @@ in {
   config = {
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi-wayland.override { plugins = [ pkgs.rofi-emoji ]; };
+      package = pkgs.rofi-wayland.override { plugins = with pkgs; [
+        rofi-emoji
+        rofi-file-browser
+      ];};
       extraConfig = {
         show-icons = true;
         modi = "drun,emoji";

@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (import ./variables.nix) key theme color accent font;
+let inherit (import ./variables.nix) key theme color accent font dmenu;
 in {
   config = {
     programs.kakoune = {
@@ -15,7 +15,7 @@ in {
           brown = color.normal.brown;
         };
       in with colors;
-      lib.concatStringsSep "\n" (map (lib.readFile) [
+      lib.concatStringsSep "\n" (map (lib.readFile) ([
         ./kak/filetypes.kak
         ./kak/hooks.kak
         ./kak/indent.kak
@@ -23,7 +23,7 @@ in {
         ./kak/plug.kak
         ./kak/usermode.kak
         ./kak/git-mode.kak
-      ]) + ''
+      ] ++ lib.optional (dmenu == "rofi") ./kak/rofi-commands.kak)) + ''
 
         set global scrolloff 10,20
         set global autoreload yes
