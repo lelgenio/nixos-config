@@ -55,7 +55,7 @@ with pkgs.uservars; {
     };
   };
 
-  home.sessionVariables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
+  home.sessionVariables = { QT_QPA_PLATFORMTHEME = "gtk3"; };
   home.packages = with pkgs; [
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
