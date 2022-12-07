@@ -13,6 +13,7 @@ set global startup_info_version 20200901
 source "%val{config}/rc/plug.kak"
 source "%val{config}/rc/keys.kak"
 source "%val{config}/rc/usermode.kak"
+source "%val{config}/rc/git-mode.kak"
 source "%val{config}/rc/hooks.kak"
 source "%val{config}/rc/filetypes.kak"
 source "%val{config}/rc/indent.kak"

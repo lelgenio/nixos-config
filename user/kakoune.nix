@@ -22,6 +22,7 @@ in {
         ./kak/keys.kak
         ./kak/plug.kak
         ./kak/usermode.kak
+        ./kak/git-mode.kak
       ]) + ''
 
         set global scrolloff 10,20
