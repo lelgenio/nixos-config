@@ -5,13 +5,13 @@ pkgs.writeShellScriptBin "_gpg-unlock" ''
   set -e
 
   test -f "$HOME/.config/.preset-password" || {
-    notify-send "No preset password found"
+    ${pkgs.libnotify}/bin/notify-send "No preset password found"
     exit 0;
   }
 
   get_keygrip() {
     ${pkgs.gnupg}/bin/gpg --list-secret-keys --with-keygrip |
-    awk '
+    ${pkgs.gawk}/bin/awk '
     /^ssb/ {
         ssb=1
     }
@@ -24,7 +24,7 @@ pkgs.writeShellScriptBin "_gpg-unlock" ''
 
   test -n "$keygrip" || exit 0
 
-  cat "$HOME/.config/.preset-password" |
-      base64 -d |
+  ${pkgs.coreutils}/bin/cat "$HOME/.config/.preset-password" |
+      ${pkgs.coreutils}/bin/base64 -d |
       ${pkgs.gnupg}/libexec/gpg-preset-passphrase --preset "$keygrip"
 ''
