@@ -104,6 +104,9 @@ in {
             { class = "Chromium"; }
             { app_id = "chromium"; }
           ];
+          "7" = [
+            { app_id = "thunderbird"; }
+          ];
           "9" = [
             { class = ".*[Ss]team.*"; }
             { app_id = ".*[Ss]team.*"; }
