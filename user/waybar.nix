@@ -72,7 +72,9 @@ in {
           format = "<b>{:%H:%M %a %d/%m}</b>";
           tooltip = false;
         };
-        mpd = {
+        mpd = let
+          mpc = "${pkgs.mpc-cli}/bin/mpc";
+        in {
           format = "{stateIcon} {title} - {artist}";
           format-paused = "{stateIcon}";
           format-stopped = "";
@@ -81,9 +83,9 @@ in {
             playing = "";
           };
           tooltip = false;
-          on-click = "mpc toggle";
-          on-scroll-up = "mpc vol +10";
-          on-scroll-down = "mpc vol -10";
+          on-click = "${mpc} toggle";
+          on-scroll-up = "${mpc} vol +10";
+          on-scroll-down = "${mpc} vol -10";
         };
         "sway/language" = { format = "{short} {variant}"; };
         "custom/caffeine" = {
