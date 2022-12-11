@@ -1,0 +1,44 @@
+diff --git a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/smu_helper.c b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/smu_helper.c
+index bfe80ac0a..5343b8b86 100644
+--- a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/smu_helper.c
++++ b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/smu_helper.c
+@@ -614,7 +614,6 @@ int phm_irq_process(struct amdgpu_device *adev,
+ 			 * Try to do a graceful shutdown to prevent further damage.
+ 			 */
+ 			dev_emerg(adev->dev, "ERROR: System is going to shutdown due to GPU SW CTF!\n");
+-			orderly_poweroff(true);
+ 		} else if (src_id == VISLANDS30_IV_SRCID_CG_TSS_THERMAL_HIGH_TO_LOW)
+ 			dev_emerg(adev->dev, "ERROR: GPU under temperature range detected!\n");
+ 		else if (src_id == VISLANDS30_IV_SRCID_GPIO_19) {
+@@ -633,7 +632,6 @@ int phm_irq_process(struct amdgpu_device *adev,
+ 			 * Try to do a graceful shutdown to prevent further damage.
+ 			 */
+ 			dev_emerg(adev->dev, "ERROR: System is going to shutdown due to GPU SW CTF!\n");
+-			orderly_poweroff(true);
+ 		} else
+ 			dev_emerg(adev->dev, "ERROR: GPU under temperature range detected!\n");
+ 	} else if (client_id == SOC15_IH_CLIENTID_ROM_SMUIO) {
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c b/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
+index 70b560737..11373a474 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/smu11/smu_v11_0.c
+@@ -1444,7 +1444,6 @@ static int smu_v11_0_irq_process(struct amdgpu_device *adev,
+ 			 * Try to do a graceful shutdown to prevent further damage.
+ 			 */
+ 			dev_emerg(adev->dev, "ERROR: System is going to shutdown due to GPU SW CTF!\n");
+-			orderly_poweroff(true);
+ 		break;
+ 		case THM_11_0__SRCID__THM_DIG_THERM_H2L:
+ 			dev_emerg(adev->dev, "ERROR: GPU under temperature range detected\n");
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0.c b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0.c
+index 89f0f6eb1..99024cfec 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0.c
+@@ -1386,7 +1386,6 @@ static int smu_v13_0_irq_process(struct amdgpu_device *adev,
+ 			 * Try to do a graceful shutdown to prevent further damage.
+ 			 */
+ 			dev_emerg(adev->dev, "ERROR: System is going to shutdown due to GPU SW CTF!\n");
+-			orderly_poweroff(true);
+ 			break;
+ 		case THM_11_0__SRCID__THM_DIG_THERM_H2L:
+ 			dev_emerg(adev->dev, "ERROR: GPU under temperature range detected\n");
