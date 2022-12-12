@@ -49,6 +49,12 @@
           (final.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
         nerdfonts_fira_hack =
           (final.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
+        steam = prev.steam.override {
+          extraPkgs = pkgs: with pkgs; [
+            capitaine-cursors
+            bibata-cursors
+          ];
+        };
       })
     ];
   })
