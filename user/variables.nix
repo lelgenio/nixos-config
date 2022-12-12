@@ -59,7 +59,7 @@ in rec {
 
   gtk_theme = "Orchis-Red-Dark-Compact";
   icon_theme = "Papirus-Dark";
-  cursor_theme = "capitaine-cursors";
+  cursor_theme = "Bibata-Modern-Classic";
 
   font = {
     mono = "Hack Nerd Font";

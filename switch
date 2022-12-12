@@ -4,7 +4,6 @@ sudo nice ionice \
     nixos-rebuild \
     switch \
     --verbose \
-    --show-trace \
     --print-build-logs \
     --flake .# \
     $@

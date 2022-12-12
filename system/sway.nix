@@ -62,6 +62,7 @@
 
     ## Theme
     capitaine-cursors
+    bibata-cursors
     orchis_theme_compact
     papirus_red
   ];

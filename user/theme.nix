@@ -2,8 +2,8 @@
 with pkgs.uservars; {
   home.pointerCursor = {
     name = cursor_theme;
-    size = 32;
-    package = pkgs.capitaine-cursors;
+    size = 24;
+    package = pkgs.bibata-cursors;
     gtk.enable = true;
   };
   gtk = {
@@ -60,7 +60,7 @@ with pkgs.uservars; {
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
 
-    pkgs.capitaine-cursors
+    pkgs.bibata-cursors
     pkgs.orchis_theme_compact
     pkgs.papirus_red
 
