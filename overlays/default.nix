@@ -7,32 +7,18 @@
       (final: prev: {
         unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system};
       })
+      (import ./sixel-patches.nix (inputs // { inherit pkgs; }))
       (final: prev: {
         uservars = import ../user/variables.nix;
         dhist = inputs.dhist.packages.${system}.dhist;
         mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
         sea-orm-cli =
           inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;
-        webcord =
-          inputs.webcord.legacyPackages.${prev.system}.webcord;
+        webcord = inputs.webcord.legacyPackages.${prev.system}.webcord;
         nil-lsp = inputs.nil-lsp.packages.${prev.system}.nil;
-        alacritty = (prev.unstable.alacritty.overrideAttrs (old-alacritty: rec {
-          src = inputs.alacritty-sixel;
-          cargoDeps = old-alacritty.cargoDeps.overrideAttrs (prev.lib.const {
-            inherit src;
-            outputHash = "sha256-jqjYMVkH32z5EFgafiOYAOc5Q/IYs0jjJeqRb0L6WsY=";
-          });
-        }));
-        ranger = (prev.ranger.overridePythonAttrs (old-ranger: rec {
-          src = inputs.ranger-sixel;
-          checkInputs = [ ];
-          propagatedBuildInputs = with prev.python3Packages;
-            old-ranger.propagatedBuildInputs ++ [ astroid pylint pytest ];
-        }));
         sway-unwrapped = prev.sway-unwrapped.overrideAttrs (old: {
-          patches = old.patches ++ [
-            ../patches/sway/fix-hide_cursor-clearing-focus.patch
-          ];
+          patches = old.patches
+            ++ [ ../patches/sway/fix-hide_cursor-clearing-focus.patch ];
         });
         material-wifi-icons = final.stdenv.mkDerivation rec {
           name = "material-wifi-icons";
@@ -50,10 +36,7 @@
         nerdfonts_fira_hack =
           (final.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
         steam = prev.steam.override {
-          extraPkgs = pkgs: with pkgs; [
-            capitaine-cursors
-            bibata-cursors
-          ];
+          extraPkgs = pkgs: with pkgs; [ capitaine-cursors bibata-cursors ];
         };
       })
     ];
