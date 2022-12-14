@@ -2,7 +2,9 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-let btrfs_options = [ "compress=zstd:3" "noatime" ];
+let
+  btrfs_options = [ "compress=zstd:3" "noatime" ];
+  btrfs_ssd = [ "ssd" "discard=async" ];
 in {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -13,18 +15,22 @@ in {
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/a242e1fd-6848-4504-909f-ab8b61f97c8e";
+    device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=@nixos" ] ++ btrfs_options;
+    options = [ "subvol=@nixos" ] ++ btrfs_options ++ btrfs_ssd;
   };
 
-  boot.initrd.luks.devices."main".device =
-    "/dev/disk/by-uuid/9b24d79f-e018-4d70-84a9-5a1b49a6c610";
+  boot.initrd.luks.devices = {
+    "main" = {
+      bypassWorkqueues = true;
+      device = "/dev/disk/by-label/CRYPT_ROOT";
+    };
+  };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/a242e1fd-6848-4504-909f-ab8b61f97c8e";
+    device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=@home" ] ++ btrfs_options;
+    options = [ "subvol=@home" ] ++ btrfs_options ++ btrfs_ssd;
   };
 
   fileSystems."/boot/efi" = {
@@ -33,9 +39,9 @@ in {
   };
 
   fileSystems."/swap" = {
-    device = "/dev/disk/by-uuid/a242e1fd-6848-4504-909f-ab8b61f97c8e";
+    device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=@swap" ];
+    options = [ "subvol=@swap" ] ++ btrfs_ssd;
   };
 
   swapDevices = [{
@@ -50,7 +56,7 @@ in {
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 
