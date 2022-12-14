@@ -2,7 +2,9 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-let btrfs_options = [ "compress=zstd:3" "noatime" ];
+let
+  btrfs_options = [ "compress=zstd:3" "noatime" ];
+  btrfs_ssd = [ "ssd" "discard=async" ];
 in {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
   boot.initrd.availableKernelModules =
@@ -27,12 +29,18 @@ in {
   fileSystems."/" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=nixos" ];
+    options = [ "subvol=nixos" ] ++ btrfs_options ++ btrfs_ssd;
   };
   # boot.initrd.luks.reusePassphrases = true;
   boot.initrd.luks.devices = {
-    "main".device = "/dev/disk/by-label/CRYPT_ROOT";
-    "data".device = "/dev/disk/by-label/CRYPT_DATA";
+    "main" = {
+      bypassWorkqueues = true;
+      device = "/dev/disk/by-label/CRYPT_ROOT";
+    };
+    "data" = {
+      bypassWorkqueues = true;
+      device = "/dev/disk/by-label/CRYPT_DATA";
+    };
   };
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-label/NIXBOOT";
@@ -41,7 +49,7 @@ in {
   fileSystems."/home" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=home" ] ++ btrfs_options;
+    options = [ "subvol=home" ] ++ btrfs_options ++ btrfs_ssd;
   };
   fileSystems."/home/lelgenio/Games" = {
     device = "/dev/disk/by-label/BTRFS_DATA";
@@ -76,9 +84,9 @@ in {
   fileSystems."/swap" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
-    options = [
-      "subvol=swap"
-    ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
+    # Note these options effect the entire BTRFS filesystem and not just this volume,
+    # with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
+    options = [ "subvol=swap" ] ++ btrfs_options ++ btrfs_ssd;
   };
   swapDevices = [{
     device = "/swap/swapfile";
