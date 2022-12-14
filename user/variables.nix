@@ -23,8 +23,8 @@ let
   };
   themes = {
     dark = {
-      background = "~/.local/share/backgrounds/nixos_dark.png";
-      opacity = 98;
+      background = "~/.local/share/backgrounds/nixos-dark-pattern.png";
+      opacity = 95;
       opacityHex = "ee";
       color = {
         type = "dark";
