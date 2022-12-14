@@ -29,7 +29,7 @@ in {
     fsType = "btrfs";
     options = [ "subvol=nixos" ];
   };
-  boot.initrd.luks.reusePassphrases = true;
+  # boot.initrd.luks.reusePassphrases = true;
   boot.initrd.luks.devices = {
     "main".device = "/dev/disk/by-label/CRYPT_ROOT";
     "data".device = "/dev/disk/by-label/CRYPT_DATA";

@@ -2,13 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, inputs, ... }: {
-  imports = [ ./gamemode.nix ./cachix.nix ./media-packages.nix ];
+  imports = [ ./gamemode.nix ./cachix.nix ./media-packages.nix ./boot.nix ];
   packages.media-packages.enable = true;
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

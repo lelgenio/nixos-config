@@ -9,6 +9,7 @@
       })
       (import ./sixel-patches.nix (inputs // { inherit pkgs; }))
       (final: prev: {
+        plymouth-theme-red = (import ./plymouth-theme-red.nix (inputs // { inherit pkgs; }));
         uservars = import ../user/variables.nix;
         dhist = inputs.dhist.packages.${system}.dhist;
         mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
