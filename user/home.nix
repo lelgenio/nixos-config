@@ -23,6 +23,7 @@ in {
     ./bmenu.nix
     ./fzf.nix
     ./ranger
+    ./lf.nix
     ./pass.nix
     ./man.nix
     inputs.hyprland.homeManagerModules.default
