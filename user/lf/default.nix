@@ -10,7 +10,9 @@
     settings = {
       icons = true;
     };
-    # xdg.configFile."lf/colors".text = ''
-    # '';
+
+    previewer.source = ./previewer;
   };
+  xdg.configFile."lf/icons".source = ./icons;
+  xdg.configFile."lf/colors".source = ./colors;
 }
