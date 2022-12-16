@@ -11,6 +11,8 @@
     "vm.max_map_count" = 1048576; # Needed by DayZ
   };
 
+  zramSwap.enable = true;
+
   programs.adb.enable = true;
   services.udev.packages = [ pkgs.android-udev-rules ];
 
