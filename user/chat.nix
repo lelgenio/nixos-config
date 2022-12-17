@@ -28,10 +28,10 @@
       Unit = {
         Description = "Telegram Internet chat";
         PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" "pipewire-pulse.service" ];
       };
       Service = {
-        ExecStart = "${pkgs.tdesktop}/bin/telegram-desktop";
+        ExecStart = "${pkgs.sway}/bin/swaymsg exec -- ${pkgs.tdesktop}/bin/telegram-desktop";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "sway-session.target" ]; };
