@@ -25,6 +25,7 @@ in {
     ./ranger
     ./lf
     ./pass.nix
+    ./zathura.nix
     ./man.nix
     inputs.hyprland.homeManagerModules.default
   ] ++ lib.optional (desktop == "sway") ./sway.nix;
