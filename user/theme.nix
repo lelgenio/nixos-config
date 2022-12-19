@@ -21,12 +21,12 @@ with pkgs.uservars; {
       package = pkgs.papirus_red;
     };
   };
-  qt = {
-    enable = true;
-    platformTheme = "gtk";
-    # style.package = pkgs.libsForQt5.qtstyleplugins;
-    # style.name = "gtk2";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "gtk";
+  #   # style.package = pkgs.libsForQt5.qtstyleplugins;
+  #   # style.name = "gtk2";
+  # };
 
   # fonts.fontconfig.enable = true;
   xdg.configFile = {
