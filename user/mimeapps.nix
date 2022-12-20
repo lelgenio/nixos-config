@@ -73,9 +73,9 @@ in {
         "application/pdf" = "org.pwmt.zathura.desktop";
         "application/epub+zip" = "org.pwmt.zathura.desktop";
 
-        "text/html" = "firefox";
-        "x-scheme-handler/http" = "firefox";
-        "x-scheme-handler/https" = "firefox";
+        "text/html" = "firefox.desktop";
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
 
         "x-scheme-handler/magnet" = "torrent.desktop";
         "application/x-bittorrent" = "torrent.desktop";
