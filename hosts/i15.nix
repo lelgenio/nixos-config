@@ -2,8 +2,9 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
-
-{
+let
+  btrfs_options = [ "compress=zstd:3" "noatime" ];
+in {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules =
@@ -11,6 +12,13 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+
+  boot.initrd.luks.devices = {
+    "main" = {
+      bypassWorkqueues = true;
+      device = "/dev/disk/by-label/CRYPT_ROOT";
+    };
+  };
 
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-label/NIX_BOOT";
@@ -20,13 +28,13 @@
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIX_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=nixos" "compress=zstd" "noatime" ];
+    options = [ "subvol=nixos" ] ++ btrfs_options;
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-label/NIX_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=home" "compress=zstd" "noatime" ];
+    options = [ "subvol=home" ] ++ btrfs_options;
   };
 
   swapDevices = [{
@@ -42,7 +50,7 @@
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "i15"; # Define your hostname.
