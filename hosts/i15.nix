@@ -28,13 +28,19 @@ in {
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIX_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=nixos" ] ++ btrfs_options;
+    options = [ "subvol=@nixos" ] ++ btrfs_options;
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-label/NIX_ROOT";
     fsType = "btrfs";
-    options = [ "subvol=home" ] ++ btrfs_options;
+    options = [ "subvol=@home" ] ++ btrfs_options;
+  };
+
+  fileSystems."/swap" = {
+    device = "/dev/disk/by-label/NIX_ROOT";
+    fsType = "btrfs";
+    options = [ "subvol=@swap" ] ++ btrfs_options;
   };
 
   swapDevices = [{
