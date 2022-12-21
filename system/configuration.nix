@@ -140,7 +140,7 @@
     settings = {
       auto-optimise-store = true;
       substituters = [
-        "https://nixcache.lelgenio.1337.cx:5000"
+        "http://nixcache.lelgenio.1337.cx:5000"
         "https://hyprland.cachix.org"
         "https://lelgenio.cachix.org"
         "https://wegank.cachix.org"
