@@ -16,9 +16,10 @@
       Unit = {
         Description = "Discord Internet voice chat";
         PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" "pipewire-pulse.service" "tray.service" "telegram.service" ];
       };
       Service = {
+        ExecStartPre = "/usr/bin/env sleep 1s";
         ExecStart = "${pkgs.webcord}/bin/webcord";
         Restart = "on-failure";
       };
@@ -28,10 +29,10 @@
       Unit = {
         Description = "Telegram Internet chat";
         PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" "pipewire-pulse.service" ];
+        After = [ "graphical-session.target" "pipewire-pulse.service" "tray.service" ];
       };
       Service = {
-        ExecStart = "${pkgs.sway}/bin/swaymsg exec -- ${pkgs.tdesktop}/bin/telegram-desktop";
+        ExecStart = "${pkgs.tdesktop}/bin/telegram-desktop";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "sway-session.target" ]; };
