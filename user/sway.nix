@@ -119,6 +119,7 @@ in {
             { class = "discord"; }
             { title = "Discord"; }
             { class = "WebCord"; }
+            { app_id = "WebCord"; }
           ];
         };
         modes = let
