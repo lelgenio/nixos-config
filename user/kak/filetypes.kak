@@ -60,8 +60,16 @@ hook global BufCreate .*\.(tera|askama)\.?.* %[
 
 hook global WinSetOption filetype=rust %[
   require-module rust
+
+  add-highlighter window/rust-custom regions
+
   require-module html
-  add-highlighter shared/rust/html region -recurse '\{' 'html!\s*\{\K' '(?=\})' ref html
+  add-highlighter window/rust-custom/html region -recurse '\{' 'html!\s*\{\K' '(?=\})' ref html
+
+  require-module sql
+  add-highlighter window/rust-custom/sql region '"\K--sql' '"' group
+  add-highlighter window/rust-custom/sql/ fill white
+  add-highlighter window/rust-custom/sql/ ref sql
 ]
 
 hook global WinSetOption filetype=sql %[
