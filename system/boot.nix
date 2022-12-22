@@ -1,6 +1,6 @@
 { config, pkgs, inputs, ... }: {
   console = {
-    font = "ter-132n";
+    font = "ter-120n";
     packages = [pkgs.terminus_font];
     earlySetup = false;
   };
