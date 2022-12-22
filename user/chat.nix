@@ -7,6 +7,7 @@
         After = [ "graphical-session.target" ];
       };
       Service = {
+        ExecStartPre = "/usr/bin/env sleep 10s";
         ExecStart = "${pkgs.thunderbird}/bin/thunderbird";
         Restart = "on-failure";
       };
@@ -19,7 +20,7 @@
         After = [ "graphical-session.target" "pipewire-pulse.service" "tray.service" "telegram.service" ];
       };
       Service = {
-        ExecStartPre = "/usr/bin/env sleep 1s";
+        ExecStartPre = "/usr/bin/env sleep 12s";
         ExecStart = "${pkgs.webcord}/bin/webcord";
         Restart = "on-failure";
       };
@@ -32,6 +33,7 @@
         After = [ "graphical-session.target" "pipewire-pulse.service" "tray.service" ];
       };
       Service = {
+        ExecStartPre = "/usr/bin/env sleep 11s";
         ExecStart = "${pkgs.tdesktop}/bin/telegram-desktop";
         Restart = "on-failure";
       };
