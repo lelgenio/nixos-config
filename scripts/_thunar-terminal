@@ -1,0 +1,10 @@
+#!/bin/sh
+
+for path
+do
+    test -f "$path" &&
+    path=$(dirname "$path")
+
+    cd "$path"
+    terminal
+done

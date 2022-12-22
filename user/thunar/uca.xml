@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal</name>
+	<unique-id>1623021489374475-1</unique-id>
+	<command>_thunar-terminal &quot;%f&quot;</command>
+	<description></description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>folder-copy</icon>
+	<name>Copy Path</name>
+	<unique-id>1623196889794306-1</unique-id>
+	<command>wl-copy %F</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>edit-copy</icon>
+	<name>Copy Name</name>
+	<unique-id>1623196941650150-2</unique-id>
+	<command>wl-copy %N</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>gimp</icon>
+	<name>Meme</name>
+	<unique-id>1623198055590793-3</unique-id>
+	<command>memegen --open -i %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>com.github.peteruithoven.resizer</icon>
+	<name>Resize Image</name>
+	<unique-id>1623199341595037-4</unique-id>
+	<command>imgrs %f</command>
+	<description></description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+</actions>

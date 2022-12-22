@@ -22,6 +22,7 @@
     br = [ ];
     bmenu = [ bemenu final.dhist fish j4-dmenu-desktop jq sway ];
     _diffr = [ diffr ];
+    _thunar-terminal = [ final.terminal ];
     kak-pager = [ fish final._diffr ];
     kak-man-pager = [ final.kak-pager ];
     showkeys =

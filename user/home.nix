@@ -133,6 +133,10 @@ in {
   };
   programs.bash = { enable = true; };
 
+  xdg.configFile = {
+    "thunar/".source = ./thunar;
+  };
+
   systemd.user.services = {
     steam = {
       Unit = {
