@@ -20,6 +20,7 @@ in {
     };
   };
 
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-label/NIX_BOOT";
     fsType = "vfat";

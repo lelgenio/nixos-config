@@ -42,6 +42,7 @@ in {
       device = "/dev/disk/by-label/CRYPT_DATA";
     };
   };
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";

@@ -23,8 +23,6 @@
       # It's still possible to open the bootloader list by pressing any key
       # It will just not appear on screen unless a key is pressed
       timeout = 0;
-      efi.canTouchEfiVariables = true;
-      efi.efiSysMountPoint = "/boot/efi";
       systemd-boot = {
         enable = true;
         # editor = false;

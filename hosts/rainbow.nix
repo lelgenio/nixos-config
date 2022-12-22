@@ -33,6 +33,7 @@ in {
     options = [ "subvol=@home" ] ++ btrfs_options ++ btrfs_ssd;
   };
 
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/DC3B-5753";
     fsType = "vfat";

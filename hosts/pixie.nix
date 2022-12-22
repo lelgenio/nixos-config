@@ -27,6 +27,7 @@
     options = [ "subvol=home" ];
   };
 
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/B1BB-15DD";
     fsType = "vfat";
