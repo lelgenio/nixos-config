@@ -9,10 +9,13 @@ in {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
   boot.initrd.availableKernelModules =
     [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [
     "kvm-amd"
-    # "amdgpu"
+    "amdgpu"
+  ];
+  boot.kernelParams = [
+    "video=DP-1:1920x1080@144"
   ];
 
   hardware.opengl.driSupport = true;
