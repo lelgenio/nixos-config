@@ -42,7 +42,10 @@
     agenix.url = "github:ryantm/agenix";
 
     # my stuff
-    dhist.url = "github:lelgenio/dhist";
+    dhist = {
+      url = "github:lelgenio/dhist";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let
