@@ -5,13 +5,13 @@
     enable = true;
     settings.concurrent = 4;
     services = {
-      ci_test = {
-        registrationConfigFile = "/srv/gitlab-runner/env/ci_test";
-        dockerImage = "debian";
-        dockerPrivileged = true;
-      };
+      # ci_test = {
+      #   registrationConfigFile = "/srv/gitlab-runner/env/ci_test";
+      #   dockerImage = "debian";
+      #   dockerPrivileged = true;
+      # };
       thoreb_builder = {
-        registrationConfigFile = "/srv/gitlab-runner/env/thoreb_builder";
+        registrationConfigFile = config.age.secrets.monolith-gitlab-runner-thoreb-itinerario-registrationConfigFile.path;
         dockerImage = "debian";
         dockerPrivileged = true;
       };

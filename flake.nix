@@ -39,6 +39,8 @@
     plymouth-themes.url = "github:adi1090x/plymouth-themes";
     plymouth-themes.flake = false;
 
+    agenix.url = "github:ryantm/agenix";
+
     # my stuff
     dhist.url = "github:lelgenio/dhist";
   };
@@ -54,7 +56,9 @@
       specialArgs = { inherit inputs; };
       common_modules = [
         ./system/configuration.nix
+        ./system/secrets.nix
         # nur.nixosModules.nur
+        inputs.agenix.nixosModule
         inputs.hyprland.nixosModules.default
         {
           programs.hyprland.enable = true;

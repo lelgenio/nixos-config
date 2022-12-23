@@ -86,6 +86,9 @@ in {
     miniupnpc
     deluge
 
+    ## Nix secrets management
+    inputs.agenix.defaultPackage.x86_64-linux
+
     ## Programming
     vscode
     rustup

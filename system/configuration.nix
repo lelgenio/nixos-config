@@ -52,6 +52,12 @@
     permitRootLogin = "no";
     ports = [ 9022 ];
   };
+  # programs.ssh = {
+  #   startAgent = true;
+  #   extraConfig = ''
+  #     AddKeysToAgent yes
+  #   '';
+  # };
 
   ## Enable sound with pipewire.
   sound.enable = true;
