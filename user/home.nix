@@ -178,7 +178,7 @@ in {
   };
   services.mpd = {
     enable = true;
-    musicDirectory = "~/Música";
+    musicDirectory = config.home.homeDirectory + "/Música";
     extraConfig = ''
       restore_paused "yes"
       auto_update "yes"
@@ -189,6 +189,11 @@ in {
       }
       filesystem_charset    "UTF-8"
     '';
+  };
+  services.mpdris2 = {
+    enable = true;
+    multimediaKeys = true;
+    notifications = true;
   };
 
   # This value determines the Home Manager release that your
