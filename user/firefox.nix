@@ -39,6 +39,7 @@ in {
           After = [ "graphical-session.target" ];
         };
         Service = {
+          ExecStartPre = "/usr/bin/env sleep 10s";
           ExecStart = "${pkgs.firefox}/bin/firefox";
           Restart = "on-failure";
         };
