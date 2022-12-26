@@ -49,6 +49,33 @@ let
         };
       };
     };
+    light = {
+      background = "~/.local/share/backgrounds/nixos-light-pattern.png";
+      opacity = 95;
+      opacityHex = "ee";
+      color = {
+        type = "light";
+        bg = "#FFFFFF";
+        bg_light = "#A0A0A0";
+        bg_dark = "#EEEEEE";
+        txt = "#303030";
+        nontxt = "#D0D0D0";
+        random_range = "[0-4]";
+        normal = {
+          black = "#555555";
+          red = "#D54E53";
+          green = "#008800";
+          yellow = "#B3A400";
+          blue = "#0D68A8";
+          magenta = "#C397D8";
+          cyan = "#00A0A5";
+          white = "#999999";
+          #non standard
+          orange = "#FF7500";
+          brown = "#A07040";
+        };
+      };
+    };
   };
 in rec {
   key = keys.colemak;
