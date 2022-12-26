@@ -55,6 +55,7 @@ dhist wrap -- bemenu \
     --tb "$tb" --tf "$tf" \
     --fb "$fb" --ff "$ff" \
     --nb "$nb" --nf "$nf" \
+    --ab "$ab" --af "$af" \
     --hb "$hb" --hf "$hf" \
     $argv
 

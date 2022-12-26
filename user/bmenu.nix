@@ -14,6 +14,8 @@ in {
 
       set nb "${color.bg}${theme.opacityHex}"
       set nf "${color.txt}"
+      set ab "${color.bg}${theme.opacityHex}"
+      set af "${color.txt}"
       set hb "${accent.color}"
       set hf "${accent.fg}"
     '';
