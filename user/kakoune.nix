@@ -133,6 +133,7 @@ in {
     ];
     home.activation = {
       update_kakoune = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        $DRY_RUN_CMD kak -clear
         $DRY_RUN_CMD kak -l | xargs -r -n1 kak -e "config-source;quit" -ui dummy -c
       '';
     };
