@@ -93,7 +93,6 @@
             ./hosts/monolith.nix
             ./system/gitlab-runner.nix
             # ./system/nix-serve.nix
-            ./system/btusb-kernel-patches.nix
             ./system/amdgpu-kernel-patches.nix
           ] ++ common_modules;
         };
