@@ -91,14 +91,17 @@
           inherit system specialArgs;
           modules = [
             ./hosts/monolith.nix
-            ./system/gitlab-runner.nix
+            ./system/monolith-gitlab-runner.nix
             # ./system/nix-serve.nix
             ./system/amdgpu-kernel-patches.nix
           ] ++ common_modules;
         };
         rainbow = lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./hosts/rainbow.nix ] ++ common_modules;
+          modules = [
+            ./hosts/rainbow.nix
+            ./system/rainbow-gitlab-runner.nix
+          ] ++ common_modules;
         };
         pixie = lib.nixosSystem {
           inherit system specialArgs;
