@@ -38,7 +38,8 @@ plug "natasky/kakoune-multi-file"
 plug "lelgenio/kakoune-colemak-neio"
 
 plug 'kak-lsp/kak-lsp' do %{
-    cargo install --locked --force --path .
+    rustup target add x86_64-unknown-linux-musl
+    cargo install --locked --force --path . --target x86_64-unknown-linux-musl
 } config %{
     map global normal <F2> ': lsp-rename-prompt<ret>'
     set global lsp_hover_max_lines 10
