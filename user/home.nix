@@ -136,6 +136,11 @@ in {
   };
   programs.bash = { enable = true; };
 
+  services.nextcloud-client = {
+      enable = true;
+      startInBackground = true;
+  };
+
   xdg.configFile = {
     "thunar/".source = ./thunar;
   };
