@@ -27,6 +27,7 @@ in {
     ./pass.nix
     ./zathura.nix
     ./man.nix
+    ./mpd.nix
     inputs.hyprland.homeManagerModules.default
   ] ++ lib.optional (desktop == "sway") ./sway.nix;
 
@@ -180,25 +181,6 @@ in {
   services.kdeconnect = {
     enable = true;
     indicator = true;
-  };
-  services.mpd = {
-    enable = true;
-    musicDirectory = config.home.homeDirectory + "/Música";
-    extraConfig = ''
-      restore_paused "yes"
-      auto_update "yes"
-      audio_output {
-          type    "pulse"
-          name    "My Pulse Output"
-          mixer_type  "hardware"
-      }
-      filesystem_charset    "UTF-8"
-    '';
-  };
-  services.mpdris2 = {
-    enable = true;
-    multimediaKeys = true;
-    notifications = true;
   };
 
   # This value determines the Home Manager release that your
