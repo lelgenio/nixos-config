@@ -66,7 +66,8 @@ in {
     home.file = {
       ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
     };
-    programs.command-not-found.enable = true;
+    # programs.command-not-found.enable = true;
+    programs.nix-index.enable = true;
     home.packages = with pkgs; [ trash-cli ];
   };
 }

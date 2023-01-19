@@ -29,6 +29,7 @@ in {
     ./man.nix
     ./mpd.nix
     inputs.hyprland.homeManagerModules.default
+    inputs.nix-index-database.hmModules.nix-index
   ] ++ lib.optional (desktop == "sway") ./sway.nix;
 
   # Home Manager needs a bit of information about you and the
@@ -55,6 +56,8 @@ in {
     micro
     _diffr
     br # bulk rename
+
+    comma
 
     ## text manipulation
     sd
