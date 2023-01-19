@@ -5,9 +5,9 @@ stdenv.mkDerivation rec {
 
   src = fetchFromGitHub {
     owner = "aclist";
-    repo = pname;
-    rev = "d1c0de75ee8ded449ab1c5a293e91891e5f78346";
-    sha256 = "sha256-Jy6vHWA0u+4yonsJlHgJYvtceYT6lHeWeaX0fawETVo=";
+    repo = "dztui";
+    rev = "10c29c0542a07fb81b5922f96b416e3a2e8079cc";
+    sha256 = "sha256-VmW0ohXK+9CAr4yGaA/NSW7+E1vUvZthom8MculmOEs=";
   };
 
   nativeBuildInputs = [ makeWrapper ];

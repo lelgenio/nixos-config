@@ -73,7 +73,7 @@ in {
     ## games
     # lutris-unwrapped
     steam # It's enabled in the system config
-    dzgui
+    (dzgui.overrideAttrs (_: { src = inputs.dzgui; }))
 
     ## chat
     thunderbird

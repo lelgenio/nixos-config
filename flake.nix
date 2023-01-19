@@ -46,6 +46,9 @@
 
     agenix.url = "github:ryantm/agenix";
 
+    dzgui.url = "github:aclist/dztui/dzgui";
+    dzgui.flake = false;
+
     # my stuff
     dhist = {
       url = "github:lelgenio/dhist";

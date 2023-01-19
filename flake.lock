@@ -56,6 +56,23 @@
         "type": "github"
       }
     },
+    "dzgui": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1674148891,
+        "narHash": "sha256-hztFudb7EGrsdc+gCRXqEIuiuTvCp64m0U5znzV3Ab4=",
+        "owner": "aclist",
+        "repo": "dztui",
+        "rev": "8b19f6340b6761c98cc771e9ef03ed60000683d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aclist",
+        "ref": "dzgui",
+        "repo": "dztui",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -347,6 +364,7 @@
         "agenix": "agenix",
         "alacritty-sixel": "alacritty-sixel",
         "dhist": "dhist",
+        "dzgui": "dzgui",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "material-wifi-icons": "material-wifi-icons",
