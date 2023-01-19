@@ -2,4 +2,5 @@
 # You can build them using 'nix build .#example' or (legacy) 'nix-build -A example'
 
 { pkgs }: {
+  dzgui = pkgs.callPackage ./dzgui.nix { };
 }
