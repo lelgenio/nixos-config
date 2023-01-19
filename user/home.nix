@@ -69,7 +69,8 @@ in {
 
     ## games
     # lutris-unwrapped
-    # steam # It's enabled in the system config
+    steam # It's enabled in the system config
+    dzgui
 
     ## chat
     thunderbird

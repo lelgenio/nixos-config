@@ -56,6 +56,9 @@
         config = { allowUnfree = true; };
       };
       lib = nixpkgs.lib;
+
+      packages = import ./pkgs { inherit pkgs; };
+
       specialArgs = { inherit inputs; };
       common_modules = [
         ./system/configuration.nix
@@ -67,7 +70,7 @@
           programs.hyprland.enable = true;
           # programs.hyprland.package = null;
         }
-        (import ./overlays (inputs // { inherit system; }))
+        (import ./overlays (inputs // { inherit system packages; }))
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -112,6 +115,6 @@
           }];
         };
       };
-      packages.${system}.linuxPackages = import ./pkgs { inherit pkgs; };
+      packages.${system}.linuxPackages = packages;
     };
 }

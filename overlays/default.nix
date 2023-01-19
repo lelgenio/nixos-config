@@ -1,4 +1,4 @@
-(inputs@{ system, ... }:
+(inputs@{ system, packages, ... }:
   { pkgs, ... }: {
     nixpkgs.overlays = [
       inputs.nur.overlay
@@ -9,6 +9,7 @@
       })
       (import ./sixel-patches.nix (inputs // { inherit pkgs; }))
       (final: prev: {
+        inherit (packages) dzgui;
         plymouth-theme-red = (import ./plymouth-theme-red.nix (inputs // { inherit pkgs; }));
         uservars = import ../user/variables.nix;
         dhist = inputs.dhist.packages.${system}.dhist;
