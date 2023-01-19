@@ -112,5 +112,6 @@
           }];
         };
       };
+      packages.${system}.linuxPackages = import ./pkgs { inherit pkgs; };
     };
 }
