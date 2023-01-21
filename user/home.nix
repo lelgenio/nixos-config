@@ -98,6 +98,7 @@ in {
     vscode
     rustup
 
+    devenv
     docker-compose
     gnumake
     mariadb
