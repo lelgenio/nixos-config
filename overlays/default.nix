@@ -13,6 +13,7 @@
         plymouth-theme-red = (import ./plymouth-theme-red.nix (inputs // { inherit pkgs; }));
         uservars = import ../user/variables.nix;
         dhist = inputs.dhist.packages.${system}.dhist;
+        demoji = inputs.demoji.packages.${system}.demoji;
         mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
         sea-orm-cli =
           inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;

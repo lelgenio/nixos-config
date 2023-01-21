@@ -272,6 +272,7 @@ in {
           other_binds = {
             "${mod}+p" = "exec ${pkgs.wpass}/bin/wpass";
             "${mod}+s" = "exec ${menu}";
+            "${mod}+g" = "exec ${pkgs.demoji}/bin/demoji --lang pt --fallback --copy -- ${pkgs.wdmenu}/bin/wdmenu";
             "${mod}+c" = "exec ${color_picker}";
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+Ctrl+Return" = "exec thunar";
@@ -424,6 +425,7 @@ in {
 
       waybar
       dhist
+      demoji
       bmenu
       wdmenu
       wlauncher

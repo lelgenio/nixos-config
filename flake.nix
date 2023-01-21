@@ -54,6 +54,10 @@
       url = "github:lelgenio/dhist";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    demoji = {
+      url = "github:lelgenio/demoji";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let

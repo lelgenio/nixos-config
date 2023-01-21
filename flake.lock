@@ -34,6 +34,26 @@
         "type": "github"
       }
     },
+    "demoji": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1674276435,
+        "narHash": "sha256-afFuY8qcgZYtRmHa7Ifq7QDcEH3o7dxAS4L62aSeQmM=",
+        "owner": "lelgenio",
+        "repo": "demoji",
+        "rev": "afe472b3e32258a0073975581b4827f11efe55b0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lelgenio",
+        "repo": "demoji",
+        "type": "github"
+      }
+    },
     "dhist": {
       "inputs": {
         "fenix": "fenix",
@@ -363,6 +383,7 @@
       "inputs": {
         "agenix": "agenix",
         "alacritty-sixel": "alacritty-sixel",
+        "demoji": "demoji",
         "dhist": "dhist",
         "dzgui": "dzgui",
         "home-manager": "home-manager",
