@@ -35,6 +35,15 @@ map global find 'm' ': find_git_modified<ret>' -docstring 'git modified files'
 map global find 'c' ': find_dir<ret>' -docstring 'change dir'
 map global find 'd' ': find_delete<ret>' -docstring 'file to delete'
 
+map global user 'S' ': find_spell<ret>' -docstring 'pick language for spellchecking'
+
+define-command -override -hidden find_spell \
+%{ evaluate-commands %sh{
+    for line in `aspell dump dicts | wdmenu -i -p "Language: "`; do
+        echo "spell '$line'"
+    done
+} }
+
 define-command -override -hidden find_file \
 %{ evaluate-commands %sh{
     for line in `fd --strip-cwd-prefix -tf -HE .git | wdmenu -i -p "File: "`; do

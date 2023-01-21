@@ -23,7 +23,7 @@ plug 'alexherbo2/auto-pairs.kak' config %{
 }
 
 plug 'lelgenio/kakoune-mirror-colemak' config %{
-    map global user "s" ': enter-user-mode mirror<ret>'
+    map global user "s" ': enter-user-mode mirror<ret>' -docstring 'mirror mode'
 }
 
 plug 'delapouite/kakoune-palette'

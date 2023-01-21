@@ -130,6 +130,10 @@ in {
       kak-lsp
       kak-pager
       kak-man-pager
+
+      aspell
+      aspellDicts.en
+      aspellDicts.pt_BR
     ];
     home.activation = {
       update_kakoune = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
