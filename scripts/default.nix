@@ -20,7 +20,7 @@
       lib.mapAttrs (name: deps: create_script name ./${name} deps);
   in create_scripts {
     br = [ ];
-    bmenu = [ bemenu final.dhist fish j4-dmenu-desktop jq sway ];
+    bmenu = [ final.bemenu final.dhist fish j4-dmenu-desktop jq sway ];
     _diffr = [ diffr ];
     _thunar-terminal = [ final.terminal ];
     kak-pager = [ fish final._diffr ];

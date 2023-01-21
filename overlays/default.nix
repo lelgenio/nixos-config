@@ -16,6 +16,13 @@
         demoji = inputs.demoji.packages.${system}.demoji;
         devenv = inputs.devenv.packages.${system}.devenv;
         mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
+
+        bemenu = prev.bemenu.overrideAttrs (o: {
+            preBuild = ''
+                sed -i 's/ZWLR_LAYER_SHELL_V1_LAYER_TOP/ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY/g' lib/renderers/wayland/window.c
+            '';
+        });
+
         sea-orm-cli =
           inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;
         webcord = inputs.webcord.legacyPackages.${prev.system}.webcord;

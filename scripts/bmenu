@@ -19,11 +19,6 @@ if test "$argv[1]" = "run"
 end
 
 if test -n "$SWAYSOCK"
-    swaymsg -t get_tree |
-        jq -je '..|select(.focused? and .fullscreen_mode? == 1)|""' &&
-        swaymsg -q fullscreen off &&
-        set fullscreen
-
     swaymsg -t get_outputs |
         jq -r 'map(.focused)|reverse|index(true)' |
         read focused_output
@@ -32,19 +27,12 @@ if test -n "$SWAYSOCK"
     and set focused_output "-m $focused_output"
 end
 
-function clean_exit
-    set -q fullscreen
-    and swaymsg -q fullscreen on &
-end
-
-trap clean_exit EXIT
-
 set -l config "$HOME/.config/bmenu.conf"
 if test -f $config
   source $config
 end
 
-dhist wrap -- bemenu \
+exec dhist wrap -- bemenu \
     $focused_output\
     --ignorecase\
     --bottom\
