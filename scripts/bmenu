@@ -35,10 +35,13 @@ end
 exec dhist wrap -- bemenu \
     $focused_output\
     --ignorecase\
-    --bottom\
+    --border 2\
+    --center\
+    --width-factor 0.5\
     --no-overlap\
-    --list 20\
+    --list 30\
     --prefix '>'\
+    --bdr "$bdr"\
     --fn "$fn"\
     --tb "$tb" --tf "$tf" \
     --fb "$fb" --ff "$ff" \

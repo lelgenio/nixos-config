@@ -18,6 +18,7 @@ in {
       set af "${color.txt}"
       set hb "${accent.color}"
       set hf "${accent.fg}"
+      set bdr "${accent.color}"
     '';
   };
 }
