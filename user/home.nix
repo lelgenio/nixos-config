@@ -26,6 +26,7 @@ in {
     ./ranger
     ./lf
     ./pass.nix
+    ./pqiv.nix
     ./zathura.nix
     ./man.nix
     ./mpd.nix

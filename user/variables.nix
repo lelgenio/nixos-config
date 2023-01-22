@@ -8,7 +8,7 @@ let
       up = "i";
       right = "o";
       next = "l";
-      tabL = "u";
+      tabL = "U";
       tabR = "Y";
       insertMode = "s";
       insertQuit = "kk";
