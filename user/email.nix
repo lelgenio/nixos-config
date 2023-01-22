@@ -1,22 +1,12 @@
-{ pkgs, ... }:
-let
-
-  get_pass = pkgs.writeShellScript "get_pass" ''
-    pass disroot.org | head -n1
-  '';
-in {
-  accounts.email.accounts = {
-    "personal" = {
-      primary = true;
+{ pkgs, ... }: {
+  accounts.email.accounts = let
+    mkAccount =  username: host: passName: {
       realName = "Leonardo Eugênio";
-      address = "lelgenio@disroot.org";
-      userName = "lelgenio";
+      address = "${username}@${host}";
+      userName = username;
       astroid.enable = true;
-      imap = {
-        host = "disroot.org";
-        # port = 993;
-      };
-      smtp = { host = "disroot.org"; };
+      imap.host = host;
+      smtp.host = host;
       imapnotify = {
         enable = true;
         onNotify = "${pkgs.isync}/bin/mbsync -a";
@@ -29,8 +19,13 @@ in {
       };
       msmtp.enable = true;
       notmuch.enable = true;
-      passwordCommand = toString get_pass;
+      passwordCommand = toString (pkgs.writeShellScript "get_pass" ''
+        pass ${passName} | head -n1
+      '');
     };
+  in {
+    "personal" = (mkAccount "lelgenio" "disroot.org" "disroot.org") // { primary = true; } ;
+    "work" = mkAccount "leonardo" "wopus.com.br" "Trabalho/wopus_email/leonardo@wopus.com.br";
   };
 
   services.imapnotify.enable = true;
