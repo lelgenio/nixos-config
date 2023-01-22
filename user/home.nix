@@ -19,6 +19,7 @@ in {
     ./rnnoise.nix
     ./mimeapps.nix
     ./chat.nix
+    ./email.nix
     ./syncthing.nix
     ./bmenu.nix
     ./fzf.nix
