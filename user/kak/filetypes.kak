@@ -11,6 +11,10 @@ hook global WinSetOption filetype=c %{
     set buffer formatcmd 'clang-format'
 }
 
+hook global WinSetOption filetype=nix %{
+    set buffer formatcmd 'nixpkgs-fmt'
+}
+
 hook global BufCreate .*\.rs %{
     set buffer formatcmd 'rustfmt'
 }
