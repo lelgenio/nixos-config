@@ -132,7 +132,7 @@ in {
     pkgs.unstable.rust-analyzer
     gcc
     rnix-lsp
-    nixfmt
+    nixpkgs-fmt
 
     trunk
     wasm-bindgen-cli

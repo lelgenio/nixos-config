@@ -110,7 +110,7 @@ filetypes = ["nix"]
 roots = ["flake.nix", "shell.nix", ".git"]
 command = "nil"
 [language.nix.settings.nil]
-formatting.command = [ "nixfmt" ]
+formatting.command = [ "nixpkgs-fmt" ]
 
 [language.ocaml]
 filetypes = ["ocaml"]
