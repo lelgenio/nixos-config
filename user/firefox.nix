@@ -4,14 +4,21 @@ in {
   config = {
     programs.firefox = {
       enable = true;
-      package = pkgs.firefox;
-      # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      #   darkreader
-      #   ublock-origin
-      #   tree-style-tab
-      #   sponsorblock
-      #   duckduckgo-privacy-essentials
-      # ];
+      # esr enables you to install unsigned extensions
+      package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped {
+        nixExtensions = with pkgs.nur.repos.rycee.firefox-addons;
+          let
+            extensions_name_src = {
+              darkreader = darkreader.src;
+              ublock-origin = ublock-origin.src;
+              tree-style-tab = tree-style-tab.src;
+              sponsorblock = sponsorblock.src;
+              duckduckgo-privacy-essentials = duckduckgo-privacy-essentials.src;
+            };
+            make_extension = name: src:
+              ((pkgs.fetchFirefoxAddon { inherit name src; }));
+          in lib.mapAttrsToList make_extension extensions_name_src;
+      };
       profiles = {
         main = {
           isDefault = true;
