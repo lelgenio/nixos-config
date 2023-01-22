@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (import ./variables.nix) key theme color accent font;
+let inherit (import ./variables.nix) browser;
 in {
   config = {
     xdg.desktopEntries = {
@@ -66,6 +66,11 @@ in {
         // (createMimeAssociations "image" "pqiv.desktop" image_suffixes)
         // (createMimeAssociations "video" "mpv.desktop" video_suffixes);
 
+      browser_desktop = {
+        firefox = "firefox.desktop";
+        qutebrowser = "org.qutebrowser.qutebrowser.desktop";
+      }.${browser};
+
       simple = {
         "text/plain" = "kak.desktop";
         "inode/directory" = "thunar.desktop";
@@ -73,9 +78,9 @@ in {
         "application/pdf" = "org.pwmt.zathura.desktop";
         "application/epub+zip" = "org.pwmt.zathura.desktop";
 
-        "text/html" = "firefox.desktop";
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
+        "text/html" = browser_desktop;
+        "x-scheme-handler/http" = browser_desktop;
+        "x-scheme-handler/https" = browser_desktop;
 
         "x-scheme-handler/magnet" = "torrent.desktop";
         "application/x-bittorrent" = "torrent.desktop";

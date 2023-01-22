@@ -124,4 +124,5 @@ in rec {
 
   dmenu = "bmenu";
   desktop = "sway";
+  browser = "qutebrowser";
 }

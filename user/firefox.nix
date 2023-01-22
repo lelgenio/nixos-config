@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (import ./variables.nix) desktop;
+let inherit (import ./variables.nix) desktop browser;
 in {
   config = {
     programs.firefox = {
@@ -51,7 +51,7 @@ in {
         };
       };
     };
-    systemd.user.services = {
+    systemd.user.services = lib.mkIf (browser == "firefox") {
       firefox = {
         Unit = {
           Description = "Firefox Web client";

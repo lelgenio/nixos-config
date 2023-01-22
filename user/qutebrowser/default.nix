@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (pkgs.uservars) key theme color accent font;
+let inherit (pkgs.uservars) key theme color accent font browser;
 in {
   config = {
     programs.qutebrowser = {
@@ -226,6 +226,21 @@ in {
       # programs.qutebrowser.extraConfig = ''
       #   config.source("config/config.py")
       # '';
+    };
+    systemd.user.services = lib.mkIf (browser == "qutebrowser") {
+      qutebrowser = {
+        Unit = {
+          Description = "Qutebrowser Web client";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStartPre = "/usr/bin/env sleep 10s";
+          ExecStart = "${pkgs.qutebrowser}/bin/qutebrowser";
+          Restart = "on-failure";
+        };
+        Install = { WantedBy = [ "sway-session.target" ]; };
+      };
     };
     home.file = {
       # For some stupid reason qutebrowser crashes if this dir does not exist
