@@ -6,6 +6,7 @@ let
     rofi = "rofi -show drun -sort";
   };
   menu_cmd = available_menus.${dmenu};
-in pkgs.writeShellScriptBin "wlauncher" ''
+in
+pkgs.writeShellScriptBin "wlauncher" ''
   exec ${menu_cmd} "$@"
 ''

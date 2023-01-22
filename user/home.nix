@@ -147,29 +147,31 @@ in {
   programs.bash = { enable = true; };
 
   services.nextcloud-client = {
-      enable = true;
-      startInBackground = true;
+    enable = true;
+    startInBackground = true;
   };
 
   xdg.configFile = {
     "thunar/".source = ./thunar;
   };
 
-  xdg.userDirs = let
-    HOME = config.home.homeDirectory;
-  in {
-    enable = true;
-    createDirectories = true;
+  xdg.userDirs =
+    let
+      HOME = config.home.homeDirectory;
+    in
+    {
+      enable = true;
+      createDirectories = true;
 
-    desktop = "${HOME}/Área de trabalho";
-    documents = "${HOME}/Documentos";
-    download = "${HOME}/Downloads";
-    music = "${HOME}/Música";
-    pictures = "${HOME}/Imagens";
-    publicShare = "${HOME}/Público";
-    templates = "${HOME}/Modelos";
-    videos = "${HOME}/Vídeos";
-  };
+      desktop = "${HOME}/Área de trabalho";
+      documents = "${HOME}/Documentos";
+      download = "${HOME}/Downloads";
+      music = "${HOME}/Música";
+      pictures = "${HOME}/Imagens";
+      publicShare = "${HOME}/Público";
+      templates = "${HOME}/Modelos";
+      videos = "${HOME}/Vídeos";
+    };
 
   systemd.user.services = {
     steam = {

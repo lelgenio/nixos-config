@@ -6,6 +6,7 @@ let
     rofi = "rofi -dmenu -sort";
   };
   menu_cmd = available_menus.${dmenu};
-in pkgs.writeShellScriptBin "wdmenu" ''
+in
+pkgs.writeShellScriptBin "wdmenu" ''
   exec ${menu_cmd} "$@"
 ''

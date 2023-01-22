@@ -97,9 +97,10 @@
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ] ++ lib.optional (desktop == "sway") ./system/sway.nix
-        ++ lib.optional (desktop == "gnome") ./system/gnome.nix
-        ++ lib.optional (desktop == "kde") ./system/kde.nix;
-    in {
+      ++ lib.optional (desktop == "gnome") ./system/gnome.nix
+      ++ lib.optional (desktop == "kde") ./system/kde.nix;
+    in
+    {
       nixosConfigurations = {
         i15 = lib.nixosSystem {
           inherit system specialArgs;

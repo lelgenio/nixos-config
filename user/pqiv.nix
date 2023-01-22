@@ -6,7 +6,8 @@ let
     let
       sign = if (idx < 2) then 1 else -1;
       axis = if ((lib.mod idx 2) != 0) then "y" else "x";
-    in ''
+    in
+    ''
       ${key.${direction}} { shift_${axis}(${toString (sign * 10)}) }
       ${lib.toUpper key.${direction}} { shift_${axis}(${toString (sign * 50)}) }
       @MONTAGE{
@@ -16,7 +17,8 @@ let
       }
     '');
 
-in {
+in
+{
   # My bemenu wrapper
   xdg.configFile = {
     "pqivrc".text = ''

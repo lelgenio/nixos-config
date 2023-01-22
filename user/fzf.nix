@@ -17,7 +17,8 @@ let
   preview_opts =
     "--preview '${pkgs.bat}/bin/bat --style=numbers --color=always {}'";
 
-in {
+in
+{
   programs.fzf = {
     enable = true;
 

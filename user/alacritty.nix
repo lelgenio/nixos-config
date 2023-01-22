@@ -38,12 +38,14 @@ in {
         hints = {
           alphabet = key.hints;
           enabled = [{
-            regex = let
-              mimes =
-                "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)";
-              # I fucking hate regex, look at this bullshit
-              delimiters = ''^\\u0000-\\u001F\\u007F-\\u009F<>"\\s{-}\\^⟨⟩`'';
-            in "${mimes}[${delimiters}]+";
+            regex =
+              let
+                mimes =
+                  "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)";
+                # I fucking hate regex, look at this bullshit
+                delimiters = ''^\\u0000-\\u001F\\u007F-\\u009F<>"\\s{-}\\^⟨⟩`'';
+              in
+              "${mimes}[${delimiters}]+";
             command = "xdg-open";
             post_processing = true;
             mouse = {

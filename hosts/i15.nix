@@ -4,7 +4,8 @@
 { config, lib, pkgs, modulesPath, ... }:
 let
   btrfs_options = [ "compress=zstd:3" "noatime" ];
-in {
+in
+{
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules =

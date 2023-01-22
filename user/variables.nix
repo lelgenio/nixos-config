@@ -77,7 +77,8 @@ let
       };
     };
   };
-in rec {
+in
+rec {
   key = keys.colemak;
 
   theme = themes.dark;

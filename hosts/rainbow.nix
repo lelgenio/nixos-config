@@ -5,7 +5,8 @@
 let
   btrfs_options = [ "compress=zstd:3" "noatime" ];
   btrfs_ssd = [ "ssd" "discard=async" ];
-in {
+in
+{
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules =

@@ -17,7 +17,8 @@ in {
             };
             make_extension = name: src:
               ((pkgs.fetchFirefoxAddon { inherit name src; }));
-          in lib.mapAttrsToList make_extension extensions_name_src;
+          in
+          lib.mapAttrsToList make_extension extensions_name_src;
       };
       profiles = {
         main = {

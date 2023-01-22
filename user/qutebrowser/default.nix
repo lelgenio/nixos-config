@@ -64,31 +64,33 @@ in {
           # Tabs
           ########################################################
 
-          tabs = let
-            tabs_defaults = {
-              odd = {
-                fg = color.txt;
-                bg = color.bg;
-              };
-              even = {
-                fg = color.txt;
-                bg = color.bg_dark;
-              };
-              selected = {
+          tabs =
+            let
+              tabs_defaults = {
                 odd = {
-                  fg = accent.fg;
-                  bg = accent.color;
+                  fg = color.txt;
+                  bg = color.bg;
                 };
                 even = {
-                  fg = accent.fg;
-                  bg = accent.color;
+                  fg = color.txt;
+                  bg = color.bg_dark;
+                };
+                selected = {
+                  odd = {
+                    fg = accent.fg;
+                    bg = accent.color;
+                  };
+                  even = {
+                    fg = accent.fg;
+                    bg = accent.color;
+                  };
                 };
               };
-            };
-          in {
-            bar = { bg = color.bg; };
-            pinned = tabs_defaults;
-          } // tabs_defaults;
+            in
+            {
+              bar = { bg = color.bg; };
+              pinned = tabs_defaults;
+            } // tabs_defaults;
 
           ########################################################
           # Completion for urls and commands
