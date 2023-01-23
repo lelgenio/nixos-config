@@ -78,6 +78,7 @@
       common_modules = [
         ./system/configuration.nix
         ./system/secrets.nix
+        ./system/specialisation.nix
         # nur.nixosModules.nur
         inputs.agenix.nixosModule
         inputs.hyprland.nixosModules.default
