@@ -47,7 +47,10 @@ in {
 
       };
       settings = {
-        hints.chars = key.hints;
+        hints = {
+          chars = key.hints;
+          border = "2px solid ${accent.color}";
+        };
 
         content.blocking.adblock.lists = [
           "https://easylist.to/easylist/easylist.txt"
