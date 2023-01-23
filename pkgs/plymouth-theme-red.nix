@@ -1,4 +1,4 @@
-inputs@{ pkgs, ... }:
+{ pkgs, inputs }:
 pkgs.stdenv.mkDerivation rec {
   pname = "red-loader-plymouth";
   version = "0.0.1";

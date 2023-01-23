@@ -69,13 +69,17 @@
       pkgs = import nixpkgs {
         inherit system;
         config = { allowUnfree = true; };
+        overlays = old_overlays.all;
       };
       lib = nixpkgs.lib;
 
-      packages = import ./pkgs { inherit pkgs; };
+      packages = import ./pkgs { inherit pkgs inputs; };
+
+      old_overlays = (import ./overlays (inputs // { inherit system packages; }));
 
       specialArgs = { inherit inputs; };
       common_modules = [
+        { nixpkgs.pkgs = pkgs; }
         ./system/configuration.nix
         ./system/secrets.nix
         ./system/specialisation.nix
@@ -86,7 +90,6 @@
           programs.hyprland.enable = true;
           # programs.hyprland.package = null;
         }
-        (import ./overlays (inputs // { inherit system packages; }))
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -132,6 +135,15 @@
           }];
         };
       };
+
+      homeConfigurations.lelgenio = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        extraSpecialArgs = { inherit inputs; };
+
+        modules = [ ./user/home.nix ];
+      };
+
       packages.${system}.linuxPackages = packages;
     };
 }
