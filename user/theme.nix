@@ -71,6 +71,10 @@ with pkgs.uservars; {
     fira-code
     nerdfonts_fira_hack
     material-wifi-icons
-
   ];
+  home.activation = {
+    update_gtk = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      $DRY_RUN_CMD ${pkgs.configure-gtk}/bin/configure-gtk
+    '';
+  };
 }
