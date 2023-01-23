@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (import ./variables.nix) desktop browser;
+let inherit (pkgs.uservars) desktop browser;
 in {
   config = {
     programs.firefox = {

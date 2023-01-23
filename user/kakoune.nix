@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (import ./variables.nix) key theme color accent font dmenu;
+let inherit (pkgs.uservars) key theme color accent font dmenu;
 in {
   config = {
     programs.kakoune = {

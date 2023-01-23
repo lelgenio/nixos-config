@@ -1,6 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 let
-  inherit (import ./variables.nix) key theme color accent font;
+  inherit (pkgs.uservars) key theme color accent font;
 
   colors = {
     "bg+" = color.bg_light;

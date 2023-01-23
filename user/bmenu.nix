@@ -1,5 +1,5 @@
 { config, pkgs, lib, inputs, ... }:
-let inherit (import ./variables.nix) key theme color accent font;
+let inherit (pkgs.uservars) key theme color accent font;
 in {
   # My bemenu wrapper
   xdg.configFile = {

@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (import ./variables.nix) browser;
+let inherit (pkgs.uservars) browser;
 in {
   config = {
     xdg.desktopEntries = {

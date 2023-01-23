@@ -1,6 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
-let inherit (import ./variables.nix) desktop;
-in {
+{ config, pkgs, lib, inputs, ... }: {
   imports = [
     ./controller.nix
     ./waybar.nix
@@ -30,9 +28,10 @@ in {
     ./zathura.nix
     ./man.nix
     ./mpd.nix
+    ./sway.nix
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-database.hmModules.nix-index
-  ] ++ lib.optional (desktop == "sway") ./sway.nix;
+  ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.

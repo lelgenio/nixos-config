@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  inherit (import ./variables.nix) key theme color accent font;
+  inherit (pkgs.uservars) key theme color accent font;
   color_picker = pkgs.writeShellScript "color_picker" ''
     grim -g "$(slurp -b aabbcc00 -p)" - |
         convert - txt:- |

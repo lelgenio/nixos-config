@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-let inherit (import ./variables.nix) username mail;
+let inherit (pkgs.uservars) username mail;
 in {
   config = {
     programs.git = {

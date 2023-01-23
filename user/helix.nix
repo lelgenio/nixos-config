@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (import ./variables.nix) key theme color accent font;
+let inherit (pkgs.uservars) key theme color accent font;
 in {
   config = {
     programs.helix = {

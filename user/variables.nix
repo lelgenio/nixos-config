@@ -79,6 +79,8 @@ let
   };
 in
 rec {
+  inherit themes;
+
   key = keys.colemak;
 
   theme = themes.dark;

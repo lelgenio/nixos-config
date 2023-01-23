@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (import ./variables.nix) key color accent font;
+let inherit (pkgs.uservars) key color accent font;
 in {
   config = {
     programs.zathura.enable = true;
