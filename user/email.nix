@@ -3,7 +3,9 @@ let
 
   downloadEmails = "${pkgs.offlineimap}/bin/offlineimap";
   afterSync = "${pkgs.notmuch}/bin/notmuch new";
-  onNewEmails = "${pkgs.libnotify}/bin/notify-send 'You've got mail!'";
+  onNewEmails = ''
+    ${pkgs.libnotify}/bin/notify-send "You've got mail!"
+  '';
 
   defaultAccountSettings = {
     astroid.enable = true;
