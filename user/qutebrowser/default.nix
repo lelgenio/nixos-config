@@ -47,10 +47,14 @@ in {
 
       };
       settings = {
+        session.lazy_restore = true;
+        auto_save.session = true;
+
         hints = {
           chars = key.hints;
           border = "2px solid ${accent.color}";
         };
+        content.user_stylesheets = "style.css";
 
         content.blocking.adblock.lists = [
           "https://easylist.to/easylist/easylist.txt"
@@ -301,6 +305,48 @@ in {
         })
 
         main.observe(document.getElementsByClassName("video-ads ytp-ad-module").item(0), {attributes: true, characterData: true, childList: true})
+      '';
+      ".config/qutebrowser/style.css".text = ''
+        ${lib.optionalString (color.type == "dark") ''
+          button,
+          input[type="button"] {
+              color: unset;
+              background-color: unset;
+          }
+
+          .bg-gradient-to-b,
+          body {
+              background-image: none !important;
+          }
+
+          /***************************
+           * Remove borked ellements *
+           ***************************/
+
+          .search-filters-wrap:before, .search-filters-wrap:after {
+
+              display: none;
+          }
+        ''}
+
+        /*****************
+         * Hide some ads *
+         *****************/
+
+        /*Reddit*/
+        #sr-header-area .redesign-beta-optin,
+        .link.promotedlink.promoted,
+        .spacer:empty,
+        .spacer .premium-banner-outer,
+        .ad-container,
+
+        /*Youtube*/
+        div#masthead-ad ,
+        .video-ads,
+        #player-ads,
+        ytd-popup-container {
+            display: none !important;
+        }
       '';
     };
   };
