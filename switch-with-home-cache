@@ -1,0 +1,6 @@
+#!/bin/sh
+
+./switch \
+    --option extra-substituters "http://nixcache.lelgenio.1337.cx:5000" \
+    --option extra-trusted-public-keys "nixcache.lelgenio.1337.cx:zxCfx7S658llDgAUG0JVyNrlAdFVvPniSdDOkvfTPS8=" \
+    "$@"
