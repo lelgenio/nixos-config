@@ -28,6 +28,15 @@ with pkgs.uservars; {
   #   # style.name = "gtk2";
   # };
 
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-theme = pkgs.uservars.gtk_theme;
+      icon-theme = pkgs.uservars.icon_theme;
+      cursor-theme = pkgs.uservars.cursor_theme;
+      color-scheme = "prefer-${pkgs.uservars.color.type}";
+    };
+  };
+
   # fonts.fontconfig.enable = true;
   xdg.configFile = {
     "qt5ct/qt5ct.conf".text = ''
@@ -72,9 +81,4 @@ with pkgs.uservars; {
     nerdfonts_fira_hack
     material-wifi-icons
   ];
-  home.activation = {
-    update_gtk = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      $DRY_RUN_CMD ${pkgs.configure-gtk}/bin/configure-gtk
-    '';
-  };
 }
