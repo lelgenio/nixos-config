@@ -217,7 +217,7 @@ in {
 
           # {%@@ if color.type == "dark" @@%};#
 
-          webpage = {
+          webpage = lib.mkIf (color.type == "dark") {
             bg = color.bg;
             preferred_color_scheme = "dark";
             darkmode = {
@@ -254,7 +254,7 @@ in {
     home.file = {
       # For some stupid reason qutebrowser crashes if this dir does not exist
       ".local/share/qutebrowser/greasemonkey/.keep".text = "";
-      ".config/qutebrowser/greasemonkey/darkreader.js".text = ''
+      ".config/qutebrowser/greasemonkey/darkreader.js".text = lib.optionalString (color.type == "dark") ''
         // ==UserScript==
         // @name          Dark Reader (Unofficial)
         // @icon          https://darkreader.org/images/darkreader-icon-256x256.png
