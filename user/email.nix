@@ -77,7 +77,7 @@ in
 
   programs.astroid = {
     enable = true;
-    externalEditor = "terminal -e kak %1";
+    externalEditor = "terminal -e $EDITOR %1";
     pollScript = downloadEmails;
     extraConfig = { };
   };

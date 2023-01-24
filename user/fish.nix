@@ -29,7 +29,7 @@ in {
       };
       shellAbbrs = {
         off = "shutdown now";
-        v = "kak";
+        v = "hx";
         ns = "nix develop --command $SHELL";
         # system
         sv = "sudo systemct";

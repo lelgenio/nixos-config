@@ -1,5 +1,5 @@
 { config, pkgs, lib, font, ... }:
-let inherit (pkgs.uservars) key theme color accent font dmenu;
+let inherit (pkgs.uservars) key theme color accent font dmenu editor;
 in {
   config = {
     programs.kakoune = {
@@ -146,7 +146,7 @@ in {
         $DRY_RUN_CMD kak -l | xargs -r -n1 kak -e "config-source;quit" -ui dummy -c
       '';
     };
-    home.sessionVariables = {
+    home.sessionVariables = lib.mkIf (editor == "kakoune") {
       EDITOR = "kak";
       # Some plugins(kak_ansi) like to compile stuff
       CC = "cc";

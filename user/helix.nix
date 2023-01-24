@@ -1,13 +1,15 @@
 { config, pkgs, lib, font, ... }:
-let inherit (pkgs.uservars) key theme color accent font;
+let inherit (pkgs.uservars) key theme color accent font editor;
 in {
   config = {
     programs.helix = {
       enable = true;
       package = pkgs.unstable.helix;
       settings = {
-        theme = "gruvbox";
+        theme = "my-theme";
         editor = {
+          cursorline = true;
+          auto-save = true;
           whitespace.render = "all";
           whitespace.characters = {
             space = "·";
@@ -61,7 +63,23 @@ in {
         };
         keys.insert = { "A-k" = "normal_mode"; };
       };
+      languages = [
+        { auto-format = true; formatter = { command = "nixpkgs-fmt"; }; name = "nix"; }
+        { auto-format = true; name = "rust"; }
+      ];
+      themes =
+        {
+          my-theme = {
+            "inherits" = "gruvbox";
+            "ui.menu" = "none";
+            "ui.background" = { bg = "none"; };
+            "ui.virtual.whitespace" = color.nontxt;
+          };
+        };
     };
     home.packages = with pkgs; [ pkgs.unstable.helix ];
+    home.sessionVariables = lib.mkIf (editor == "helix") {
+      EDITOR = "hx";
+    };
   };
 }

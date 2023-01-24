@@ -128,4 +128,5 @@ rec {
   dmenu = "bmenu";
   desktop = "sway";
   browser = "qutebrowser";
+  editor = "helix";
 }
