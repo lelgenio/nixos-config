@@ -1,6 +1,9 @@
 { config, pkgs, lib, font, ... }:
-let inherit (pkgs.uservars) key theme color accent font browser;
-in {
+let
+  inherit (pkgs.uservars) key theme accent font browser;
+  inherit (theme) color;
+in
+{
   config = {
     programs.qutebrowser = {
       enable = true;

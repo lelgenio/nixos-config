@@ -1,4 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  inherit (pkgs.uservars) key accent font theme;
+in
+{
 
   # Enable the X11 windowing system.
   services.xserver.enable = false;
@@ -20,7 +24,7 @@
     let
       greetd_main_script = pkgs.writeShellScriptBin "main" ''
         ${pkgs.dbus-sway-environment}/bin/dbus-sway-environment
-        export XDG_CURRENT_DESKTOP=sway GTK_THEME="${pkgs.uservars.gtk_theme}" XCURSOR_THEME="${pkgs.uservars.cursor_theme}"
+        export XDG_CURRENT_DESKTOP=sway GTK_THEME="${theme.gtk_theme}" XCURSOR_THEME="${theme.cursor_theme}"
         ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway
         swaymsg exit
       '';

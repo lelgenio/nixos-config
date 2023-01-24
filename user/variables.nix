@@ -23,6 +23,10 @@ let
   };
   themes = {
     dark = {
+      gtk_theme = "Orchis-Red-Dark-Compact";
+      icon_theme = "Papirus-Dark";
+      cursor_theme = "Bibata-Modern-Classic";
+
       background = "~/.local/share/backgrounds/nixos-dark-pattern.png";
       opacity = 95;
       opacityHex = "ee";
@@ -50,6 +54,10 @@ let
       };
     };
     light = {
+      gtk_theme = "Orchis-Red-Compact";
+      icon_theme = "Papirus";
+      cursor_theme = "Bibata-Modern-Classic";
+
       background = "~/.local/share/backgrounds/nixos-light-pattern.png";
       opacity = 95;
       opacityHex = "ee";
@@ -84,12 +92,7 @@ rec {
   key = keys.colemak;
 
   theme = themes.dark;
-  color = theme.color;
   accent = accents.red;
-
-  gtk_theme = "Orchis-Red-Dark-Compact";
-  icon_theme = "Papirus-Dark";
-  cursor_theme = "Bibata-Modern-Classic";
 
   font = {
     mono = "Hack Nerd Font";

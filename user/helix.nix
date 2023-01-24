@@ -1,6 +1,9 @@
 { config, pkgs, lib, font, ... }:
-let inherit (pkgs.uservars) key theme color accent font editor;
-in {
+let
+  inherit (pkgs.uservars) key theme accent font editor;
+  inherit (theme) color;
+in
+{
   config = {
     programs.helix = {
       enable = true;

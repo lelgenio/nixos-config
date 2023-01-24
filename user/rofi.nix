@@ -1,6 +1,9 @@
 { config, pkgs, lib, font, ... }:
-let inherit (pkgs.uservars) key theme color accent font;
-in {
+let
+  inherit (pkgs.uservars) key theme accent font;
+  inherit (theme) color;
+in
+{
   config = {
     programs.rofi = {
       enable = true;

@@ -1,5 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
-with pkgs.uservars; {
+let
+  inherit (pkgs.uservars) theme font;
+  inherit (theme) color gtk_theme icon_theme cursor_theme;
+in
+{
   home.pointerCursor = {
     name = cursor_theme;
     size = 24;
@@ -30,10 +34,10 @@ with pkgs.uservars; {
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-theme = pkgs.uservars.gtk_theme;
-      icon-theme = pkgs.uservars.icon_theme;
-      cursor-theme = pkgs.uservars.cursor_theme;
-      color-scheme = "prefer-${pkgs.uservars.color.type}";
+      gtk-theme = gtk_theme;
+      icon-theme = icon_theme;
+      cursor-theme = cursor_theme;
+      color-scheme = "prefer-${color.type}";
     };
   };
 

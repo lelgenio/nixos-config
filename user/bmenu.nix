@@ -1,6 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
-let inherit (pkgs.uservars) key theme color accent font;
-in {
+let
+  inherit (pkgs.uservars) key theme accent font;
+  inherit (theme) color;
+in
+{
   # My bemenu wrapper
   xdg.configFile = {
     "bmenu.conf".text = ''

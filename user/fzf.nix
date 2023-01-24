@@ -1,6 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 let
-  inherit (pkgs.uservars) key theme color accent font;
+  inherit (pkgs.uservars) key theme accent font;
+  inherit (theme) color;
 
   colors = {
     "bg+" = color.bg_light;

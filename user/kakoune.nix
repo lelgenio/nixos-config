@@ -1,6 +1,9 @@
 { config, pkgs, lib, font, ... }:
-let inherit (pkgs.uservars) key theme color accent font dmenu editor;
-in {
+let
+  inherit (pkgs.uservars) key theme accent font dmenu editor;
+  inherit (theme) color;
+in
+{
   config = {
     programs.kakoune = {
       enable = true;
