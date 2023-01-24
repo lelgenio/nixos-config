@@ -134,5 +134,17 @@ in {
         ];
       };
     };
+
+    home.sessionVariables = { TERMINAL = "alacritty"; };
+
+    # Look at this fucking bullshit:
+    # https://gitlab.gnome.org/GNOME/glib/-/blob/20c4fcb2a7246a2b205649eae3ebda4296217afc/gio/gdesktopappinfo.c#L2702
+    # Theres a fucking hard coded list of terminals!
+    home.packages = with pkgs; [
+      (pkgs.writeShellScriptBin "gnome-terminal" ''
+        [ "$1" = "--" ] && shift
+        exec terminal -e "$@"
+      '')
+    ];
   };
 }
