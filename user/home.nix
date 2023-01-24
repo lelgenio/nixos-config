@@ -29,6 +29,7 @@
     ./man.nix
     ./mpd.nix
     ./sway.nix
+    ./thunar.nix
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-database.hmModules.nix-index
   ];
@@ -67,9 +68,6 @@
     ripgrep
     translate-shell
 
-    (xfce.thunar.override {
-      thunarPlugins = with pkgs.xfce; [ thunar-volman thunar-archive-plugin ];
-    })
     mate.engrampa
     # gnome.nautilus
 
@@ -152,9 +150,6 @@
     startInBackground = true;
   };
 
-  xdg.configFile = {
-    "thunar/".source = ./thunar;
-  };
 
   xdg.userDirs =
     let
