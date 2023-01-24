@@ -150,7 +150,15 @@ in
                 "q" = "";
                 "m" = "exec volumesh -t";
                 "s" = "exec ${pkgs.pulse_sink}/bin/pulse_sink";
+              } // {
+                "p" = "mode playerctl";
               };
+              playerctl = code_binds
+                (return_mode {
+                  "space" = "exec ${pkgs.playerctl}/bin/playerctl toggle";
+                  "escape" = "";
+                  "q" = "";
+                });
               passthrough = {
                 "${mod}+escape" = "mode default;exec notify-send 'Passthrough off'";
               };
