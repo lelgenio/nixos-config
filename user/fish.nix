@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-let inherit (pkgs.uservars) key theme color accent font;
+let inherit (pkgs.uservars) key theme color accent font editor;
 in {
   config = {
     programs.fish = {
@@ -29,7 +29,10 @@ in {
       };
       shellAbbrs = {
         off = "shutdown now";
-        v = "hx";
+        v = {
+          "helix" = "hx";
+          "kakoune" = "kak";
+        }.${editor};
         ns = "nix develop --command $SHELL";
         # system
         sv = "sudo systemct";
