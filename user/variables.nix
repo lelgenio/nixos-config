@@ -54,8 +54,8 @@ let
       };
     };
     light = {
-      gtk_theme = "Orchis-Red-Compact";
-      icon_theme = "Papirus";
+      gtk_theme = "Orchis-Red-Light-Compact";
+      icon_theme = "Papirus-Light";
       cursor_theme = "Bibata-Modern-Classic";
 
       background = "~/.local/share/backgrounds/nixos-light-pattern.png";
