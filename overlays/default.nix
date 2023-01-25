@@ -38,9 +38,7 @@
     nerdfonts_fira_hack = (final.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
   });
 
-  new-packages = (final: prev: {
-    inherit (packages) dzgui plymouth-theme-red;
-
+  new-packages = (final: prev: packages // {
     dhist = inputs.dhist.packages.${system}.dhist;
     demoji = inputs.demoji.packages.${system}.demoji;
     devenv = inputs.devenv.packages.${system}.devenv;

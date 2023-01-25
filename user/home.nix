@@ -129,6 +129,7 @@
     cargo-watch
     cargo-expand
     cargo-sweep
+    cargo-checkmate
     pkgs.unstable.rust-analyzer
     gcc
     rnix-lsp
