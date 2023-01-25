@@ -4,7 +4,7 @@
     ./waybar.nix
     ./helix.nix
     ./kakoune.nix
-    ./fish.nix
+    ./fish
     ./firefox.nix
     ./hyprland.nix
     ./alacritty.nix

@@ -66,8 +66,8 @@ in {
       direnv.enable = true;
       direnv.nix-direnv.enable = true;
     };
-    home.file = {
-      ".config/fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
+    xdg.configFile = {
+      "fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
     };
     # programs.command-not-found.enable = true;
     programs.nix-index.enable = true;
