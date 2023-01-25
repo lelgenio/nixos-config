@@ -1,5 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
+  inherit (pkgs.uservars.theme) color;
 
   downloadEmails = "${pkgs.offlineimap}/bin/offlineimap";
   afterSync = "${pkgs.notmuch}/bin/notmuch new";
@@ -80,5 +81,28 @@ in
     externalEditor = "terminal -e $EDITOR %1";
     pollScript = downloadEmails;
     extraConfig = { };
+  };
+
+  xdg.configFile = lib.mkIf (color.type == "dark") {
+    "astroid/ui/thread-view.scss".text = ''
+      /* ui-version: 5 (do not change when modifying theme for yourself) */
+
+      * {
+          color: #ffffff !important;
+          background-color: #181818 !important;
+      }
+
+      @import '/nix/store/g46fiqmjirak92ah3dc4nafmm8blmfab-astroid-0.16/share/astroid/ui/thread-view.scss';
+    '';
+    "astroid/ui/part.scss".text = ''
+      /* ui-version: 5 (do not change when modifying theme for yourself) */
+
+      * {
+          color: #eee !important;
+          background-color: #202020 !important;
+      }
+
+      // @import '/nix/store/g46fiqmjirak92ah3dc4nafmm8blmfab-astroid-0.16/share/astroid/ui/part.scss';
+    '';
   };
 }
