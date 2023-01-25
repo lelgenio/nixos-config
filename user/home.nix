@@ -19,6 +19,7 @@
     ./chat.nix
     ./email.nix
     ./syncthing.nix
+    ./vdir.nix
     ./bmenu.nix
     ./fzf.nix
     ./ranger
