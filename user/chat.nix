@@ -1,6 +1,19 @@
 { config, pkgs, lib, inputs, ... }: {
   systemd.user.services = {
-    thunderbird = {
+    astroid = lib.mkIf (pkgs.uservars.email-client == "astroid") {
+      Unit = {
+        Description = "Astroid Email client";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStartPre = "/usr/bin/env sleep 10s";
+        ExecStart = "${pkgs.astroid}/bin/astroid";
+        Restart = "on-failure";
+      };
+      Install = { WantedBy = [ "sway-session.target" ]; };
+    };
+    thunderbird = lib.mkIf (pkgs.uservars.email-client == "thunderbird") {
       Unit = {
         Description = "Thunderbird Email client";
         PartOf = [ "graphical-session.target" ];

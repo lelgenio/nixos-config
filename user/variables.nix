@@ -132,4 +132,5 @@ rec {
   desktop = "sway";
   browser = "qutebrowser";
   editor = "kakoune";
+  email-client = "astroid";
 }
