@@ -257,7 +257,7 @@ in
     home.file = {
       # For some stupid reason qutebrowser crashes if this dir does not exist
       ".local/share/qutebrowser/greasemonkey/.keep".text = "";
-      ".config/qutebrowser/greasemonkey/darkreader.js".text = lib.optionalString (color.type == "dark") ''
+      ".config/qutebrowser/greasemonkey/darkreader.js".text = lib.optionalString (color.type == "dark" && false) ''
         // ==UserScript==
         // @name          Dark Reader (Unofficial)
         // @icon          https://darkreader.org/images/darkreader-icon-256x256.png
