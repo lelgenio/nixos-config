@@ -170,22 +170,6 @@
       videos = "${HOME}/Vídeos";
     };
 
-  systemd.user.services = {
-    steam = {
-      Unit = {
-        Description = "Steam client";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStartPre = "/usr/bin/env sleep 20s";
-        ExecStart = "${pkgs.steam}/bin/steam";
-        Restart = "on-failure";
-      };
-      Install = { WantedBy = [ "sway-session.target" ]; };
-    };
-  };
-
   services.kdeconnect = {
     enable = true;
     indicator = true;
