@@ -6,5 +6,7 @@
       ../secrets/monolith-gitlab-runner-thoreb-itinerario-registrationConfigFile.age;
     secrets.rainbow-gitlab-runner-thoreb-itinerario-registrationConfigFile.file =
       ../secrets/rainbow-gitlab-runner-thoreb-itinerario-registrationConfigFile.age;
+    secrets.monolith-nix-serve-privkey.file =
+      ../secrets/monolith-nix-serve-privkey.age;
   };
 }
