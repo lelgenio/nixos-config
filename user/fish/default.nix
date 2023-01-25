@@ -68,6 +68,10 @@ in {
     };
     xdg.configFile = {
       "fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
+      "fish/completions/" = {
+        recursive = true;
+        source = ./completions;
+      };
     };
     # programs.command-not-found.enable = true;
     programs.nix-index.enable = true;
