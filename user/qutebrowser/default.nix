@@ -1,9 +1,13 @@
 { config, pkgs, lib, font, ... }:
 let
-  inherit (pkgs.uservars) key theme accent font browser;
-  inherit (theme) color;
+  inherit (pkgs.uservars) key font browser editor;
 in
 {
+  imports = [
+    ./colors.nix
+    ./fonts.nix
+  ];
+
   config = {
     programs.qutebrowser = {
       enable = true;
@@ -52,12 +56,17 @@ in
       settings = {
         session.lazy_restore = true;
         auto_save.session = true;
-
-        hints = {
-          chars = key.hints;
-          border = "2px solid ${accent.color}";
-        };
-        content.user_stylesheets = "style.css";
+        hints.chars = key.hints;
+        editor.command = [
+          "terminal"
+          "-e"
+          {
+            kakoune = "kak";
+            helix = "hx";
+          }.${editor}
+          "{file}"
+          "+{line}"
+        ];
 
         content.blocking.adblock.lists = [
           "https://easylist.to/easylist/easylist.txt"
@@ -67,173 +76,6 @@ in
           "https://www.i-dont-care-about-cookies.eu/abp/"
           "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt"
         ];
-
-        colors = {
-
-          ########################################################
-          # Tabs
-          ########################################################
-
-          tabs =
-            let
-              tabs_defaults = {
-                odd = {
-                  fg = color.txt;
-                  bg = color.bg;
-                };
-                even = {
-                  fg = color.txt;
-                  bg = color.bg_dark;
-                };
-                selected = {
-                  odd = {
-                    fg = accent.fg;
-                    bg = accent.color;
-                  };
-                  even = {
-                    fg = accent.fg;
-                    bg = accent.color;
-                  };
-                };
-              };
-            in
-            {
-              bar = { bg = color.bg; };
-              pinned = tabs_defaults;
-            } // tabs_defaults;
-
-          ########################################################
-          # Completion for urls and commands
-          ########################################################
-
-          completion = {
-            fg = color.txt;
-            even = { bg = color.bg; };
-            odd = { bg = color.bg; };
-            scrollbar = { bg = color.bg_dark; };
-            match = { fg = accent.color; };
-            category = {
-              fg = color.txt;
-              bg = color.bg_dark;
-              border = {
-                top = color.bg_dark;
-                bottom = color.bg_dark;
-              };
-            };
-            item = {
-              selected = {
-                fg = accent.fg;
-                bg = accent.color;
-                border = {
-                  top = color.bg_dark;
-                  bottom = color.bg_dark;
-                };
-                match = { fg = color.txt; };
-              };
-            };
-          };
-
-          ########################################################
-          # Statusbar
-          ########################################################
-
-          statusbar = {
-            normal = {
-              fg = color.txt;
-              bg = color.bg;
-            };
-            insert = {
-              fg = color.normal.green;
-              bg = color.bg;
-            };
-            passthrough = {
-              fg = color.normal.blue;
-              bg = color.bg;
-            };
-            command = {
-              fg = color.txt;
-              bg = color.bg;
-            };
-            caret = {
-              selection = {
-                fg = accent.fg;
-                bg = accent.color;
-              };
-            };
-            url = {
-              success = {
-                https = { fg = color.txt; };
-                http = { fg = color.normal.red; };
-              };
-              hover = { fg = color.normal.cyan; };
-            };
-          };
-          ########################################################
-          # Downloads
-          ########################################################
-
-          downloads = {
-            start = { bg = color.normal.blue; };
-            stop = { bg = color.normal.green; };
-            bar = { bg = color.bg; };
-          };
-
-          ########################################################
-          # Choice of what element should be clicked
-          ########################################################
-
-          hints = {
-            fg = color.txt;
-            bg = color.bg;
-            match = { fg = accent.color; };
-          };
-
-          ########################################################
-          # List of what each keybinding does
-          ########################################################
-
-          keyhint = {
-            fg = color.txt;
-            bg = "rgba({{@@ hex2rgb(color.bg) @@}};, {{@@ opacity @@}};)";
-            suffix = { fg = accent.color; };
-          };
-
-          ########################################################
-          # Right click menu
-          ########################################################
-
-          contextmenu = {
-            menu = {
-              fg = color.txt;
-              bg = color.bg;
-            };
-            selected = {
-              fg = accent.fg;
-              bg = accent.color;
-            };
-            disabled = { fg = color.bg_light; };
-          };
-
-          ########################################################
-          # Dark theme
-          ########################################################
-
-          # {%@@ if color.type == "dark" @@%};#
-
-          webpage = lib.mkIf (color.type == "dark") {
-            bg = color.bg;
-            preferred_color_scheme = "dark";
-            darkmode = {
-              enabled = true;
-              threshold = {
-                background = 256 / 2;
-                text = 256 / 2;
-              };
-            };
-          };
-          # {%@@ endif @@%}
-        };
-
       };
       # programs.qutebrowser.extraConfig = ''
       #   config.source("config/config.py")
@@ -257,30 +99,6 @@ in
     home.file = {
       # For some stupid reason qutebrowser crashes if this dir does not exist
       ".local/share/qutebrowser/greasemonkey/.keep".text = "";
-      ".config/qutebrowser/greasemonkey/darkreader.js".text = lib.optionalString (color.type == "dark" && false) ''
-        // ==UserScript==
-        // @name          Dark Reader (Unofficial)
-        // @icon          https://darkreader.org/images/darkreader-icon-256x256.png
-        // @namespace     DarkReader
-        // @description	  Inverts the brightness of pages to reduce eye strain
-        // @version       4.7.15
-        // @author        https://github.com/darkreader/darkreader#contributors
-        // @homepageURL   https://darkreader.org/ | https://github.com/darkreader/darkreader
-        // @run-at        document-end
-        // @grant         none
-        // @include       http*
-        // @require       https://cdn.jsdelivr.net/npm/darkreader/darkreader.min.js
-        // @noframes
-        // ==/UserScript==
-
-        DarkReader.setFetchMethod(window.fetch)
-
-        DarkReader.enable({
-        	brightness: 100,
-        	contrast: 100,
-        	sepia: 0
-        });
-      '';
       ".config/qutebrowser/greasemonkey/youtube.js".text = ''
         // ==UserScript==
         // @name         Auto Skip YouTube Ads
@@ -308,48 +126,6 @@ in
         })
 
         main.observe(document.getElementsByClassName("video-ads ytp-ad-module").item(0), {attributes: true, characterData: true, childList: true})
-      '';
-      ".config/qutebrowser/style.css".text = ''
-        ${lib.optionalString (color.type == "dark") ''
-          button,
-          input[type="button"] {
-              color: unset;
-              background-color: unset;
-          }
-
-          .bg-gradient-to-b,
-          body {
-              background-image: none !important;
-          }
-
-          /***************************
-           * Remove borked ellements *
-           ***************************/
-
-          .search-filters-wrap:before, .search-filters-wrap:after {
-
-              display: none;
-          }
-        ''}
-
-        /*****************
-         * Hide some ads *
-         *****************/
-
-        /*Reddit*/
-        #sr-header-area .redesign-beta-optin,
-        .link.promotedlink.promoted,
-        .spacer:empty,
-        .spacer .premium-banner-outer,
-        .ad-container,
-
-        /*Youtube*/
-        div#masthead-ad ,
-        .video-ads,
-        #player-ads,
-        ytd-popup-container {
-            display: none !important;
-        }
       '';
     };
   };
