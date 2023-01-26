@@ -27,6 +27,17 @@ hook global BufCreate .*\.html %{
     set buffer formatcmd 'prettier --parser html'
 }
 
+hook global BufCreate .*\.component\.html %{
+    set buffer filetype angular
+}
+
+hook global WinSetOption filetype=angular %[
+    set-option buffer extra_word_chars '_' '-'
+
+    require-module html
+    add-highlighter buffer/angular ref html
+]
+
 hook global BufCreate .*\.js %{
     set buffer formatcmd 'prettier --parser babel'
 }

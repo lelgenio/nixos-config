@@ -1,10 +1,8 @@
 # {{@@ header() @@}}
 
-map global normal <c-d> 10j
+# For colemak, this is pretty confortable, C-n = down, C-u = up
 map global normal <c-u> 10k
-
-map global normal <c-r> 10j
-map global normal <c-w> 10k
+map global normal <c-n> 10j
 
 # alt i makes searches case insensitive
 map global prompt <a-i> '<c-a>(?i)<c-e>'

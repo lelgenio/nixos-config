@@ -7,6 +7,19 @@ verbosity = 2
 # set to 0 to disable
 timeout = 1800 # seconds = 30 minutes
 
+[language.angular]
+filetypes = ["angular"]
+roots = [".angular", ".git"]
+command = "node"
+args = [
+    "/home/lelgenio/.config/yarn/global/node_modules/@angular/language-server",
+    "--ngProbeLocations",
+    "/home/lelgenio/.config/yarn/global/node_modules",
+    "--tsProbeLocations",
+    "/home/lelgenio/.config/yarn/global/node_modules",
+    "--stdio",
+]
+
 [language.bash]
 filetypes = ["sh"]
 roots = [".git", ".hg"]
