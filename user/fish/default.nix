@@ -34,6 +34,7 @@ in {
           "kakoune" = "kak";
         }.${editor};
         ns = "nix develop --command $SHELL";
+        wcf = "wl-copy-file";
         # system
         sv = "sudo systemct";
         suv = "sudo systemct --user";
@@ -75,6 +76,9 @@ in {
     };
     # programs.command-not-found.enable = true;
     programs.nix-index.enable = true;
-    home.packages = with pkgs; [ trash-cli ];
+    home.packages = with pkgs; [
+      trash-cli
+      wl-copy-file
+    ];
   };
 }

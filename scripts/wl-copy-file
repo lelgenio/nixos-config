@@ -1,0 +1,21 @@
+#!/usr/bin/env fish
+
+function die
+    echo $argv[2..] >&2
+    exit $argv[1]
+end
+
+if test (count $argv) != 1
+    die 1 "Incorrect number of arguments porvided" >&2
+end
+
+set -a file (realpath $argv[1])
+set -e argv[1]
+
+if test -d "$file"
+    die 1 "Cannot copy directories" >&2
+else if test -f "$file"
+    wl-copy $argv -t text/uri-list "file:///$file"
+else
+    die 2 "No file found" >&2
+end

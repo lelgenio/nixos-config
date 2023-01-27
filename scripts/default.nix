@@ -24,6 +24,7 @@ create_scripts
   {
     br = [ ];
     bmenu = [ final.bemenu final.dhist fish j4-dmenu-desktop jq sway ];
+    wl-copy-file = [ wl-clipboard fish ];
     _diffr = [ diffr ];
     _thunar-terminal = [ final.terminal ];
     kak-pager = [ fish final._diffr ];
