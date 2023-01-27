@@ -3,7 +3,7 @@
     ./controller.nix
     ./waybar.nix
     ./helix.nix
-    ./kakoune.nix
+    ./kakoune
     ./fish
     ./firefox.nix
     ./hyprland.nix

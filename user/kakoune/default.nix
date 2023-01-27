@@ -22,14 +22,14 @@ in
         with colors;
         lib.concatStringsSep "\n"
           (map (lib.readFile) ([
-            ./kak/filetypes.kak
-            ./kak/hooks.kak
-            ./kak/indent.kak
-            ./kak/keys.kak
-            ./kak/plug.kak
-            ./kak/usermode.kak
-            ./kak/git-mode.kak
-          ] ++ lib.optional (dmenu == "rofi") ./kak/rofi-commands.kak)) + ''
+            ./filetypes.kak
+            ./hooks.kak
+            ./indent.kak
+            ./keys.kak
+            ./plug.kak
+            ./usermode.kak
+            ./git-mode.kak
+          ] ++ lib.optional (dmenu == "rofi") ./rofi-commands.kak)) + ''
 
         set global scrolloff 10,20
         set global autoreload yes
@@ -129,7 +129,7 @@ in
             Hint = "blue";
           }));
     };
-    home.file = { ".config/kak-lsp/kak-lsp.toml".source = ./kak/kak-lsp.toml; };
+    home.file = { ".config/kak-lsp/kak-lsp.toml".source = ./kak-lsp.toml; };
     home.packages = with pkgs; [
       kakoune
       terminal
