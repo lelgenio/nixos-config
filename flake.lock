@@ -101,18 +101,38 @@
       }
     },
     "dzgui": {
+      "inputs": {
+        "dzgui": "dzgui_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1674412112,
+        "narHash": "sha256-8Dk2kSONepRfL4hWsBVShsOIwXyS4yh/frjIDrJx4C4=",
+        "owner": "lelgenio",
+        "repo": "dzgui-nix",
+        "rev": "041210735c3c06b428c78ea09ddf2cbb8b41f708",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lelgenio",
+        "repo": "dzgui-nix",
+        "type": "github"
+      }
+    },
+    "dzgui_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1674502539,
-        "narHash": "sha256-B7HwDq2o7GCsDcp3enbV3Xa3OQsd4gbUU9D7x7CRwX8=",
+        "lastModified": 1674502482,
+        "narHash": "sha256-X3Sze8Quexy2vp3A78+1buvsAwAGQR71aLAXNCHdka0=",
         "owner": "aclist",
         "repo": "dztui",
-        "rev": "82c6dbdfef223653f81136276f51ffa5222e8403",
+        "rev": "e76070818c434f43ee4dd4305069c29235a390f4",
         "type": "github"
       },
       "original": {
         "owner": "aclist",
-        "ref": "dzgui",
         "repo": "dztui",
         "type": "github"
       }

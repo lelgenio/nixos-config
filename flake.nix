@@ -49,8 +49,8 @@
     devenv.url = "github:cachix/devenv/v0.5";
     devenv.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    dzgui.url = "github:aclist/dztui/dzgui";
-    dzgui.flake = false;
+    dzgui.url = "github:lelgenio/dzgui-nix";
+    dzgui.inputs.nixpkgs.follows = "nixpkgs";
 
     # my stuff
     dhist = {

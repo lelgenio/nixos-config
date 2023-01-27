@@ -41,6 +41,7 @@
   new-packages = (final: prev: packages // {
     dhist = inputs.dhist.packages.${system}.dhist;
     demoji = inputs.demoji.packages.${system}.demoji;
+    dzgui = inputs.dzgui.packages.${system}.dzgui;
     devenv = inputs.devenv.packages.${system}.devenv;
     mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
 
