@@ -7,9 +7,6 @@ in
   config = {
     programs.kakoune = {
       enable = true;
-      plugins = with pkgs.kakounePlugins; [
-        kak-lsp
-      ];
       extraConfig =
         lib.concatStringsSep "\n"
           (map (lib.readFile) ([
@@ -18,7 +15,6 @@ in
             ./indent.kak
             ./keys.kak
             ./plug.kak
-            ./lsp.kak
             ./usermode.kak
             ./git-mode.kak
           ] ++ lib.optional (dmenu == "rofi") ./rofi-commands.kak)) + ''
@@ -33,6 +29,7 @@ in
     };
     home.file = { ".config/kak-lsp/kak-lsp.toml".source = ./kak-lsp.toml; };
     home.packages = with pkgs; [
+      kakoune
       terminal
       ranger
       bmenu
@@ -46,8 +43,8 @@ in
     ];
     home.activation = {
       update_kakoune = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD timeout 5s kak -clear &&
-        $DRY_RUN_CMD timeout 5s kak -l | xargs -r -n1 timeout 5s kak -e "config-source;quit" -ui dummy -c ||
+        $DRY_RUN_CMD kak -clear &&
+        $DRY_RUN_CMD kak -l | xargs -r -n1 kak -e "config-source;quit" -ui dummy -c ||
         $DRY_RUN_CMD true
       '';
     };
