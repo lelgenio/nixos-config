@@ -1,0 +1,111 @@
+#!/bin/sh
+set -e
+
+menu=wdmenu
+
+search() {
+    tabs 8
+
+    mpc playlist --format '%artist% : %title%@pos:%position%' |
+        sed '/^ : \t/d'|
+        column -ts"@" |
+        $menu |
+        grep -o  'pos:.*' |
+        cut -d: -f2 |
+        xargs -r mpc play
+}
+
+get_current() {
+    music_root=$(xdg-user-dir MUSIC || echo "$HOME/Music")
+    current_file=$(mpc current -f %file%)
+
+    echo "${music_root}/${current_file}"
+}
+
+delete() {
+    current=$(get_current)
+    answer=$(printf "nothing\n$current" | $menu -p"delete?")
+    if test "$answer" = "$current"; then
+        trash "$answer"
+        mpc --quiet next
+        mpc --quiet update
+
+        path=$(echo $answer | sd "$HOME" '~')
+        notify-send "Removed Music" "$path"
+    fi
+}
+
+yank() {
+    current=$(get_current)
+
+    # Some programs need you to pass a path, not the contents
+    wl-copy --type 'text/uri-list' "file:///${current}"
+
+    notify-send "Yanked Music" "$(echo $current | sd "$HOME" "~")"
+}
+
+padd() {
+    get_current
+    cd "$music_root"
+    choice=$(fd -E '*.lrc' -E '*.m3u8' | sort | $menu -p "Add Songs(Use Ctrl):")
+    mpc add "$choice" &&
+        notify-send "Added Music" "$(echo $choice | sd "$HOME" "~")" ||
+        notify-send "Failed to Add Music" "$(echo $choice | sd "$HOME" "~")"
+    mpdDup
+}
+
+pclear() {
+    mpc clear &&
+        notify-send "Cleared Playlist" ||
+        notify-send "Failed Clear Playlist"
+}
+
+psave() {
+    name=$(mpc playlist | $menu -p 'Save Playlist(Use Shift): ')
+
+    mpc save "$name" &&
+        notify-send "Created playlist" "$name" ||
+        notify-send "Failed to Create Playlist" "$name"
+}
+
+pload() {
+    name=$(mpc lsplaylists | $menu -p 'Load Playlist: ')
+
+    mpc clear
+    mpc load "$name" &&
+        notify-send "Loaded playlist" "$name" ||
+        notify-send "Failed to Load Playlist" "$name"
+}
+
+pdelete() {
+    name=$(mpc lsplaylists | $menu -p 'Delete Playlist: ')
+
+    mpc delete "$name" &&
+        notify-send "Deleted playlist" "$name" ||
+        notify-send "Failed to Delete Playlist" "$name"
+}
+
+usage() {
+    cmdname=$(basename "$0")
+    echo "Commands:"
+    echo "  $cmdname search   -- Search and play songs."
+    echo "  $cmdname delete   -- Prompt to delete the current song."
+    echo "  $cmdname yank     -- Copy current music to clipboard."
+    echo "Playlist Commands:"
+    echo "  $cmdname padd     -- Add song"
+    echo "  $cmdname pclear   -- Clear"
+    echo "  $cmdname psave    -- Save"
+    echo "  $cmdname pload    -- Load"
+    echo "  $cmdname pdelete  -- Delete"
+}
+
+case "$1" in
+    delete | search | yank | padd | pclear | psave | pload | pdelete)
+        "$1"
+        ;;
+    *)
+        usage
+        test -n "$1"
+        echo "Unreconized option: $1"
+        ;;
+esac

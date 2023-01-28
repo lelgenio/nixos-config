@@ -18,4 +18,7 @@
     multimediaKeys = true;
     notifications = true;
   };
+  home.packages = with pkgs; [
+    musmenu
+  ];
 }
