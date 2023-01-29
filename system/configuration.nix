@@ -88,12 +88,16 @@
   services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.mutableUsers = false;
   users.users.lelgenio = {
     isNormalUser = true;
     description = "Leonardo Eugênio";
+    hashedPassword = "$y$j9T$0e/rczjOVCy7PuwC3pG0V/$gTHZhfO4wQSlFvbDyfghbCnGI2uDI0a52zSrQ/yOA5A";
     extraGroups = [ "networkmanager" "wheel" "docker" "adbusers" "bluetooth" ];
     shell = pkgs.fish;
   };
+  users.users.root.initialHashedPassword = "$y$j9T$E3aBBSSq0Gma8hZD9L7ov0$iCGDW4fqrXWfHO0qodBYYgMFA9CpIraoklHcPbJJrM3";
+
   # services.getty.autologinUser = "lelgenio";
   programs.fish.enable = true;
   # TODO: enable thunar plugins
