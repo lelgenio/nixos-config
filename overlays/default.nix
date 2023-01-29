@@ -1,4 +1,4 @@
-(inputs@{ system, packages, ... }: rec {
+{ inputs, packages, ... }: rec {
   all = [
     nur
     scripts
@@ -39,10 +39,10 @@
   });
 
   new-packages = (final: prev: packages // {
-    dhist = inputs.dhist.packages.${system}.dhist;
-    demoji = inputs.demoji.packages.${system}.demoji;
-    dzgui = inputs.dzgui.packages.${system}.dzgui;
-    devenv = inputs.devenv.packages.${system}.devenv;
+    dhist = inputs.dhist.packages.${prev.system}.dhist;
+    demoji = inputs.demoji.packages.${prev.system}.demoji;
+    dzgui = inputs.dzgui.packages.${prev.system}.dzgui;
+    devenv = inputs.devenv.packages.${prev.system}.devenv;
     mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
 
     sea-orm-cli = inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;
@@ -68,4 +68,4 @@
   variables = (final: prev: {
     uservars = import ../user/variables.nix;
   });
-})
+}

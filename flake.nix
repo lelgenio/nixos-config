@@ -75,7 +75,7 @@
 
       packages = import ./pkgs { inherit pkgs inputs; };
 
-      old_overlays = (import ./overlays (inputs // { inherit system packages; }));
+      old_overlays = (import ./overlays { inherit packages inputs; });
 
       specialArgs = { inherit inputs; };
       common_modules = [
