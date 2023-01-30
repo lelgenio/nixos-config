@@ -7,7 +7,10 @@
          context.modules = [
          {   name = libpipewire-module-rtp-sink
              args = {
-                 node.description = "Phone rtp receiver"
+                 # Make this sink appear as an option in graphical interfaces
+                 media.class = Audio/Sink
+                 node.name = "rtp-sink"
+                 node.description = "RTP"
 
                  #sap.ip = "224.0.0.56"
                  #sap.port = 9875
