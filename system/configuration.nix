@@ -118,6 +118,8 @@
     gnome3.adwaita-icon-theme # default gnome cursors
   ];
 
+  fonts.enableDefaultFonts = true;
+
   services.geoclue2.enable = true;
   # programs.qt5ct.enable = true;
   programs.steam.enable = true;
