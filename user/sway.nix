@@ -112,6 +112,7 @@ in
             ];
             "7" = [
               { app_id = "thunderbird"; }
+              { app_id = "astroid"; }
             ];
             "9" = [
               { class = ".*[Ss]team.*"; }
