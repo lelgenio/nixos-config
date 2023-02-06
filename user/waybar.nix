@@ -16,6 +16,7 @@ in
         modules-right = [
           "sway/language"
           "mpd"
+          "custom/playerctl"
           "tray"
           "custom/caffeine"
           "pulseaudio"
@@ -84,6 +85,7 @@ in
             format-paused = "{stateIcon}";
             format-stopped = "";
             state-icons = {
+              stopped = "";
               paused = "";
               playing = "";
             };
@@ -92,6 +94,13 @@ in
             on-scroll-up = "${mpc} vol +10";
             on-scroll-down = "${mpc} vol -10";
           };
+        "custom/playerctl" = {
+          format = "{}";
+          exec = "${pkgs.playerctl}/bin/playerctl metadata title";
+          on-click = "${pkgs.playerctl}/bin/playerctl play-pause";
+          interval = 1;
+          tooltip = false;
+        };
         "sway/language" = { format = "{short} {variant}"; };
         "custom/caffeine" = {
           format = "{}";
