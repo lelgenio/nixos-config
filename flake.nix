@@ -36,7 +36,6 @@
     material-wifi-icons.flake = false;
 
     sea-orm-cli.url = "github:lucperkins/nixpkgs/lperkins/sea-orm-cli";
-    webcord.url = "github:huantianad/nixpkgs/webcord";
 
     nil-lsp.url = "github:oxalica/nil";
     nil-lsp.inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -84,7 +83,7 @@
         ./system/secrets.nix
         ./system/specialisation.nix
         # nur.nixosModules.nur
-        inputs.agenix.nixosModule
+        inputs.agenix.nixosModules.default
         inputs.hyprland.nixosModules.default
         {
           programs.hyprland.enable = true;

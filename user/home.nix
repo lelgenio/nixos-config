@@ -97,7 +97,7 @@
     deluge
 
     ## Nix secrets management
-    inputs.agenix.defaultPackage.x86_64-linux
+    inputs.agenix.packages.x86_64-linux.default
 
     ## Programming
     vscode
