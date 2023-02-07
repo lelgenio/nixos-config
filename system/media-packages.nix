@@ -6,6 +6,7 @@ in {
   };
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      down_meme
       yt-dlp
       ffmpeg
       imagemagick

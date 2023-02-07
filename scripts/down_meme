@@ -1,0 +1,17 @@
+#!/bin/sh
+
+DIR=$(mktemp -d)
+
+cd "$DIR"
+
+yt-dlp --merge-output-format mp4 "$(wl-paste)"
+
+FILENAME="$(ls)"
+
+cp * "$HOME/Downloads/Memes/$FILENAME"
+
+wl-copy-file "$HOME/Downloads/Memes/$FILENAME"
+
+notify-send "Meme downloaded" "$FILENAME"
+
+rm -rf "$DIR"
