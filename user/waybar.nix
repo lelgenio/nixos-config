@@ -96,8 +96,8 @@ in
           };
         "custom/playerctl" = {
           format = "{}";
-          exec = "${pkgs.playerctl}/bin/playerctl metadata title";
-          on-click = "${pkgs.playerctl}/bin/playerctl play-pause";
+          exec = "${pkgs.playerctl}/bin/playerctl --ignore-player=mpd metadata title";
+          on-click = "${pkgs.playerctl}/bin/playerctl --ignore-player=mpd play-pause";
           interval = 1;
           tooltip = false;
         };
