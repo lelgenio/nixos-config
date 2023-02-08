@@ -10,6 +10,7 @@
         ExecStartPre = "/usr/bin/env sleep 10s";
         ExecStart = "${pkgs.astroid}/bin/astroid";
         Restart = "on-failure";
+        TimeoutStopSec = 10;
       };
       Install = { WantedBy = [ "sway-session.target" ]; };
     };
