@@ -94,22 +94,13 @@ in
             on-scroll-up = "${mpc} vol +10";
             on-scroll-down = "${mpc} vol -10";
           };
-        "custom/playerctl" =
-          let
-            playerctl = "${pkgs.playerctl}/bin/playerctl --ignore-player=mpd";
-            statusScript = pkgs.writeShellScript "waybar-playerctl-status" ''
-              test "$(env LC_ALL=C ${playerctl} status title)" = "Playing" \
-              && ${playerctl} metadata title \
-              || echo ""
-            '';
-          in
-          {
-            format = "{}";
-            exec = "${statusScript}";
-            on-click = "${playerctl} play-pause";
-            interval = 1;
-            tooltip = false;
-          };
+        "custom/playerctl" = {
+          format = "{}";
+          exec = "${pkgs.playerctl-status}/bin/playerctl-status";
+          on-click = "${pkgs.playerctl}/bin/playerctl --ignore-player=mpd play-pause";
+          interval = 1;
+          tooltip = false;
+        };
         "sway/language" = { format = "{short} {variant}"; };
         "custom/caffeine" = {
           format = "{}";

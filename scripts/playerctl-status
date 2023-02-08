@@ -1,0 +1,14 @@
+#!/bin/sh
+
+PLAYERCTL="playerctl --ignore-player=mpd"
+
+STATUS="$(env LC_ALL=C $PLAYERCTL status title)"
+TITLE="$($PLAYERCTL metadata title)"
+ARTIST="$($PLAYERCTL metadata artist)"
+
+test "$STATUS" = "Playing" \
+&& printf " %s" "$TITLE" \
+&& test -n "$ARTIST" \
+&& printf " - %s" "$ARTIST"
+
+echo ""

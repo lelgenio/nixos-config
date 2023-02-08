@@ -34,6 +34,7 @@ create_scripts
     showkeys =
       [ ]; # This will not work unless programs.wshowkeys is enabled systemwide
     terminal = [ alacritty ];
+    playerctl-status = [ playerctl ];
     wpass = [ final.wdmenu fd pass sd wl-clipboard wtype ];
     screenshotsh =
       [ capitaine-cursors grim slurp jq sway wl-clipboard xdg-user-dirs ];

@@ -136,6 +136,7 @@ in
               code_binds =
                 lib.mapAttrs' (k: v: lib.nameValuePair "--to-code ${k}" v);
               return_mode = lib.mapAttrs (k: v: "${v}; mode default");
+              playerctl = "exec ${pkgs.playerctl}/bin/playerctl";
             in
             {
               audio = code_binds
@@ -166,11 +167,20 @@ in
                 "Ctrl+c" = "exec musmenu pclear";
               };
               playerctl = code_binds
+                ((locked_binds
+                  {
+                    ${key.left} = "${playerctl} previous";
+                    ${key.right} = "${playerctl} next";
+                    ${key.up} = "${playerctl} volume 10+";
+                    ${key.down} = "${playerctl} volume 10-";
+                    ${key.tabR} = "${playerctl} volume 10+";
+                    ${key.tabL} = "${playerctl} volume 10-";
+                  }) //
                 (return_mode {
-                  "space" = "exec ${pkgs.playerctl}/bin/playerctl toggle";
+                  "space" = "${playerctl} play-pause";
                   "escape" = "";
                   "q" = "";
-                });
+                }));
               passthrough = {
                 "${mod}+escape" = "mode default;exec notify-send 'Passthrough off'";
               };
