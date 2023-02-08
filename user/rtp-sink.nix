@@ -1,9 +1,7 @@
 { config, pkgs, lib, ... }: {
-  # RNNoise is a noise supperssion neural network
-  # Here we use it as a plugin for pipewire to create a virtual microphone
   config = {
-    home.file = {
-      ".config/pipewire/pipewire.conf.d/99-rtp-sink.conf".text = ''
+    xdg.configFile = {
+      "pipewire/pipewire.conf.d/99-rtp-sink.conf".text = ''
          context.modules = [
          {   name = libpipewire-module-rtp-sink
              args = {
@@ -30,8 +28,13 @@
                      node.name = "rtp-sink"
                  }
              }
+             flags = [ nofail ]
         }
         ]
+      '';
+      "systemd/user/pipewire.service.d/override.conf".text = ''
+        [Unit]
+        ExecStartPre=/usr/bin/env sleep 10s
       '';
     };
   };
