@@ -19,10 +19,6 @@ hook global WinSetOption filetype=nix %{
     set buffer formatcmd 'nixpkgs-fmt'
 }
 
-hook global BufCreate .*\.rs %{
-    set buffer formatcmd 'rustfmt'
-}
-
 hook global BufCreate .*\.html %{
     set buffer formatcmd 'prettier --parser html'
 }
