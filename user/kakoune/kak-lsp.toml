@@ -208,6 +208,7 @@ args = [
 [language.rust.settings.rust-analyzer]
 ## this can use too much space and processing power
 # checkOnSave.extraArgs = ["--target-dir", "./target/check"]
+checkOnSave.command = "clippy"
 hoverActions.enable = false # kak-lsp doesn't support this at the moment
 # procMacro.enable = true
 # cargo.loadOutDirsFromCheck = true
