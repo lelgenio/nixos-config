@@ -18,7 +18,7 @@ let
         "INBOX.Git"
       ];
       onNotify = downloadEmails;
-      onNotifyPost = afterSync;
+      onNotifyPost = onNewEmails;
     };
     offlineimap = {
       enable = true;
