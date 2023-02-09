@@ -12,7 +12,11 @@ let
     astroid.enable = true;
     imapnotify = {
       enable = true;
-      boxes = [ "INBOX" ];
+      boxes = [
+        "INBOX"
+        "INBOX.Newsletter"
+        "INBOX.Git"
+      ];
       onNotify = downloadEmails;
       onNotifyPost = afterSync;
     };
