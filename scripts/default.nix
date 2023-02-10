@@ -30,7 +30,7 @@ create_scripts
     _thunar-terminal = [ final.terminal ];
     kak-pager = [ fish final._diffr ];
     kak-man-pager = [ final.kak-pager ];
-    musmenu = [ mpc-cli final.wdmenu trash-cli libnotify sd wl-clipboard ];
+    musmenu = [ mpc-cli final.wdmenu trash-cli xdg-user-dirs libnotify sd wl-clipboard ];
     showkeys =
       [ ]; # This will not work unless programs.wshowkeys is enabled systemwide
     terminal = [ alacritty ];
