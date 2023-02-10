@@ -47,8 +47,11 @@ in
                   "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)";
                 # I fucking hate regex, look at this bullshit
                 delimiters = ''^\\u0000-\\u001F\\u007F-\\u009F<>"\\s{-}\\^⟨⟩`'';
+                # Kakoune uses these characters to represent whitespace,
+                # but alacritty doesn't know about them
+                whitespace_characters = ''¬·→'';
               in
-              "${mimes}[${delimiters}]+";
+              "${mimes}[${delimiters}${whitespace_characters}]+";
             command = "xdg-open";
             post_processing = true;
             mouse = {
