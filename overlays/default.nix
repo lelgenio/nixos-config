@@ -42,7 +42,6 @@
     dhist = inputs.dhist.packages.${prev.system}.dhist;
     demoji = inputs.demoji.packages.${prev.system}.demoji;
     dzgui = inputs.dzgui.packages.${prev.system}.dzgui;
-    devenv = inputs.devenv.packages.${prev.system}.devenv;
     mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
 
     sea-orm-cli = inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;
