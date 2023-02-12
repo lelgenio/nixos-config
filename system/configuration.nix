@@ -42,6 +42,7 @@
   # services.printing.enable = true;
   services.flatpak.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.docker.autoPrune.enable = true;
   programs.firejail.enable = true;
 
   security.rtkit.enable = true;
