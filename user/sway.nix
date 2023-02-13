@@ -100,6 +100,7 @@ in
             xcursor_theme = "${config.home.pointerCursor.name} ${
               toString config.home.pointerCursor.size
             }";
+            hide_cursor = "when-typing enable";
           };
           assigns = {
             "2" = [
