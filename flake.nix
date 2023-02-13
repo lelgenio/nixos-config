@@ -43,6 +43,9 @@
     plymouth-themes.url = "github:adi1090x/plymouth-themes";
     plymouth-themes.flake = false;
 
+    lipsum.url = "github:hannenz/lipsum";
+    lipsum.flake = false;
+
     agenix.url = "github:ryantm/agenix";
 
     dzgui.url = "github:lelgenio/dzgui-nix";
@@ -140,6 +143,6 @@
         modules = [ ./user/home.nix ];
       };
 
-      packages.${system}.linuxPackages = packages;
+      packages.${system} = packages;
     };
 }

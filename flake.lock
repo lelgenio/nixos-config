@@ -254,6 +254,22 @@
         "type": "github"
       }
     },
+    "lipsum": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630421397,
+        "narHash": "sha256-a6uv0tJulN9cAGWxvQr8B0PUJEY8Rx4e759xzS66Xlo=",
+        "owner": "hannenz",
+        "repo": "lipsum",
+        "rev": "0fb31e6ede10fbd78d7652f5fb21670cddd8e3ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hannenz",
+        "repo": "lipsum",
+        "type": "github"
+      }
+    },
     "material-wifi-icons": {
       "flake": false,
       "locked": {
@@ -431,6 +447,7 @@
         "dzgui": "dzgui",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "lipsum": "lipsum",
         "material-wifi-icons": "material-wifi-icons",
         "nil-lsp": "nil-lsp",
         "nix-index-database": "nix-index-database",

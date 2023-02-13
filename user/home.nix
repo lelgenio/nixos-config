@@ -69,6 +69,7 @@
     sd
     ripgrep
     translate-shell
+    lipsum
 
     mate.engrampa
     # gnome.nautilus
