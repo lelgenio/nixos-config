@@ -130,7 +130,7 @@ in
             default = [ "奄" "奔" "墳" ];
           };
           on-click = "pavucontrol";
-          on-click-right = "pulse-sink";
+          on-click-right = "${pkgs.pulse_sink}/bin/pulse_sink";
         };
       }];
       style = ''
