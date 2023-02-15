@@ -119,6 +119,34 @@ end
 
 
 ############################################################
+# Program time indicator
+############################################################
+
+function __fish_prompt_set_last_command_start --on-event fish_preexec
+    set -g __fish_prompt_last_command_start (date +%s.%N)
+end
+
+function __fish_prompt_set_last_command_end --on-event fish_postexec
+    set -g __fish_prompt_last_command_end (date +%s.%N)
+end
+
+function fish_program_time_prompt
+    if test -z "$__fish_prompt_last_command_start"
+        or test -z "$__fish_prompt_last_command_end"
+        return
+    end
+
+    set -l diff (math $__fish_prompt_last_command_end - $__fish_prompt_last_command_start)
+    set -l diff (math "round ($diff * 100) / 100")
+
+    if test "$diff" -gt 1
+        _fish_prompt_normal " took "
+        _fish_prompt_warn (env LC_ALL=C printf "%.02f" "$diff")
+    end
+end
+
+
+############################################################
 # Vi mode indicator
 ############################################################
 
@@ -174,6 +202,8 @@ function fish_prompt
     end
 
     fish_git_prompt
+
+    fish_program_time_prompt
 
     # Line break
     echo
