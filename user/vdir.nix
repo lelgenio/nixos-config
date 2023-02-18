@@ -7,22 +7,22 @@ let
 in
 {
   systemd.user.services.vdirsyncer = {
-    Unit = {
-      Description = "vdirsyncer calendar and contacts synchronization";
-    };
+    Unit.Description = "vdirsyncer calendar and contacts synchronization";
     Service = {
       Type = "oneshot";
-      ExecStartPre = "yes | ${pkgs.vdirsyncer}/bin/vdirsyncer discover";
-      ExecStart = "${pkgs.vdirsyncer}/bin/vdirsyncer sync";
+      ExecStart = toString (pkgs.writeShellScript "run-vdirsyncer" ''
+        ${pkgs.coreutils}/bin/yes | ${pkgs.vdirsyncer}/bin/vdirsyncer discover
+        ${pkgs.coreutils}/bin/yes | ${pkgs.vdirsyncer}/bin/vdirsyncer sync
+      '');
     };
   };
   systemd.user.timers.vdirsyncer = {
-    Unit = { Description = "vdirsyncer calendar and contacts synchronization"; };
+    Unit.Description = "vdirsyncer calendar and contacts synchronization";
     Timer = {
       OnCalendar = "*:0/30";
       Unit = "vdirsyncer.service";
     };
-    Install = { WantedBy = [ "timers.target" ]; };
+    Install.WantedBy = [ "timers.target" ];
   };
 
   xdg.configFile = {
