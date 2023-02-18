@@ -33,7 +33,7 @@
         ]
       '';
       "systemd/user/pipewire.service.d/override.conf".text = ''
-        [Unit]
+        [Service]
         ExecStartPre=/usr/bin/env sleep 10s
       '';
     };
