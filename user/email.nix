@@ -8,15 +8,11 @@ let
     ${pkgs.libnotify}/bin/notify-send "You've got mail!"
   '';
 
-  defaultAccountSettings = {
+  defaultAccountSettings = { boxes, }: {
     astroid.enable = true;
     imapnotify = {
       enable = true;
-      boxes = [
-        "INBOX"
-        "INBOX.Newsletter"
-        "INBOX.Git"
-      ];
+      inherit boxes;
       onNotify = downloadEmails;
       onNotifyPost = onNewEmails;
     };
@@ -41,7 +37,13 @@ in
         passwordCommand = toString (pkgs.writeShellScript "get_pass" ''
           pass "disroot.org" | head -n1
         '');
-      } // defaultAccountSettings;
+      } // defaultAccountSettings {
+        boxes = [
+          "INBOX"
+          "INBOX.Newsletter"
+          "INBOX.Git"
+        ];
+      };
       "work" = {
         realName = "Leonardo Eugênio";
         address = "leonardo@wopus.com.br";
@@ -51,7 +53,7 @@ in
         passwordCommand = toString (pkgs.writeShellScript "get_pass" ''
           pass "Trabalho/wopus_email/leonardo@wopus.com.br" | head -n1
         '');
-      } // defaultAccountSettings;
+      } // defaultAccountSettings { boxes = [ "INBOX" ]; };
     };
 
   services.imapnotify.enable = true;
