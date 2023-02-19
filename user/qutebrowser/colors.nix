@@ -162,10 +162,10 @@ in
         bg = color.bg;
         preferred_color_scheme = "dark";
         darkmode = {
-          enabled = true;
+          enabled = false;
           threshold = {
-            background = 256 / 2;
-            text = 256 / 2;
+            text = 150;
+            background = 205;
           };
         };
       };
@@ -173,7 +173,7 @@ in
   };
   home.file = {
     # For some stupid reason qutebrowser crashes if this dir does not exist
-    ".config/qutebrowser/greasemonkey/darkreader.js".text = lib.optionalString (color.type == "dark" && false) ''
+    ".config/qutebrowser/greasemonkey/darkreader.js".text = lib.optionalString (color.type == "dark" && true) ''
       // ==UserScript==
       // @name          Dark Reader (Unofficial)
       // @icon          https://darkreader.org/images/darkreader-icon-256x256.png
