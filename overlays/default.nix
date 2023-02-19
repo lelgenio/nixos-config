@@ -40,7 +40,7 @@
 
   new-packages = (final: prev: packages // {
     dhist = inputs.dhist.packages.${prev.system}.dhist;
-    demoji = inputs.demoji.packages.${prev.system}.demoji;
+    demoji = inputs.demoji.packages.${prev.system}.default;
     dzgui = inputs.dzgui.packages.${prev.system}.dzgui;
     mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
 

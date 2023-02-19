@@ -11,7 +11,7 @@ in {
       ffmpeg
       imagemagick
       mpc-cli
-      helvum
+      pkgs.unstable.helvum
       gimp
       inkscape
       kdenlive
