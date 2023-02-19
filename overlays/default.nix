@@ -45,7 +45,9 @@
     mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
 
     sea-orm-cli = inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;
-    webcord = prev.webcord or prev.unstable.webcord;
+    webcord = (prev.webcord or prev.unstable.webcord).overrideAttrs (old: {
+      patches = (old.patches or [ ]) ++ [ ../patches/webcord/fix-reading-config.patch ];
+    });
     nil-lsp = inputs.nil-lsp.packages.${prev.system}.nil;
   });
 

@@ -1,0 +1,14 @@
+diff --git a/sources/code/main/modules/config.ts b/sources/code/main/modules/config.ts
+index caf51df..41faabe 100644
+--- a/sources/code/main/modules/config.ts
++++ b/sources/code/main/modules/config.ts
+@@ -158,6 +158,9 @@ class Config<T> {
+   #read(): unknown {
+     const encodedData = readFileSync(this.#path+this.#pathExtension);
+     let decodedData = encodedData.toString();
++    if (decodedData === "")
++        return {};
++
+     if(this.#pathExtension === FileExt.Encrypted)
+       decodedData = safeStorage.decryptString(encodedData);
+     return JSON.parse(decodedData);
