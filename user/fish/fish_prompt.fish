@@ -46,6 +46,10 @@ function _fish_prompt_git_remote_branches
     git for-each-ref --format='%(refname:short)' refs/remotes
 end
 
+function _fish_prompt_git_unpushed_branches
+    timeout 1s git log --branches --not --remotes --no-walk --oneline
+end
+
 function fish_git_prompt
     command -qs git
     or return
@@ -65,6 +69,7 @@ function fish_git_prompt
     set -l git_detach   (_fish_prompt_git_detached)
     set -l git_remote_branch   (git rev-parse --abbrev-ref (git branch --show-current)@{u} 2> /dev/null)
     set -l git_status_s (timeout 1s git status -s | string collect)
+    set -l git_log_unpushed (_fish_prompt_git_unpushed_branches | wc -l)
 
     _fish_prompt_normal " on "
 
@@ -86,23 +91,22 @@ function fish_git_prompt
        _fish_prompt_warn "init"
     end
 
-    # Remote has the current branch
-    if test -n "$git_remote_branch"
-        # print a "↑" if ahead of origin
-        test 0 -ne (git log --oneline "$git_remote_branch"..HEAD -- | wc -l)
-        and set -l _git_sync_ahead '↑'
+    # print a "↑" if ahead of origin
+    if test 0 -ne (git log --oneline "$git_remote_branch"..HEAD -- | wc -l)
+        or test 0 -ne "$git_log_unpushed"
+        set -f _git_sync_ahead '↑'
+    end
 
-        # print a "↓" if behind of origin
-        test 0 -lt (git log --oneline HEAD.."$git_remote_branch" -- | wc -l)
-        and set -l _git_sync_behind '↓'
+    # print a "↓" if behind of origin
+    test 0 -lt (git log --oneline HEAD.."$git_remote_branch" -- | wc -l)
+    and set -l _git_sync_behind '↓'
 
-        if set -q _git_sync_ahead _git_sync_behind
-            _fish_prompt_normal '⇅'
-        else if set -q _git_sync_ahead
-            _fish_prompt_normal '↑'
-        else if set -q _git_sync_behind
-            _fish_prompt_normal '↓'
-        end
+    if set -q _git_sync_ahead _git_sync_behind
+        _fish_prompt_normal '⇅'
+    else if set -q _git_sync_ahead
+        _fish_prompt_normal '↑'
+    else if set -q _git_sync_behind
+        _fish_prompt_normal '↓'
     end
 
     ############################################################
@@ -143,6 +147,9 @@ function fish_program_time_prompt
         _fish_prompt_normal " took "
         _fish_prompt_warn (env LC_ALL=C printf "%.02f" "$diff")
     end
+
+    set -eg __fish_prompt_last_command_start
+    set -eg __fish_prompt_last_command_end
 end
 
 
