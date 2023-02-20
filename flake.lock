@@ -107,11 +107,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1675902856,
-        "narHash": "sha256-UBqpR/Q30ReJcn/9IEfFh73FAwQBDCQuXascL2wRL6I=",
+        "lastModified": 1676919660,
+        "narHash": "sha256-sOWRsLyQpHL+x2zYgev4nwdkm7JljZ5Pi+OC9JE0k0A=",
         "owner": "lelgenio",
         "repo": "demoji",
-        "rev": "19ece997612431023f5a603f21b91d5e8062a2ec",
+        "rev": "f5b5413815f22e9f32c1822a2eab5fe529c229d6",
         "type": "github"
       },
       "original": {
