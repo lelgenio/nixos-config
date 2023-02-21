@@ -162,7 +162,7 @@ in
         bg = color.bg;
         preferred_color_scheme = "dark";
         darkmode = {
-          enabled = false;
+          enabled = true;
           threshold = {
             text = 150;
             background = 205;
@@ -189,8 +189,18 @@ in
       // @noframes
       // ==/UserScript==
 
-      DarkReader.setFetchMethod(window.fetch)
+      const ignore_list = [
+        "stackexchange.com",
+      ];
 
+      for (let item of ignore_list) {
+          if (window.location.origin.contains(item)) {
+              console.log("URL matched dark-mode ignore list");
+              return;
+          }
+      }
+
+      DarkReader.setFetchMethod(window.fetch)
       DarkReader.enable({
       	brightness: 100,
       	contrast: 100,
