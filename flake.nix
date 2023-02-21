@@ -115,7 +115,6 @@
             ./hosts/monolith.nix
             ./system/monolith-gitlab-runner.nix
             ./system/nix-serve.nix
-            ./system/amdgpu-kernel-patches.nix
           ] ++ common_modules;
         };
         rainbow = lib.nixosSystem {
