@@ -173,7 +173,7 @@ in
   };
   home.file = {
     # For some stupid reason qutebrowser crashes if this dir does not exist
-    ".config/qutebrowser/greasemonkey/darkreader.js".text = lib.optionalString (color.type == "dark" && true) ''
+    ".config/qutebrowser/greasemonkey/darkreader.js".text = ''
       // ==UserScript==
       // @name          Dark Reader (Unofficial)
       // @icon          https://darkreader.org/images/darkreader-icon-256x256.png
@@ -189,22 +189,34 @@ in
       // @noframes
       // ==/UserScript==
 
+      DarkReader.setFetchMethod(window.fetch)
+
+      if ("${color.type}" != "dark") {
+        DarkReader.disable();
+        return;
+      }
+
       const ignore_list = [
         "stackexchange.com",
       ];
 
       for (let item of ignore_list) {
-          if (window.location.origin.contains(item)) {
+          if (window.location.origin.indexOf(item) > 0) {
               console.log("URL matched dark-mode ignore list");
               return;
           }
       }
 
-      DarkReader.setFetchMethod(window.fetch)
       DarkReader.enable({
-      	brightness: 100,
-      	contrast: 100,
-      	sepia: 0
+        brightness: 100,
+        contrast: 100,
+        sepia: 0,
+
+        darkSchemeBackgroundColor: "${color.bg}",
+        darkSchemeTextColor: "${color.txt}",
+
+        lightSchemeBackgroundColor: "${color.bg}",
+        lightSchemeTextColor: "${color.txt}",
       });
     '';
     ".config/qutebrowser/style.css".text = ''
