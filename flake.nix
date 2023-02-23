@@ -51,6 +51,9 @@
     dzgui.url = "github:lelgenio/dzgui-nix";
     dzgui.inputs.nixpkgs.follows = "nixpkgs";
 
+    inputs.disko.url = "github:nix-community/disko";
+    inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
+
     # my stuff
     dhist = {
       url = "github:lelgenio/dhist";
@@ -82,6 +85,7 @@
         ./system/configuration.nix
         ./system/secrets.nix
         ./system/specialisation.nix
+        inputs.disko.nixosModules.disko
         # nur.nixosModules.nur
         inputs.agenix.nixosModules.default
         inputs.hyprland.nixosModules.default
