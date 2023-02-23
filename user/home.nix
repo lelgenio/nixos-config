@@ -141,6 +141,8 @@
     sqlx-cli
   ];
 
+  fonts.fontconfig.enable = true;
+
   home.sessionVariables = {
     VOLUME_CHANGE_SOUND =
       "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";

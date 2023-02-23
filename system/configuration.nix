@@ -123,6 +123,12 @@
   ];
 
   fonts.enableDefaultFonts = true;
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    nerdfonts_fira_hack
+  ];
 
   services.geoclue2.enable = true;
   # programs.qt5ct.enable = true;
