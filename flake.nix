@@ -38,6 +38,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    inputs.disko.url = "github:nix-community/disko";
+    inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
+
     # my stuff
     dhist = {
       url = "github:lelgenio/dhist";
@@ -96,6 +99,7 @@
           inputs.agenix.nixosModules.default
           inputs.dzgui-nix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
+          inputs.disko.nixosModules.disko
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
