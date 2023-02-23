@@ -64,6 +64,15 @@
     steam = prev.steam.override {
       extraPkgs = pkgs: with pkgs; [ capitaine-cursors bibata-cursors ];
     };
+
+    qutebrowser = prev.qutebrowser.overrideAttrs (old: {
+      src = prev.fetchFromGitHub {
+        owner = "pinusc";
+        repo = "qutebrowser";
+        rev = "feature/tree-tabs";
+        sha256 = "sha256-kHxZ3AzbfPJ3im1kQNn8DDlKBn+yPI4SLbSZuBQrUWY=";
+      };
+    });
   });
 
   variables = (final: prev: {

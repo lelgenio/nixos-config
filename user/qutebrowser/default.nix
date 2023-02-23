@@ -37,6 +37,9 @@ in
           "h" = "set-cmd-text -s :open";
           "T" = "hint all tab";
           "H" = "set-cmd-text -s :open -t";
+
+          "<Ctrl-${lib.toLower key.tabL}>" = "tree-tab-promote";
+          "<Ctrl-${lib.toLower key.tabR}>" = "tree-tab-demote";
         };
         insert = {
           # quit insert mode
@@ -54,6 +57,8 @@ in
 
       };
       settings = {
+        tabs.tree_tabs = true;
+        tabs.position = "right";
         session.lazy_restore = true;
         auto_save.session = true;
         hints.chars = key.hints;

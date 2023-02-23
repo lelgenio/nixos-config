@@ -28,8 +28,8 @@ in
         warning = BIG_INTER;
       };
       tabs = {
-        selected = DEF_INTER;
-        unselected = DEF_INTER;
+        selected = BIG_INTER;
+        unselected = BIG_INTER;
       };
     };
 }
