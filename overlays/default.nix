@@ -17,7 +17,9 @@
   sway = (import ./sway.nix);
 
   unstable = (final: prev: {
-    unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system};
+    unstable = import inputs.nixpkgs-unstable {
+      inherit (prev) system config;
+    };
   });
 
   sixel-patches = (import ./sixel-patches.nix (inputs));
@@ -61,7 +63,7 @@
       patches = old.patches
         ++ [ ../patches/sway/fix-hide_cursor-clearing-focus.patch ];
     });
-    steam = prev.steam.override {
+    steam = prev.unstable.steam.override {
       extraPkgs = pkgs: with pkgs; [ capitaine-cursors bibata-cursors ];
     };
 
