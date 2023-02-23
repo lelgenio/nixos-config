@@ -83,9 +83,10 @@ in
           "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt"
         ];
       };
-      # programs.qutebrowser.extraConfig = ''
-      #   config.source("config/config.py")
-      # '';
+      extraConfig = ''
+        config.load_autoconfig()
+        config.set("content.notifications.enabled", True, "https://web.whatsapp.com")
+      '';
     };
     systemd.user.services = lib.mkIf (browser == "qutebrowser") {
       qutebrowser = {
