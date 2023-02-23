@@ -115,6 +115,7 @@
             ./hosts/monolith.nix
             ./system/monolith-gitlab-runner.nix
             ./system/nix-serve.nix
+            ./system/steam.nix
           ] ++ common_modules;
         };
         rainbow = lib.nixosSystem {

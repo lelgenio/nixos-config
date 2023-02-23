@@ -78,7 +78,6 @@
     # lutris-unwrapped
     # steam # It's enabled in the system config
     gamescope
-    protontricks
     dzgui
 
     ## chat
