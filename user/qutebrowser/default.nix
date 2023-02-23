@@ -73,6 +73,7 @@ in
           "+{line}"
         ];
 
+        content.autoplay = false;
         content.blocking.adblock.lists = [
           "https://easylist.to/easylist/easylist.txt"
           "https://easylist.to/easylist/easyprivacy.txt"
