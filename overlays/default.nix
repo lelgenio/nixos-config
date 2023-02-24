@@ -79,5 +79,14 @@
 
   variables = (final: prev: {
     uservars = import ../user/variables.nix;
+
+    makeDiskoTest =
+      let
+        makeTest = import (prev.path + "/nixos/tests/make-test-python.nix");
+        eval-config = import (prev.path + "/nixos/lib/eval-config.nix");
+      in
+      (prev.callPackage "${inputs.disko}/tests/lib.nix" {
+        inherit makeTest eval-config;
+      }).makeDiskoTest;
   });
 }
