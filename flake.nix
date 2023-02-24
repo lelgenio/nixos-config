@@ -38,8 +38,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    inputs.disko.url = "github:nix-community/disko";
-    inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # my stuff
     dhist = {
@@ -116,15 +116,18 @@
         ++ lib.optional (desktop == "kde") ./system/kde.nix;
     in
     {
+      checks."${system}" = {
+        disko-format-i15 = pkgs.callPackage ./hosts/i15/partitions-test.nix { };
+      };
       nixosConfigurations = {
         i15 = lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./hosts/i15.nix ] ++ common_modules;
+          modules = [ ./hosts/i15 ] ++ common_modules;
         };
         monolith = lib.nixosSystem {
           inherit system specialArgs;
           modules = [
-            ./hosts/monolith.nix
+            ./hosts/monolith
             ./system/monolith-gitlab-runner.nix
             ./system/monolith-forgejo-runner.nix
             ./system/nix-serve.nix
@@ -134,7 +137,7 @@
         rainbow = lib.nixosSystem {
           inherit system specialArgs;
           modules = [
-            ./hosts/rainbow.nix
+            ./hosts/rainbow
             ./system/rainbow-gitlab-runner.nix
           ] ++ common_modules;
         };
