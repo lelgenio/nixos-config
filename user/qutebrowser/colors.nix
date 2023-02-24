@@ -197,11 +197,18 @@ in
       }
 
       const ignore_list = [
+        "askubuntu.com",
+        "mathoverflow.com",
+        "mathoverflow.net",
+        "serverfault.com",
+        "stackapps.com",
         "stackexchange.com",
+        "stackoverflow.com",
+        "superuser.com",
       ];
 
       for (let item of ignore_list) {
-          if (window.location.origin.indexOf(item) > 0) {
+          if (window.location.origin.indexOf(item) >= 0) {
               console.log("URL matched dark-mode ignore list");
               return;
           }
