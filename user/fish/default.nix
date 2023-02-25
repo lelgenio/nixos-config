@@ -22,6 +22,13 @@ in {
         set_color normal
 
         bind \cy 'commandline | wl-copy -n'
+
+        function systemctl --wraps systemctl
+            env SYSTEMD_COLORS=1 systemctl $argv | kak-pager
+        end
+        function journalctl --wraps journalctl
+            env SYSTEMD_COLORS=1 journalctl $argv | kak-pager
+        end
       '';
       shellAliases = {
         rm = "trash";
