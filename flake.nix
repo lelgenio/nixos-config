@@ -47,6 +47,7 @@
     lipsum.flake = false;
 
     agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
 
     dzgui.url = "github:lelgenio/dzgui-nix";
     dzgui.inputs.nixpkgs.follows = "nixpkgs";
