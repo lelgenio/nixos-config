@@ -2,14 +2,6 @@
 let
   inherit (pkgs.uservars) key accent font theme;
   inherit (theme) color;
-  color_picker = pkgs.writeShellScript "color_picker" ''
-    grim -g "$(slurp -b aabbcc00 -p)" - |
-        convert - txt:- |
-        grep -oE '#[0-9A-Fa-f]{6}' |
-        wl-copy -n
-
-    notify-send "$(wl-paste)" "Copied to clipboard"
-  '';
   _lock = pkgs.writeShellScriptBin "_lock" ''
     ${pkgs.swaylock}/bin/swaylock -f
     systemctl --user start swayidle.service
@@ -327,7 +319,7 @@ in
                 "${mod}+p" = "exec ${pkgs.wpass}/bin/wpass";
                 "${mod}+s" = "exec ${menu}";
                 "${mod}+g" = "exec ${pkgs.demoji}/bin/demoji --lang pt --fallback --copy -- ${pkgs.wdmenu}/bin/wdmenu";
-                "${mod}+c" = "exec ${color_picker}";
+                "${mod}+c" = "exec ${pkgs.color_picker}/bin/color_picker";
                 "${mod}+Return" = "exec ${terminal}";
                 "${mod}+Ctrl+Return" = "exec thunar";
                 "${mod}+Shift+s" = "exec grim - | swappy -f -";
@@ -491,6 +483,7 @@ in
       libnotify
       xdg-utils
       screenshotsh
+      color_picker
       wf-recorder
       wl-clipboard
       wtype

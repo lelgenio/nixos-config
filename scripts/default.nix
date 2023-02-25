@@ -40,6 +40,7 @@ create_scripts
       [ capitaine-cursors grim slurp jq sway wl-clipboard xdg-user-dirs ];
     volumesh = [ pulseaudio libnotify ];
     pulse_sink = [ pulseaudio pamixer final.wdmenu ];
+    color_picker = [ grim slurp wl-clipboard libnotify imagemagick ];
   } // lib.mapAttrs import_script {
   wdmenu = ./wdmenu.nix;
   wlauncher = ./wlauncher.nix;
