@@ -9,6 +9,7 @@
     new-packages
     patches
     variables
+    lib_extended
   ];
 
   nur = inputs.nur.overlay;
@@ -82,5 +83,19 @@
 
   variables = (final: prev: {
     uservars = import ../user/variables.nix;
+  });
+
+  lib_extended = (final: prev: {
+    lib = prev.lib // rec {
+      # Utility funcion
+      # Input: [{v1=1;} {v2=2;}]
+      # Output: {v1=1;v2=2;}
+      mergeAttrsSet = prev.lib.foldAttrs (n: _: n) { };
+
+      # Easily translate imperative templating code
+      # Input: [ 1 2 ] (num: { "v${num}" = num; })
+      # Output: {v1=1;v2=2;}
+      forEachMerge = list: func: mergeAttrsSet (prev.lib.forEach list func);
+    };
   });
 }
