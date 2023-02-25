@@ -508,7 +508,6 @@ in
         Install = { WantedBy = [ "sway-session.target" ]; };
       };
     };
-    home.file = { ".local/share/backgrounds".source = ./backgrounds; };
     home.sessionVariables = {
       LD_PRELOAD = "${pkgs.gtk3-nocsd}/lib/libgtk3-nocsd.so.0";
       GTK_CSD = "0";

@@ -30,7 +30,7 @@
     ./zathura.nix
     ./man.nix
     ./mpd.nix
-    ./sway.nix
+    ./sway
     ./thunar.nix
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-database.hmModules.nix-index
@@ -143,6 +143,7 @@
 
   fonts.fontconfig.enable = true;
 
+  home.file = { ".local/share/backgrounds".source = ./backgrounds; };
   home.sessionVariables = {
     VOLUME_CHANGE_SOUND =
       "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
