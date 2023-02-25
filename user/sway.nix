@@ -188,7 +188,13 @@ in
             };
           floating = {
             modifier = "Mod4";
-            criteria = [{ class = "file_picker"; } { app_id = "file_picker"; }];
+            criteria = [
+              { class = "file_picker"; }
+              { app_id = "file_picker"; }
+              { app_id = "wdisplays"; }
+              { app_id = "pavucontrol"; }
+              { app_id = ".*[Hh]elvum.*"; }
+            ];
           };
           keybindings =
             let
@@ -471,6 +477,7 @@ in
       sway
       swaybg
       swaylock
+      wdisplays
 
       waybar
       dhist
@@ -509,5 +516,9 @@ in
       };
     };
     home.file = { ".local/share/backgrounds".source = ./backgrounds; };
+    home.sessionVariables = {
+      LD_PRELOAD = "${pkgs.gtk3-nocsd}/lib/libgtk3-nocsd.so.0";
+      GTK_CSD = "0";
+    };
   };
 }

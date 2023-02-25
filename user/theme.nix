@@ -24,7 +24,14 @@ in
       name = icon_theme;
       package = pkgs.papirus_red;
     };
-  };
+  } // (
+    let
+      shared.extraConfig = {
+        gtk-decoration-layout = "menu:";
+      };
+    in
+    { gtk4 = shared; gtk3 = shared; }
+  );
   # qt = {
   #   enable = true;
   #   platformTheme = "gtk";
@@ -38,6 +45,9 @@ in
       icon-theme = icon_theme;
       cursor-theme = cursor_theme;
       color-scheme = "prefer-${color.type}";
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "menu:";
     };
   };
 

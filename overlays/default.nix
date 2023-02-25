@@ -36,7 +36,10 @@
         '';
     };
     papirus_red = (final.unstable.papirus-icon-theme.override { color = "red"; });
-    orchis_theme_compact = (final.orchis-theme.override { tweaks = [ "compact" "solid" ]; });
+    orchis_theme_compact = (final.orchis-theme.override {
+      border-radius = 0;
+      tweaks = [ "compact" "solid" ];
+    });
     nerdfonts_fira_hack = (final.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
   });
 

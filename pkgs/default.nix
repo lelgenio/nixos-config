@@ -6,4 +6,5 @@
   cargo-checkmate = pkgs.callPackage ./cargo-checkmate.nix { };
   lipsum = pkgs.callPackage ./lipsum.nix { inherit inputs; };
   amdgpu-kernel-module = pkgs.callPackage ./amdgpu-kernel-module.nix { };
+  gtk3-nocsd = pkgs.callPackage ./gtk3-nocsd.nix { };
 }
