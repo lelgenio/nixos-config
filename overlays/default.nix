@@ -29,12 +29,9 @@
     material-wifi-icons = final.stdenv.mkDerivation rec {
       name = "material-wifi-icons";
       src = inputs.material-wifi-icons;
-      installPhase =
-        let dest = "$out/share/fonts/${name}";
-        in ''
-          mkdir -p ${dest}
-          cp material-wifi.ttf ${dest}
-        '';
+      installPhase = ''
+        install -D material-wifi.ttf $out/share/fonts/${name}
+      '';
     };
     papirus_red = (final.unstable.papirus-icon-theme.override { color = "red"; });
     orchis_theme_compact = (final.orchis-theme.override {
