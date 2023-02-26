@@ -1,3 +1,5 @@
+#!/bin/sh
+
 _gpg-unlock
 set -xe
 
@@ -8,10 +10,9 @@ find_file() {
 }
 
 main() {
-
-  test -n "$PASSWORD_STORE_DIR" &&
-    cd "$PASSWORD_STORE_DIR" ||
-    cd "$HOME/.password-store"
+    test -n "$PASSWORD_STORE_DIR" &&
+      cd "$PASSWORD_STORE_DIR" ||
+      cd "$HOME/.password-store"
 
     entry=`find_file "$@"`
 
@@ -35,6 +36,10 @@ main() {
 }
 
 autotype(){
+    if pgrep qutebrowser >/dev/null; then
+        qutebrowser ":mode-enter insert"
+    fi
+
     env wtype -s 100 "$username"
     env wtype -s 100 -k tab
     env wtype -s 100 "$password"
