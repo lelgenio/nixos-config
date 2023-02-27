@@ -2,6 +2,8 @@
 let
   inherit (pkgs.uservars) key accent font theme;
   inherit (theme) color;
+
+  asScript = filename: text: toString (pkgs.writeShellScript filename text);
 in
 {
   services.swayidle = {
@@ -12,10 +14,10 @@ in
       }
       {
         timeout = 1800;
-        command = ''
-          mpc status | grep "^[playing]" > /dev/null || ${pkgs.sway}/bin/swaymsg "output * dpms off"
+        command = asScript "swayidle-suspend-monitors" ''
+          ${pkgs.mpc_cli}/bin/mpc status | grep "^[playing]" > /dev/null || ${pkgs.sway}/bin/swaymsg "output * dpms off"
         '';
-        resumeCommand = ''
+        resumeCommand = asScript "swayidle-wakeup-monitors" ''
           ${pkgs.sway}/bin/swaymsg "output * dpms on"
         '';
       }
@@ -27,7 +29,9 @@ in
       }
       {
         event = "after-resume";
-        command = ''swaymsg "output * dpms on"'';
+        command = asScript "after-resume" ''
+          ${pkgs.sway}/bin/swaymsg "output * dpms on"
+        '';
       }
     ];
   };
