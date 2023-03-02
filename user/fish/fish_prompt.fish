@@ -91,6 +91,9 @@ function fish_git_prompt
        _fish_prompt_warn "init"
     end
 
+    git rev-parse HEAD -- &>/dev/null
+    or return
+
     # print a "↑" if ahead of origin
     if test 0 -ne (git log --oneline "$git_remote_branch"..HEAD -- | wc -l)
         or test 0 -ne "$git_log_unpushed"
