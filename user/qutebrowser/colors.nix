@@ -205,6 +205,7 @@ in
         "stackexchange.com",
         "stackoverflow.com",
         "superuser.com",
+        "hub.docker.com",
       ];
 
       for (let item of ignore_list) {
