@@ -98,7 +98,7 @@ in
           background-color: #181818 !important;
       }
 
-      @import '/nix/store/g46fiqmjirak92ah3dc4nafmm8blmfab-astroid-0.16/share/astroid/ui/thread-view.scss';
+      @import '${pkgs.astroid}/share/astroid/ui/thread-view.scss';
     '';
     "astroid/ui/part.scss".text = ''
       /* ui-version: 5 (do not change when modifying theme for yourself) */
@@ -108,7 +108,7 @@ in
           background-color: #202020 !important;
       }
 
-      // @import '/nix/store/g46fiqmjirak92ah3dc4nafmm8blmfab-astroid-0.16/share/astroid/ui/part.scss';
+      // @import '${pkgs.astroid}/share/astroid/ui/part.scss';
     '';
     "astroid/keybindings".text = ''
 
