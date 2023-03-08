@@ -149,6 +149,7 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
+  services.mullvad-vpn.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
