@@ -73,6 +73,8 @@ in
           "+{line}"
         ];
 
+        input.insert_mode.auto_leave = false;
+
         content.autoplay = false;
         content.blocking.adblock.lists = [
           "https://easylist.to/easylist/easylist.txt"
