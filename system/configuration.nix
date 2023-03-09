@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, inputs, ... }: {
-  imports = [ ./gamemode.nix ./cachix.nix ./media-packages.nix ./boot.nix ];
+  imports = [ ./gamemode.nix ./cachix.nix ./media-packages.nix ./boot.nix ./vpn.nix ];
   packages.media-packages.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -141,15 +141,6 @@
     enableSSHSupport = true;
     pinentryFlavor = "curses";
   };
-  # List services that you want to enable:
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
-  services.mullvad-vpn.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
