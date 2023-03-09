@@ -52,6 +52,7 @@
       patches = (old.patches or [ ]) ++ [ ../patches/webcord/fix-reading-config.patch ];
     });
     nil-lsp = inputs.nil-lsp.packages.${prev.system}.nil;
+    mullvad = inputs.mullvad-with-completions.legacyPackages.${prev.system}.mullvad;
   });
 
   patches = (final: prev: {

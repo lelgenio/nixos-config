@@ -36,6 +36,7 @@
     material-wifi-icons.flake = false;
 
     sea-orm-cli.url = "github:lucperkins/nixpkgs/lperkins/sea-orm-cli";
+    mullvad-with-completions.url = "github:lelgenio/nixpkgs/mullvad-add-shell-completions";
 
     nil-lsp.url = "github:oxalica/nil";
     nil-lsp.inputs.nixpkgs.follows = "nixpkgs-unstable";
