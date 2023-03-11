@@ -50,8 +50,8 @@ in
         caret = {
           # basic movent
           "${key.left}" = "move-to-prev-char";
-          "${key.down}" = "move-to-prev-line";
-          "${key.up}" = "move-to-next-line";
+          "${key.down}" = "move-to-next-line";
+          "${key.up}" = "move-to-prev-line";
           "${key.right}" = "move-to-next-char";
 
           "${key.insertMode}" = "mode-enter insert";
