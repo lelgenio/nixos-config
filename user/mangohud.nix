@@ -4,6 +4,7 @@ in {
   config = {
     programs.mangohud = {
       enable = true;
+      package = pkgs.unstable.mangohud;
       enableSessionWide = true;
       settings = {
         full = true;
