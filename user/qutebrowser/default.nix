@@ -40,6 +40,8 @@ in
 
           "<Ctrl-${lib.toLower key.tabL}>" = "tree-tab-promote";
           "<Ctrl-${lib.toLower key.tabR}>" = "tree-tab-demote";
+
+          "co" = "tab-only --pinned keep";
         };
         insert = {
           # quit insert mode
@@ -59,8 +61,13 @@ in
       settings = {
         tabs.tree_tabs = true;
         tabs.position = "right";
+        tabs.pinned.shrink = false;
+        tabs.title.format = "{tree}{collapsed}{audio}{index}: {current_title}";
+        tabs.title.format_pinned = "{tree}{collapsed}{audio}{index} 🔒: {current_title}";
+
         session.lazy_restore = true;
         auto_save.session = true;
+
         hints.chars = key.hints;
         editor.command = [
           "terminal"
