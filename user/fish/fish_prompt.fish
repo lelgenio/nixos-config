@@ -137,19 +137,40 @@ function __fish_prompt_set_last_command_end --on-event fish_postexec
     set -g __fish_prompt_last_command_end (date +%s.%N)
 end
 
+function fish_program_time_prompt_print -a diff
+    set -l diff (math "round ($diff * 100) / 100")
+
+    set -l unit secs
+
+    if test $diff -gt 60
+        set unit "mins"
+        set diff (math $diff / 60)
+    end
+
+    if test $diff -gt 60
+        set unit "hours"
+        set diff (math $diff / 60)
+    end
+
+    if test "$diff" -gt 1
+        _fish_prompt_normal " took "
+        _fish_prompt_warn (
+            # force formatting as 0.1 instead of 0,1
+            env LC_ALL=C printf "%.02f" "$diff"
+        )
+        _fish_prompt_normal $unit
+    end
+end
+
 function fish_program_time_prompt
     if test -z "$__fish_prompt_last_command_start"
         or test -z "$__fish_prompt_last_command_end"
         return
     end
 
-    set -l diff (math $__fish_prompt_last_command_end - $__fish_prompt_last_command_start)
-    set -l diff (math "round ($diff * 100) / 100")
+    set -l difference (math $__fish_prompt_last_command_end - $__fish_prompt_last_command_start)
 
-    if test "$diff" -gt 1
-        _fish_prompt_normal " took "
-        _fish_prompt_warn (env LC_ALL=C printf "%.02f" "$diff")
-    end
+    fish_program_time_prompt_print $difference
 
     set -eg __fish_prompt_last_command_start
     set -eg __fish_prompt_last_command_end
