@@ -13,7 +13,7 @@
                  #sap.ip = "224.0.0.56"
                  #sap.port = 9875
                  #source.ip = "0.0.0.0"
-                 destination.ip = "192.168.0.100"
+                 destination.ip = "192.168.0.101"
                  destination.port = 4010
                  #local.ifname = "eth0"
                  net.mtu = 320

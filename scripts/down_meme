@@ -6,7 +6,7 @@ cd "$DIR"
 
 yt-dlp --merge-output-format mp4 "$(wl-paste)"
 
-FILENAME="$(ls)"
+FILENAME="$(ls | head -n1)"
 
 cp * "$HOME/Downloads/Memes/$FILENAME"
 
