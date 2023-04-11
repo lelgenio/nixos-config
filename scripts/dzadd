@@ -1,0 +1,176 @@
+#!/bin/sh
+
+set -ex
+
+tmpf=$(mktemp /tmp/dzadd.XXXXXX)
+
+clean() {
+    test "$?" -eq "0" ||
+        notify-send "Exiting with error"
+
+    set +e
+    kill "$mpvPid"
+    rm -f "$tmpf"
+}
+
+trap clean EXIT
+
+main() {
+    sType=$(printf "Track\nAlbum\nArtist" | wdmenu | tr '[:upper:]' '[:lower:]')
+    test -n "$sType" || exit 1
+
+    query=$(echo -n | wdmenu | sed 's/[^ a-z0-9]//g;s/ /+/g')
+    test -n "$query" || exit 1
+
+    case "$sType" in
+        track)
+            deezer_category="track"
+            jqFilter='.data[]| "\(.title) - \(.album.title) - \(.artist.name) |\(.id)"'
+            ;;
+        album)
+            deezer_category="album"
+            jqFilter='.data[]| "\(.nb_tracks) - \(.title) - \(.artist.name) |\(.id)"'
+            ;;
+        artist)
+            deezer_category="artist"
+            jqFilter='.data[]| "\(.nb_fan) - \(.name) |\(.id)"'
+            ;;
+        top50)
+            deezer_category="artist"
+            jqFilter='.data[]| "\(.nb_fan) - \(.name) |\(.id)"'
+            ;;
+        *)
+            exit 1
+            ;;
+    esac
+
+    curl -m30 -s "api.deezer.com/search/${deezer_category}?q=${query}" |
+        sed 's/|//g' |
+        jq -r "$jqFilter" >"$tmpf"
+
+    pick_song
+}
+
+pick_song() {
+    choice=$(cat "$tmpf" | cut -d\| -f1 | wdmenu)
+    choice=$(grep "$choice" "$tmpf" | head -n 1)
+    choiceId=$(printf "%s" "$choice" | cut -d\| -f2)
+
+    case "$sType" in
+        top50)
+            choiceUrl="http://deezer.com/${deezer_category}/${choiceId}/top?=limit=50"
+            ;;
+        *)
+            choiceUrl="http://deezer.com/${deezer_category}/${choiceId}"
+            ;;
+    esac
+
+
+    pick_action "$choiceUrl"
+}
+
+pick_action() {
+
+    choiceUrl="$1"
+
+    COMMON_CHOISES="View Image\nDownload\nCopy URL\nAnother"
+    choice=$(printf "Preview\n${COMMON_CHOISES}" | wdmenu)
+
+    case "$choice" in
+
+        "Preview")
+            common_preview
+            ;;
+
+        "View Image")
+            common_art
+            ;;
+
+        "Download")
+            common_download
+            ;;
+
+        "Copy URL")
+            wl-copy
+            ;;
+
+        "Another")
+            pick_song
+            ;;
+
+        *)
+            exit 1
+            ;;
+
+    esac
+
+}
+
+common_preview() {
+
+    case "$sType" in
+        track)
+            ;;
+        album)
+            preview_suffix=tracks
+            ;;
+        artist)
+            preview_suffix=top
+            ;;
+        top50)
+            preview_suffix=top
+            ;;
+        *)
+            exit 1
+            ;;
+    esac
+
+    choicePreview=$(
+        curl -m30 -s "http://api.deezer.com/${deezer_category}/${choiceId}/${preview_suffix}" |
+            jq -r '.preview, .data[0].preview | select(. != null)'
+    )
+
+    mpv --quiet --volume=50 --no-resume-playback "$choicePreview" &
+    mpvPid="$!"
+    choice=$(printf "$COMMON_CHOISES" | wdmenu -p 'Download?')
+    kill "$mpvPid" || true
+}
+
+common_art() {
+
+    case "$sType" in
+        track)
+            image_filter='.album.cover_big'
+            ;;
+        album)
+            image_filter='.cover_big'
+            ;;
+        artist)
+            image_filter='.picture_big'
+            ;;
+        top50)
+            image_filter='.picture_big'
+            ;;
+        *)
+            exit 1
+            ;;
+    esac
+
+    curl -m30 -s "api.deezer.com/${deezer_category}/${choiceId}" |
+        jq -r "$image_filter" |
+        xargs curl -m30 -s |
+        pqiv -
+
+    pick_action
+}
+
+common_download() {
+    notify-send "Starting Download"
+    deemix "$choiceUrl" </dev/null &&
+        notify-send "Download Successful" ||
+        notify-send "Download Failed"
+    mpc add /
+    mpdDup
+}
+
+main

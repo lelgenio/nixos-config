@@ -20,5 +20,8 @@
   };
   home.packages = with pkgs; [
     musmenu
+    python3Packages.deemix
+    dzadd
+    mpdDup
   ];
 }

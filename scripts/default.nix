@@ -41,6 +41,8 @@ create_scripts
     volumesh = [ pulseaudio libnotify ];
     pulse_sink = [ pulseaudio pamixer final.wdmenu ];
     color_picker = [ grim slurp wl-clipboard libnotify imagemagick ];
+    dzadd = [ procps libnotify final.wdmenu jq mpv pqiv python3Packages.deemix mpc-cli final.mpdDup ];
+    mpdDup = [ mpc-cli perl ];
   } // lib.mapAttrs import_script {
   wdmenu = ./wdmenu.nix;
   wlauncher = ./wlauncher.nix;

@@ -35,6 +35,8 @@ in
       "d" = "exec ${pkgs.musmenu}/bin/musmenu delete";
       "f" = "exec ${pkgs.musmenu}/bin/musmenu search";
 
+      "a" = "exec ${pkgs.dzadd}/bin/dzadd";
+
       "Shift+y" = "exec ${pkgs.musmenu}/bin/musmenu yank";
       "Ctrl+a" = "exec ${pkgs.musmenu}/bin/musmenu padd";
       "Ctrl+s" = "exec ${pkgs.musmenu}/bin/musmenu psave";
