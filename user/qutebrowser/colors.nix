@@ -162,7 +162,7 @@ in
         bg = color.bg;
         preferred_color_scheme = "dark";
         darkmode = {
-          enabled = true;
+          enabled = false;
           threshold = {
             text = 150;
             background = 205;

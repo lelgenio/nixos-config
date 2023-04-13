@@ -42,6 +42,8 @@ in
           "<Ctrl-${lib.toLower key.tabR}>" = "tree-tab-demote";
 
           "co" = "tab-only --pinned keep";
+
+          "K" = "jseval --world main if (DarkReader.isEnabled()) {DarkReader.disable()} else {DarkReader.enable()}";
         };
         insert = {
           # quit insert mode
