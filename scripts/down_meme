@@ -8,6 +8,8 @@ yt-dlp --merge-output-format mp4 "$(wl-paste)"
 
 FILENAME="$(ls | head -n1)"
 
+mkdir -p "$HOME/Downloads/Memes"
+
 cp * "$HOME/Downloads/Memes/$FILENAME"
 
 wl-copy-file "$HOME/Downloads/Memes/$FILENAME"
