@@ -4,7 +4,7 @@ in {
   config = {
     programs.firefox = {
       enable = true;
-      package = pkgs.firefox;
+      package = pkgs.firefox-esr;
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         darkreader
         duckduckgo-privacy-essentials
