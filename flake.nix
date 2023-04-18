@@ -87,10 +87,7 @@
         # nur.nixosModules.nur
         inputs.agenix.nixosModules.default
         inputs.hyprland.nixosModules.default
-        {
-          programs.hyprland.enable = true;
-          # programs.hyprland.package = null;
-        }
+        { programs.hyprland.enable = (desktop == "hyprland"); }
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
