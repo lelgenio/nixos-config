@@ -31,6 +31,7 @@
     ./man.nix
     ./mpd.nix
     ./sway
+    ./gnome.nix
     ./thunar.nix
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-database.hmModules.nix-index
