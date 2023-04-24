@@ -16,6 +16,10 @@
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
+
+      # Disable password timeout
+      "luks.options=timeout=0"
+      "rootflags=x-systemd.device-timeout=0"
     ];
 
     initrd.systemd.enable = true;
