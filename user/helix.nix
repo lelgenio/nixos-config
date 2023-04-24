@@ -1,6 +1,6 @@
-{ config, pkgs, lib, font, ... }:
+{ pkgs, lib, ... }:
 let
-  inherit (pkgs.uservars) key theme accent font editor;
+  inherit (pkgs.uservars) theme editor;
   inherit (theme) color;
 in
 {
@@ -49,8 +49,8 @@ in
           i = "extend_line_up";
           o = "extend_char_right";
           # search
-          l = "search_next";
-          L = "search_prev";
+          l = "extend_search_next";
+          L = "extend_search_prev";
           # edits
           s = "insert_mode";
           # open newline
@@ -70,17 +70,17 @@ in
         { auto-format = true; formatter = { command = "nixpkgs-fmt"; }; name = "nix"; }
         { auto-format = true; name = "rust"; }
       ];
-      themes =
-        {
-          my-theme = {
-            "inherits" = "gruvbox";
-            "ui.menu" = "none";
-            "ui.background" = { bg = "none"; };
-            "ui.virtual.whitespace" = color.nontxt;
-          };
+      themes = {
+        my-theme = {
+          "inherits" = "gruvbox";
+          "ui.menu" = "none";
+          "ui.background" = { bg = "none"; };
+          "ui.virtual.whitespace" = color.nontxt;
+          "ui.cursorline" = { bg = color.bg_dark; };
         };
+      };
     };
-    home.packages = with pkgs; [ pkgs.unstable.helix ];
+    home.packages = with pkgs; [ unstable.helix ];
     home.sessionVariables = lib.mkIf (editor == "helix") {
       EDITOR = "hx";
     };
