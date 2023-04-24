@@ -113,7 +113,7 @@ in
         "custom/vpn" = {
           format = "{}";
           exec = ''
-            nmcli -f type con show --active | grep wireguard > /dev/null \
+            mullvad status | grep "^Connected" > /dev/null \
               && echo "" \
               || echo ""
           '';
