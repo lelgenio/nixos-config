@@ -102,7 +102,7 @@
 
     ## Programming
     vscode
-    rustup
+    # rustup
 
     docker-compose
     gnumake

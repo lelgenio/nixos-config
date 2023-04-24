@@ -16,8 +16,10 @@ in {
         if not test -f "$HOME/.ssh/id_rsa"
           echo "SSH keys not yet setup"
         end
-        if not command -qs rustc; or not rustc --version &> /dev/null
-          rustup default stable &>/dev/null &
+        if command -qs rustup &> /dev/null
+            if not command -qs rustc; or not rustc --version &> /dev/null
+              rustup default stable &>/dev/null &
+            end
         end
         set_color normal
 
