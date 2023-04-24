@@ -38,6 +38,10 @@ in {
             "media.ffvpx.enabled" = false;
 
             "gfx.webrender.all" = true;
+
+            # Enable installing non signed extensions
+            "extensions.langpacks.signatures.required" = false;
+            "xpinstall.signatures.required" = false;
           };
           userChrome = lib.mkIf (desktop == "sway") ''
             #titlebar { display: none !important; }
