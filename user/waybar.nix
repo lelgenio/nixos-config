@@ -20,6 +20,7 @@ in
           "tray"
           "custom/caffeine"
           "pulseaudio"
+          "custom/vpn"
           "network"
           "battery"
         ];
@@ -109,6 +110,17 @@ in
           interval = 1;
           tooltip = false;
         };
+        "custom/vpn" = {
+          format = "{}";
+          exec = ''
+            nmcli -f type con show --active | grep wireguard > /dev/null \
+              && echo "" \
+              || echo ""
+          '';
+          on-click = "mullvad connect";
+          interval = 1;
+          tooltip = false;
+        };
         pulseaudio = {
           interval = 5;
           tooltip = false;
@@ -194,6 +206,7 @@ in
         #backlight,
         #bluetooth,
         #pulseaudio,
+        #custom-vpn,
         #custom-mail,
         #custom-spigot,
         #custom-updates,
@@ -217,12 +230,17 @@ in
         {
                 font-size: ${toString font.size.big}px;
         }
+        #custom-vpn {
+            margin: 0;
+            margin-right: 1px;
+        }
         #network,
+        #custom-vpn,
         #pulseaudio,
         #custom-caffeine
         {
                 margin-top:-1px;
-                font-size:16px;
+                font-size:17px;
         }
         #mpd,
         #window,
