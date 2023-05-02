@@ -123,7 +123,7 @@
     ninja
 
     flow # js lsp server
-    nil-lsp # nix lsp server
+    nil # nix lsp server
     clang-tools # c/c++ lsp server
 
     # cargo
