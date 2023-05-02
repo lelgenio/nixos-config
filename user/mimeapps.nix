@@ -48,6 +48,15 @@ in {
         mimeType = [ "x-scheme-handler/mailto" ];
         settings = { Keywords = "Mail;E-mail;"; };
       };
+      down_meme = {
+        name = "DownMeme";
+        genericName = "Download memes";
+        exec = "down_meme";
+        terminal = true;
+        type = "Application";
+        icon = "download";
+        categories = [ "Network" ];
+      };
     };
     # workaround to allow overriding mimeapps file
     # btw, whatever it was that decided that damn file should always be written is an asshole

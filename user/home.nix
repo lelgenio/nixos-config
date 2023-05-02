@@ -57,6 +57,8 @@
     exa
     fd
     bc
+    file
+    jq
     du-dust
     p7zip
     tealdeer
