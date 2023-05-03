@@ -56,8 +56,9 @@
 
   patches = (final: prev: {
     bemenu = prev.bemenu.overrideAttrs (o: {
-      preBuild = ''
-        sed -i 's/ZWLR_LAYER_SHELL_V1_LAYER_TOP/ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY/g' lib/renderers/wayland/window.c
+      postPatch = ''
+        substituteInPlace lib/renderers/wayland/window.c \
+          --replace ZWLR_LAYER_SHELL_V1_LAYER_TOP ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY
       '';
     });
     sway-unwrapped = prev.sway-unwrapped.overrideAttrs (old: {
@@ -84,7 +85,7 @@
 
   lib_extended = (final: prev: {
     lib = prev.lib // rec {
-      # Utility funcion
+      # Utility function
       # Input: [{v1=1;} {v2=2;}]
       # Output: {v1=1;v2=2;}
       mergeAttrsSet = prev.lib.foldAttrs (n: _: n) { };
