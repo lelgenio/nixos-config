@@ -51,7 +51,7 @@
     webcord = (prev.webcord or prev.unstable.webcord).overrideAttrs (old: {
       patches = (old.patches or [ ]) ++ [ ../patches/webcord/fix-reading-config.patch ];
     });
-    mullvad = inputs.mullvad-with-completions.legacyPackages.${prev.system}.mullvad;
+    mullvad = final.unstable.mullvad;
   });
 
   patches = (final: prev: {

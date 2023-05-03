@@ -362,22 +362,6 @@
         "type": "github"
       }
     },
-    "mullvad-with-completions": {
-      "locked": {
-        "lastModified": 1678324985,
-        "narHash": "sha256-3sMttd97Gmp7l52r2kQyKqlgy9apEPrVY2rcKQhJqQI=",
-        "owner": "lelgenio",
-        "repo": "nixpkgs",
-        "rev": "2628078705eb863a60888ceb9da39475617750a6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lelgenio",
-        "ref": "mullvad-add-shell-completions",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -503,7 +487,6 @@
         "hyprland": "hyprland",
         "lipsum": "lipsum",
         "material-wifi-icons": "material-wifi-icons",
-        "mullvad-with-completions": "mullvad-with-completions",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",

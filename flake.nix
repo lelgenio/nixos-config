@@ -36,7 +36,6 @@
     material-wifi-icons.flake = false;
 
     sea-orm-cli.url = "github:lucperkins/nixpkgs/lperkins/sea-orm-cli";
-    mullvad-with-completions.url = "github:lelgenio/nixpkgs/mullvad-add-shell-completions";
 
     plymouth-themes.url = "github:adi1090x/plymouth-themes";
     plymouth-themes.flake = false;
