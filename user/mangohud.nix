@@ -61,6 +61,5 @@ in {
         # output_folder = "/home/lelgenio";
       };
     };
-    home.sessionVariables = { MANGOHUD_DLSYM = 1; };
   };
 }

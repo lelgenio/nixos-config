@@ -65,7 +65,7 @@
         ++ [ ../patches/sway/fix-hide_cursor-clearing-focus.patch ];
     });
     steam = prev.unstable.steam.override {
-      extraPkgs = pkgs: with pkgs; [ capitaine-cursors bibata-cursors ];
+      extraPkgs = pkgs: with pkgs; [ capitaine-cursors bibata-cursors mangohud ];
     };
 
     qutebrowser = prev.qutebrowser.overrideAttrs (old: {
