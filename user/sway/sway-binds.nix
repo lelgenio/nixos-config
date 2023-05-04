@@ -17,14 +17,6 @@ let
     systemctl suspend
   '';
 
-  _sway_idle_toggle = pkgs.writeShellScriptBin "_sway_idle_toggle" ''
-    if systemctl --user status swayidle > /dev/null; then
-        systemctl --user stop swayidle.service
-    else
-        systemctl --user start swayidle.service
-    fi
-  '';
-
   # mod+1 to swich to workspace 1
   # mod+shift+1 to move to workspace 1
   workspace_binds = lib.forEachMerge (lib.range 1 10) (i:
@@ -133,7 +125,7 @@ let
 
   system_binds = {
     "--locked Ctrl+${mod}+z" = "exec ${_suspend}/bin/_suspend";
-    "${mod}+Alt+c" = "exec ${_sway_idle_toggle}/bin/_sway_idle_toggle";
+    "${mod}+Alt+c" = "exec ${pkgs._sway_idle_toggle}/bin/_sway_idle_toggle";
   };
 
   screenshot_binds = {

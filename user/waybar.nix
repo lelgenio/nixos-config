@@ -106,7 +106,7 @@ in
         "custom/caffeine" = {
           format = "{}";
           exec = "systemctl --user status swayidle > /dev/null && echo 鈴 || echo ";
-          on-click = "_sway_idle_toggle";
+          on-click = "${pkgs._sway_idle_toggle}/bin/_sway_idle_toggle";
           interval = 1;
           tooltip = false;
         };

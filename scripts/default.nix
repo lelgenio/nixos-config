@@ -28,6 +28,7 @@ create_scripts
     wl-copy-file = [ wl-clipboard fish ];
     _diffr = [ diffr ];
     _thunar-terminal = [ final.terminal ];
+    _sway_idle_toggle = [ final.swayidle ];
     kak-pager = [ fish final._diffr ];
     kak-man-pager = [ final.kak-pager ];
     musmenu = [ mpc-cli final.wdmenu trash-cli xdg-user-dirs libnotify sd wl-clipboard ];

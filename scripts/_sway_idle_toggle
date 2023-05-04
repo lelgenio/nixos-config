@@ -1,0 +1,11 @@
+#!/bin/sh
+
+swayidlectl() {
+  systemctl --user $1 swayidle.service
+}
+
+if swayidlectl status > /dev/null; then
+    swayidlectl stop
+else
+    swayidlectl start
+fi
