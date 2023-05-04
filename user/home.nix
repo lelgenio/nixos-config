@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }: {
   imports = [
     ./controller.nix
-    ./waybar.nix
+    ./waybar
     ./helix.nix
     ./kakoune
     ./fish
