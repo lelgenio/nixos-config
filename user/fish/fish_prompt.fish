@@ -47,7 +47,17 @@ function _fish_prompt_git_remote_branches
 end
 
 function _fish_prompt_git_unpushed_branches
-    timeout 1s git log --branches --not --remotes --no-walk --oneline
+    timeout 1s git log \
+      --branches \
+      --simplify-by-decoration \
+      --not \
+      --remotes \
+      --no-walk \
+      --oneline \
+      --decorate \
+      --pretty=format:%D |
+      string replace 'HEAD -> ' '' |
+      string split ', '
 end
 
 function fish_git_prompt
@@ -69,7 +79,7 @@ function fish_git_prompt
     set -l git_detach   (_fish_prompt_git_detached)
     set -l git_remote_branch   (git rev-parse --abbrev-ref (git branch --show-current)@{u} 2> /dev/null)
     set -l git_status_s (timeout 1s git status -s | string collect)
-    set -l git_log_unpushed (_fish_prompt_git_unpushed_branches | wc -l)
+    set -l git_log_unpushed (_fish_prompt_git_unpushed_branches)
 
     _fish_prompt_normal " on "
 
@@ -95,10 +105,8 @@ function fish_git_prompt
     or return
 
     # print a "↑" if ahead of origin
-    if test 0 -ne (git log --oneline "$git_remote_branch"..HEAD -- | wc -l)
-        or test 0 -ne "$git_log_unpushed"
-        set -f _git_sync_ahead '↑'
-    end
+    test 0 -ne (git log --oneline "$git_remote_branch"..HEAD -- | wc -l)
+    and set -f _git_sync_ahead '↑'
 
     # print a "↓" if behind of origin
     test 0 -lt (git log --oneline HEAD.."$git_remote_branch" -- | wc -l)
@@ -110,6 +118,12 @@ function fish_git_prompt
         _fish_prompt_normal '↑'
     else if set -q _git_sync_behind
         _fish_prompt_normal '↓'
+    end
+
+    if test -n "$git_log_unpushed"
+        and not string match -qr "$git_branch" "$git_log_unpushed"
+        _fish_prompt_normal '↻'
+        _fish_prompt_warn $git_log_unpushed[1]
     end
 
     ############################################################
