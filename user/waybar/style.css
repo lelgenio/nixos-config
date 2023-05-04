@@ -1,0 +1,101 @@
+* {
+  font: @font_size_medium@ @font_interface@, Font Awesome, Fira Code Nerd Font;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  transition-duration: 0;
+}
+window#waybar {
+  transition-duration: 0.5s;
+  /* TODO: background opacity */
+  background-color: @color_bg@;
+  border-bottom: 2px solid @color_bg_dark@;
+}
+window#waybar.solo {
+  background-color: @color_bg@;
+}
+#workspaces button {
+  color: @color_bg_light@;
+  min-width: 50px;
+  background-color: transparent;
+  border: 3px solid transparent;
+}
+#workspaces button.focused {
+  color: @color_txt@;
+  border-top: 3px solid @accent_color@;
+}
+
+#window {
+  color: @color_txt@;
+  margin: 0 4px;
+}
+
+#mode {
+  color: @accent_color@;
+}
+
+#mpd,
+#custom-mpd,
+#tray,
+#clock,
+#network,
+#battery,
+#backlight,
+#bluetooth,
+#pulseaudio,
+#custom-vpn,
+#custom-mail,
+#custom-spigot,
+#custom-updates,
+#custom-weather,
+#custom-unpushed,
+#custom-transmissionD,
+#custom-transmissionS,
+#custom-delugeD,
+#custom-delugeS,
+#custom-caffeine {
+  margin: 0 7px;
+  color: @color_txt@;
+  opacity: 0.7;
+}
+#battery {
+  margin-right: 15px;
+}
+#clock,
+#custom-weather {
+  font-size: @font_size_big@;
+}
+#custom-vpn {
+  margin: 0;
+  margin-right: 1px;
+}
+#network,
+#custom-vpn,
+#pulseaudio,
+#custom-caffeine {
+  margin-top: -1px;
+  font-size: 17px;
+}
+#mpd,
+#window,
+#workspaces {
+  font-weight: normal;
+}
+#custom-unpushed,
+#custom-recording {
+  min-width: 15px;
+  color: #ee4040;
+}
+#tray {
+  padding: 0;
+  margin: 0;
+}
+#language {
+  font-size: @font_size_medium@;
+  color: @color_bg_light@;
+}
+#custom-sleep {
+  color: @accent_color@;
+  font-size: @font_size_big@;
+  font-weight: bold;
+}

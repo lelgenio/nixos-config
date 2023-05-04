@@ -2,6 +2,22 @@
 let
   inherit (pkgs.uservars) key theme accent font;
   inherit (theme) color;
+
+  cssVariables = {
+    src = ./style.css;
+
+    accent_color = accent.color;
+
+    color_bg = color.bg;
+    color_bg_dark = color.bg_dark;
+    color_bg_light = color.bg_light;
+    color_txt = color.txt;
+
+    font_interface = font.interface;
+
+    font_size_big = "${toString font.size.big}px";
+    font_size_medium = "${toString font.size.medium}px";
+  };
 in
 {
   config = {
@@ -145,128 +161,7 @@ in
           on-click-right = "${pkgs.pulse_sink}/bin/pulse_sink";
         };
       }];
-      style = ''
-        /* {%@@ set bg_rgb = hex2rgb(color.bg) @@%} */
-        * {
-                font: ${
-                  toString font.size.medium
-                }px "${font.interface}", Font Awesome, Fira Code Nerd Font;
-                border-radius:0;
-                margin:0;
-                padding: 0;
-                transition-duration:0;
-        }
-        window#waybar {
-                /* background-color: rgba(30,30,30,.9); */
-                transition-duration: .5s;
-                /* TODO: background opacity */
-                background-color: ${color.bg};
-                /*{%@@ if bar_pos == "top" @@%}
-                        border-bottom:
-                {%@@ else @@%}
-                        border-top:
-                {%@@ endif @@%}*/
-                border-bottom:
-                    2px solid ${color.bg_dark};
-        }
-        window#waybar.solo {
-                background-color: ${color.bg};
-        }
-        #workspaces button {
-                color: ${color.bg_light};
-                min-width:50px;
-                background-color: transparent;
-                border: 3px solid transparent;
-        }
-        #workspaces button.focused {
-                color: ${color.txt};
-                /*{%@@ if bar_pos == "top" @@%}
-                        border-top:
-                {%@@ else @@%}
-                        border-bottom:
-                {%@@ endif @@%}*/
-                        border-top:
-                        3px solid ${accent.color};
-                /* border-bottom: 3px solid transparent; */
-        }
-        /*Window Title*/
-        #window {
-                color: ${color.txt};
-                margin:0 4px;
-        }
-        #mode {
-                color: ${accent.color};
-        }
-        #mpd,
-        #custom-mpd,
-        #tray,
-        #clock,
-        #network,
-        #battery,
-        #backlight,
-        #bluetooth,
-        #pulseaudio,
-        #custom-vpn,
-        #custom-mail,
-        #custom-spigot,
-        #custom-updates,
-        #custom-weather,
-        #custom-unpushed,
-        #custom-transmissionD,
-        #custom-transmissionS,
-        #custom-delugeD,
-        #custom-delugeS,
-        #custom-caffeine
-        {
-                margin: 0 7px;
-                color: ${color.txt};
-                opacity:.7;
-        }
-        #battery{
-                margin-right:15px;
-        }
-        #clock,
-        #custom-weather
-        {
-                font-size: ${toString font.size.big}px;
-        }
-        #custom-vpn {
-            margin: 0;
-            margin-right: 1px;
-        }
-        #network,
-        #custom-vpn,
-        #pulseaudio,
-        #custom-caffeine
-        {
-                margin-top:-1px;
-                font-size:17px;
-        }
-        #mpd,
-        #window,
-        #workspaces
-        {
-                font-weight:normal;
-        }
-        #custom-unpushed,
-        #custom-recording {
-                min-width:15px;
-                color: #ee4040;
-        }
-        #tray {
-                padding: 0;
-                margin: 0;
-        }
-        #language {
-                font-size: ${toString font.size.medium}px;
-                color: ${color.bg_light};
-        }
-        #custom-sleep {
-                color: ${accent.color};
-                font-size: ${toString font.size.big}px;
-                font-weight: bold;
-        }
-      '';
+      style = builtins.readFile (pkgs.substituteAll cssVariables);
     };
     home.packages = with pkgs; [ waybar ];
   };
