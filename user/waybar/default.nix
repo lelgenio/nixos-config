@@ -2,22 +2,6 @@
 let
   inherit (pkgs.uservars) key theme accent font;
   inherit (theme) color;
-
-  cssVariables = {
-    src = ./style.css;
-
-    accent_color = accent.color;
-
-    color_bg = color.bg;
-    color_bg_dark = color.bg_dark;
-    color_bg_light = color.bg_light;
-    color_txt = color.txt;
-
-    font_interface = font.interface;
-
-    font_size_big = "${toString font.size.big}px";
-    font_size_medium = "${toString font.size.medium}px";
-  };
 in
 {
   config = {
@@ -161,7 +145,21 @@ in
           on-click-right = "${pkgs.pulse_sink}/bin/pulse_sink";
         };
       }];
-      style = builtins.readFile (pkgs.substituteAll cssVariables);
+      style = builtins.readFile (pkgs.substituteAll {
+        src = ./style.css;
+
+        accent_color = accent.color;
+
+        color_bg = color.bg;
+        color_bg_dark = color.bg_dark;
+        color_bg_light = color.bg_light;
+        color_txt = color.txt;
+
+        font_interface = font.interface;
+
+        font_size_big = "${toString font.size.big}px";
+        font_size_medium = "${toString font.size.medium}px";
+      });
     };
     home.packages = with pkgs; [ waybar ];
   };
