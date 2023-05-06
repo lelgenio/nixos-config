@@ -212,8 +212,8 @@ checkOnSave.command = "clippy"
 hoverActions.enable = false # kak-lsp doesn't support this at the moment
 # procMacro.enable = true
 # cargo.loadOutDirsFromCheck = true
-rustfmt.rangeFormatting.enable = true
-rustfmt.extraArgs = ["+nightly"]
+# rustfmt.rangeFormatting.enable = true
+# rustfmt.extraArgs = ["+nightly"]
 
 [language.terraform]
 filetypes = ["terraform"]
