@@ -4,10 +4,6 @@ try %{
     add-highlighter shared/python/code/function regex '\b([a-zA-Z_][a-zA-Z0-9_]*)\s*\(' 1:function
 }
 
-hook global BufWritePre '.*' %{
-    try format
-}
-
 hook global WinSetOption filetype=sh %{
     set buffer formatcmd 'shfmt -s -ci -i "4"'
 }
