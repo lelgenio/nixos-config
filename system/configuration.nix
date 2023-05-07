@@ -169,8 +169,6 @@
     package = pkgs.unstable.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
     extraOptions = ''
       experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
     '';
   };
   # This value determines the NixOS release from which the default
