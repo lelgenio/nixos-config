@@ -53,7 +53,25 @@
       };
       Install = { WantedBy = [ "sway-session.target" ]; };
     };
+    element = {
+      Unit = {
+        Description = "Feature-rich client for Matrix.org";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" "pipewire-pulse.service" "tray.service" ];
+      };
+      Service = {
+        ExecStartPre = "/usr/bin/env sleep 11s";
+        ExecStart = "${pkgs.element-desktop-wayland}/bin/element-desktop";
+        Restart = "on-failure";
+      };
+      Install = { WantedBy = [ "sway-session.target" ]; };
+    };
   };
 
-  home.packages = with pkgs; [ tdesktop webcord thunderbird ];
+  home.packages = with pkgs; [
+    tdesktop
+    webcord
+    thunderbird
+    element-desktop-wayland
+  ];
 }

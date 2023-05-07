@@ -43,6 +43,8 @@ in
         { title = "Discord"; }
         { class = "WebCord"; }
         { app_id = "WebCord"; }
+        { class = "Element"; }
+        { app_id = "Element"; }
       ];
     };
     floating = {
