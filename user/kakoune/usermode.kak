@@ -16,6 +16,8 @@ map global user 'M' ': try lsp-range-formatting-sync catch format-selections<ret
 map global user 'c' ': comment-line<ret>' -docstring 'comment line'
 map global user 'C' '_: comment-block<ret>' -docstring 'comment block'
 
+map global user "s" ': enter-user-mode mirror<ret>' -docstring 'mirror mode'
+
 map global user 'p' '! wl-paste -n<ret>' -docstring 'clipboard paste'
 map global user 'P' '<a-o>j! wl-paste -n<ret>' -docstring 'clipboard paste on next line'
 map global user 'R' '"_d! wl-paste -n <ret>' -docstring 'clipboard replace'

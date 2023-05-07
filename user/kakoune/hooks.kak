@@ -1,5 +1,7 @@
 set global idle_timeout 500
 
+enable-auto-pairs
+
 hook global NormalIdle .* %{ evaluate-commands %sh{
     hex_with_size() {
         for i in  3 4 6 8; do

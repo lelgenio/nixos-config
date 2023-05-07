@@ -12,6 +12,8 @@ let
 in
 with colors;
 ''
+  crosshairs-enable
+
   face global crosshairs_line     default,${bg_dark}
   face global crosshairs_column   default+b
 
