@@ -139,5 +139,7 @@
       };
 
       packages.${system} = packages;
+
+      formatter.${system} = pkgs.nixpkgs-fmt;
     };
 }
