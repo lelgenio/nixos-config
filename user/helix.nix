@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  inherit (pkgs.uservars) theme editor;
+  inherit (pkgs.uservars) accent theme editor;
   inherit (theme) color;
 in
 {
@@ -12,13 +12,24 @@ in
         theme = "my-theme";
         editor = {
           cursorline = true;
+          cursorcolumn = true;
           auto-save = true;
+          line-number = "relative";
           whitespace.render = "all";
           whitespace.characters = {
             space = "·";
             tab = "→";
             newline = "¬";
           };
+          lsp = {
+            display-messages = true;
+            display-inlay-hints = true;
+          };
+          cursor-shape = {
+            insert = "bar";
+          };
+          indent-guides.render = true;
+          soft-wrap.enable = true;
         };
         keys.normal = {
           # basic movement
@@ -76,7 +87,27 @@ in
           "ui.menu" = "none";
           "ui.background" = { bg = "none"; };
           "ui.virtual.whitespace" = color.nontxt;
-          "ui.cursorline" = { bg = color.bg_dark; };
+          "ui.cursor.primary" = { fg = accent.fg; bg = accent.color; };
+          "ui.cursorline.primary" = { bg = color.bg_dark; };
+          "ui.cursorcolumn.primary" = { modifiers = [ "bold" ]; };
+          "ui.linenr.selected" = { fg = color.nontxt; };
+
+          function = color.normal.orange;
+          module = color.normal.brown;
+          palette = {
+            yellow0 = color.normal.yellow;
+            yellow1 = color.normal.yellow;
+            green0 = color.normal.green;
+            green1 = color.normal.green;
+            purple0 = color.normal.magenta;
+            purple1 = color.normal.magenta;
+
+            fg0 = color.txt;
+            fg1 = color.txt;
+            fg2 = color.txt;
+            fg3 = color.txt;
+            fg4 = color.txt;
+          };
         };
       };
     };
