@@ -19,6 +19,7 @@
 
       # Disable password timeout
       "luks.options=timeout=0"
+      "rd.luks.options=timeout=0"
       "rootflags=x-systemd.device-timeout=0"
     ];
 

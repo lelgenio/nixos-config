@@ -3,7 +3,7 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 let
-  btrfs_options = [ "compress=zstd:3" "noatime" ];
+  btrfs_options = [ "compress=zstd:3" "noatime" "x-systemd.device-timeout=0" ];
 in
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
