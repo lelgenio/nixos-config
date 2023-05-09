@@ -90,7 +90,9 @@ in
           "ui.cursor.primary" = { fg = accent.fg; bg = accent.color; };
           "ui.cursorline.primary" = { bg = color.bg_dark; };
           "ui.cursorcolumn.primary" = { modifiers = [ "bold" ]; };
-          "ui.linenr.selected" = { fg = color.nontxt; };
+          "ui.cursorline" = { bg = "none"; };
+          "ui.cursorcolumn" = { bg = "none"; };
+          "ui.linenr.selected" = { fg = color.txt; };
 
           function = color.normal.orange;
           module = color.normal.brown;
@@ -111,7 +113,6 @@ in
         };
       };
     };
-    home.packages = with pkgs; [ unstable.helix ];
     home.sessionVariables = lib.mkIf (editor == "helix") {
       EDITOR = "hx";
     };
