@@ -27,6 +27,8 @@ alias _fish_prompt_warn   "_fish_prompt_color 'yellow'"
 
 alias _fish_prompt_normal "_fish_prompt_color 'normal'"
 
+alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
+
 ############################################################
 # Git
 ############################################################
@@ -47,7 +49,7 @@ function _fish_prompt_git_remote_branches
 end
 
 function _fish_prompt_git_unpushed_branches
-    timeout 1s git log \
+    timeout 5s git log \
       --branches \
       --simplify-by-decoration \
       --not \
@@ -78,7 +80,7 @@ function fish_git_prompt
     set -l git_branch   (git branch --show-current 2> /dev/null);or return
     set -l git_detach   (_fish_prompt_git_detached)
     set -l git_remote_branch   (git rev-parse --abbrev-ref (git branch --show-current)@{u} 2> /dev/null)
-    set -l git_status_s (timeout 1s git status -s | string collect)
+    set -l git_status_s (timeout 5s git status -s | string collect)
     set -l git_log_unpushed (_fish_prompt_git_unpushed_branches)
 
     _fish_prompt_normal " on "

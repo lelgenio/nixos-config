@@ -4,11 +4,12 @@ in {
   config = {
     programs.fish = {
       enable = true;
+      shellInit = ''
+        set -U __accent_color "${accent.color}"
+      '';
       interactiveShellInit = ''
         set -U fish_features stderr-nocaret qmark-noglob regex-easyesc ampersand-nobg-in-token
 
-        set -g __accent_color "${accent.color}"
-        alias _fish_prompt_accent "_fish_prompt_color '$__accent_color'"
         set_color red
         if not test -d "$PASSWORD_STORE_DIR"
           echo "Password Store not yet setup"
@@ -78,9 +79,13 @@ in {
     };
     # programs.command-not-found.enable = true;
     programs.nix-index.enable = true;
-    home.packages = with pkgs; [
+    home.packages = (with pkgs; [
       trash-cli
       wl-copy-file
-    ];
+    ]) ++ (with pkgs.unstable.fishPlugins; [
+      async-prompt
+      foreign-env
+      done
+    ]);
   };
 }
