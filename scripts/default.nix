@@ -31,6 +31,8 @@ create_scripts
     _sway_idle_toggle = [ final.swayidle ];
     kak-pager = [ fish final._diffr ];
     kak-man-pager = [ final.kak-pager ];
+    helix-pager = [ fish final._diffr ];
+    helix-man-pager = [ final.helix-pager ];
     musmenu = [ mpc-cli final.wdmenu trash-cli xdg-user-dirs libnotify sd wl-clipboard ];
     showkeys =
       [ ]; # This will not work unless programs.wshowkeys is enabled systemwide
