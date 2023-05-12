@@ -40,10 +40,13 @@
           mkdir -p -m 1777 /nix/var/nix/profiles/per-user
           mkdir -p -m 0755 /nix/var/nix/profiles/per-user/root
           mkdir -p -m 0700 "$HOME/.nix-defexpr"
-          . ${pkgs.nix}/etc/profile.d/nix-daemon.sh
-          ${pkgs.nix}/bin/nix-channel --add https://nixos.org/channels/nixos-20.09 nixpkgs # 3
-          ${pkgs.nix}/bin/nix-channel --update nixpkgs
+
+          . ${pkgs.nix}/etc/profile.d/nix.sh
+
           ${pkgs.nix}/bin/nix-env -i ${concatStringsSep " " (with pkgs; [ nix cacert git openssh ])}
+
+          ${pkgs.nix}/bin/nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+          ${pkgs.nix}/bin/nix-channel --update nixpkgs
         '';
         environmentVariables = {
           ENV = "/etc/profile";
@@ -54,9 +57,6 @@
         };
         tagList = [ "nix" ];
       };
-
-
-
     };
   };
   systemd.services.gitlab-runner.serviceConfig.Nice = 10;
