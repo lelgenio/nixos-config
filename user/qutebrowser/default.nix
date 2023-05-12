@@ -1,10 +1,11 @@
 { config, pkgs, lib, font, ... }:
 let
-  inherit (pkgs.uservars) key font browser editor;
+  inherit (pkgs.uservars) key browser editor;
 in
 {
   imports = [
     ./colors.nix
+    ./dark-theme.nix
     ./fonts.nix
   ];
 
@@ -43,7 +44,7 @@ in
 
           "co" = "tab-only --pinned keep";
 
-          "K" = "jseval --world main if (DarkReader.isEnabled()) {DarkReader.disable()} else {DarkReader.enable()}";
+          # "K" = "jseval --world main if (DarkReader.isEnabled()) {DarkReader.disable()} else {DarkReader.enable()}";
         };
         insert = {
           # quit insert mode

@@ -23,9 +23,9 @@ in
         category = BIG_INTER;
       };
       messages = {
-        error = BIG_INTER;
-        info = BIG_INTER;
-        warning = BIG_INTER;
+        error = DEF_INTER;
+        info = DEF_INTER;
+        warning = DEF_INTER;
       };
       tabs = {
         selected = BIG_INTER;
