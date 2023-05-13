@@ -50,14 +50,9 @@
     dzgui.inputs.nixpkgs.follows = "nixpkgs";
 
     # my stuff
-    dhist = {
-      url = "github:lelgenio/dhist";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    demoji = {
-      url = "github:lelgenio/demoji";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    dhist.url = "github:lelgenio/dhist";
+    demoji.url = "github:lelgenio/demoji";
+    maildir-notify-daemon.url = "github:lelgenio/maildir-notify-daemon";
   };
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let

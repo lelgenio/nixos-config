@@ -4,9 +4,6 @@ let
 
   downloadEmails = "${pkgs.offlineimap}/bin/offlineimap";
   afterSync = "${pkgs.notmuch}/bin/notmuch new";
-  onNewEmails = ''
-    ${pkgs.libnotify}/bin/notify-send "You've got mail!"
-  '';
 
   defaultAccountSettings = { boxes, }: {
     astroid.enable = true;
@@ -14,7 +11,6 @@ let
       enable = true;
       inherit boxes;
       onNotify = downloadEmails;
-      onNotifyPost = onNewEmails;
     };
     offlineimap = {
       enable = true;
@@ -77,8 +73,22 @@ in
     Install = { WantedBy = [ "timers.target" ]; };
   };
 
+  systemd.user.services.maildir-notify-daemon = {
+    Unit = {
+      Description = "Desktop notification for new email";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = toString (pkgs.writeShellScript "maildir-notify-daemon-service" ''
+        exec ${pkgs.maildir-notify-daemon}/bin/maildir-notify-daemon $HOME/Maildir/*/*/new
+      '');
+      Restart = "on-failure";
+    };
+    Install = { WantedBy = [ "sway-session.target" ]; };
+  };
+
   programs.notmuch.enable = true;
-  programs.notmuch.hooks.postInsert = onNewEmails;
 
   programs.msmtp.enable = true;
 
