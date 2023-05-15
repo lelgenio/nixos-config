@@ -96,7 +96,7 @@ in
             on-scroll-down = "${mpc} vol -10";
           };
         "custom/playerctl" = {
-          format = "{}";
+          format = "{} ";
           exec = "${pkgs.playerctl-status}/bin/playerctl-status";
           on-click = "${pkgs.playerctl}/bin/playerctl --ignore-player=mpd play-pause";
           interval = 1;
