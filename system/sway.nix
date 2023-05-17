@@ -17,6 +17,8 @@ in
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+    # Always pick the first monitor, this is fine since I only ever use a single monitor
+    wlr.settings.screencast.chooser_type = "none";
     # gtk portal needed to make gtk apps happy
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
