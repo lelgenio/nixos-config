@@ -9,9 +9,8 @@
     ./boot.nix
     ./vpn.nix
     ./thunar.nix
+    ./nix.nix
   ];
-  packages.media-packages.enable = true;
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   zramSwap.enable = true;
@@ -110,9 +109,7 @@
 
   programs.dzgui.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
+  packages.media-packages.enable = true;
   environment.systemPackages = with pkgs; [
     pinentry-curses
     pavucontrol
@@ -144,34 +141,6 @@
   };
   security.sudo.wheelNeedsPassword = false;
 
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-    optimise.automatic = true;
-    settings = {
-      auto-optimise-store = true;
-      substituters = [
-        # "http://nixcache.lelgenio.1337.cx:5000"
-        "https://hyprland.cachix.org"
-        "https://lelgenio.cachix.org"
-        "https://wegank.cachix.org"
-      ];
-      trusted-public-keys = [
-        # "nixcache.lelgenio.1337.cx:zxCfx7S658llDgAUG0JVyNrlAdFVvPniSdDOkvfTPS8="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "lelgenio.cachix.org-1:W8tMlmDFLU/V+6DlChXjekxoHZpjgVHZpmusC4cueBc="
-        "wegank.cachix.org-1:xHignps7GtkPP/gYK5LvA/6UFyz98+sgaxBSy7qK0Vs="
-      ];
-    };
-    package = pkgs.unstable.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
