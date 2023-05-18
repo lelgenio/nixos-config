@@ -46,8 +46,8 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-    dzgui.url = "github:lelgenio/dzgui-nix";
-    dzgui.inputs.nixpkgs.follows = "nixpkgs";
+    dzgui-nix.url = "github:lelgenio/dzgui-nix";
+    dzgui-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # my stuff
     dhist.url = "github:lelgenio/dhist";
@@ -78,6 +78,7 @@
         # nur.nixosModules.nur
         inputs.agenix.nixosModules.default
         inputs.hyprland.nixosModules.default
+        inputs.dzgui-nix.nixosModules.default
         { programs.hyprland.enable = (desktop == "hyprland"); }
         home-manager.nixosModules.home-manager
         {
@@ -133,7 +134,7 @@
         modules = [ ./user/home.nix ];
       };
 
-      packages.${system} = packages;
+      packages.${system} = pkgs // packages;
 
       formatter.${system} = pkgs.nixpkgs-fmt;
     };

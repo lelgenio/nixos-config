@@ -7,10 +7,6 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.kernel.sysctl = {
-    "vm.max_map_count" = 1048576; # Needed by DayZ
-  };
-
   zramSwap.enable = true;
 
   programs.adb.enable = true;
@@ -104,6 +100,9 @@
 
   # services.getty.autologinUser = "lelgenio";
   programs.fish.enable = true;
+
+  programs.dzgui.enable = true;
+
   # TODO: enable thunar plugins
   # programs.thunar.enable = true;
   # programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];

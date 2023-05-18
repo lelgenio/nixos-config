@@ -45,7 +45,6 @@
     dhist = inputs.dhist.packages.${prev.system}.dhist;
     demoji = inputs.demoji.packages.${prev.system}.default;
     maildir-notify-daemon = inputs.maildir-notify-daemon.packages.${prev.system}.default;
-    dzgui = inputs.dzgui.packages.${prev.system}.dzgui;
     mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
 
     sea-orm-cli = inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;

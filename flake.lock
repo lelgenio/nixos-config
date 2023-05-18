@@ -182,39 +182,39 @@
       }
     },
     "dzgui": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1684281410,
+        "narHash": "sha256-mjkEouCBiAu4so1kolmHbZAyH63LSGlrv4JANcj8+Vc=",
+        "owner": "aclist",
+        "repo": "dztui",
+        "rev": "8f66d12131f639116436dc41adf45632ab4251b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aclist",
+        "repo": "dztui",
+        "type": "github"
+      }
+    },
+    "dzgui-nix": {
       "inputs": {
-        "dzgui": "dzgui_2",
+        "dzgui": "dzgui",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1682130083,
-        "narHash": "sha256-uLCP1ZlyKGl6xe43c2ltgEYpuAJY7sx+ApBcy1jwd1E=",
+        "lastModified": 1684378042,
+        "narHash": "sha256-9l/j4B16a7y1s+eFf+As14e3M6V8zuyqj01EytUdt3A=",
         "owner": "lelgenio",
         "repo": "dzgui-nix",
-        "rev": "e18a4c048cd30188458a092d5eb27a0108a40cb2",
+        "rev": "9a67e3e0988e7a076e6a1033365be94cd0c3d8de",
         "type": "github"
       },
       "original": {
         "owner": "lelgenio",
         "repo": "dzgui-nix",
-        "type": "github"
-      }
-    },
-    "dzgui_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1677659849,
-        "narHash": "sha256-yTa/CN+GN/+UIp/2501iYRVoo4X6HcZdaS62gutBI4o=",
-        "owner": "aclist",
-        "repo": "dztui",
-        "rev": "c7c93558ae130e5281cebb3231f32377d37d21e2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aclist",
-        "repo": "dztui",
         "type": "github"
       }
     },
@@ -660,7 +660,7 @@
         "alacritty-sixel": "alacritty-sixel",
         "demoji": "demoji",
         "dhist": "dhist",
-        "dzgui": "dzgui",
+        "dzgui-nix": "dzgui-nix",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "lipsum": "lipsum",

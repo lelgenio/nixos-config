@@ -81,7 +81,7 @@
     # lutris-unwrapped
     # steam # It's enabled in the system config
     gamescope
-    dzgui
+    unstable.amdgpu_top
 
     ## chat
     thunderbird
@@ -134,7 +134,7 @@
     cargo-sweep
     cargo-checkmate
     cargo-audit
-    pkgs.unstable.rust-analyzer
+    rust-analyzer
     gcc
     rnix-lsp
     nixpkgs-fmt
