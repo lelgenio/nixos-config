@@ -2,7 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { config, pkgs, inputs, ... }: {
-  imports = [ ./gamemode.nix ./cachix.nix ./media-packages.nix ./boot.nix ./vpn.nix ];
+  imports = [
+    ./gamemode.nix
+    ./cachix.nix
+    ./media-packages.nix
+    ./boot.nix
+    ./vpn.nix
+    ./thunar.nix
+  ];
   packages.media-packages.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -103,11 +110,6 @@
 
   programs.dzgui.enable = true;
 
-  # TODO: enable thunar plugins
-  # programs.thunar.enable = true;
-  # programs.thunar.plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-  services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
