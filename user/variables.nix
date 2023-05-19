@@ -130,7 +130,7 @@ rec {
 
   dmenu = "bmenu";
   desktop = "sway";
-  browser = "qutebrowser";
+  browser = "firefox";
   editor = "kakoune";
   email-client = "thunderbird";
 }
