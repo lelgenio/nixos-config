@@ -44,6 +44,7 @@
   new-packages = (final: prev: packages // {
     dhist = inputs.dhist.packages.${prev.system}.dhist;
     demoji = inputs.demoji.packages.${prev.system}.default;
+    tlauncher = inputs.tlauncher.packages.${prev.system}.tlauncher;
     maildir-notify-daemon = inputs.maildir-notify-daemon.packages.${prev.system}.default;
     mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
 

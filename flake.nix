@@ -49,6 +49,8 @@
     dzgui-nix.url = "github:lelgenio/dzgui-nix";
     dzgui-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    tlauncher.url = "github:lelgenio/tlauncher-nix";
+
     # my stuff
     dhist.url = "github:lelgenio/dhist";
     demoji.url = "github:lelgenio/demoji";

@@ -80,6 +80,7 @@
     ## games
     # lutris-unwrapped
     # steam # It's enabled in the system config
+    tlauncher
     gamescope
     unstable.amdgpu_top
 
