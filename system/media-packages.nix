@@ -9,6 +9,7 @@ in {
       down_meme
       yt-dlp
       ffmpeg
+      obs-studio
       imagemagick
       mpc-cli
       pkgs.unstable.helvum
