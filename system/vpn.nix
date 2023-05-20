@@ -2,6 +2,7 @@
   networking.firewall.enable = false;
 
   services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   networking.nftables = {
     enable = true;
