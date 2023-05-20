@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-let inherit (pkgs.uservars) key theme color accent font editor;
+let inherit (pkgs.uservars) key theme color accent font editor desktop;
 in {
   config = {
     programs.fish = {
@@ -85,7 +85,6 @@ in {
     ]) ++ (with pkgs.unstable.fishPlugins; [
       async-prompt
       foreign-env
-      done
-    ]);
+    ] ++ (lib.optional (desktop == "sway") done));
   };
 }
