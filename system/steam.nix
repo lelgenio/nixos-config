@@ -1,10 +1,6 @@
-{ config, pkgs, inputs, ... }:
-let
-  upkgs = pkgs.unstable;
-in
-{
+{ config, pkgs, inputs, ... }: {
   programs.steam.enable = true;
-  programs.steam.package = upkgs.steam.override {
+  programs.steam.package = pkgs.steam.override {
     extraLibraries = pkgs: with config.hardware.opengl;
       if pkgs.hostPlatform.is64bit
       then [ package ] ++ extraPackages
@@ -17,10 +13,10 @@ in
       xdg-user-dirs
     ];
     extraProfile = ''
-      export GSETTINGS_SCHEMA_DIR="${upkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${upkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas/"
+      export GSETTINGS_SCHEMA_DIR="${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas/"
     '';
   };
-  environment.systemPackages = with upkgs; [
+  environment.systemPackages = with pkgs; [
     protontricks
   ];
 }
