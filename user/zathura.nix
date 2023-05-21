@@ -13,11 +13,12 @@ in
       selection-clipboard = "clipboard";
 
       recolor = true;
-      recolor-keephue = true;
+      # Turn images grayscale, so they don't look weird
+      recolor-keephue = false;
       recolor-lightcolor = "rgba(0,0,0,0)";
       recolor-darkcolor = color.txt;
 
-      # default-bg =    "rgba({{@@ bg_rgb @@}},{{@@ opacity @@}})";
+      default-bg = color.bg_dark;
 
       inputbar-bg = color.bg_dark;
       inputbar-fg = color.txt;
