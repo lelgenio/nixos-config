@@ -37,6 +37,9 @@
     orchis_theme_compact = (final.orchis-theme.override {
       border-radius = 0;
       tweaks = [ "compact" "solid" ];
+    }).overrideAttrs (old: {
+      patches = (old.patches or [ ]) ++
+        [ ../patches/orchis-fix-warnings.patch ];
     });
     nerdfonts_fira_hack = (final.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
   });

@@ -1,0 +1,48 @@
+diff --git a/src/_sass/_variables.scss b/src/_sass/_variables.scss
+index e8e808e..68ca7ff 100644
+--- a/src/_sass/_variables.scss
++++ b/src/_sass/_variables.scss
+@@ -21,7 +21,7 @@ $menuitem-size: if($compact == 'false', 28px, 24px);
+ //
+ 
+ $window-radius: $default_corner + $space-size;
+-$corner-radius: if($compact == 'false', $default_corner, $default_corner - 2px);
++$corner-radius: if($compact == 'false', $default_corner, max(0, $default_corner - 2px));
+ $menu-radius: $default_corner / 4 + $space-size + 2px;
+ $menuitem-radius: $default_corner / 4 + 2px;
+ $circular-radius: 9999px;
+diff --git a/src/_sass/gtk/apps/_budgie.scss b/src/_sass/gtk/apps/_budgie.scss
+index ff60df1..5bfd813 100644
+--- a/src/_sass/gtk/apps/_budgie.scss
++++ b/src/_sass/gtk/apps/_budgie.scss
+@@ -53,11 +53,11 @@
+ 
+     button {
+       @extend %button-flat-simple;
+-      border-radius: $corner-radius - $space-size;
++      border-radius: max(0, $corner-radius - $space-size);
+     }
+   }
+ 
+-  calendar:not(.header) { border-radius: $corner-radius - $space-size; }
++  calendar:not(.header) { border-radius: max(0, $corner-radius - $space-size); }
+ 
+   scrolledwindow.sidebar.categories { // AppMenu
+     background-color: $fill;
+@@ -108,14 +108,14 @@
+     }
+   }
+ 
+-  button { border-radius: $corner-radius - $space-size; }
++  button { border-radius: max(0, $corner-radius - $space-size); }
+ 
+   button.flat:not(.image-button) {
+     min-height: $menuitem-size;
+     padding: 0 8px;
+     color: $text;
+     font-weight: normal;
+-    border-radius: $corner-radius - $space-size;
++    border-radius: max(0, $corner-radius - $space-size);
+ 
+     &:disabled { color: $text-disabled; }
+   }
