@@ -75,7 +75,7 @@ hook global WinSetOption filetype=rust %[
   add-highlighter window/rust-custom regions
 
   require-module html
-  add-highlighter window/rust-custom/html region -recurse '\{' 'html!\s*\{\K' '(?=\})' ref html
+  add-highlighter window/rust-custom/html region -recurse '\{' '(html|view)!\s*\{\K' '(?=\})' ref html
 
   require-module sql
   add-highlighter window/rust-custom/sql region 'r#"\K--\s*sql' '"#' group
