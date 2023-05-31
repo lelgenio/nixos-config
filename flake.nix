@@ -55,6 +55,7 @@
     dhist.url = "github:lelgenio/dhist";
     demoji.url = "github:lelgenio/demoji";
     maildir-notify-daemon.url = "github:lelgenio/maildir-notify-daemon";
+    wl-crosshair.url = "github:lelgenio/wl-crosshair";
   };
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let

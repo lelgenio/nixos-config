@@ -150,6 +150,7 @@ let
     "${mod}+Shift+s" = "exec grim - | swappy -f -";
     "${mod}+Ctrl+v" = "exec wl-paste | tesseract -l por - - | wl-copy";
     "${mod}+k" = "exec showkeys";
+    "${mod}+Alt+x" = "exec pkill wl-crosshair || exec wl-crosshair";
     "${mod}+x" = "kill";
     "${mod}+m" = "mode audio";
     "${mod}+escape" =

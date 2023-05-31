@@ -116,6 +116,7 @@ in
       wf-recorder
       wl-clipboard
       wtype
+      wl-crosshair
 
       grim
       swappy
