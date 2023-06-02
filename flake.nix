@@ -56,6 +56,10 @@
     demoji.url = "github:lelgenio/demoji";
     maildir-notify-daemon.url = "github:lelgenio/maildir-notify-daemon";
     wl-crosshair.url = "github:lelgenio/wl-crosshair";
+
+    # gnome stuff
+    nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";
+    nix-software-center.url = "github:vlinkz/nix-software-center";
   };
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let
@@ -134,8 +138,8 @@
         inherit pkgs;
 
         extraSpecialArgs = {
-            inherit inputs;
-            osConfig = {};
+          inherit inputs;
+          osConfig = { };
         };
 
         modules = [ ./user/home.nix ];

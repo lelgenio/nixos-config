@@ -8,9 +8,9 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   # services.xserver.displayManager.autologin.user = "lelgenio";
-  environment.systemPackages = with pkgs;
-    with gnome; [
-      gnome-tweaks
-      dconf-editor
-    ];
+  environment.systemPackages = with pkgs; with gnome; [
+    gnome-tweaks
+    dconf-editor
+    gnomeExtensions.gsconnect
+  ];
 }

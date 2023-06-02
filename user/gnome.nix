@@ -1,15 +1,32 @@
-{ pkgs, lib, ... }: lib.mkIf (pkgs.uservars.desktop == "gnome") {
+{ pkgs, lib, inputs, ... }: lib.mkIf (pkgs.uservars.desktop == "gnome") {
 
-  dconf.settings = with pkgs; with uservars.theme; {
+  dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-theme = gtk_theme;
-      icon-theme = icon_theme;
-      cursor-theme = cursor_theme;
-      color-scheme = "prefer-${color.type}";
+      # gtk-theme = "Adwaita";
+      # icon-theme = "Adwaita";
+      # cursor-theme = "Adwaita";
+      # color-scheme = "default";
     };
     "org/gnome/desktop/wm/preferences" = lib.mkForce {
-      button-layout = "menu:close";
+      button-layout = "appmenu:close";
     };
   };
+
+  home.sessionVariables = {
+    LD_PRELOAD = "";
+    GTK_CSD = "1";
+  };
+
+  home.packages = with pkgs; [
+    inputs.nixos-conf-editor.packages.${pkgs.system}.nixos-conf-editor
+    inputs.nix-software-center.packages.${pkgs.system}.nix-software-center
+
+    adw-gtk3
+
+    newsflash
+    foliate
+    lollypop
+    pitivi
+  ];
 
 }

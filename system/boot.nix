@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, lib, inputs, ... }: {
   console = {
     font = "ter-120n";
     packages = [ pkgs.terminus_font ];
@@ -36,7 +36,7 @@
     };
     plymouth = {
       enable = true;
-      theme = "red_loader";
+      theme = lib.mkIf (pkgs.uservars.desktop == "sway") "red_loader";
       themePackages = [
         pkgs.plymouth-theme-red
       ];

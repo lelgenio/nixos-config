@@ -1,8 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
 let
-  inherit (pkgs.uservars) theme font;
+  inherit (pkgs.uservars) theme font desktop;
   inherit (theme) color gtk_theme icon_theme cursor_theme;
 in
+lib.mkIf (desktop == "sway")
 {
   home.pointerCursor = {
     name = cursor_theme;
