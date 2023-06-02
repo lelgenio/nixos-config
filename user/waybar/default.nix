@@ -20,7 +20,7 @@ in
           "tray"
           "custom/caffeine"
           "pulseaudio"
-          (lib.optional osConfig.services.vpn.enable "custom/vpn")
+          (lib.optional (osConfig.services.vpn.enable or false) "custom/vpn")
           "network"
           "battery"
         ];
@@ -110,7 +110,7 @@ in
           interval = 1;
           tooltip = false;
         };
-        "custom/vpn" = lib.mkIf osConfig.services.vpn.enable {
+        "custom/vpn" = lib.mkIf (osConfig.services.vpn.enable or false) {
           format = "{}";
           exec = ''
             mullvad status | grep "^Connected" > /dev/null \

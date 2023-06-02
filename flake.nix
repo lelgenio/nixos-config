@@ -133,7 +133,10 @@
       homeConfigurations.lelgenio = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {
+            inherit inputs;
+            osConfig = {};
+        };
 
         modules = [ ./user/home.nix ];
       };
