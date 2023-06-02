@@ -83,6 +83,8 @@
     tlauncher
     gamescope
     unstable.amdgpu_top
+    glxinfo
+    vulkan-tools
 
     ## chat
     thunderbird
