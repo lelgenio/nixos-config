@@ -1,4 +1,4 @@
-{ config, pkgs, lib, font, ... }:
+{ config, osConfig, pkgs, lib, font, ... }:
 let
   inherit (pkgs.uservars) key theme accent font;
   inherit (theme) color;
@@ -13,14 +13,14 @@ in
         layer = "top";
         modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
         modules-center = [ "clock" ];
-        modules-right = [
+        modules-right = lib.flatten [
           "sway/language"
           "mpd"
           "custom/playerctl"
           "tray"
           "custom/caffeine"
           "pulseaudio"
-          "custom/vpn"
+          (lib.optional osConfig.services.vpn.enable "custom/vpn")
           "network"
           "battery"
         ];
@@ -110,7 +110,7 @@ in
           interval = 1;
           tooltip = false;
         };
-        "custom/vpn" = {
+        "custom/vpn" = lib.mkIf osConfig.services.vpn.enable {
           format = "{}";
           exec = ''
             mullvad status | grep "^Connected" > /dev/null \
