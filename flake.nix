@@ -1,9 +1,9 @@
 {
   description = "My system config";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgs.url = "nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
 
@@ -43,19 +43,38 @@
     lipsum.url = "github:hannenz/lipsum";
     lipsum.flake = false;
 
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    dzgui-nix.url = "github:lelgenio/dzgui-nix";
-    dzgui-nix.inputs.nixpkgs.follows = "nixpkgs";
+    dzgui-nix = {
+      url = "github:lelgenio/dzgui-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    tlauncher.url = "github:lelgenio/tlauncher-nix";
+    tlauncher = {
+      url = "github:lelgenio/tlauncher-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # my stuff
-    dhist.url = "github:lelgenio/dhist";
-    demoji.url = "github:lelgenio/demoji";
-    maildir-notify-daemon.url = "github:lelgenio/maildir-notify-daemon";
-    wl-crosshair.url = "github:lelgenio/wl-crosshair";
+    dhist = {
+      url = "github:lelgenio/dhist";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    demoji = {
+      url = "github:lelgenio/demoji";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    maildir-notify-daemon = {
+      url = "github:lelgenio/maildir-notify-daemon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    wl-crosshair = {
+      url = "github:lelgenio/wl-crosshair";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # gnome stuff
     nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";

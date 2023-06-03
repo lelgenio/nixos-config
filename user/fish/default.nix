@@ -79,10 +79,9 @@ in {
     };
     # programs.command-not-found.enable = true;
     programs.nix-index.enable = true;
-    home.packages = (with pkgs; [
+    home.packages = (with pkgs; with fishPlugins;[
       trash-cli
       wl-copy-file
-    ]) ++ (with pkgs.unstable.fishPlugins; [
       async-prompt
       foreign-env
     ] ++ (lib.optional (desktop == "sway") done));

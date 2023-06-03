@@ -77,10 +77,11 @@ in
         };
         keys.insert = { "A-k" = "normal_mode"; };
       };
-      languages = [
+      languages.language = [
         { auto-format = true; formatter = { command = "nixpkgs-fmt"; }; name = "nix"; }
         { auto-format = true; name = "rust"; }
       ];
+
       themes = {
         my-theme = {
           "inherits" = "gruvbox";

@@ -5,17 +5,17 @@ in {
     programs.firefox = {
       enable = true;
       package = pkgs.firefox-esr;
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        darkreader
-        duckduckgo-privacy-essentials
-        sponsorblock
-        tree-style-tab
-        ublock-origin
-        ublock-origin
-      ];
       profiles = {
         main = {
           isDefault = true;
+          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+            darkreader
+            duckduckgo-privacy-essentials
+            sponsorblock
+            tree-style-tab
+            ublock-origin
+            ublock-origin
+          ];
           settings = {
             "devtools.theme" = "auto";
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;

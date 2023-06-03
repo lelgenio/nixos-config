@@ -4,7 +4,7 @@ let
   inherit (theme) color;
 in
 {
-  programs.mako = {
+  services.mako = {
     borderSize = 2;
     padding = "5";
     margin = "15";
@@ -38,7 +38,7 @@ in
     # # position
     # layer=overlay
   };
-  systemd.user.services.mako = lib.mkIf (config.programs.mako.enable) {
+  systemd.user.services.mako = lib.mkIf (config.services.mako.enable) {
     Unit = {
       Description = "Notification daemon";
       PartOf = [ "graphical-session.target" ];

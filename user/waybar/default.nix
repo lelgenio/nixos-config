@@ -44,8 +44,8 @@ in
           on-click = "terminal -e iwd";
           format-wifi = "{icon}";
           format-icons = [ "" "" "" "" "" ];
-          format-ethernet = "";
-          format-linked = "";
+          format-ethernet = "󰈀";
+          format-linked = "󰈀";
           format-disconnected = "";
         };
         "sway/workspaces" = {
@@ -54,11 +54,11 @@ in
           format-icons = {
             "1" = "";
             "2" = "";
-            "3" = "";
+            "3" = "󰅩";
             "4" = "";
             "5" = "";
             "6" = "";
-            "7" = "";
+            "7" = "󰇮";
             "8" = "";
             "9" = "";
             "10" = "";
@@ -105,7 +105,7 @@ in
         "sway/language" = { format = "{short} {variant}"; };
         "custom/caffeine" = {
           format = "{}";
-          exec = "systemctl --user status swayidle > /dev/null && echo 鈴 || echo ";
+          exec = "systemctl --user status swayidle > /dev/null && echo 󰒲 || echo 󰒳";
           on-click = "${pkgs._sway_idle_toggle}/bin/_sway_idle_toggle";
           interval = 1;
           tooltip = false;
@@ -127,19 +127,18 @@ in
           scroll-step = 10;
           format = "{icon}";
           format-bluetooth = "";
-          format-bluetooth-muted = "";
-          format-muted = "ﱝ";
+          format-bluetooth-muted = "󰝟";
+          format-muted = "󰝟";
           format-icons = {
             "alsa_output.pci-0000_09_00.4.analog-stereo" =
-              [ " 奄" " 奔" " 墳" ];
-
-            headphone = [ " 奄" " 奔" " 墳" ];
+              [ " 󰕿" " 󰖀" " 󰕾" ];
+            headphone = [ " 󰕿" " 󰖀" " 󰕾" ];
             handsfree = "";
             headset = "";
             phone = "";
             portable = "";
             car = "";
-            default = [ "奄" "奔" "墳" ];
+            default = [ "󰕿" "󰖀" "󰕾" ];
           };
           on-click = "pavucontrol";
           on-click-right = "${pkgs.pulse_sink}/bin/pulse_sink";

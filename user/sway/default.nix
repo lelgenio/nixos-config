@@ -15,7 +15,7 @@ in
     ./theme.nix
   ];
   config = lib.mkIf (pkgs.uservars.desktop == "sway") {
-    programs.mako.enable = true;
+    services.mako.enable = true;
     services.swayidle.enable = true;
     services.kanshi.enable = true;
 

@@ -50,10 +50,12 @@
   security.rtkit.enable = true;
   services.openssh = {
     enable = true;
-    kbdInteractiveAuthentication = false;
-    passwordAuthentication = false;
-    permitRootLogin = "no";
     ports = [ 9022 ];
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
   };
   # programs.ssh = {
   #   startAgent = true;
