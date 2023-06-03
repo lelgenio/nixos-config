@@ -49,20 +49,10 @@ in {
         };
       };
     };
-    systemd.user.services = lib.mkIf (browser == "firefox") {
-      firefox = {
-        Unit = {
-          Description = "Firefox Web client";
-          PartOf = [ "graphical-session.target" ];
-          After = [ "graphical-session.target" ];
-        };
-        Service = {
-          ExecStartPre = "/usr/bin/env sleep 10s";
-          ExecStart = "${pkgs.firefox}/bin/firefox";
-          Restart = "on-failure";
-        };
-        Install = { WantedBy = [ "sway-session.target" ]; };
-      };
+    wayland.windowManager.sway = {
+      extraConfig = ''
+        exec firefox
+      '';
     };
     home.sessionVariables = {
       MOZ_ENABLE_WAYLAND = "1";

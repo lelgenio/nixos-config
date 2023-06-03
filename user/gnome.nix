@@ -12,11 +12,6 @@
     };
   };
 
-  home.sessionVariables = {
-    LD_PRELOAD = "";
-    GTK_CSD = "1";
-  };
-
   home.packages = with pkgs; [
     inputs.nixos-conf-editor.packages.${pkgs.system}.nixos-conf-editor
     inputs.nix-software-center.packages.${pkgs.system}.nix-software-center
