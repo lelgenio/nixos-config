@@ -124,9 +124,5 @@ in
 
       mpvpaper
     ];
-    home.sessionVariables = {
-      LD_PRELOAD = "${pkgs.gtk3-nocsd}/lib/libgtk3-nocsd.so.0";
-      GTK_CSD = "0";
-    };
   };
 }
