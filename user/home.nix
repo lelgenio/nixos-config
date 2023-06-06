@@ -33,6 +33,7 @@
     ./sway
     ./gnome.nix
     ./thunar.nix
+    ./xdg-dirs.nix
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-database.hmModules.nix-index
   ];
@@ -161,25 +162,6 @@
     enable = true;
     startInBackground = true;
   };
-
-
-  xdg.userDirs =
-    let
-      HOME = config.home.homeDirectory;
-    in
-    {
-      enable = true;
-      createDirectories = true;
-
-      desktop = "${HOME}/Área de trabalho";
-      documents = "${HOME}/Documentos";
-      download = "${HOME}/Downloads";
-      music = "${HOME}/Música";
-      pictures = "${HOME}/Imagens";
-      publicShare = "${HOME}/Público";
-      templates = "${HOME}/Modelos";
-      videos = "${HOME}/Vídeos";
-    };
 
   services.kdeconnect = {
     enable = true;

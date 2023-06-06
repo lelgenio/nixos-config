@@ -17,7 +17,7 @@ in
           "sway/language"
           "mpd"
           "custom/playerctl"
-          "tray"
+          # "tray"
           "custom/caffeine"
           "pulseaudio"
           (lib.optional (osConfig.services.vpn.enable or false) "custom/vpn")

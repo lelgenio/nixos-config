@@ -4,7 +4,6 @@
       exec thunderbird
       exec webcord
       exec telegram-desktop
-      exec element-desktop
     '';
   };
 
