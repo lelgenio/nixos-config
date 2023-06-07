@@ -52,7 +52,6 @@
     wl-crosshair = inputs.wl-crosshair.packages.${prev.system}.default;
     mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
 
-    sea-orm-cli = inputs.sea-orm-cli.legacyPackages.${prev.system}.sea-orm-cli;
     webcord = (prev.webcord or prev.unstable.webcord).overrideAttrs (old: {
       patches = (old.patches or [ ]) ++ [ ../patches/webcord/fix-reading-config.patch ];
     });

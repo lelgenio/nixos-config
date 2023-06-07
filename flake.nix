@@ -35,8 +35,6 @@
     material-wifi-icons.url = "github:dcousens/material-wifi-icons";
     material-wifi-icons.flake = false;
 
-    sea-orm-cli.url = "github:lucperkins/nixpkgs/lperkins/sea-orm-cli";
-
     plymouth-themes.url = "github:adi1090x/plymouth-themes";
     plymouth-themes.flake = false;
 
