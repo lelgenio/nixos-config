@@ -746,7 +746,6 @@
         "ranger-icons": "ranger-icons",
         "ranger-sixel": "ranger-sixel",
         "tlauncher": "tlauncher",
-        "wegank": "wegank",
         "wl-crosshair": "wl-crosshair"
       }
     },
@@ -959,26 +958,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "wegank": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1685351104,
-        "narHash": "sha256-40APf9B0ciuTSZkK4NYXzb9cPMsXOKyishk7+J1HqIo=",
-        "owner": "wegank",
-        "repo": "nur-packages",
-        "rev": "12416ee0ae3d2ad835c83cbc99f5408c91e0f8b7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "wegank",
-        "repo": "nur-packages",
         "type": "github"
       }
     },

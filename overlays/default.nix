@@ -50,7 +50,6 @@
     tlauncher = inputs.tlauncher.packages.${prev.system}.tlauncher;
     maildir-notify-daemon = inputs.maildir-notify-daemon.packages.${prev.system}.default;
     wl-crosshair = inputs.wl-crosshair.packages.${prev.system}.default;
-    mpvpaper = inputs.wegank.packages.${prev.system}.mpvpaper;
 
     webcord = (prev.webcord or prev.unstable.webcord).overrideAttrs (old: {
       patches = (old.patches or [ ]) ++ [ ../patches/webcord/fix-reading-config.patch ];

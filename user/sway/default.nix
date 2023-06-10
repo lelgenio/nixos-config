@@ -121,8 +121,6 @@ in
       grim
       swappy
       tesseract5
-
-      mpvpaper
     ];
   };
 }
