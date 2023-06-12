@@ -131,7 +131,7 @@
           inherit system specialArgs;
           modules = [
             ./hosts/rainbow.nix
-            { vpn.enable = true; }
+            { services.vpn.enable = true; }
             ./system/rainbow-gitlab-runner.nix
           ] ++ common_modules;
         };
