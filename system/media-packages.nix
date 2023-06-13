@@ -12,7 +12,7 @@ in {
       obs-studio
       imagemagick
       mpc-cli
-      pkgs.unstable.helvum
+      helvum
       gimp
       inkscape
       kdenlive

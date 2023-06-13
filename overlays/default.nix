@@ -3,7 +3,6 @@
     nur
     scripts
     sway
-    unstable
     sixel-patches
     themes
     new-packages
@@ -17,12 +16,6 @@
 
   sway = (import ./sway.nix);
 
-  unstable = (final: prev: {
-    unstable = import inputs.nixpkgs-unstable {
-      inherit (prev) system config;
-    };
-  });
-
   sixel-patches = (import ./sixel-patches.nix (inputs));
 
   themes = (final: prev: {
@@ -33,13 +26,10 @@
         install -D material-wifi.ttf $out/share/fonts/${name}
       '';
     };
-    papirus_red = (final.unstable.papirus-icon-theme.override { color = "red"; });
+    papirus_red = (final.papirus-icon-theme.override { color = "red"; });
     orchis_theme_compact = (final.orchis-theme.override {
       border-radius = 0;
       tweaks = [ "compact" "solid" ];
-    }).overrideAttrs (old: {
-      patches = (old.patches or [ ]) ++
-        [ ../patches/orchis-fix-warnings.patch ];
     });
     nerdfonts_fira_hack = (final.nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; });
   });
@@ -51,10 +41,10 @@
     maildir-notify-daemon = inputs.maildir-notify-daemon.packages.${prev.system}.default;
     wl-crosshair = inputs.wl-crosshair.packages.${prev.system}.default;
 
-    webcord = (prev.webcord or prev.unstable.webcord).overrideAttrs (old: {
+    webcord = (prev.webcord or prev.webcord).overrideAttrs (old: {
       patches = (old.patches or [ ]) ++ [ ../patches/webcord/fix-reading-config.patch ];
     });
-    mullvad = final.unstable.mullvad;
+    mullvad = final.mullvad;
   });
 
   patches = (final: prev: {
