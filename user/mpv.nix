@@ -15,6 +15,8 @@ _: {
         cache = true;
         cache-pause-initial = true;
         cache-pause-wait = 10;
+
+        hwdec="auto";
       };
     };
   };

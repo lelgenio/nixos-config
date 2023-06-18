@@ -23,6 +23,14 @@ in
   # # For 32 bit applications
   hardware.opengl.driSupport32Bit = true;
 
+  hardware.opengl.extraPackages = with pkgs; [
+    libva
+    libvdpau
+    vaapiVdpau
+    rocm-opencl-icd
+    rocm-opencl-runtime
+  ];
+
   # hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
   # # For 32 bit applications
   # # Only available on unstable

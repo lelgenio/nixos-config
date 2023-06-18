@@ -54,8 +54,6 @@ in
           "*" = {
             adaptive_sync = "on";
             bg = "${theme.background} fill";
-          };
-          "DP-1" = {
             mode = "1920x1080@144.000Hz";
           };
         };

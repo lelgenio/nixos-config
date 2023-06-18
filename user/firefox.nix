@@ -21,21 +21,21 @@ in {
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             "browser.tabs.inTitlebar" = if desktop == "sway" then 0 else 1;
 
-            # disable media RDD because it's buggy and crashes the gpu
-            "media.rdd-ffmpeg.enabled" = false;
-            "media.rdd-ffvpx.enabled" = false;
-            "media.rdd-opus.enabled" = false;
-            "media.rdd-process.enabled" = false;
-            "media.rdd-retryonfailure.enabled" = false;
-            "media.rdd-theora.enabled" = false;
-            "media.rdd-vorbis.enabled" = false;
-            "media.rdd-vpx.enabled" = false;
-            "media.rdd-wav.enabled" = false;
+            # enable media RDD to allow gpu acceleration
+            "media.rdd-ffmpeg.enabled" = true;
+            "media.rdd-ffvpx.enabled" = true;
+            "media.rdd-opus.enabled" = true;
+            "media.rdd-process.enabled" = true;
+            "media.rdd-retryonfailure.enabled" = true;
+            "media.rdd-theora.enabled" = true;
+            "media.rdd-vorbis.enabled" = true;
+            "media.rdd-vpx.enabled" = true;
+            "media.rdd-wav.enabled" = true;
 
             "media.av1.enabled" = true;
             "media.ffmpeg.vaapi-drm-display.enabled" = true;
             "media.ffmpeg.vaapi.enabled" = true;
-            "media.ffvpx.enabled" = false;
+            "media.ffvpx.enabled" = true;
 
             "gfx.webrender.all" = true;
 
