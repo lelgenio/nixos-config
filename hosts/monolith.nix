@@ -37,13 +37,6 @@ in
   # hardware.opengl.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   # environment.variables = { AMD_VULKAN_ICD = "RADV"; };
 
-  boot.extraModulePackages = [
-    ((pkgs.amdgpu-kernel-module.override {
-      kernel = config.boot.kernelPackages.kernel;
-    }).overrideAttrs (_: {
-      patches = [ ../patches/kernel/amdgpu-disable-shutdown-on-overheating.diff ];
-    }))
-  ];
   fileSystems."/" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
