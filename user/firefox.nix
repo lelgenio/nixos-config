@@ -32,7 +32,7 @@ in {
             "media.rdd-vpx.enabled" = true;
             "media.rdd-wav.enabled" = true;
 
-            "media.av1.enabled" = true;
+            "media.av1.enabled" = false;
             "media.ffmpeg.vaapi-drm-display.enabled" = true;
             "media.ffmpeg.vaapi.enabled" = true;
             "media.ffvpx.enabled" = true;
