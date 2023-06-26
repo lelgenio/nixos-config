@@ -18,13 +18,15 @@
 
       # runner for building in docker via host's nix-daemon
       # nix store will be readable in runner, might be insecure
-      nix = with lib;{
+      nix = with lib; rec {
         # File should contain at least these two variables:
         # `CI_SERVER_URL`
         # `REGISTRATION_TOKEN`
         registrationConfigFile = config.age.secrets.gitlab-runner-thoreb-telemetria-registrationConfigFile.path; # 2
-        dockerImage = "alpine";
+        dockerImage = "alpine:3.18.2";
+        dockerAllowedImages = [ dockerImage ];
         dockerVolumes = [
+          "/etc/nix/nix.conf:/etc/nix/nix.conf:ro"
           "/nix/store:/nix/store:ro"
           "/nix/var/nix/db:/nix/var/nix/db:ro"
           "/nix/var/nix/daemon-socket:/nix/var/nix/daemon-socket:ro"
@@ -57,7 +59,6 @@
         };
         tagList = [ "nix" ];
       };
-
     };
   };
   systemd.services.gitlab-runner.serviceConfig.Nice = 10;
