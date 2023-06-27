@@ -77,6 +77,11 @@ in
     fsType = "btrfs";
     options = [ "subvol=@music" "nofail" ] ++ btrfs_options;
   };
+  fileSystems."/home/lelgenio/.local/mount/data" = {
+    device = "/dev/disk/by-label/BTRFS_DATA";
+    fsType = "btrfs";
+    options = [ "subvol=@data" "nofail" ] ++ btrfs_options;
+  };
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
   '';
