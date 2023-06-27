@@ -118,6 +118,7 @@ in
               || echo ""
           '';
           on-click = "mullvad connect";
+          on-click-right = "mullvad disconnect";
           interval = 1;
           tooltip = false;
         };
