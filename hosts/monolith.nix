@@ -28,6 +28,8 @@ in
     rocm-opencl-runtime
   ];
 
+  programs.corectrl.enable = true;
+
   # hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
   # # For 32 bit applications
   # # Only available on unstable
