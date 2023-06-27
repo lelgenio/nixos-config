@@ -15,6 +15,9 @@ in
     "kvm-amd"
     "amdgpu"
   ];
+  boot.kernelParams = [
+    "video=DP-1:1920x1080@144"
+  ];
 
   hardware.opengl.driSupport = true;
   # # For 32 bit applications
