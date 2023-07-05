@@ -83,7 +83,7 @@
     # steam # It's enabled in the system config
     tlauncher
     gamescope
-    amdgpu_top
+    unstable.amdgpu_top
     glxinfo
     vulkan-tools
 

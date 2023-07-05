@@ -7,6 +7,7 @@ in
   config = {
     programs.helix = {
       enable = true;
+      package = pkgs.unstable.helix;
       settings = {
         theme = "my-theme";
         editor = {

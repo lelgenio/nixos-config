@@ -1,5 +1,5 @@
 inputs: (final: prev: {
-  alacritty = (prev.alacritty.overrideAttrs (old-alacritty: rec {
+  alacritty = (prev.unstable.alacritty.overrideAttrs (old-alacritty: rec {
     src = inputs.alacritty-sixel;
     cargoDeps = old-alacritty.cargoDeps.overrideAttrs (prev.lib.const {
       inherit src;

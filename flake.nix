@@ -1,7 +1,8 @@
 {
   description = "My system config";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
@@ -13,7 +14,7 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     alacritty-sixel.url = "github:ayosec/alacritty";
@@ -71,7 +72,7 @@
     nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";
     nix-software-center.url = "github:vlinkz/nix-software-center";
   };
-  outputs = inputs@{ nixpkgs, home-manager, nur, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let
       inherit (import ./user/variables.nix) desktop;
       system = "x86_64-linux";
