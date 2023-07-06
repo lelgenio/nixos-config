@@ -11,7 +11,6 @@
     ./thunar.nix
     ./nix.nix
   ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   zramSwap.enable = true;
 

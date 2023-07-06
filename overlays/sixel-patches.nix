@@ -3,7 +3,7 @@ inputs: (final: prev: {
     src = inputs.alacritty-sixel;
     cargoDeps = old-alacritty.cargoDeps.overrideAttrs (prev.lib.const {
       inherit src;
-      outputHash = "sha256-3zPNaBPRolR17BbUv2X1ocM+W/9YMYP4E91foKOFKaE=";
+      outputHash = "sha256-W3RKvIAhE8+4srSx7jVfMFU/vNcky9Rs6e6uHhxw2WE=";
     });
   }));
   ranger = (prev.ranger.overridePythonAttrs (old-ranger: rec {
