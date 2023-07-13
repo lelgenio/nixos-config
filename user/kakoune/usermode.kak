@@ -21,6 +21,7 @@ map global user "s" ': enter-user-mode mirror<ret>' -docstring 'mirror mode'
 map global user 'p' '! wl-paste -n<ret>' -docstring 'clipboard paste'
 map global user 'P' '<a-o>j! wl-paste -n<ret>' -docstring 'clipboard paste on next line'
 map global user 'R' '"_d! wl-paste -n <ret>' -docstring 'clipboard replace'
+map global user 'y' ': copy-file-path<ret>' -docstring 'register name to clipboard'
 
 map global user 'b' ': find_buffer<ret>' -docstring 'switch buffer'
 
@@ -127,4 +128,10 @@ zoxide %{
 
 define-command -override  config-source %{
     source "%val{config}/kakrc"
+}
+
+define-command -override copy-file-path %{
+    nop %sh{ {
+        wl-copy $kak_reg_percent
+    } >/dev/null 2>&1 </dev/null & }
 }
