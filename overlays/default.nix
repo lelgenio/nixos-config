@@ -74,7 +74,7 @@
         owner = "pinusc";
         repo = "qutebrowser";
         rev = "feature/tree-tabs";
-        sha256 = "sha256-kHxZ3AzbfPJ3im1kQNn8DDlKBn+yPI4SLbSZuBQrUWY=";
+        sha256 = "sha256-4WgO/xS/vg3sJAWjIGcQqHmA0O7rzTy7cGtBT8H+Q0o=";
       };
     });
   });
