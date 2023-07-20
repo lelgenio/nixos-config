@@ -16,7 +16,7 @@ in {
       gimp
       inkscape
       kdenlive
-      blender
+      blender-hip
       libreoffice
       godot
     ];
