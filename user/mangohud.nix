@@ -9,7 +9,7 @@ in {
         full = true;
         # histogram = true;
         no_display = true;
-        fps_limit = "0,30,60,120,144,240,288,320";
+        fps_limit = "0,30,60,72,90,120,144,240,288,320";
         toggle_fps_limit = "Shift_R+F10";
 
         # legacy_layout = "false";
