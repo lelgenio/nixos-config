@@ -33,12 +33,6 @@ in
 
   programs.corectrl.enable = true;
 
-  # hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
-  # # For 32 bit applications
-  # # Only available on unstable
-  # hardware.opengl.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
-  # environment.variables = { AMD_VULKAN_ICD = "RADV"; };
-
   fileSystems."/" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";

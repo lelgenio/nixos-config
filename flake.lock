@@ -54,22 +54,6 @@
         "type": "github"
       }
     },
-    "alacritty-sixel": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1677700854,
-        "narHash": "sha256-qYc1Yz6+dKEK87VcouYP5IYa0tqk54DcCgveCsV/c6I=",
-        "owner": "ayosec",
-        "repo": "alacritty",
-        "rev": "713c5415262ab091a645f976907dacaf40703ae8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ayosec",
-        "repo": "alacritty",
-        "type": "github"
-      }
-    },
     "crane": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -445,7 +429,7 @@
       "inputs": {
         "hyprland-protocols": "hyprland-protocols",
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixpkgs"
         ],
         "wlroots": "wlroots",
         "xdph": "xdph"
@@ -614,21 +598,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1689444953,
-        "narHash": "sha256-0o56bfb2LC38wrinPdCGLDScd77LVcr7CrH1zK7qvDg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "8acef304efe70152463a6399f73e636bcc363813",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-unstable",
-        "type": "indirect"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1673796341,
@@ -707,27 +676,9 @@
         "type": "github"
       }
     },
-    "ranger-sixel": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1681665489,
-        "narHash": "sha256-NJKjj+jmaHnauA6qCEGu9N+EPqfcoL0jF1PotGZ/kDc=",
-        "owner": "remi6397",
-        "repo": "ranger",
-        "rev": "0283f4c2c6c0abae7f1279d3cc0b6e7bf313134e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "remi6397",
-        "ref": "feature/sixel",
-        "repo": "ranger",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "alacritty-sixel": "alacritty-sixel",
         "demoji": "demoji",
         "dhist": "dhist",
         "dzgui-nix": "dzgui-nix",
@@ -740,11 +691,9 @@
         "nix-software-center": "nix-software-center",
         "nixos-conf-editor": "nixos-conf-editor",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "plymouth-themes": "plymouth-themes",
         "ranger-icons": "ranger-icons",
-        "ranger-sixel": "ranger-sixel",
         "tlauncher": "tlauncher",
         "wl-crosshair": "wl-crosshair"
       }
