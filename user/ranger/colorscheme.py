@@ -64,7 +64,7 @@ class Default(ColorScheme):
                 else:
                     fg = red
                 fg += BRIGHT
-            if context.line_number and not context.selected:
+            if not context.selected:
                 fg = default
                 attr &= ~bold
             if not context.selected and (context.cut or context.copied):
