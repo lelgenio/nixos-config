@@ -54,7 +54,6 @@
     pulseaudio
 
     ## CLI
-    btop
     exa
     fd
     bc
@@ -68,6 +67,13 @@
     br # bulk rename
 
     comma
+
+    # System monitors
+    btop
+    amdgpu_top
+    inxi
+    dmidecode
+    ncdu
 
     ## text manipulation
     sd
@@ -83,7 +89,6 @@
     # steam # It's enabled in the system config
     tlauncher
     gamescope
-    amdgpu_top
     glxinfo
     vulkan-tools
 
