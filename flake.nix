@@ -60,6 +60,7 @@
       url = "github:lelgenio/wl-crosshair";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-fixed-steam.url = "github:lelgenio/nixpkgs/test-steam-fix";
 
     # gnome stuff
     nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";

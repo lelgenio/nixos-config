@@ -1,6 +1,12 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, ... }:
+let
+  pkgs' = import inputs.nixpkgs-fixed-steam {
+    inherit (pkgs) system config;
+  };
+in
+{
   programs.steam.enable = true;
-  programs.steam.package = pkgs.steam.override {
+  programs.steam.package = pkgs'.steam.override {
     extraLibraries = pkgs: with config.hardware.opengl;
       if pkgs.hostPlatform.is64bit
       then [ package ] ++ extraPackages
@@ -12,9 +18,6 @@
       mangohud
       xdg-user-dirs
     ];
-    extraProfile = ''
-      export GSETTINGS_SCHEMA_DIR="${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas/"
-    '';
   };
   environment.systemPackages = with pkgs; [
     protontricks
