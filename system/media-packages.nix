@@ -18,7 +18,7 @@ in {
       kdenlive
       blender-hip
       libreoffice
-      godot
+      godot_4
     ];
   };
 }
