@@ -5,11 +5,10 @@ pkgs.stdenv.mkDerivation rec {
 
   src = inputs.lipsum;
 
-  buildInputs = with pkgs; [
+  nativeBuildInputs = with pkgs; [
     pkg-config
-    glib
-    gtk3.dev
     vala
+    wrapGAppsHook
   ];
 
   makeFlags = [
@@ -18,6 +17,8 @@ pkgs.stdenv.mkDerivation rec {
 
   installPhase = ''
     install -Dm 755 "$pname" "$out/bin/$pname"
+    install -Dm 755 "./data/de.hannenz.lipsum.gschema.xml" "$out/share/glib-2.0/schemas/de.hannenz.lipsum.gschema.xml"
+    glib-compile-schemas "$out/share/glib-2.0/schemas/"
   '';
 }
 
