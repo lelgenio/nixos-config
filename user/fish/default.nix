@@ -25,6 +25,8 @@ in {
         set_color normal
 
         bind \cy 'commandline | wl-copy -n'
+
+        ${pkgs.todoman}/bin/todo list
       '';
       shellAliases = {
         rm = "trash";
