@@ -9,6 +9,17 @@ find_file() {
   wdmenu -p "Password" $@
 }
 
+print_actions_for_entry() {
+  echo "Autotype"
+  if test -n "$username"; then
+    echo "Username -> $username"
+  fi
+  echo "Password"
+  if test -n "$otp"; then
+    echo "OTP"
+  fi
+}
+
 main() {
     test -n "$PASSWORD_STORE_DIR" &&
       cd "$PASSWORD_STORE_DIR" ||
@@ -20,8 +31,9 @@ main() {
 
     username=`pass show "$entry" 2>/dev/null | perl -ne 'print $2 if /^(login|user|email): (.*)/'`
     password=`pass show "$entry" 2>/dev/null | head -n 1`
+    otp=`pass otp "$entry" 2>/dev/null`
 
-    action=`printf "Autotype\nUsername -> $username\nPassword" | wdmenu -p Action`
+    action="$(print_actions_for_entry | wdmenu -p Action)"
 
     case $action in
         Autotype)
@@ -31,6 +43,8 @@ main() {
             printf '%s' "$username" | wl-copy;;
         Password)
             printf '%s' "$password" | wl-copy;;
+        OTP)
+            pass otp "$entry" | wl-copy;;
     esac
 
 }

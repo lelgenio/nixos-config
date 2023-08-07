@@ -19,6 +19,10 @@ let
     }));
   create_scripts =
     lib.mapAttrs (name: deps: create_script name ./${name} deps);
+
+  pass = pkgs.pass.withExtensions (ex: with ex; [
+    pass-otp
+  ]);
 in
 create_scripts
   {
