@@ -107,6 +107,7 @@
     httpie
     miniupnpc
     deluge
+    nicotine-plus
 
     ## Nix secrets management
     inputs.agenix.packages.x86_64-linux.default
