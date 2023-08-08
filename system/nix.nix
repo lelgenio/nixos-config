@@ -4,6 +4,7 @@
 
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix = {
+    nixPath = [ ];
     gc = {
       automatic = true;
       dates = "weekly";
