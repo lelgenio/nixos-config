@@ -26,6 +26,11 @@ in
         { class = "Chromium"; }
         { app_id = "chromium"; }
       ];
+      "6" = [
+        { app_id = "org.nicotine_plus.Nicotine"; }
+        { app_id = "deluge"; }
+        { app_id = "com.obsproject.Studio"; }
+      ];
       "7" = [
         { app_id = "thunderbird"; }
         { app_id = "astroid"; }

@@ -2,8 +2,8 @@
   wayland.windowManager.sway = {
     extraConfig = ''
       exec thunderbird
-      exec sleep 3s && exec webcord
-      exec sleep 3s && exec telegram-desktop
+      exec webcord
+      exec telegram-desktop
     '';
   };
 

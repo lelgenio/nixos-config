@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }: {
+{ config, pkgs, lib, inputs, osConfig, ... }: {
   imports = [
     ./controller.nix
     ./waybar
@@ -173,6 +173,13 @@
     enable = true;
     indicator = true;
   };
+
+  wayland.windowManager.sway.extraConfig = lib.optionalString (osConfig.networking.hostName or "" == "monolith") ''
+    exec steam
+    exec obs --startreplaybuffer
+    exec deluge-gtk
+    exec nicotine
+  '';
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
