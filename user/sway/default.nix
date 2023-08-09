@@ -118,7 +118,9 @@ in
 
       grim
       swappy
-      tesseract5
+      (tesseract5.override {
+        enableLanguages = [ "eng" "por" ];
+      })
     ];
   };
 }
