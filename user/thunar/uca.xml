@@ -53,6 +53,15 @@
 	<image-files/>
 </action>
 <action>
+	<icon>video</icon>
+	<name>Convert to mp4</name>
+	<unique-id>2623193055590793-3</unique-id>
+	<command>ffmpeg -i %f %f.mp4</command>
+	<description></description>
+	<patterns>*.mkv</patterns>
+	<video-files/>
+</action>
+<action>
 	<icon>com.github.peteruithoven.resizer</icon>
 	<name>Resize Image</name>
 	<unique-id>1623199341595037-4</unique-id>
