@@ -113,46 +113,22 @@
     inputs.agenix.packages.x86_64-linux.default
 
     ## Programming
-    vscode
+    # vscode
     # rustup
 
     docker-compose
     gnumake
     mariadb
-    # php74
+
     nodePackages.intelephense
     nodePackages.typescript-language-server
-    nodejs
-    nodePackages.yarn
-    nodePackages.less
-    nodePackages.sass
-    nodePackages.less-plugin-clean-css
-    nodePackages.uglify-js
-
-    meson
-    ninja
-
     flow # js lsp server
     nil # nix lsp server
+    rnix-lsp # nix lsp
     clang-tools # c/c++ lsp server
+    rust-analyzer # rust analyzer
 
-    # cargo
-    cargo-edit
-    cargo-feature
-    cargo-watch
-    cargo-expand
-    cargo-sweep
-    cargo-checkmate
-    cargo-audit
-    rust-analyzer
-    gcc
-    rnix-lsp
     nixpkgs-fmt
-
-    trunk
-    wasm-bindgen-cli
-    sea-orm-cli
-    sqlx-cli
   ];
 
   fonts.fontconfig.enable = true;
