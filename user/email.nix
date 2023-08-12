@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
   inherit (pkgs.uservars.theme) color;
 
@@ -21,6 +21,7 @@ let
   };
 in
 {
+  accounts.email.maildirBasePath = "${config.xdg.dataHome}/maildir";
   accounts.email.accounts =
     {
       "personal" = {
