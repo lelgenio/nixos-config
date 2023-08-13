@@ -75,7 +75,28 @@ in
         clock = {
           interval = 60;
           format = "<b>{:%H:%M %a %d/%m}</b>";
-          tooltip = false;
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            on-click-right = "mode";
+            format = {
+              months = "<span color='${color.normal.magenta}'><b>{}</b></span>";
+              days = "<span color='${color.txt}'><b>{}</b></span>";
+              weeks = "<span color='${color.normal.cyan}'><b>W{}</b></span>";
+              weekdays = "<span color='${color.normal.yellow}'><b>{}</b></span>";
+              today = "<span color='${accent.color}'><b><u>{}</u></b></span>";
+            };
+          };
+          actions = {
+            on-click-right = "mode";
+            on-click-forward = "tz_up";
+            on-click-backward = "tz_down";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
         };
         mpd =
           let
