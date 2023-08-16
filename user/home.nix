@@ -113,7 +113,7 @@
     inputs.agenix.packages.x86_64-linux.default
 
     ## Programming
-    # vscode
+    vscode
     # rustup
 
     docker-compose
