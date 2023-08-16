@@ -4,6 +4,7 @@
     ./waybar
     ./helix.nix
     ./kakoune
+    ./vscode
     ./fish
     ./firefox.nix
     ./hyprland.nix
@@ -113,7 +114,6 @@
     inputs.agenix.packages.x86_64-linux.default
 
     ## Programming
-    vscode
     # rustup
 
     docker-compose

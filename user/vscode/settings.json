@@ -1,0 +1,8 @@
+{
+    "terminal.integrated.sendKeybindingsToShell": true,
+    "window.titleBarStyle": "custom",
+    "workbench.preferredDarkColorTheme": "GitHub Dark",
+    "workbench.preferredLightColorTheme": "GitHub Light",
+    "window.autoDetectColorScheme": true,
+    "workbench.colorTheme": "GitHub Light",
+}
