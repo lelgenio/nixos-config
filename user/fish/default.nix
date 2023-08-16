@@ -78,6 +78,10 @@ in {
         recursive = true;
         source = ./completions;
       };
+      "fish/conf.d/" = {
+        recursive = true;
+        source = ./conf.d;
+      };
     };
     # programs.command-not-found.enable = true;
     programs.nix-index.enable = true;
