@@ -5,4 +5,5 @@
     "workbench.preferredLightColorTheme": "GitHub Light",
     "window.autoDetectColorScheme": true,
     "workbench.colorTheme": "GitHub Light",
+    "git.autofetch": true,
 }
