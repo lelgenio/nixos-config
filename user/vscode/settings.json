@@ -6,4 +6,5 @@
     "window.autoDetectColorScheme": true,
     "workbench.colorTheme": "GitHub Light",
     "git.autofetch": true,
+    "git.confirmSync": false,
 }
