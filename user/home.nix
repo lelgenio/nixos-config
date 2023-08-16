@@ -133,7 +133,12 @@
 
   fonts.fontconfig.enable = true;
 
-  home.file = { ".local/share/backgrounds".source = ./backgrounds; };
+  home.file = {
+    ".local/share/backgrounds" = {
+      source = ./backgrounds;
+      recursive = true;
+    };
+  };
   home.sessionVariables = {
     VOLUME_CHANGE_SOUND =
       "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
