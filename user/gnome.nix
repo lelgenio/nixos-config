@@ -22,6 +22,7 @@
     foliate
     lollypop
     pitivi
+    gnome-passwordsafe
   ];
 
 }
