@@ -4,7 +4,8 @@
     "workbench.preferredDarkColorTheme": "GitHub Dark",
     "workbench.preferredLightColorTheme": "GitHub Light",
     "window.autoDetectColorScheme": true,
-    "workbench.colorTheme": "GitHub Light",
+    "workbench.colorTheme": "GitHub Dark",
     "git.autofetch": true,
     "git.confirmSync": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
 }
