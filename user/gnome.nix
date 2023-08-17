@@ -10,6 +10,9 @@
     "org/gnome/desktop/wm/preferences" = lib.mkForce {
       button-layout = "appmenu:close";
     };
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = [ "lv3:lsgt_switch" ];
+    };
   };
 
   home.packages = with pkgs; [
