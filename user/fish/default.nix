@@ -58,7 +58,7 @@ in {
         gc = "git commit";
         gca = "git commit --all";
         gcf = "git commit --fixup";
-        gp = "git push -u origin (git branch --show-current)";
+        gp = "git push";
         gw = "git switch";
         gr = "cd (git root)";
         gri = "git rebase --interactive FETCH_HEAD";
