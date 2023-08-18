@@ -172,11 +172,11 @@
     "dzgui": {
       "flake": false,
       "locked": {
-        "lastModified": 1688648849,
-        "narHash": "sha256-JEuR01KagfEVfg0BD8a/UwhNas91IbvWucXMbVy2VzA=",
+        "lastModified": 1692283637,
+        "narHash": "sha256-bObVQHKfJdpot895dhEMDbuWYgRVSXiyKKGVk6PPU7k=",
         "owner": "aclist",
         "repo": "dztui",
-        "rev": "a95230be23dd9fa4738e70ea4df3016c4b073e85",
+        "rev": "2e992f0d9bb60451cba221dd1ddc50b49386b00e",
         "type": "github"
       },
       "original": {
@@ -193,11 +193,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1690415927,
-        "narHash": "sha256-ApUDfg+wCIMGxq2KIcnF+9kqUJNDnwMW1b5NfgBEgjg=",
+        "lastModified": 1692330436,
+        "narHash": "sha256-ivcyG73Z7YRMwzt6ESE5RnXZBG1ewxZEjaun/PXQnwE=",
         "owner": "lelgenio",
         "repo": "dzgui-nix",
-        "rev": "d054b5f9e3f9fcafe5a84cb1fcc8ad3751391133",
+        "rev": "9895216c3a1d9df15e3735325de5364483c52626",
         "type": "github"
       },
       "original": {
