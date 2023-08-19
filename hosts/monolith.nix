@@ -48,6 +48,10 @@ in
       bypassWorkqueues = true;
       device = "/dev/disk/by-label/CRYPT_DATA";
     };
+    "bigboy" = {
+      bypassWorkqueues = true;
+      device = "/dev/disk/by-label/CRYPT_BIGBOY";
+    };
   };
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   fileSystems."/boot/efi" = {
@@ -78,6 +82,11 @@ in
     device = "/dev/disk/by-label/BTRFS_DATA";
     fsType = "btrfs";
     options = [ "subvol=@data" "nofail" ] ++ btrfs_options;
+  };
+  fileSystems."/home/lelgenio/.local/mount/bigboy" = {
+    device = "/dev/disk/by-label/BTRFS_BIGBOY";
+    fsType = "btrfs";
+    options = [ "nofail" ] ++ btrfs_options ++ btrfs_ssd;
   };
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
