@@ -18,6 +18,9 @@ in
   boot.kernelParams = [
     "video=DP-1:1920x1080@144"
   ];
+  systemd.sleep.extraConfig = ''
+    SuspendState=mem
+  '';
 
   hardware.opengl.driSupport = true;
   # # For 32 bit applications
