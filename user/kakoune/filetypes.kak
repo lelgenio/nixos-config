@@ -109,9 +109,9 @@ hook global WinSetOption filetype=blade %[
     add-highlighter buffer/blade/php/ regex '@((end)?php)' 1:block
 
     add-highlighter buffer/blade/expression region '\{\{(?!--)' '(?!--)\}\}' ref php
-    add-highlighter buffer/blade/statement  region -recurse '\(' '@(if|for|foreach|section|yield|include)\s*\(' '\)' ref php
+    add-highlighter buffer/blade/statement  region -recurse '\(' '@(if|foreach|for|section|yield|include)\s*\(' '\)' ref php
     add-highlighter buffer/blade/base/      regex '@(else(if)?|include|case|break)' 1:keyword
-    add-highlighter buffer/blade/base/      regex '@((end)?(if|isset|for|foreach|section|switch))' 1:keyword
+    add-highlighter buffer/blade/base/      regex '@((end)?(if|isset|foreach|for|section|switch))' 1:keyword
 
     add-highlighter buffer/blade/comment    region '\{\{--' '--\}\}' fill comment
     set-option buffer comment_block_begin '{{-- '
