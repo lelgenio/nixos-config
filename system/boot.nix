@@ -37,8 +37,10 @@
     plymouth = {
       enable = true;
       theme = lib.mkIf (pkgs.uservars.desktop == "sway") "red_loader";
-      themePackages = [
-        pkgs.plymouth-theme-red
+      themePackages = with pkgs; [
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "red_loader" ];
+        })
       ];
     };
   };
