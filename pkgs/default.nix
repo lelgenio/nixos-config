@@ -5,4 +5,5 @@
   plymouth-theme-red = pkgs.callPackage ./plymouth-theme-red.nix { inherit inputs; };
   cargo-checkmate = pkgs.callPackage ./cargo-checkmate.nix { };
   lipsum = pkgs.callPackage ./lipsum.nix { inherit inputs; };
+  emmet-cli = pkgs.callPackage ./emmet-cli.nix { };
 }

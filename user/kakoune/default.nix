@@ -102,6 +102,8 @@ in
       kak-pager
       kak-man-pager
 
+      emmet-cli
+
       aspell
       aspellDicts.en
       aspellDicts.pt_BR
