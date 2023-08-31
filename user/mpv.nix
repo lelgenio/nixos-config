@@ -1,4 +1,4 @@
-_: {
+{pkgs, ... }: {
   config = {
     programs.mpv = {
       enable = true;
@@ -18,6 +18,11 @@ _: {
 
         hwdec="auto";
       };
+      scripts = with pkgs.mpvScripts; [
+        mpris
+        sponsorblock
+        thumbfast
+      ];
     };
   };
 }
