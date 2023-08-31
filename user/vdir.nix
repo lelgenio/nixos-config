@@ -54,6 +54,7 @@ in
       b = "calendar_remote"
       collections = ["from a", "from b"]
       metadata = ["displayname", "color"]
+      conflict_resolution = "b wins"
 
       [storage calendar_local]
       type = "filesystem"
