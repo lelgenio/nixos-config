@@ -103,6 +103,7 @@ in
       kak-man-pager
 
       emmet-cli
+      nodePackages.prettier
 
       aspell
       aspellDicts.en
