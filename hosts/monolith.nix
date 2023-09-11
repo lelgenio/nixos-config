@@ -39,6 +39,7 @@ in
   ];
 
   programs.corectrl.enable = true;
+  virtualisation.virtualbox.host.enable = true;
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
