@@ -107,6 +107,11 @@ in
     lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "monolith"; # Define your hostname.
 
+  # Fix broken suspend with Logitech USB dongle
+  services.udev.extraRules = ''
+    ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x1484" ATTR{power/wakeup}="disabled"
+  '';
+
   # swap
   fileSystems."/swap" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
