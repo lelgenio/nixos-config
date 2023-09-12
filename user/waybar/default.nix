@@ -134,7 +134,7 @@ in
         "custom/vpn" = lib.mkIf (osConfig.services.vpn.enable or false) {
           format = "{}";
           exec = ''
-            mullvad status | grep "^Connected" > /dev/null \
+            ${pkgs.mullvad}/bin/mullvad status | ${pkgs.gnugrep}/bin/grep "^Connected" > /dev/null \
               && echo "" \
               || echo ""
           '';
