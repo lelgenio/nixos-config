@@ -164,6 +164,8 @@ in
           };
           on-click = "pavucontrol";
           on-click-right = "${pkgs.pulse_sink}/bin/pulse_sink";
+          on-scroll-up = "${pkgs.volumesh}/bin/volumesh -i 10";
+          on-scroll-down = "${pkgs.volumesh}/bin/volumesh -d 10";
         };
       }];
       style = builtins.readFile (pkgs.substituteAll {

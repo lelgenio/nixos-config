@@ -45,7 +45,7 @@ get_vol_system() {
 }
 
 is_muted_system() {
-    pamixer --get-mute >/dev/null
+    test "$(pamixer --get-mute)" = "true" >/dev/null
 }
 
 change_vol_system() {
