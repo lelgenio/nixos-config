@@ -56,7 +56,7 @@
     pulseaudio
 
     ## CLI
-    exa
+    eza
     fd
     bc
     file

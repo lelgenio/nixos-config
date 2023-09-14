@@ -29,7 +29,7 @@ in
 
     changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
     changeDirWidgetOptions =
-      [ "--preview '${pkgs.exa}/bin/exa -T L3 | head -200'" ];
+      [ "--preview '${pkgs.eza}/bin/eza -T L3 | head -200'" ];
 
     defaultOptions = [ color_opts preview_opts ];
   };

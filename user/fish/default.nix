@@ -30,7 +30,7 @@ in {
       '';
       shellAliases = {
         rm = "trash";
-        tree = "exa -T";
+        tree = "eza -T";
       };
       shellAbbrs = {
         off = "shutdown now";
@@ -67,8 +67,8 @@ in {
     };
     programs = {
       zoxide.enable = true;
-      exa.enable = true;
-      exa.enableAliases = true;
+      eza.enable = true;
+      eza.enableAliases = true;
       direnv.enable = true;
       direnv.nix-direnv.enable = true;
     };
