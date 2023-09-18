@@ -15,7 +15,7 @@
     ./rofi.nix
     ./mpv.nix
     ./mangohud.nix
-    ./rnnoise.nix
+    ./pipewire.nix
     ./rtp-sink.nix
     ./mimeapps.nix
     ./chat.nix
