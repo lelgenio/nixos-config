@@ -108,8 +108,9 @@ in
   networking.hostName = "monolith"; # Define your hostname.
 
   # Fix broken suspend with Logitech USB dongle
+  # `lsusb | grep Logitech` will return "vendor:product"
   services.udev.extraRules = ''
-    ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x1484" ATTR{power/wakeup}="disabled"
+    ACTION=="add" SUBSYSTEM=="usb" ATTR{idVendor}=="046d" ATTR{idProduct}=="c547" ATTR{power/wakeup}="disabled"
   '';
 
   # swap
