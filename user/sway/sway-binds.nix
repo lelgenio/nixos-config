@@ -162,6 +162,9 @@ let
     "${mod}+Shift+c" = "reload";
     # "${mod}+Shift+e" =
     #   "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+
+    # https://invent.kde.org/plasma/plasma-desktop/-/merge_requests/1731
+    "${mod}+Ctrl+Shift+Alt+l" = "exec xdg-open https://www.linkedin.com";
   };
 in
 {
