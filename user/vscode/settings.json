@@ -8,4 +8,5 @@
     "git.autofetch": true,
     "git.confirmSync": false,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "update.mode": "none",
 }
