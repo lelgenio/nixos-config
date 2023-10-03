@@ -10,7 +10,7 @@
   home.packages = with pkgs; [
     tdesktop
     webcord
-    thunderbird
+    (wrapThunderbird thunderbirdPackages.thunderbird-102 { })
     element-desktop-wayland
   ];
 }

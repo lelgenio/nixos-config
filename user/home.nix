@@ -93,9 +93,6 @@
     glxinfo
     vulkan-tools
 
-    ## chat
-    thunderbird
-
     ## Theming
     orchis_theme_compact
     papirus_red
