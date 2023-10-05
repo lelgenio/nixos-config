@@ -25,6 +25,7 @@
   networking.networkmanager.enable = true;
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
+  environment.variables.TZ = config.time.timeZone;
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.utf8";
 
