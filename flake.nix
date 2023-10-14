@@ -138,6 +138,10 @@
             services.flatpak.enable = lib.mkOverride 0 false;
           }];
         };
+        ghost = lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [ ./hosts/ghost.nix ];
+        };
       };
 
       homeConfigurations.lelgenio = home-manager.lib.homeManagerConfiguration {
