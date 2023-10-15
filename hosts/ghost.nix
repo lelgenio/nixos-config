@@ -70,6 +70,14 @@
     };
   };
 
+  services.mastodon = {
+    enable = true;
+    localDomain = "social.lelgenio.xyz";
+    configureNginx = true;
+    smtp.fromAddress = "lelgenio@disroot.org";
+    extraConfig.SINGLE_USER_MODE = "true";
+  };
+
   services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
     forceSSL = true;
     enableACME = true;
@@ -80,6 +88,11 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
+
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = (1024 * 2); # 2 GB
+  }];
 
   system.stateVersion = "23.05"; # Never change this
 }
