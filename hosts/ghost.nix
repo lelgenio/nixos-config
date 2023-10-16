@@ -78,6 +78,16 @@
     extraConfig.SINGLE_USER_MODE = "true";
   };
 
+  services.writefreely = {
+    enable = true;
+    acme.enable = true;
+    nginx.enable = true;
+    nginx.forceSSL = true;
+    host = "blog.lelgenio.xyz";
+    admin.name = "lelgenio";
+    admin.initialPasswordFile = config.age.secrets.ghost-writefreely.path;
+  };
+
   services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
     forceSSL = true;
     enableACME = true;

@@ -11,10 +11,16 @@
     secrets.monolith-nix-serve-privkey.file =
       ../secrets/monolith-nix-serve-privkey.age;
     secrets.ghost-nextcloud = {
-      file = ../secrets/monolith-nix-serve-privkey.age;
+      file = ../secrets/ghost-nextcloud.age;
       mode = "400";
       owner = "nextcloud";
       group = "nextcloud";
+    };
+    secrets.ghost-writefreely = {
+      file = ../secrets/ghost-writefreely.age;
+      mode = "400";
+      owner = "writefreely";
+      group = "writefreely";
     };
   };
 }
