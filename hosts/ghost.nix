@@ -9,12 +9,6 @@
   # Use more aggressive compression then the default.
   virtualisation.digitalOceanImage.compressionMethod = "bzip2";
 
-  # Headless - don't start a tty on the serial consoles.
-  systemd.services."serial-getty@ttyS0".enable = false;
-  systemd.services."serial-getty@hvc0".enable = false;
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@".enable = false;
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -86,6 +80,10 @@
     host = "blog.lelgenio.xyz";
     admin.name = "lelgenio";
     admin.initialPasswordFile = config.age.secrets.ghost-writefreely.path;
+    settings.app = {
+      site_name = "Leo's blog";
+      single_user = true;
+    };
   };
 
   services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
