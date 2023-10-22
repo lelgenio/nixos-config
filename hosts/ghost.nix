@@ -3,7 +3,6 @@
     "${inputs.nixpkgs}/nixos/modules/virtualisation/digital-ocean-image.nix"
     inputs.agenix.nixosModules.default
     ../system/nix.nix
-    ../system/secrets.nix
   ];
 
   # Use more aggressive compression then the default.
@@ -101,6 +100,22 @@
     device = "/swap/swapfile";
     size = (1024 * 2); # 2 GB
   }];
+
+  age = {
+    identityPaths = [ "/root/.ssh/id_rsa" ];
+    secrets.ghost-nextcloud = {
+      file = ../secrets/ghost-nextcloud.age;
+      mode = "400";
+      owner = "nextcloud";
+      group = "nextcloud";
+    };
+    secrets.ghost-writefreely = {
+      file = ../secrets/ghost-writefreely.age;
+      mode = "400";
+      owner = "writefreely";
+      group = "writefreely";
+    };
+  };
 
   system.stateVersion = "23.05"; # Never change this
 }
