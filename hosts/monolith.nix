@@ -34,8 +34,6 @@ in
     libva
     libvdpau
     vaapiVdpau
-    rocm-opencl-icd
-    rocm-opencl-runtime
   ];
 
   programs.corectrl.enable = true;
