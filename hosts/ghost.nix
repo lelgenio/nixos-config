@@ -117,6 +117,12 @@
     };
   };
 
+  fileSystems."/var" = {
+    device = "/dev/disk/by-uuid/b19e7272-8fd1-4999-93eb-abc6d5c0a1cc";
+    fsType = "btrfs";
+    options = [ "subvol=@var" ];
+  };
+
   system.stateVersion = "23.05"; # Never change this
 }
 
