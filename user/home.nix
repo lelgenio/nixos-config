@@ -10,6 +10,7 @@
     ./hyprland.nix
     ./alacritty.nix
     ./git.nix
+    ./ssh.nix
     ./qutebrowser
     ./gpg.nix
     ./rofi.nix
