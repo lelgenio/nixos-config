@@ -146,7 +146,7 @@
         };
         ghost = lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./hosts/ghost.nix ];
+          modules = [ ./hosts/ghost ];
         };
       };
 
