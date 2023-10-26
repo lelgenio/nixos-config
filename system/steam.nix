@@ -21,5 +21,6 @@ in
   };
   environment.systemPackages = with pkgs; [
     protontricks
+    bottles
   ];
 }
