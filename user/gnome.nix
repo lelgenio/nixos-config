@@ -1,10 +1,17 @@
 { pkgs, lib, inputs, ... }: lib.mkIf (pkgs.uservars.desktop == "gnome") {
 
+  home.pointerCursor = {
+    name = "Adwaita";
+    size = 24;
+    package = pkgs.gnome.adwaita-icon-theme;
+    gtk.enable = true;
+  };
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       # gtk-theme = "Adwaita";
       # icon-theme = "Adwaita";
-      # cursor-theme = "Adwaita";
+      cursor-theme = "Adwaita";
       # color-scheme = "default";
     };
     "org/gnome/desktop/wm/preferences" = lib.mkForce {
