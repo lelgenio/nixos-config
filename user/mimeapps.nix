@@ -1,63 +1,24 @@
 { config, pkgs, lib, font, ... }:
-let inherit (pkgs.uservars) browser;
-in {
-  config = {
-    xdg.desktopEntries = {
-      kak = {
-        name = "Kakoune";
-        genericName = "Text Editor";
-        comment = "Edit text files";
-        exec = "kak %F";
-        terminal = true;
-        type = "Application";
-        icon = "kak.desktop";
-        categories = [ "Utility" "TextEditor" ];
-        startupNotify = true;
-        mimeType = [
-          "text/english"
-          "text/plain"
-          "text/x-makefile"
-          "text/x-c++hdr"
-          "text/x-c++src"
-          "text/x-chdr"
-          "text/x-csrc"
-          "text/x-java"
-          "text/x-moc"
-          "text/x-pascal"
-          "text/x-tcl"
-          "text/x-tex"
-          "application/x-shellscript"
-          "text/x-c"
-          "text/x-c++"
-        ];
-        settings = {
-          Keywords = "Text;editor;";
-          TryExec = "kak";
-        };
-      };
-      neomutt = {
-        name = "Neomutt";
-        genericName = "Email Client";
-        comment = "View and Send Emails";
-        exec = "neomutt %U";
-        terminal = true;
-        type = "Application";
-        icon = "mutt";
-        categories = [ "Network" "Email" ];
-        startupNotify = false;
-        mimeType = [ "x-scheme-handler/mailto" ];
-        settings = { Keywords = "Mail;E-mail;"; };
-      };
-      down_meme = {
-        name = "DownMeme";
-        genericName = "Download memes";
-        exec = "down_meme";
-        terminal = true;
-        type = "Application";
-        icon = "download";
-        categories = [ "Network" ];
-      };
+let
+  inherit (pkgs.uservars) browser;
+  cfg = config.xdg.defaultApplications;
+in
+{
+  options = {
+    xdg.defaultApplications = {
+      enable = lib.mkEnableOption "Whether vpn should be enabled";
+      text-editor = lib.mkOption { };
+      image-viewer = lib.mkOption { };
+      video-player = lib.mkOption { };
+      web-browser = lib.mkOption { };
+      document-viewer = lib.mkOption { };
+      torrent-client = lib.mkOption { };
+      file-manager = lib.mkOption { };
+      email-client = lib.mkOption { };
     };
+  };
+
+  config = lib.mkIf (cfg.enable) {
     # workaround to allow overriding mimeapps file
     # btw, whatever it was that decided that damn file should always be written is an asshole
     xdg.configFile."mimeapps.list".force = true;
@@ -73,29 +34,24 @@ in {
             (map (createMimeAssociation mime_prefix application) mime_suffixes));
 
         mimes = simple
-          // (createMimeAssociations "text" "kak.desktop" text_suffixes)
-          // (createMimeAssociations "image" "pqiv.desktop" image_suffixes)
-          // (createMimeAssociations "video" "mpv.desktop" video_suffixes);
-
-        browser_desktop = {
-          firefox = "firefox.desktop";
-          qutebrowser = "org.qutebrowser.qutebrowser.desktop";
-        }.${browser};
+          // (createMimeAssociations "text" cfg.text-editor text_suffixes)
+          // (createMimeAssociations "image" cfg.image-viewer image_suffixes)
+          // (createMimeAssociations "video" cfg.video-player video_suffixes);
 
         simple = {
-          "inode/directory" = "thunar.desktop";
+          "inode/directory" = cfg.file-manager;
 
-          "application/pdf" = "org.pwmt.zathura.desktop";
-          "application/epub+zip" = "org.pwmt.zathura.desktop";
+          "application/pdf" = cfg.document-viewer;
+          "application/epub+zip" = cfg.document-viewer;
 
-          "text/html" = browser_desktop;
-          "x-scheme-handler/http" = browser_desktop;
-          "x-scheme-handler/https" = browser_desktop;
+          "text/html" = cfg.web-browser;
+          "x-scheme-handler/http" = cfg.web-browser;
+          "x-scheme-handler/https" = cfg.web-browser;
 
-          "x-scheme-handler/magnet" = "torrent.desktop";
-          "application/x-bittorrent" = "torrent.desktop";
+          "x-scheme-handler/magnet" = cfg.torrent-client;
+          "application/x-bittorrent" = cfg.torrent-client;
 
-          "x-scheme-handler/mailto" = "thunderbird.desktop";
+          "x-scheme-handler/mailto" = cfg.email-client;
         };
 
         text_suffixes = [

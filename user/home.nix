@@ -19,6 +19,7 @@
     ./pipewire.nix
     ./rtp-sink.nix
     ./mimeapps.nix
+    ./desktop-entries.nix
     ./chat.nix
     ./email.nix
     ./syncthing.nix
@@ -151,6 +152,21 @@
   services.kdeconnect = {
     enable = true;
     indicator = true;
+  };
+
+  xdg.defaultApplications = {
+    enable = true;
+    text-editor = lib.mkDefault "kak.desktop";
+    image-viewer = lib.mkDefault "pqiv.desktop";
+    video-player = lib.mkDefault "mpv.desktop";
+    web-browser = lib.mkDefault ({
+      firefox = lib.mkDefault "firefox.desktop";
+      qutebrowser = lib.mkDefault "org.qutebrowser.qutebrowser.desktop";
+    }.${pkgs.uservars.browser});
+    document-viewer = lib.mkDefault "org.pwmt.zathura.desktop";
+    file-manager = lib.mkDefault "thunar.desktop";
+    email-client = lib.mkDefault "thunderbird.desktop";
+    torrent-client = lib.mkDefault "torrent.desktop";
   };
 
   wayland.windowManager.sway.extraConfig = lib.optionalString (osConfig.networking.hostName or "" == "monolith") ''
