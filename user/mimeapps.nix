@@ -14,6 +14,7 @@ in
       document-viewer = lib.mkOption { };
       torrent-client = lib.mkOption { };
       file-manager = lib.mkOption { };
+      archive-manager = lib.mkOption { };
       email-client = lib.mkOption { };
     };
   };
@@ -36,7 +37,9 @@ in
         mimes = simple
           // (createMimeAssociations "text" cfg.text-editor text_suffixes)
           // (createMimeAssociations "image" cfg.image-viewer image_suffixes)
-          // (createMimeAssociations "video" cfg.video-player video_suffixes);
+          // (createMimeAssociations "video" cfg.video-player video_suffixes)
+          // (createMimeAssociations "application" cfg.archive-manager archive-suffixes)
+        ;
 
         simple = {
           "inode/directory" = cfg.file-manager;
@@ -416,6 +419,68 @@ in
           "x-sgi-movie"
           "x-theora"
           "x-theora+ogg"
+        ];
+
+
+        archive-suffixes = [
+          "bzip2"
+          "gzip"
+          "vnd.android.package-archive"
+          "vnd.ms-cab-compressed"
+          "vnd.debian.binary-package"
+          "x-7z-compressed"
+          "x-7z-compressed-tar"
+          "x-ace"
+          "x-alz"
+          "x-ar"
+          "x-archive"
+          "x-arj"
+          "x-brotli"
+          "x-bzip-brotli-tar"
+          "x-bzip"
+          "x-bzip-compressed-tar"
+          "x-bzip1"
+          "x-bzip1-compressed-tar"
+          "x-cabinet"
+          "x-compress"
+          "x-compressed-tar"
+          "x-cpio"
+          "x-chrome-extension"
+          "x-deb"
+          "x-ear"
+          "x-ms-dos-executable"
+          "x-gtar"
+          "x-gzip"
+          "x-java-archive"
+          "x-lha"
+          "x-lhz"
+          "x-lrzip"
+          "x-lrzip-compressed-tar"
+          "x-lz4"
+          "x-lzip"
+          "x-lzip-compressed-tar"
+          "x-lzma"
+          "x-lzma-compressed-tar"
+          "x-lzop"
+          "x-lz4-compressed-tar"
+          "x-lzop-compressed-tar"
+          "x-ms-wim"
+          "x-rar"
+          "x-rar-compressed"
+          "x-source-rpm"
+          "x-rzip"
+          "x-rzip-compressed-tar"
+          "x-tar"
+          "x-tarz"
+          "x-stuffit"
+          "x-war"
+          "x-xar"
+          "x-xz"
+          "x-xz-compressed-tar"
+          "x-zip"
+          "x-zip-compressed"
+          "x-zoo"
+          "zip"
         ];
       in
       {

@@ -43,6 +43,7 @@
     web-browser = "firefox.desktop";
     document-viewer = "org.gnome.Evince.desktop";
     file-manager = "org.gnome.Nautilus.desktop";
+    archive-manager = "org.gnome.FileRoller.desktop;";
     email-client = "thunderbird.desktop";
     torrent-client = "torrent.desktop";
   };

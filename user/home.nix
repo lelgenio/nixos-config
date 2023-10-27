@@ -165,6 +165,7 @@
     }.${pkgs.uservars.browser});
     document-viewer = lib.mkDefault "org.pwmt.zathura.desktop";
     file-manager = lib.mkDefault "thunar.desktop";
+    archive-manager = "engrampa.desktop";
     email-client = lib.mkDefault "thunderbird.desktop";
     torrent-client = lib.mkDefault "torrent.desktop";
   };
