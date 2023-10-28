@@ -88,8 +88,10 @@ in {
     home.packages = (with pkgs; with fishPlugins;[
       trash-cli
       wl-copy-file
-      async-prompt
       foreign-env
-    ] ++ (lib.optional (desktop == "sway") done));
+    ] ++ (lib.optionals (desktop == "sway") [
+      async-prompt
+      done
+    ]));
   };
 }
