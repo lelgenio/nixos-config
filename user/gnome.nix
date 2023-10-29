@@ -30,7 +30,7 @@
 
     newsflash
     foliate
-    lollypop
+    amberol
     pitivi
     gnome-passwordsafe
   ];
