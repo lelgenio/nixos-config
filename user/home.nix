@@ -149,11 +149,6 @@
     startInBackground = true;
   };
 
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-  };
-
   xdg.defaultApplications = {
     enable = true;
     text-editor = lib.mkDefault "kak.desktop";
