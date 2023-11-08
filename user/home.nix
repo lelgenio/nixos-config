@@ -17,7 +17,6 @@
     ./mpv.nix
     ./mangohud.nix
     ./pipewire.nix
-    ./rtp-sink.nix
     ./mimeapps.nix
     ./desktop-entries.nix
     ./chat.nix
