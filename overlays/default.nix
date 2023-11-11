@@ -41,9 +41,11 @@
     maildir-notify-daemon = inputs.maildir-notify-daemon.packages.${prev.system}.default;
     wl-crosshair = inputs.wl-crosshair.packages.${prev.system}.default;
 
-    webcord = prev.webcord.overrideAttrs (old: {
+    webcord = (prev.webcord.overrideAttrs (old: {
       patches = (old.patches or [ ]) ++ [ ../patches/webcord/fix-reading-config.patch ];
-    });
+    })).override {
+      electron_24 = final.electron_25;
+    };
   });
 
   patches = (final: prev: {
