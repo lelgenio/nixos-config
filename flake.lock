@@ -672,11 +672,11 @@
     },
     "nixpkgs-fixed-steam": {
       "locked": {
-        "lastModified": 1691123104,
-        "narHash": "sha256-5dx7Tj2EdVG0qn3O5CyNEvM8jo+w715CRDSCd5MFueU=",
+        "lastModified": 1699723843,
+        "narHash": "sha256-rxuuyrmBPx3YUOIlhj165tvtyGEOwglUb5oJymGf7QQ=",
         "owner": "lelgenio",
         "repo": "nixpkgs",
-        "rev": "335f50b1d2b8ea9812042f363242d6aa49e80aea",
+        "rev": "9ae8bd5d3ac0db26113207e45bb59c2cdede3e79",
         "type": "github"
       },
       "original": {
