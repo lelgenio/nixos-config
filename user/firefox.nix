@@ -42,9 +42,16 @@ in {
             # Enable installing non signed extensions
             "extensions.langpacks.signatures.required" = false;
             "xpinstall.signatures.required" = false;
+
+            "browser.aboutConfig.showWarning" = false;
+
+            # Enable userChrome editor (Ctrl+Shift+Alt+I)
+            "devtools.chrome.enabled" = true;
+            "devtools.debugger.remote-enabled" = true;
           };
           userChrome = lib.mkIf (desktop == "sway") ''
             #titlebar { display: none !important; }
+            #sidebar-header { display: none !important; }
           '';
         };
       };
