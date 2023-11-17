@@ -21,6 +21,8 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.utf8";
 
+  boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
+
   age = {
     identityPaths = [ "/root/.ssh/id_rsa" ];
   };
