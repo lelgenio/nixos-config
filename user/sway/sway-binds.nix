@@ -9,6 +9,7 @@ let
   terminal = "alacritty";
 
   _lock = pkgs.writeShellScriptBin "_lock" ''
+    ${pkgs.sway}/bin/swaymsg mode default
     ${pkgs.swaylock}/bin/swaylock -f
     systemctl --user start swayidle.service
   '';
