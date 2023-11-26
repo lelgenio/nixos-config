@@ -1,7 +1,4 @@
 { config, pkgs, inputs, ... }: {
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];

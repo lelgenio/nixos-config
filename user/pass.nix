@@ -8,7 +8,13 @@
     };
     services = {
       pass-secret-service.enable = true;
-      password-store-sync.enable = true;
+      git-sync = {
+        enable = true;
+        repositories.password-store = {
+          uri = "git@git.disroot.org:lelgenio/password-store";
+          path = toString config.programs.password-store.settings.PASSWORD_STORE_DIR;
+        };
+      };
     };
     home.packages = with pkgs; [ wpass _gpg-unlock ];
   };

@@ -83,7 +83,6 @@
   services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.bluezFull;
     settings = {
       General = {
         DiscoverableTimeout = 0;
@@ -127,8 +126,8 @@
     gnome3.adwaita-icon-theme # default gnome cursors
   ];
 
-  fonts.enableDefaultFonts = true;
-  fonts.fonts = with pkgs; [
+  fonts.enableDefaultPackages = true;
+  fonts.packages  = with pkgs; [
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
