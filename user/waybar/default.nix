@@ -63,7 +63,7 @@ in
             "9" = "";
             "10" = "";
             urgent = "";
-            focused = "";
+            # focused = "";
             default = "";
           };
         };
