@@ -7,10 +7,19 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  services.xserver.displayManager.autoLogin = {
+    enable = true;
+    user = "lelgenio";
+  };
+
   # services.xserver.displayManager.autologin.user = "lelgenio";
   environment.systemPackages = with pkgs; with gnome; [
     gnome-tweaks
     dconf-editor
+
+    chrome-gnome-shell
     gnomeExtensions.gsconnect
+    gnomeExtensions.quick-settings-audio-devices-hider
   ];
 }

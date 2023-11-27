@@ -33,7 +33,12 @@
     amberol
     pitivi
     gnome-passwordsafe
+
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum
   ];
+
+  home.sessionVariables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
 
   xdg.defaultApplications = {
     enable = true;

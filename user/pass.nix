@@ -16,6 +16,10 @@
         };
       };
     };
-    home.packages = with pkgs; [ wpass _gpg-unlock ];
+    home.packages = with pkgs; [
+      wpass
+      _gpg-unlock
+      qtpass
+    ];
   };
 }
