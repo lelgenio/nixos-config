@@ -66,16 +66,26 @@
     nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";
     nix-software-center.url = "github:vlinkz/nix-software-center";
   };
-  outputs = inputs@{ nixpkgs, home-manager, nur, ... }:
+  outputs = inputs:
     let
-      inherit (import ./user/variables.nix) desktop;
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
+      nixpkgsConfig = {
         inherit system;
         config = { allowUnfree = true; };
         overlays = old_overlays.all;
       };
-      lib = nixpkgs.lib;
+
+      bootstrapPkgs = import inputs.nixpkgs nixpkgsConfig;
+      nixpkgs = bootstrapPkgs.applyPatches {
+        name = "patched-nixpkgs";
+        src = inputs.nixpkgs;
+        patches = lib.mapAttrsToList (k: v: ./patches/nixpkgs/${k})
+          (builtins.readDir ./patches/nixpkgs);
+      };
+
+      inherit (import ./user/variables.nix) desktop;
+      system = "x86_64-linux";
+      pkgs = import nixpkgs nixpkgsConfig;
+      lib = inputs.nixpkgs.lib;
 
       packages = import ./pkgs { inherit pkgs inputs; };
 
@@ -92,7 +102,7 @@
         inputs.hyprland.nixosModules.default
         inputs.dzgui-nix.nixosModules.default
         { programs.hyprland.enable = (desktop == "hyprland"); }
-        home-manager.nixosModules.home-manager
+        inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -150,7 +160,7 @@
         };
       };
 
-      homeConfigurations.lelgenio = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.lelgenio = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         extraSpecialArgs = {

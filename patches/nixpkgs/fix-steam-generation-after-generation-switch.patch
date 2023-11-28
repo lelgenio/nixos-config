@@ -1,0 +1,27 @@
+From ac4d51306af54a088e29e2e5efcfac5dfe87d95c Mon Sep 17 00:00:00 2001
+From: lelgenio <lelgenio@disroot.org>
+Date: Fri, 4 Aug 2023 01:25:04 -0300
+Subject: [PATCH] HACK: fix steam after generation switch
+
+---
+ pkgs/build-support/build-fhsenv-bubblewrap/default.nix | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/pkgs/build-support/build-fhsenv-bubblewrap/default.nix b/pkgs/build-support/build-fhsenv-bubblewrap/default.nix
+index 3500e5e9216f..4d7ac0aa7618 100644
+--- a/pkgs/build-support/build-fhsenv-bubblewrap/default.nix
++++ b/pkgs/build-support/build-fhsenv-bubblewrap/default.nix
+@@ -152,6 +152,10 @@ let
+       fi
+       if [[ -L $i ]]; then
+         symlinks+=(--symlink "$(${coreutils}/bin/readlink "$i")" "$i")
++      elif [[ -f $i && -r $i ]]; then
++        SNAPSHOT=$(mktemp --dry-run)
++        cp "$i" "$SNAPSHOT"
++        ro_mounts+=(--ro-bind-try "$SNAPSHOT" "$i")
+       else
+         ro_mounts+=(--ro-bind-try "$i" "$i")
+       fi
+-- 
+2.42.0
+
