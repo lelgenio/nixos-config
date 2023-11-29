@@ -10,6 +10,7 @@
     ./syncthing.nix
     ./users.nix
     ./writefreely.nix
+    ./renawiki.nix
   ];
 
   # Use more aggressive compression then the default.

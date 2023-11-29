@@ -9,4 +9,5 @@ in
   "monolith-nix-serve-privkey.age".publicKeys = [ main_ssh_public_key ];
   "ghost-nextcloud.age".publicKeys = [ main_ssh_public_key ];
   "ghost-writefreely.age".publicKeys = [ main_ssh_public_key ];
+  "ghost-renawiki.age".publicKeys = [ main_ssh_public_key ];
 }
