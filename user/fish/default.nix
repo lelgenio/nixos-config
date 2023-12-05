@@ -40,6 +40,7 @@ in {
         }.${editor};
         ns = "nix develop --command $SHELL";
         wcf = "wl-copy-file";
+        c = "cargo";
         # system
         sv = "sudo systemct";
         suv = "sudo systemct --user";
