@@ -21,7 +21,7 @@ in
       };
 
       thoreb-telemetria-nix = mkNixRunner config.age.secrets.gitlab-runner-thoreb-telemetria-registrationConfigFile.path;
-      thoreb-itinerario-nix = mkNixRunner config.age.secrets.gitlab-runner-thoreb-itinerario-registrationConfigFile.path;
+      thoreb-itinerario-nix = mkNixRunner config.age.secrets.rainbow-gitlab-runner-thoreb-itinerario-registrationConfigFile.path;
     };
   };
   systemd.services.gitlab-runner.serviceConfig.Nice = 10;
