@@ -1,12 +1,6 @@
-{ config, pkgs, inputs, ... }:
-let
-  pkgs' = import inputs.nixpkgs-fixed-steam {
-    inherit (pkgs) system config;
-  };
-in
-{
+{ config, pkgs, inputs, ... }: {
   programs.steam.enable = true;
-  programs.steam.package = pkgs'.steam.override {
+  programs.steam.package = pkgs.steam.override {
     extraLibraries = pkgs: with config.hardware.opengl;
       if pkgs.hostPlatform.is64bit
       then [ package ] ++ extraPackages

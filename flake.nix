@@ -1,8 +1,8 @@
 {
   description = "My system config";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-23.11";
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-index-database = {
@@ -58,7 +58,6 @@
       url = "github:lelgenio/wl-crosshair";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-fixed-steam.url = "github:lelgenio/nixpkgs/test-steam-fix";
 
     # gnome stuff
     nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";
