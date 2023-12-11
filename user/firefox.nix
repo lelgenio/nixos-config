@@ -1,21 +1,42 @@
 { config, pkgs, lib, font, ... }:
 let inherit (pkgs.uservars) desktop browser;
+  bugfixedFirefox = pkgs.firefox-esr-unwrapped // { requireSigning = false; allowAddonSideload = true; };
 in {
   config = {
     programs.firefox = {
       enable = true;
-      package = pkgs.firefox-esr;
+      package = pkgs.wrapFirefox bugfixedFirefox {
+        nixExtensions = [
+          (pkgs.fetchFirefoxAddon {
+            name = "darkreader";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4205543/darkreader-4.9.73.xpi";
+            hash = "sha256-fDmf8yVhiGu4Da0Mr6+PYpeSsLcf8e/PEmZ+BaKzjxo=";
+          })
+          (pkgs.fetchFirefoxAddon {
+            name = "sponsorblock";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4202411/sponsorblock-5.4.29.xpi";
+            hash = "sha256-7Xqc8cyQNylMe5/dgDOx1f2QDVmz3JshDlTueu6AcSg=";
+          })
+          (pkgs.fetchFirefoxAddon {
+            name = "tree-style-tab";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4197314/tree_style_tab-3.9.19.xpi";
+            hash = "sha256-u2f0elVPj5N/QXa+5hRJResPJAYwuT9z0s/0nwmFtVo=";
+          })
+          (pkgs.fetchFirefoxAddon {
+            name = "ublock-origin";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4198829/ublock_origin-1.54.0.xpi";
+            hash = "sha256-l5cWCQgZFxD/CFhTa6bcKeytmSPDCyrW0+XjcddZ5E0=";
+          })
+          (pkgs.fetchFirefoxAddon {
+            name = "vimium_ff";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4191523/vimium_ff-2.0.6.xpi";
+            hash = "sha256-lKLX6IWWtliRdH1Ig33rVEB4DVfbeuMw0dfUPV/mSSI=";
+          })
+        ];
+      };
       profiles = {
         main = {
           isDefault = true;
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-            darkreader
-            duckduckgo-privacy-essentials
-            sponsorblock
-            tree-style-tab
-            ublock-origin
-            ublock-origin
-          ];
           settings = {
             "devtools.theme" = "auto";
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
