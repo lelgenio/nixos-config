@@ -4,7 +4,6 @@
     nixpkgs.url = "nixpkgs/nixos-23.11";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nur.url = "github:nix-community/NUR";
 
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
@@ -97,7 +96,6 @@
         ./system/configuration.nix
         ./system/secrets.nix
         ./system/specialisation.nix
-        # nur.nixosModules.nur
         inputs.agenix.nixosModules.default
         inputs.hyprland.nixosModules.default
         inputs.dzgui-nix.nixosModules.default

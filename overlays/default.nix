@@ -1,6 +1,5 @@
 { inputs, packages, ... }: rec {
   all = [
-    nur
     scripts
     sway
     themes
@@ -10,7 +9,6 @@
     lib_extended
   ];
 
-  nur = inputs.nur.overlay;
   scripts = (import ../scripts);
 
   sway = (import ./sway.nix);
