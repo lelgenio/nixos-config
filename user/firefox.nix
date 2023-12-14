@@ -32,6 +32,11 @@ in {
             url = "https://addons.mozilla.org/firefox/downloads/file/4191523/vimium_ff-2.0.6.xpi";
             hash = "sha256-lKLX6IWWtliRdH1Ig33rVEB4DVfbeuMw0dfUPV/mSSI=";
           })
+          (pkgs.fetchFirefoxAddon {
+            name = "unhook";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4050795/youtube_recommended_videos-1.6.2.xpi";
+            hash = "sha256-xMuglNassZb9WqjfEGg6WeuhMACRuYqQor+iX1dEdsE=";
+          })
         ];
       };
       profiles = {
