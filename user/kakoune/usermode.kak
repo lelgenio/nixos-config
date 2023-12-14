@@ -15,6 +15,7 @@ map global user 'M' ': try lsp-range-formatting-sync catch format-selections<ret
 
 map global user 'c' ': comment-line<ret>' -docstring 'comment line'
 map global user 'C' '_: comment-block<ret>' -docstring 'comment block'
+map global user '=' 'kgh<a-i><space>yjghi<space><esc>h<a-i><space>Rgi' -docstring 'Copy previous line indentation '
 
 map global user "s" ': enter-user-mode mirror<ret>' -docstring 'mirror mode'
 
