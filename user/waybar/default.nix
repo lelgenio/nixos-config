@@ -152,6 +152,10 @@ in
           format-bluetooth-muted = "󰝟";
           format-muted = "󰝟";
           format-icons = {
+            "rtp-sink" =
+              [ "󰕿" "󰖀" "󰕾" ];
+            "alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo" =
+              [ " 󰕿" " 󰖀" " 󰕾" ];
             "alsa_output.pci-0000_09_00.4.analog-stereo" =
               [ " 󰕿" " 󰖀" " 󰕾" ];
             headphone = [ " 󰕿" " 󰖀" " 󰕾" ];
