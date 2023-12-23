@@ -76,17 +76,9 @@
         overlays = old_overlays.all;
       };
 
-      bootstrapPkgs = import inputs.nixpkgs nixpkgsConfig;
-      nixpkgs = bootstrapPkgs.applyPatches {
-        name = "patched-nixpkgs";
-        src = inputs.nixpkgs;
-        patches = lib.mapAttrsToList (k: v: ./patches/nixpkgs/${k})
-          (builtins.readDir ./patches/nixpkgs);
-      };
-
       inherit (import ./user/variables.nix) desktop;
       system = "x86_64-linux";
-      pkgs = import nixpkgs nixpkgsConfig;
+      pkgs = import inputs.nixpkgs nixpkgsConfig;
       lib = inputs.nixpkgs.lib;
 
       packages = import ./pkgs { inherit pkgs inputs; };
