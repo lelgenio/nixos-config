@@ -4,7 +4,7 @@
       enable = true;
       defaultCacheTtl = 604800;
       maxCacheTtl = 604800;
-      pinentryFlavor = "gtk2";
+      pinentryFlavor = "qt";
       extraConfig = ''
         allow-preset-passphrase
       '';
