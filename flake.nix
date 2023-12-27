@@ -34,7 +34,6 @@
 
     dzgui-nix = {
       url = "github:lelgenio/dzgui-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     tlauncher = {

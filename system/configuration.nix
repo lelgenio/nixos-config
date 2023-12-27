@@ -114,6 +114,7 @@
   programs.fish.enable = true;
 
   programs.dzgui.enable = true;
+  programs.dzgui.package = inputs.dzgui-nix.packages.${pkgs.system}.default;
 
   packages.media-packages.enable = true;
   environment.systemPackages = with pkgs; [
