@@ -82,6 +82,7 @@
     ripgrep
     translate-shell
     lipsum
+    par
 
     mate.engrampa
     # gnome.nautilus
