@@ -37,6 +37,11 @@ in {
             url = "https://addons.mozilla.org/firefox/downloads/file/4050795/youtube_recommended_videos-1.6.2.xpi";
             hash = "sha256-xMuglNassZb9WqjfEGg6WeuhMACRuYqQor+iX1dEdsE=";
           })
+          (pkgs.fetchFirefoxAddon {
+            name = "mastodon_simplified_federation";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4215691/mastodon_simplified_federation-2.2.xpi";
+            hash = "sha256-4iU25chpjsdsMTPaa0yQOTWc9V9q1qFz6YV0lYtNjLA=";
+          })
         ];
       };
       profiles = {
