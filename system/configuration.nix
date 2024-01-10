@@ -7,7 +7,6 @@
     ./cachix.nix
     ./media-packages.nix
     ./boot.nix
-    ./vpn.nix
     ./thunar.nix
     ./nix.nix
   ];

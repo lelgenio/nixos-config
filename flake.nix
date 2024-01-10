@@ -126,14 +126,12 @@
             ./system/monolith-gitlab-runner.nix
             ./system/nix-serve.nix
             ./system/steam.nix
-            # { services.vpn.enable = true; }
           ] ++ common_modules;
         };
         rainbow = lib.nixosSystem {
           inherit system specialArgs;
           modules = [
             ./hosts/rainbow.nix
-            { services.vpn.enable = true; }
             ./system/rainbow-gitlab-runner.nix
           ] ++ common_modules;
         };
