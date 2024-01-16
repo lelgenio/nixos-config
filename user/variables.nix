@@ -129,7 +129,7 @@ rec {
   };
 
   dmenu = "bmenu";
-  desktop = "sway";
+  desktop = "hyprland";
   browser = "firefox";
   editor = "kakoune";
   email-client = "thunderbird";

@@ -36,7 +36,7 @@
     ./gnome.nix
     ./thunar.nix
     ./xdg-dirs.nix
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
     inputs.nix-index-database.hmModules.nix-index
   ];
 

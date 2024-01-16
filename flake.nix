@@ -99,7 +99,7 @@
         { login-manager.greetd.enable = desktop == "sway" || desktop == "hyprland"; }
 
         inputs.agenix.nixosModules.default
-        inputs.hyprland.nixosModules.default
+        # inputs.hyprland.nixosModules.default
         inputs.dzgui-nix.nixosModules.default
         { programs.hyprland.enable = (desktop == "hyprland"); }
         inputs.home-manager.nixosModules.home-manager

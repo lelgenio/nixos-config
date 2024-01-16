@@ -11,10 +11,18 @@ in
       systemd.target = "sway-session.target";
       settings = [{
         layer = "top";
-        modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
+        modules-left = [
+          "sway/workspaces"
+          "sway/mode"
+          "sway/window"
+          "hyprland/workspaces"
+          "hyprland/mode"
+          "hyprland/window"
+        ];
         modules-center = [ "clock" ];
         modules-right = lib.flatten [
           "sway/language"
+          "hyprland/language"
           "mpd"
           "custom/playerctl"
           # "tray"
@@ -68,6 +76,28 @@ in
           };
         };
         "sway/window" = { max-length = 40; };
+        "sway/language" = { format = "{short} {variant}"; };
+        "hyprland/workspaces" = {
+          enable-bar-scroll = true;
+          format = "{icon}";
+          format-icons = {
+            "1" = "";
+            "2" = "";
+            "3" = "󰅩";
+            "4" = "";
+            "5" = "";
+            "6" = "";
+            "7" = "󰇮";
+            "8" = "";
+            "9" = "";
+            "10" = "";
+            urgent = "";
+            # focused = "";
+            default = "";
+          };
+        };
+        "hyprland/window" = { max-length = 40; };
+        "hyprland/language" = { format = "{short} {variant}"; };
         "tray" = {
           "spacing" = 7;
           "icon-size" = 19;
@@ -123,7 +153,6 @@ in
           interval = 1;
           tooltip = false;
         };
-        "sway/language" = { format = "{short} {variant}"; };
         "custom/caffeine" = {
           format = "{}";
           exec = "systemctl --user status swayidle > /dev/null && echo 󰒲 || echo 󰒳";

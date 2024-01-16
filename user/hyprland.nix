@@ -32,18 +32,18 @@
 
             apply_sens_to_raw=0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
 
-            damage_tracking=full # leave it on full unless you hate your GPU and want to make it suffer
+            # damage_tracking=full # leave it on full unless you hate your GPU and want to make it suffer
         }
 
-        decoration {
-            rounding=5
-            blur=1
-            blur_size=3 # minimum 1
-            blur_passes=1 # minimum 1, more passes = more resource intensive.
-            # Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
-            # if you want heavy blur, you need to up the blur_passes.
-            # the more passes, the more you can up the blur_size without noticing artifacts.
-        }
+        # decoration {
+        #     rounding=5
+        #     blur=1
+        #     # blur_size=3 # minimum 1
+        #     # blur_passes=1 # minimum 1, more passes = more resource intensive.
+        #     # Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
+        #     # if you want heavy blur, you need to up the blur_passes.
+        #     # the more passes, the more you can up the blur_size without noticing artifacts.
+        # }
 
         animations {
             enabled=1
@@ -121,7 +121,7 @@
         bind=SUPER,mouse_up,workspace,e+1
       '';
     };
-    home.file.".config/eww".source = ./eww;
-    home.packages = with pkgs; [ eww-wayland jq ];
+    # home.file.".config/eww".source = ./eww;
+    # home.packages = with pkgs; [ eww-wayland jq ];
   };
 }
