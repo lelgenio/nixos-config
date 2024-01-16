@@ -42,6 +42,18 @@ in {
             url = "https://addons.mozilla.org/firefox/downloads/file/4215691/mastodon_simplified_federation-2.2.xpi";
             hash = "sha256-4iU25chpjsdsMTPaa0yQOTWc9V9q1qFz6YV0lYtNjLA=";
           })
+
+          # Locale
+          (pkgs.fetchFirefoxAddon {
+            name = "firefox_br";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4144369/firefox_br-115.0.20230726.201356.xpi";
+            hash = "sha256-8zkqfdW0lX0b62+gAJeq4FFlQ06nXGFAexpH+wg2Cr0=";
+          })
+          (pkgs.fetchFirefoxAddon {
+            name = "corretor";
+            url = "https://addons.mozilla.org/firefox/downloads/file/1176165/corretor-65.2018.12.8.xpi";
+            hash = "sha256-/rFQtJHdgemMkGAd+KWuWxVA/BwSIkn6sk0XZE0LrGk=";
+          })
         ];
       };
       profiles = {
