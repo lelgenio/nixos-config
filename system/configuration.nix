@@ -24,6 +24,7 @@
   networking.networkmanager.enable = true;
   # Open kde connect ports
   programs.kdeconnect.enable = true;
+  networking.firewall.allowedTCPPorts = [ 55201 ];
 
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
