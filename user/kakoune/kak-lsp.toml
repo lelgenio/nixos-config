@@ -151,6 +151,7 @@ intelephense.files.exclude = [
     "**/.git/**",
     "**/.svn/**",
     "**/.hg/**",
+    "**/.direnv/**",
     "**/CVS/**",
     "**/.DS_Store/**",
     "**/node_modules/**",
