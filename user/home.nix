@@ -7,7 +7,7 @@
     ./vscode
     ./fish
     ./firefox.nix
-    ./hyprland.nix
+    ./hyprland
     ./alacritty.nix
     ./git.nix
     ./ssh.nix

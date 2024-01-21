@@ -98,6 +98,8 @@ in
       indicator = true;
     };
 
+    packages.firefox.hideTitleBar = true;
+
     home.packages = with pkgs; [
       sway
       swaybg

@@ -1,7 +1,12 @@
 { config, pkgs, lib, font, ... }:
 let inherit (pkgs.uservars) desktop browser;
   bugfixedFirefox = pkgs.firefox-esr-unwrapped // { requireSigning = false; allowAddonSideload = true; };
+  cfg = config.packages.firefox;
 in {
+  options.packages.firefox = {
+    hideTitleBar = lib.mkEnableOption "Hide firefox title bar";
+  };
+
   config = {
     programs.firefox = {
       enable = true;
@@ -92,7 +97,7 @@ in {
             "devtools.chrome.enabled" = true;
             "devtools.debugger.remote-enabled" = true;
           };
-          userChrome = lib.mkIf (desktop == "sway") ''
+          userChrome = lib.mkIf cfg.hideTitleBar ''
             #titlebar { display: none !important; }
             #sidebar-header { display: none !important; }
           '';
