@@ -14,7 +14,7 @@
     wayland.windowManager.hyprland = {
       enable = false;
       extraConfig = lib.readFile ./hyprland.conf;
-      # systemd.enable = true;
+      systemd.enable = true;
     };
     # home.file.".config/eww".source = ./eww;
 

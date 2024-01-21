@@ -48,6 +48,6 @@ in
       ExecStart = "${pkgs.mako}/bin/mako";
       Restart = "on-failure";
     };
-    Install = { WantedBy = [ "sway-session.target" ]; };
+    Install = { WantedBy = [ "sway-session.target"  "hyprland-sessions.target" ]; };
   };
 }

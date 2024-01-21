@@ -35,7 +35,10 @@ in
         greetd_main_script = pkgs.writeShellScriptBin "main" ''
           ${pkgs.dbus-sway-environment}/bin/dbus-sway-environment
           export XDG_CURRENT_DESKTOP=sway GTK_THEME="${theme.gtk_theme}" XCURSOR_THEME="${theme.cursor_theme}"
-          ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c ${desktop}
+          ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c ${{
+            sway = "sway";
+            hyprland = "Hyprland";
+          }.${desktop}}
           swaymsg exit
         '';
         swayConfig = pkgs.writeText "greetd-sway-config" ''
