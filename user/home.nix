@@ -172,6 +172,13 @@
     exec nicotine
   '';
 
+  wayland.windowManager.hyprland.extraConfig = lib.optionalString (osConfig.networking.hostName or "" == "monolith") ''
+    exec-once = steam
+    exec-once = obs --startreplaybuffer
+    exec-once = deluge-gtk
+    exec-once = nicotine
+  '';
+
   systemd.user.services.rm-target = {
     Unit = {
       Description = "Remove directories named 'target'";

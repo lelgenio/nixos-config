@@ -7,6 +7,12 @@
     '';
   };
 
+  wayland.windowManager.hyprland.extraConfig = ''
+    exec-once = thunderbird
+    exec-once = webcord
+    exec-once = telegram-desktop
+  '';
+
   home.packages = with pkgs; [
     tdesktop
     webcord

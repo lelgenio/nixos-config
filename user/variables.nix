@@ -128,7 +128,7 @@ rec {
     pass = "disroot.org";
   };
 
-  dmenu = "bmenu";
+  dmenu = "rofi";
   desktop = "hyprland";
   browser = "firefox";
   editor = "kakoune";

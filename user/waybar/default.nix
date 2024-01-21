@@ -1,6 +1,6 @@
 { config, osConfig, pkgs, lib, font, ... }:
 let
-  inherit (pkgs.uservars) key theme accent font;
+  inherit (pkgs.uservars) key theme accent font desktop;
   inherit (theme) color;
 in
 {
@@ -8,7 +8,7 @@ in
     programs.waybar = {
       enable = true;
       systemd.enable = true;
-      systemd.target = "sway-session.target";
+      systemd.target = "${desktop}-session.target";
       settings = [{
         layer = "top";
         modules-left = [

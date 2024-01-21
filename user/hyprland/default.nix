@@ -1,4 +1,8 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+let
+  inherit (pkgs.uservars) theme;
+in
+{
   imports = [
     ../sway/kanshi.nix
     ../sway/mako.nix
@@ -11,11 +15,19 @@
   ];
 
   config = lib.mkIf (pkgs.uservars.desktop == "hyprland") {
+    services.mako.enable = true;
+
     wayland.windowManager.hyprland = {
-      enable = false;
-      extraConfig = lib.readFile ./hyprland.conf;
+      enable = true;
+      extraConfig = ''
+        source = /home/lelgenio/projects/nixos-config/user/hyprland/hyprland.conf
+      '';
       systemd.enable = true;
     };
+    home.file.".config/hypr/hyprpaper.conf".text = ''
+        preload = ${theme.background}
+        wallpaper = ,${theme.background}
+    '';
     # home.file.".config/eww".source = ./eww;
 
     packages.firefox.hideTitleBar = true;

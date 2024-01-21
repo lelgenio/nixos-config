@@ -1,11 +1,12 @@
 { config, pkgs, lib, ... }:
 let
-  inherit (pkgs.uservars) key accent font theme;
+  inherit (pkgs.uservars) key accent font theme desktop;
   inherit (theme) color;
 in
 {
   services.mako = {
     borderSize = 2;
+    borderRadius = if desktop == "sway" then 0 else 5;
     padding = "5";
     margin = "15";
     layer = "overlay";
