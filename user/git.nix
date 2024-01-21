@@ -11,6 +11,7 @@ in {
         };
         init.defaultBranch = "main";
         commit.verbose = true;
+        push.autoSetupRemote = true;
         pull.rebase = true;
         merge.conflictStyle = "diff3";
         rerere.enabled = true;
