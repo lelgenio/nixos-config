@@ -95,6 +95,9 @@
         ./system/configuration.nix
         ./system/secrets.nix
         ./system/specialisation.nix
+        ./system/greetd.nix
+        { login-manager.greetd.enable = desktop == "sway" || desktop == "hyprland"; }
+
         inputs.agenix.nixosModules.default
         inputs.hyprland.nixosModules.default
         inputs.dzgui-nix.nixosModules.default
@@ -109,7 +112,7 @@
           # arguments to home.nix
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
-      ] ++ lib.optional (desktop == "sway") ./system/sway.nix
+      ]
       ++ lib.optional (desktop == "gnome") ./system/gnome.nix
       ++ lib.optional (desktop == "kde") ./system/kde.nix;
     in
