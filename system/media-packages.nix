@@ -15,6 +15,7 @@ in {
       helvum
       gimp
       inkscape
+      krita
       kdenlive
       blender
       libreoffice
