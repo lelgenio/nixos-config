@@ -61,6 +61,8 @@ in
           names = [ font.interface ];
           size = font.size.medium * 1.0;
         };
+        # Ignore PS4 controller touchpad events
+        input."1356:2508:Wireless_Controller_Touchpad".events = "disabled";
         input."type:touchpad" = {
           # Disable While Typing
           dwt = "enabled";
