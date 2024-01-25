@@ -100,6 +100,8 @@ in
       indicator = true;
     };
 
+    xdg.configFile."OpenTabletDriver/settings.json".source = ./open-tablet-driver.json;
+
     home.packages = with pkgs; [
       sway
       swaybg
