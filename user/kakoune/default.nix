@@ -87,7 +87,7 @@ in
 
         set global scrolloff 10,20
         set global autoreload yes
-        set global startup_info_version 20200901
+        set global startup_info_version 99999999
 
       '' + (import ./colors.nix {
           inherit pkgs lib color accent;
