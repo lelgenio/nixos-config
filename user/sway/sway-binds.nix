@@ -156,6 +156,8 @@ let
     "${mod}+m" = "mode audio";
     "${mod}+escape" =
       "mode passthrough;exec notify-send 'Passthrough on'";
+    "${mod}+ctrl+k" = "exec swaymsg input type:pointer events disabled";
+    "${mod}+ctrl+shift+k" = "exec swaymsg input type:pointer events enabled";
     "${mod}+f" = "fullscreen toggle";
     "${mod}+Shift+space" = "floating toggle";
     "${mod}+space" = "focus mode_toggle";
