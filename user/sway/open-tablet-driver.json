@@ -76,7 +76,7 @@
             "Settings": [
               {
                 "Property": "Keys",
-                "Value": "Control+Shift+Z"
+                "Value": "Control+O"
               }
             ],
             "Enable": true
@@ -96,7 +96,7 @@
             "Settings": [
               {
                 "Property": "Keys",
-                "Value": "Control+Shift+Equal"
+                "Value": "Control+Equal"
               }
             ],
             "Enable": true
