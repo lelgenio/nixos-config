@@ -10,12 +10,13 @@ if test (count $argv) != 1
 end
 
 set -a file (realpath $argv[1])
+set -a url (string escape --style=url "$file")
 set -e argv[1]
 
 if test -d "$file"
     die 1 "Cannot copy directories" >&2
 else if test -f "$file"
-    wl-copy $argv -t text/uri-list "file:///$file"
+    wl-copy $argv -t text/uri-list "file:///$url"
 else
     die 2 "No file found" >&2
 end
