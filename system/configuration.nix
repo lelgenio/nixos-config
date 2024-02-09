@@ -40,9 +40,9 @@
   # services.xserver.displayManager.autologin.user = "lelgenio";
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "colemak";
+    variant = "colemak";
   };
   console.keyMap = "colemak";
   # Enable CUPS to print documents.
