@@ -77,13 +77,20 @@ in
         keys.insert = { "A-k" = "normal_mode"; };
       };
       languages.language = [
-        { name = "nix"; auto-format = true; formatter = { command = "nixpkgs-fmt"; }; }
-        { name = "rust"; auto-format = true; }
         {
-          name = "php";
-          config.intelephense.format.braces = "k&r";
+          name = "nix";
+          auto-format = true;
+          formatter.command = "nixpkgs-fmt";
+        }
+        {
+          name = "rust";
+          auto-format = true;
         }
       ];
+
+      languages.language-server = {
+        intelephense.config.intelephense.format.braces = "k&r";
+      };
 
       themes = {
         my-theme = {
