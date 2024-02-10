@@ -31,8 +31,8 @@ in
             cyan = "${color.normal.cyan}";
             white = "${color.normal.white}";
           };
+          draw_bold_text_with_bright_colors = false;
         };
-        draw_bold_text_with_bright_colors = false;
         window = {
           opacity = theme.opacity / 100.0;
           dynamic_padding = true;
@@ -65,7 +65,7 @@ in
           }];
         };
         mouse = { hide_when_typing = true; };
-        key_bindings = [
+        keyboard.bindings = [
           {
             key = lib.toUpper key.up;
             mode = "Vi|~Search";
