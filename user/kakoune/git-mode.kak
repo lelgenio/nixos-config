@@ -53,18 +53,18 @@ define-command -override git-prev-merge-conflict %{
 define-command -override git-merge-head %{
     evaluate-commands -draft %{
         # delete head marker
-        execute-keys <a-/>^<lt>{4,}<ret><a-x>d
+        execute-keys <a-/>^<lt>{4,}<ret>xd
         try %{
             # select original marker
             execute-keys /^[|]{4,}<ret>
             # extend to theirs marker
-            execute-keys ?^={4,}<ret><a-x>
+            execute-keys ?^={4,}<ret>x
         } catch %{
             # select theirs marker
-            execute-keys /^={4,}<ret><a-x>
+            execute-keys /^={4,}<ret>x
         }
         # extend to end marker
-        execute-keys ?^<gt>{4,}<ret><a-x>d
+        execute-keys ?^<gt>{4,}<ret>xd
     }
 } -docstring "merge using head"
 
@@ -73,11 +73,11 @@ define-command -override git-merge-original %{
         # select head marker
         execute-keys <a-/>^<lt>{4,}<ret>
         # select to middle of conflict
-        execute-keys ?^[|]{4,}<ret><a-x>d
+        execute-keys ?^[|]{4,}<ret>xd
         # select theirs marker
         execute-keys /^={4,}<ret>
         # extend to end marker
-        execute-keys ?^<gt>{4,}<ret><a-x>d
+        execute-keys ?^<gt>{4,}<ret>xd
     }
 } -docstring "merge using original"
 
@@ -88,7 +88,7 @@ define-command -override git-merge-new %{
         # extend to theirs marker
         execute-keys ?^={4,}\n<ret>d
         # delete end marker
-        execute-keys /^<gt>{4,}<ret><a-x>d
+        execute-keys /^<gt>{4,}<ret>xd
     }
 } -docstring "merge using new"
 
