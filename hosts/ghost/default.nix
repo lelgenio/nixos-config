@@ -28,6 +28,15 @@
     identityPaths = [ "/root/.ssh/id_rsa" ];
   };
 
+  system.autoUpgrade = {
+    enable = true;
+    dates = "04:40";
+    allowReboot = true;
+    operation = "switch";
+    flags = [ "--update-input" "nixpkgs" "--no-write-lock-file" "-L" ];
+    flake = "github:lelgenio/nixos-config#ghost";
+  };
+
   system.stateVersion = "23.05"; # Never change this
 }
 
