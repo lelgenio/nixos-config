@@ -1,4 +1,11 @@
-{ config, pkgs, inputs, ... }: {
+{ lib, config, pkgs, inputs, ... }:
+let
+  collectFlakeInputs = input:
+    [ input ] ++ lib.concatMap collectFlakeInputs (builtins.attrValues (input.inputs or { }));
+in
+{
+  system.extraDependencies = collectFlakeInputs inputs.self;
+
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
