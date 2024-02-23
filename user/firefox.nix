@@ -59,6 +59,7 @@ in {
       profiles = {
         main = {
           isDefault = true;
+          search.force = true;
           search.default = "DuckDuckGo";
           settings = {
             "devtools.theme" = "auto";
