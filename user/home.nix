@@ -167,7 +167,7 @@
 
   wayland.windowManager.sway.extraConfig = lib.optionalString (osConfig.networking.hostName or "" == "monolith") ''
     exec steam
-    exec obs --startreplaybuffer
+    exec obs --startreplaybuffer --disable-shutdown-check
     exec deluge-gtk
     exec nicotine
   '';
