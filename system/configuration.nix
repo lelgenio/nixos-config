@@ -151,6 +151,9 @@
   };
   security.sudo.wheelNeedsPassword = false;
 
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=10s
+  '';
   services.logind.extraConfig = ''
     HandlePowerKey=suspend
   '';
