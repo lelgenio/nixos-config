@@ -14,7 +14,8 @@ let
     systemctl --user start swayidle.service
   '';
   _suspend = pkgs.writeShellScriptBin "_suspend" ''
-    ${_lock}/bin/_lock
+    ${pkgs.sway}/bin/swaymsg mode default
+    systemctl --user start swayidle.service
     systemctl suspend
   '';
 
