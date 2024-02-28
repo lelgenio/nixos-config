@@ -70,7 +70,9 @@
     comma
 
     # System monitors
-    btop
+    (btop.override {
+      cudaSupport = true;
+    })
     amdgpu_top
     inxi
     dmidecode

@@ -43,6 +43,7 @@ in
     vaapiVdpau
     rocm-opencl-icd
     rocm-opencl-runtime
+    rocmPackages.rocm-smi
   ];
 
   programs.corectrl.enable = true;
