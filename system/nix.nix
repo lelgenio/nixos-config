@@ -17,6 +17,7 @@ in
     optimise.automatic = true;
     settings = {
       auto-optimise-store = true;
+      trusted-users = [ "root" "@wheel" ];
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
