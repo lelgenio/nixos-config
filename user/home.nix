@@ -20,7 +20,6 @@
     ./mimeapps.nix
     ./desktop-entries.nix
     ./chat.nix
-    ./email.nix
     ./syncthing.nix
     ./vdir.nix
     ./bmenu.nix

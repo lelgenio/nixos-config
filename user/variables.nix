@@ -116,8 +116,8 @@ rec {
     work = {
       from = "Leonardo Eugênio";
       user = "leonardo@wopus.com.br";
-      imap = "imap.wopus.com.br";
-      smtp = "smtp.wopus.com.br";
+      imap = "imap.hostinger.com";
+      smtp = "smtp.hostinger.com";
       pass = "Work/wopus_email";
     };
   };
@@ -132,5 +132,4 @@ rec {
   desktop = "sway";
   browser = "firefox";
   editor = "kakoune";
-  email-client = "thunderbird";
 }
