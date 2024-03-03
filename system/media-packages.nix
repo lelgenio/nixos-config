@@ -17,6 +17,7 @@ in {
       inkscape
       krita
       kdenlive
+      pitivi
       blender-hip
       libreoffice
       godot_4
