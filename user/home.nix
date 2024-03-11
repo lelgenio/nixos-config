@@ -58,7 +58,7 @@
     ## CLI
     eza
     fd
-    bc
+    gavin-bc
     file
     jq
     du-dust
