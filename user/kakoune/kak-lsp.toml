@@ -69,11 +69,11 @@ roots = ["package.json"]
 command = "vscode-json-languageserver"
 args = ["--stdio"]
 
-[language_server.rnix-lsp]
+[language_server.nil]
 filetypes = ["nix"]
 command = "nil"
 roots = ["flake.nix", "shell.nix", ".git"]
-[language.nix.settings.nil]
+[language_server.nil.settings.nil]
 formatting.command = [ "nixpkgs-fmt" ]
 
 [language_server.intelephense]
