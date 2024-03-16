@@ -4,7 +4,7 @@
       enable = true;
       defaultCacheTtl = 604800;
       maxCacheTtl = 604800;
-      pinentryFlavor = "qt";
+      pinentryPackage = pkgs.pinentry-curses;
       extraConfig = ''
         allow-preset-passphrase
       '';
