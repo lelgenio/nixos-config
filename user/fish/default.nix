@@ -69,7 +69,6 @@ in {
     programs = {
       zoxide.enable = true;
       eza.enable = true;
-      eza.enableAliases = true;
       direnv.enable = true;
       direnv.nix-direnv.enable = true;
     };
