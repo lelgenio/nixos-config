@@ -88,6 +88,7 @@ in
         for_window [title=.*] inhibit_idle fullscreen
         exec ${pkgs.dbus-sway-environment}/bin/dbus-sway-environment
         exec swaymsg workspace 2
+        exec_always systemctl --user restart waybar.service
       '';
     };
     services.gammastep = {

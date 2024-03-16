@@ -31,6 +31,8 @@ in
         event = "after-resume";
         command = asScript "after-resume" ''
           ${pkgs.sway}/bin/swaymsg "output * dpms on"
+          ${pkgs.systemd}/bin/systemctl --user restart \
+              kdeconnect.service kdeconnect-indicator.service
         '';
       }
     ];
