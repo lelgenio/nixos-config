@@ -121,7 +121,6 @@
 
   packages.media-packages.enable = true;
   environment.systemPackages = with pkgs; [
-    pinentry-curses
     pavucontrol
 
     glib # gsettings
@@ -144,11 +143,6 @@
   # started in user sessions.
   # programs.mtr.enable = true;
   services.pcscd.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryFlavor = "curses";
-  };
   security.sudo.wheelNeedsPassword = false;
 
   systemd.extraConfig = ''
