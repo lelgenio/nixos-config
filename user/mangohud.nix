@@ -11,6 +11,8 @@ in {
         no_display = true;
         fps_limit = "0,30,60,72,90,120,144,240,288,320";
         toggle_fps_limit = "Shift_R+F10";
+        toggle_preset = "Control_R+F9";
+        fps_metrics = "Control_R+F8";
 
         # legacy_layout = "false";
         # gpu_stats = true;
