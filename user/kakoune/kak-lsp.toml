@@ -120,8 +120,8 @@ command = "nimlsp"
 
 [language.nix]
 filetypes = ["nix"]
+command = "nil"
 roots = ["flake.nix", "shell.nix", ".git"]
-command = "rnix-lsp"
 [language.nix.settings.nil]
 formatting.command = [ "nixpkgs-fmt" ]
 

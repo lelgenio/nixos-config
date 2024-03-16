@@ -122,7 +122,6 @@
     nodePackages.typescript-language-server
     flow # js lsp server
     nil # nix lsp server
-    rnix-lsp # nix lsp
     clang-tools # c/c++ lsp server
     rust-analyzer # rust analyzer
 
