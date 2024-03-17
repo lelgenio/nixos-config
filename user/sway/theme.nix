@@ -33,12 +33,10 @@ lib.mkIf (desktop == "sway")
     in
     { gtk4 = shared; gtk3 = shared; }
   );
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "gtk";
-  #   # style.package = pkgs.libsForQt5.qtstyleplugins;
-  #   # style.name = "gtk2";
-  # };
+  qt = {
+    enable = true;
+    platformTheme = "qtct";
+  };
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -79,10 +77,11 @@ lib.mkIf (desktop == "sway")
     };
   };
 
-  home.sessionVariables = { QT_QPA_PLATFORMTHEME = "gtk3"; };
   home.packages = with pkgs; [
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
+    qt6Packages.qt6ct
+    qt6Packages.qtstyleplugin-kvantum
 
     pkgs.bibata-cursors
     pkgs.orchis_theme_compact
