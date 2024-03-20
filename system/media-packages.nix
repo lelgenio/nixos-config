@@ -16,7 +16,7 @@ in {
       gimp
       inkscape
       krita
-      kdenlive
+      kdePackages.kdenlive
       pitivi
       blender-hip
       libreoffice

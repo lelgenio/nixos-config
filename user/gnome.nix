@@ -36,6 +36,8 @@
 
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
+    qt6Packages.qt6ct
+    qt6Packages.qtstyleplugin-kvantum
   ];
 
   home.sessionVariables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
