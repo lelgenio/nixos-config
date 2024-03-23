@@ -40,7 +40,7 @@
       '';
     };
 
-      xdg.configFile = {
+    xdg.configFile = {
       "pipewire/pipewire.conf.d/99-rtp-sink.conf".text = ''
          context.modules = [
          {   name = libpipewire-module-rtp-sink

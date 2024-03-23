@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+nix fmt
+
+git diff
+
 sudo nice ionice \
     nixos-rebuild \
     switch \

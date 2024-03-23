@@ -9,7 +9,7 @@
     acceptTerms = true;
     defaults.email = "lelgenio@disroot.org";
   };
-  
+
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
 

@@ -1,4 +1,4 @@
-{pkgs, ... }: {
+{ pkgs, ... }: {
   config = {
     programs.mpv = {
       enable = true;
@@ -16,7 +16,7 @@
         cache-pause-initial = true;
         cache-pause-wait = 10;
 
-        hwdec="auto";
+        hwdec = "auto";
       };
       scripts = with pkgs.mpvScripts; [
         mpris

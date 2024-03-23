@@ -1,7 +1,8 @@
 { config, pkgs, lib, font, ... }:
 let inherit (pkgs.uservars) desktop browser;
   bugfixedFirefox = pkgs.firefox-esr-unwrapped // { requireSigning = false; allowAddonSideload = true; };
-in {
+in
+{
   config = {
     programs.firefox = {
       enable = true;
