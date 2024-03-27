@@ -50,6 +50,7 @@ create_scripts
     color_picker = [ grim slurp wl-clipboard libnotify imagemagick ];
     dzadd = [ procps libnotify final.wdmenu jq mpv pqiv python3Packages.deemix mpc-cli final.mpdDup ];
     mpdDup = [ mpc-cli perl ];
+    readQrCode = [ grim zbar wl-clipboard ];
   } // lib.mapAttrs import_script {
   wdmenu = ./wdmenu.nix;
   wlauncher = ./wlauncher.nix;

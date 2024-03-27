@@ -20,6 +20,7 @@
       wpass
       _gpg-unlock
       qtpass
+      readQrCode
     ];
   };
 }

@@ -54,5 +54,14 @@
       icon = "download";
       categories = [ "Network" ];
     };
+    readQrCode = {
+      name = "Read QR Code";
+      genericName = "Read QR Code from clipboard image";
+      exec = "readQrCode";
+      terminal = true;
+      type = "Application";
+      icon = "download";
+      categories = [ "Network" ];
+    };
   };
 }
