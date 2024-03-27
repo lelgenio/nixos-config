@@ -11,6 +11,7 @@
     ./users.nix
     ./writefreely.nix
     ./renawiki.nix
+    ./email.nix
   ];
 
   # Use more aggressive compression then the default.

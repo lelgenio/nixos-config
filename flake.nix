@@ -32,6 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dzgui-nix = {
       url = "github:lelgenio/dzgui-nix";
     };
