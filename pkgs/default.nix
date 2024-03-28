@@ -7,4 +7,5 @@
   cargo-checkmate = pkgs.callPackage ./cargo-checkmate.nix { };
   lipsum = pkgs.callPackage ./lipsum.nix { inherit inputs; };
   emmet-cli = pkgs.callPackage ./emmet-cli.nix { };
+  kak-tree-sitter = pkgs.callPackage ./kak-tree-sitter.nix { };
 }
