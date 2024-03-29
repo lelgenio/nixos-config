@@ -7,7 +7,7 @@ in
   "gitlab-runner-thoreb-telemetria-registrationConfigFile.age".publicKeys = [ main_ssh_public_key ];
   "lelgenio-cachix.age".publicKeys = [ main_ssh_public_key ];
   "monolith-nix-serve-privkey.age".publicKeys = [ main_ssh_public_key ];
-  "ghost-nextcloud.age".publicKeys = [ main_ssh_public_key ];
-  "ghost-writefreely.age".publicKeys = [ main_ssh_public_key ];
-  "ghost-renawiki.age".publicKeys = [ main_ssh_public_key ];
+  "phantom-nextcloud.age".publicKeys = [ main_ssh_public_key ];
+  "phantom-writefreely.age".publicKeys = [ main_ssh_public_key ];
+  "phantom-renawiki.age".publicKeys = [ main_ssh_public_key ];
 }

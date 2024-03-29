@@ -6,7 +6,7 @@
     nginx.forceSSL = true;
     host = "blog.lelgenio.xyz";
     admin.name = "lelgenio";
-    admin.initialPasswordFile = config.age.secrets.ghost-writefreely.path;
+    admin.initialPasswordFile = config.age.secrets.phantom-writefreely.path;
     settings.app = {
       site_name = "Leo's blog";
       single_user = true;
@@ -14,8 +14,8 @@
   };
 
   age = {
-    secrets.ghost-writefreely = {
-      file = ../../secrets/ghost-writefreely.age;
+    secrets.phantom-writefreely = {
+      file = ../../secrets/phantom-writefreely.age;
       mode = "400";
       owner = "writefreely";
       group = "writefreely";

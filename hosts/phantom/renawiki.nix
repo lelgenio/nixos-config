@@ -5,7 +5,7 @@
 
     webserver = "nginx";
     nginx.hostName = "renawiki.lelgenio.xyz";
-    passwordFile = config.age.secrets.ghost-renawiki.path;
+    passwordFile = config.age.secrets.phantom-renawiki.path;
 
     extensions.VisualEditor = null;
   };
@@ -14,8 +14,8 @@
     forceSSL = true;
   };
 
-  age.secrets.ghost-renawiki = {
-    file = ../../secrets/ghost-renawiki.age;
+  age.secrets.phantom-renawiki = {
+    file = ../../secrets/phantom-renawiki.age;
     mode = "400";
     owner = "mediawiki";
   };

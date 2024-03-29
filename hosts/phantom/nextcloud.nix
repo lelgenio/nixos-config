@@ -5,13 +5,13 @@
     hostName = "cloud.lelgenio.xyz";
     https = true;
     config = {
-      adminpassFile = config.age.secrets.ghost-nextcloud.path;
+      adminpassFile = config.age.secrets.phantom-nextcloud.path;
     };
   };
 
   age = {
-    secrets.ghost-nextcloud = {
-      file = ../../secrets/ghost-nextcloud.age;
+    secrets.phantom-nextcloud = {
+      file = ../../secrets/phantom-nextcloud.age;
       mode = "400";
       owner = "nextcloud";
       group = "nextcloud";
