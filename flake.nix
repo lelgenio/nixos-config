@@ -161,6 +161,10 @@
           inherit system specialArgs;
           modules = [ ./hosts/ghost ];
         };
+        phantom = lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [ ./hosts/phantom ];
+        };
       };
 
       homeConfigurations.lelgenio = inputs.home-manager.lib.homeManagerConfiguration {
