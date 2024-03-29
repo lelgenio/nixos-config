@@ -11,7 +11,12 @@ in {
       };
       ghost = {
         user = "root";
-        hostname = "lelgenio.xyz";
+        hostname = "ghost.lelgenio.xyz";
+        port = 9022;
+      };
+      phantom = {
+        user = "root";
+        hostname = "phantom.lelgenio.xyz";
         port = 9022;
       };
     };
