@@ -157,10 +157,6 @@
             services.flatpak.enable = lib.mkOverride 0 false;
           }];
         };
-        ghost = lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [ ./hosts/ghost ];
-        };
         phantom = lib.nixosSystem {
           inherit system specialArgs;
           modules = [ ./hosts/phantom ];
