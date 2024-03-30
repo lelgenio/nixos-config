@@ -30,7 +30,6 @@
   system.autoUpgrade = {
     enable = true;
     dates = "04:40";
-    allowReboot = true;
     operation = "switch";
     flags = [ "--update-input" "nixpkgs" "--no-write-lock-file" "-L" ];
     flake = "github:lelgenio/nixos-config#phantom";
