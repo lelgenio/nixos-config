@@ -125,6 +125,7 @@
     clang-tools # c/c++ lsp server
     rust-analyzer # rust analyzer
 
+    blade-formatter
     nixpkgs-fmt
   ];
 
