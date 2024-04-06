@@ -123,6 +123,7 @@
           modules = [
             ./hosts/monolith.nix
             ./system/monolith-gitlab-runner.nix
+            ./system/monolith-forgejo-runner.nix
             ./system/nix-serve.nix
             ./system/steam.nix
           ] ++ common_modules;
