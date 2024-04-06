@@ -5,6 +5,7 @@ in
   "rainbow-gitlab-runner-thoreb-itinerario-registrationConfigFile.age".publicKeys = [ main_ssh_public_key ];
   "monolith-gitlab-runner-thoreb-itinerario-registrationConfigFile.age".publicKeys = [ main_ssh_public_key ];
   "gitlab-runner-thoreb-telemetria-registrationConfigFile.age".publicKeys = [ main_ssh_public_key ];
+  "monolith-forgejo-runner-token.age".publicKeys = [ main_ssh_public_key ];
   "lelgenio-cachix.age".publicKeys = [ main_ssh_public_key ];
   "monolith-nix-serve-privkey.age".publicKeys = [ main_ssh_public_key ];
   "phantom-nextcloud.age".publicKeys = [ main_ssh_public_key ];
