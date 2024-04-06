@@ -11,7 +11,7 @@
     executable = true;
     text = ''
       systemctl --user import-environment
-      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway SWAYSOCK
       # systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
       # systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
     '';
