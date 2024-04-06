@@ -12,6 +12,7 @@
     ./writefreely.nix
     ./renawiki.nix
     ./email.nix
+    ./forgejo.nix
   ];
 
   # # Enable networking
