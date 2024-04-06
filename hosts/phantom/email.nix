@@ -9,12 +9,20 @@
   mailserver = {
     enable = true;
     fqdn = "mail.lelgenio.xyz";
-    domains = [ "lelgenio.xyz" ];
+    domains = [
+      "lelgenio.xyz"
+      "git.lelgenio.xyz"
+    ];
     certificateScheme = "acme-nginx";
+    # Create passwords with
+    # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
       "lelgenio@lelgenio.xyz" = {
         hashedPassword = "$2y$05$z5s7QCXcs5uTFsfyYpwNJeWzb3RmzgWxNgcPCr0zjSytkLFF/qZmS";
         aliases = [ "postmaster@lelgenio.xyz" ];
+      };
+      "noreply@git.lelgenio.xyz" = {
+        hashedPassword = "$2b$05$TmR1R7ZwXfec7yrOfeBL7u3ZtyXf0up5dEO6uMWSvb/O7LPEm.j0.";
       };
     };
   };

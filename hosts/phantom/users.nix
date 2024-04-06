@@ -2,7 +2,7 @@
   security.rtkit.enable = true;
   services.openssh = {
     enable = true;
-    ports = [ 9022 ];
+    ports = [ 9022 22 ];
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
