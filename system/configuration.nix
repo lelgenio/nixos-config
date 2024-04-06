@@ -59,7 +59,7 @@
 
   security.rtkit.enable = true;
   services.openssh = {
-    enable = true;
+    enable = false;
     ports = [ 9022 ];
     settings = {
       PermitRootLogin = "no";
