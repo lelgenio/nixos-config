@@ -6,5 +6,6 @@
     smtp.fromAddress = "lelgenio@disroot.org";
     streamingProcesses = 2;
     extraConfig.SINGLE_USER_MODE = "true";
+    mediaAutoRemove.olderThanDays = 10;
   };
 }
