@@ -1,0 +1,12 @@
+#!/bin/sh
+
+nix fmt
+
+git diff
+
+nixos-rebuild switch --flake .#phantom \
+  --update-input nixpkgs \
+  --no-write-lock-file \
+  --build-host phantom \
+  --target-host phantom \
+  "$@"
