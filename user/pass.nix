@@ -11,7 +11,7 @@
       git-sync = {
         enable = true;
         repositories.password-store = {
-          uri = "git@git.disroot.org:lelgenio/password-store";
+          uri = "forgejo@lelgenio.xyz:lelgenio/password-store";
           path = toString config.programs.password-store.settings.PASSWORD_STORE_DIR;
         };
       };
