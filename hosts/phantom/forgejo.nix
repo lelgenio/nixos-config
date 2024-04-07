@@ -15,14 +15,6 @@ in
     };
   };
 
-  services.openssh = {
-    authorizedKeysFiles = [
-      "${config.services.forgejo.stateDir}/.ssh/authorized_keys"
-    ];
-    # Recommended by forgejo: https://forgejo.org/docs/latest/admin/recommendations/#git-over-ssh
-    settings.AcceptEnv = "GIT_PROTOCOL";
-  };
-
   services.forgejo = {
     enable = true;
     database.type = "postgres";
