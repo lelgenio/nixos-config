@@ -143,11 +143,6 @@
   };
   programs.bash = { enable = true; };
 
-  services.nextcloud-client = {
-    enable = true;
-    startInBackground = true;
-  };
-
   xdg.defaultApplications = {
     enable = true;
     text-editor = lib.mkDefault "kak.desktop";
