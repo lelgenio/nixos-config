@@ -1202,15 +1202,15 @@
       "locked": {
         "lastModified": 1684504342,
         "narHash": "sha256-rJ0eH7BuPizvXPc+LjVtovse4gWEuxP2WiyNdXjPNL4=",
-        "owner": "lelgenio",
-        "repo": "tlauncher-nix",
+        "ref": "refs/heads/main",
         "rev": "add4df7220bd0b85177a1938c02b60c966c5eb71",
-        "type": "github"
+        "revCount": 3,
+        "type": "git",
+        "url": "https://git.lelgenio.xyz/lelgenio/tlauncher-nix"
       },
       "original": {
-        "owner": "lelgenio",
-        "repo": "tlauncher-nix",
-        "type": "github"
+        "type": "git",
+        "url": "https://git.lelgenio.xyz/lelgenio/tlauncher-nix"
       }
     },
     "utils": {

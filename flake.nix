@@ -42,7 +42,7 @@
     };
 
     tlauncher = {
-      url = "github:lelgenio/tlauncher-nix";
+      url = "git+https://git.lelgenio.xyz/lelgenio/tlauncher-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
