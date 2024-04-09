@@ -51,7 +51,7 @@
     dates = "04:40";
     operation = "switch";
     flags = [ "--update-input" "nixpkgs" "--no-write-lock-file" "-L" ];
-    flake = "github:lelgenio/nixos-config#phantom";
+    flake = "git+https://git.lelgenio.xyz/lelgenio/nixos-config#phantom";
   };
 
   system.stateVersion = "23.05"; # Never change this
