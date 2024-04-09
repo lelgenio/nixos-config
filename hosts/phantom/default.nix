@@ -15,6 +15,24 @@
     ./forgejo.nix
   ];
 
+  services.nginx.virtualHosts."lelgenio.xyz" = {
+    enableACME = true;
+    forceSSL = true;
+    root = pkgs.runCommand "www-dir" { } ''
+      mkdir -p $out
+      cat > $out/index.html <<EOF
+        <!DOCTYPE html>
+        <html lang="en">
+        <body>
+          <h1>
+              Nothing to see here!
+          <h1>
+        </body>
+        </html>
+      EOF
+    '';
+  };
+
   # # Enable networking
   # networking.networkmanager.enable = true;
   # Set your time zone.
