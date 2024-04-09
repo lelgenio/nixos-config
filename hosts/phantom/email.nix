@@ -8,7 +8,7 @@
 
   mailserver = {
     enable = true;
-    fqdn = "mail.lelgenio.xyz";
+    fqdn = "lelgenio.xyz";
     domains = [
       "lelgenio.xyz"
       "git.lelgenio.xyz"
