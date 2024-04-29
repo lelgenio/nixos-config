@@ -2,7 +2,7 @@
 
 nix fmt
 
-git diff
+git --no-pager diff
 
 sudo nice ionice \
     nixos-rebuild \
