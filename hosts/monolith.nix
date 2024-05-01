@@ -46,7 +46,14 @@ in
     rocmPackages.rocm-smi
   ];
 
-  programs.corectrl.enable = true;
+  programs.corectrl = {
+    enable = true;
+    gpuOverclock = {
+      enable = true;
+      ppfeaturemask = "0xffffffff";
+    };
+  };
+
   virtualisation.virtualbox.host.enable = true;
 
   fileSystems."/" = {
