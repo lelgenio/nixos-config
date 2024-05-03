@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, config, ... }: {
   # It's important to let Digital Ocean set the hostname so we get rDNS to work
   networking.hostName = "";
 
@@ -27,13 +27,18 @@
     };
   };
 
+  # Prefer ipv4 and use main ipv6 to avoid reverse DNS issues
+  services.postfix.extraConfig = ''
+    smtp_address_preference = ipv4
+  '';
+
   # Webmail
-  services.roundcube = rec {
+  services.roundcube = {
     enable = true;
     package = pkgs.roundcube.withPlugins (p: [ p.carddav ]);
     hostName = "mail.lelgenio.xyz";
     extraConfig = ''
-      $config['smtp_host'] = "tls://${hostName}:587";
+      $config['smtp_host'] = "tls://${config.mailserver.fqdn}:587";
       $config['smtp_user'] = "%u";
       $config['smtp_pass'] = "%p";
       $config['plugins'] = [ "carddav", "archive" ];
