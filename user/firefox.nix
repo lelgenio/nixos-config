@@ -43,6 +43,11 @@ in
             url = "https://addons.mozilla.org/firefox/downloads/file/4215691/mastodon_simplified_federation-2.2.xpi";
             hash = "sha256-4iU25chpjsdsMTPaa0yQOTWc9V9q1qFz6YV0lYtNjLA=";
           })
+          (pkgs.fetchFirefoxAddon {
+            name = "substitoot";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4236602/substitoot-0.7.2.0.xpi";
+            hash = "sha256-1auSqEjkebwRSbmAVUsYwy77dl7TQCOnqgozpoVnqgI=";
+          })
 
           # Locale
           (pkgs.fetchFirefoxAddon {
