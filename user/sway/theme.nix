@@ -35,7 +35,7 @@ lib.mkIf (desktop == "sway")
   );
   qt = {
     enable = true;
-    platformTheme = "qtct";
+    platformTheme.name = "qtct";
   };
 
   dconf.settings = {
