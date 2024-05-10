@@ -27,7 +27,7 @@ let
       icon_theme = "Papirus-Dark";
       cursor_theme = "Bibata-Modern-Classic";
 
-      background = "~/.local/share/backgrounds/nixos-dark-pattern.png";
+      background = ./backgrounds/nixos-dark-pattern.png;
       opacity = 95;
       opacityHex = "ee";
       color = {
@@ -58,7 +58,7 @@ let
       icon_theme = "Papirus-Light";
       cursor_theme = "Bibata-Modern-Classic";
 
-      background = "~/.local/share/backgrounds/nixos-light-pattern.png";
+      background = ./backgrounds/nixos-light-pattern.png;
       opacity = 95;
       opacityHex = "ee";
       color = {

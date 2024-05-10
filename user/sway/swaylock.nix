@@ -5,7 +5,7 @@ let
 in
 {
   programs.swaylock.settings = {
-    image = theme.background;
+    image = toString theme.background;
     font = font.interface;
     font-size = font.size.medium;
     indicator-thickness = 20;
