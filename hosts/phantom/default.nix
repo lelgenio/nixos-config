@@ -10,7 +10,6 @@
     ./syncthing.nix
     ./users.nix
     ./writefreely.nix
-    ./renawiki.nix
     ./email.nix
     ./forgejo.nix
   ];
