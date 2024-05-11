@@ -26,15 +26,15 @@ in
         DEFAULT_ACTIONS_URL = "github";
       };
       server = {
-        DOMAIN = "git.lelgenio.xyz";
+        DOMAIN = "git.lelgenio.com";
         HTTP_PORT = 3000;
         ROOT_URL = "https://${srv.DOMAIN}/";
       };
       mailer = {
         ENABLED = true;
-        SMTP_ADDR = "mail.lelgenio.xyz";
-        FROM = "noreply@git.lelgenio.xyz";
-        USER = "noreply@git.lelgenio.xyz";
+        SMTP_ADDR = "mail.lelgenio.com";
+        FROM = "noreply@git.lelgenio.com";
+        USER = "noreply@git.lelgenio.com";
       };
     };
     mailerPasswordFile = config.age.secrets.phantom-forgejo-mailer-password.path;

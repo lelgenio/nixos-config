@@ -8,20 +8,27 @@
 
   mailserver = {
     enable = true;
-    fqdn = "lelgenio.xyz";
+    fqdn = "lelgenio.com";
     domains = [
       "lelgenio.xyz"
       "git.lelgenio.xyz"
+      "lelgenio.com"
+      "git.lelgenio.com"
+      "social.lelgenio.com"
     ];
     certificateScheme = "acme-nginx";
     # Create passwords with
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
+      "lelgenio@lelgenio.com" = {
+        hashedPassword = "$2y$05$z5s7QCXcs5uTFsfyYpwNJeWzb3RmzgWxNgcPCr0zjSytkLFF/qZmS";
+        aliases = [ "postmaster@lelgenio.com" ];
+      };
       "lelgenio@lelgenio.xyz" = {
         hashedPassword = "$2y$05$z5s7QCXcs5uTFsfyYpwNJeWzb3RmzgWxNgcPCr0zjSytkLFF/qZmS";
         aliases = [ "postmaster@lelgenio.xyz" ];
       };
-      "noreply@git.lelgenio.xyz" = {
+      "noreply@git.lelgenio.com" = {
         hashedPassword = "$2b$05$TmR1R7ZwXfec7yrOfeBL7u3ZtyXf0up5dEO6uMWSvb/O7LPEm.j0.";
       };
     };
@@ -36,7 +43,7 @@
   services.roundcube = {
     enable = true;
     package = pkgs.roundcube.withPlugins (p: [ p.carddav ]);
-    hostName = "mail.lelgenio.xyz";
+    hostName = "mail.lelgenio.com";
     extraConfig = ''
       $config['smtp_host'] = "tls://${config.mailserver.fqdn}:587";
       $config['smtp_user'] = "%u";
