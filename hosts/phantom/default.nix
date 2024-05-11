@@ -14,7 +14,7 @@
     ./forgejo.nix
   ];
 
-  services.nginx.virtualHosts."lelgenio.xyz" = {
+  services.nginx.virtualHosts."lelgenio.com" = {
     enableACME = true;
     forceSSL = true;
     root = pkgs.runCommand "www-dir" { } ''
@@ -50,7 +50,7 @@
     dates = "04:40";
     operation = "switch";
     flags = [ "--update-input" "nixpkgs" "--no-write-lock-file" "-L" ];
-    flake = "git+https://git.lelgenio.xyz/lelgenio/nixos-config#phantom";
+    flake = "git+https://git.lelgenio.com/lelgenio/nixos-config#phantom";
   };
 
   system.stateVersion = "23.05"; # Never change this

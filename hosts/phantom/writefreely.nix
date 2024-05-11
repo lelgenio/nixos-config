@@ -4,7 +4,7 @@
     acme.enable = true;
     nginx.enable = true;
     nginx.forceSSL = true;
-    host = "blog.lelgenio.xyz";
+    host = "blog.lelgenio.com";
     admin.name = "lelgenio";
     admin.initialPasswordFile = config.age.secrets.phantom-writefreely.path;
     settings.app = {

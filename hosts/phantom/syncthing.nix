@@ -7,7 +7,7 @@
     openDefaultPorts = true;
   };
 
-  services.nginx.virtualHosts."syncthing.lelgenio.xyz" = {
+  services.nginx.virtualHosts."syncthing.lelgenio.com" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = {

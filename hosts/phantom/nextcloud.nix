@@ -2,7 +2,7 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27;
-    hostName = "cloud.lelgenio.xyz";
+    hostName = "cloud.lelgenio.com";
     https = true;
     config = {
       adminpassFile = config.age.secrets.phantom-nextcloud.path;
