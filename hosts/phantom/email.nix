@@ -31,6 +31,9 @@
       "noreply@git.lelgenio.com" = {
         hashedPassword = "$2b$05$TmR1R7ZwXfec7yrOfeBL7u3ZtyXf0up5dEO6uMWSvb/O7LPEm.j0.";
       };
+      "noreply@social.lelgenio.com" = {
+        hashedPassword = "$2b$05$DcA9xMdvHqqQMZw2.zybI.vfKsQAJtaQ/JB.t9AHu6psstWq97m2C";
+      };
     };
   };
 

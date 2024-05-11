@@ -11,4 +11,5 @@ in
   "phantom-writefreely.age".publicKeys = [ main_ssh_public_key ];
   "phantom-renawiki.age".publicKeys = [ main_ssh_public_key ];
   "phantom-forgejo-mailer-password.age".publicKeys = [ main_ssh_public_key ];
+  "phantom-mastodon-mailer-password.age".publicKeys = [ main_ssh_public_key ];
 }
