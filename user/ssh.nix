@@ -6,12 +6,12 @@ in {
     programs.ssh.matchBlocks = {
       monolith = {
         user = "lelgenio";
-        hostname = "lelgenio.1337.cx";
+        hostname = "monolith.lelgenio.com";
         port = 9022;
       };
       phantom = {
         user = "root";
-        hostname = "phantom.lelgenio.xyz";
+        hostname = "phantom.lelgenio.com";
         port = 9022;
       };
     };
