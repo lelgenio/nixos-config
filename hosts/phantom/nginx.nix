@@ -11,7 +11,7 @@
   services.nginx.virtualHosts = lib.mapAttrs'
     (key: value: lib.nameValuePair "${key}lelgenio.xyz" value)
     (
-      lib.genAttrs [ "" "social." "blog." "cloud." "mail." ] (name: {
+      lib.genAttrs [ "" "social." "blog." "cloud." "mail." "git." ] (name: {
         enableACME = true;
         forceSSL = true;
         locations."/".return = "301 $scheme://${name}lelgenio.com$request_uri";
