@@ -4,7 +4,7 @@
     instances.default = {
       enable = true;
       name = "monolith";
-      url = "https://git.lelgenio.xyz";
+      url = "https://git.lelgenio.com";
       tokenFile = config.age.secrets.monolith-forgejo-runner-token.path;
       labels = [
         # provide a debian base with nodejs for actions
