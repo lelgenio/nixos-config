@@ -1,4 +1,4 @@
 #!/bin/sh
 
 nix flake update --verbose --print-build-logs
-./switch
+exec ./switch "$@"
