@@ -23,6 +23,7 @@ in
     "zenpower"
   ];
   boot.kernelParams = [
+    "amdgpu.dcdebugmask=0x10" # amdgpu undervolting bug
     "video=DP-1:1920x1080@144"
     # hibernation
     "resume=LABEL=BTRFS_ROOT" # findmnt -o LABEL --noheadings /swap/
