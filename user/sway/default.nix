@@ -52,7 +52,7 @@ in
           };
         output = {
           "*" = {
-            adaptive_sync = "off";
+            adaptive_sync = "enabled";
             bg = "${theme.background} fill";
             mode = "1920x1080@144.000Hz";
           };
