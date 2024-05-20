@@ -53,6 +53,8 @@
     flake = "git+https://git.lelgenio.com/lelgenio/nixos-config#phantom";
   };
 
+  networking.firewall.allowedTCPPorts = [ 8745 ];
+
   system.stateVersion = "23.05"; # Never change this
 }
 
