@@ -54,6 +54,7 @@ in
     };
     floating = {
       criteria = [
+        { class = "Godot"; }
         { class = "file_picker"; }
         { app_id = "file_picker"; }
         { app_id = "wdisplays"; }
