@@ -17,6 +17,7 @@ in
     # enable sway window manager
     programs.sway = {
       enable = true;
+      package = pkgs.mySway;
       wrapperFeatures.gtk = true;
     };
 
@@ -59,7 +60,7 @@ in
         enable = true;
         settings = {
           initial_session = {
-            command = "${pkgs.sway}/bin/sway";
+            command = desktop;
             user = "lelgenio";
           };
           default_session = {

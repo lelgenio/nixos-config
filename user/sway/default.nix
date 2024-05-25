@@ -21,6 +21,7 @@ in
 
     wayland.windowManager.sway = {
       enable = true;
+      package = pkgs.mySway;
       config = {
         bars = [ ];
 
@@ -105,7 +106,7 @@ in
     xdg.configFile."OpenTabletDriver/settings.json".source = ./open-tablet-driver.json;
 
     home.packages = with pkgs; [
-      sway
+      mySway
       swaybg
       swaylock
       wdisplays
