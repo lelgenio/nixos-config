@@ -55,8 +55,6 @@ in
     };
   };
 
-  virtualisation.virtualbox.host.enable = true;
-
   fileSystems."/" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
