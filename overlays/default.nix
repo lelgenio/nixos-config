@@ -44,10 +44,12 @@
           --replace ZWLR_LAYER_SHELL_V1_LAYER_TOP ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY
       '';
     });
-    sway-unwrapped = prev.sway-unwrapped.overrideAttrs (old: {
-      patches = old.patches
-        ++ [ ../patches/sway/fix-hide_cursor-clearing-focus.patch ];
-    });
+    mySway = prev.sway.override {
+      sway-unwrapped = prev.sway-unwrapped.overrideAttrs (old: {
+        patches = old.patches
+          ++ [ ../patches/sway/fix-hide_cursor-clearing-focus.patch ];
+      });
+    };
     mangohud = prev.mangohud.overrideAttrs (o: {
       patches = o.patches ++ [
         (prev.fetchpatch {
