@@ -10,7 +10,7 @@ in
   ];
 
   config = {
-    programs.qutebrowser = {
+    programs.qutebrowser = lib.mkIf (browser == "qutebrowser") {
       enable = true;
       # enableDefaultBindings = false;
       keyBindings = {
