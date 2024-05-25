@@ -4,6 +4,7 @@ in {
   config = {
     programs.git = {
       enable = true;
+      lfs.enable = true;
       extraConfig = {
         user = {
           name = username;
