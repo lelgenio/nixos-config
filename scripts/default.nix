@@ -42,6 +42,7 @@ create_scripts
       [ ]; # This will not work unless programs.wshowkeys is enabled systemwide
     terminal = [ alacritty ];
     playerctl-status = [ playerctl ];
+    pass-export = [ pass2csv gnupg ];
     wpass = [ final.wdmenu fd pass sd wl-clipboard wtype ];
     screenshotsh =
       [ capitaine-cursors grim slurp jq sway wl-clipboard xdg-user-dirs ];

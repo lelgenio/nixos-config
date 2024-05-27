@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if test -z "$PASSWORD_STORE_DIR"; then
+  PASSWORD_STORE_DIR="$HOME/.password-store"
+fi
+
+pass2csv "$PASSWORD_STORE_DIR" "$HOME/passwords.csv" \
+  -f User '(user|login)(:\s*)?' \
+  -f TOTP 'otpauth(:)?' \
+  -f URL 'url(:\s*)?'
