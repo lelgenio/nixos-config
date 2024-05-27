@@ -13,13 +13,17 @@
     user = "lelgenio";
   };
 
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
+
   # services.xserver.displayManager.autologin.user = "lelgenio";
   environment.systemPackages = with pkgs; with gnome; [
     gnome-tweaks
     dconf-editor
 
     chrome-gnome-shell
-    gnomeExtensions.gsconnect
     gnomeExtensions.quick-settings-audio-devices-hider
   ];
 }
