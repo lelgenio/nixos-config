@@ -17,4 +17,7 @@
     protontricks
     bottles
   ];
+
+  programs.dzgui.enable = true;
+  programs.dzgui.package = inputs.dzgui-nix.packages.${pkgs.system}.default;
 }
