@@ -9,4 +9,18 @@
     "git.confirmSync": false,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "update.mode": "none",
+    "intelephense.files.exclude": [
+        "**/.git/**",
+        "**/.svn/**",
+        "**/.hg/**",
+        "**/CVS/**",
+        "**/.DS_Store/**",
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/vendor/**/{Tests,tests}/**",
+        "**/.history/**",
+        "**/vendor/**/vendor/**",
+        "**/.direnv/**"
+    ],
+    "intelephense.format.braces": "k&r",
 }
