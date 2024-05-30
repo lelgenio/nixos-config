@@ -1,6 +1,16 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
-  inherit (pkgs.uservars) key accent font theme;
+  inherit (pkgs.uservars)
+    key
+    accent
+    font
+    theme
+    ;
   inherit (theme) color;
 in
 {
@@ -26,11 +36,13 @@ in
       {
         profile = {
           name = "nomad";
-          outputs = [{
-            criteria = "eDP-1";
-            status = "enable";
-            position = "1920,312";
-          }];
+          outputs = [
+            {
+              criteria = "eDP-1";
+              status = "enable";
+              position = "1920,312";
+            }
+          ];
           exec = [ "xrdb .Xresources" ];
         };
       }

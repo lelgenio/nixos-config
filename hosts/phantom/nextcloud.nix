@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud27;
@@ -22,6 +28,4 @@
       group = "nextcloud";
     };
   };
-
 }
-

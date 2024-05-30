@@ -1,19 +1,23 @@
 { pkgs, lib, ... }:
 let
   inherit (pkgs.uservars) nextcloud;
-  pass_cmd = (pkgs.writeShellScript "get_pass" ''
-    pass "${nextcloud.pass}" | head -n1
-  '');
+  pass_cmd = (
+    pkgs.writeShellScript "get_pass" ''
+      pass "${nextcloud.pass}" | head -n1
+    ''
+  );
 in
 {
   systemd.user.services.vdirsyncer = {
     Unit.Description = "vdirsyncer calendar and contacts synchronization";
     Service = {
       Type = "oneshot";
-      ExecStart = toString (pkgs.writeShellScript "run-vdirsyncer" ''
-        ${pkgs.coreutils}/bin/yes | ${pkgs.vdirsyncer}/bin/vdirsyncer discover
-        ${pkgs.coreutils}/bin/yes | ${pkgs.vdirsyncer}/bin/vdirsyncer sync
-      '');
+      ExecStart = toString (
+        pkgs.writeShellScript "run-vdirsyncer" ''
+          ${pkgs.coreutils}/bin/yes | ${pkgs.vdirsyncer}/bin/vdirsyncer discover
+          ${pkgs.coreutils}/bin/yes | ${pkgs.vdirsyncer}/bin/vdirsyncer sync
+        ''
+      );
     };
   };
   systemd.user.timers.vdirsyncer = {
@@ -45,9 +49,9 @@ in
 
       [storage contacts_remote]
       type = "carddav"
-      url = "https://${ nextcloud.host }/remote.php/dav/addressbooks/users/${ nextcloud.user }/"
-      username = "${ nextcloud.user }"
-      password.fetch = [ "command", "${ pass_cmd }" ]
+      url = "https://${nextcloud.host}/remote.php/dav/addressbooks/users/${nextcloud.user}/"
+      username = "${nextcloud.user}"
+      password.fetch = [ "command", "${pass_cmd}" ]
 
       [pair calendar]
       a = "calendar_local"
@@ -63,9 +67,9 @@ in
 
       [storage calendar_remote]
       type = "caldav"
-      url = "https://${ nextcloud.host }/remote.php/dav/calendars/${ nextcloud.user }/"
-      username = "${ nextcloud.user }"
-      password.fetch = [ "command", "${ pass_cmd }" ]
+      url = "https://${nextcloud.host}/remote.php/dav/calendars/${nextcloud.user}/"
+      username = "${nextcloud.user}"
+      password.fetch = [ "command", "${pass_cmd}" ]
     '';
     "todoman/config.py".text = ''
       path = "~/.local/share/calendars/*"
@@ -76,10 +80,8 @@ in
     '';
   };
 
-
   home.packages = with pkgs; [
     vdirsyncer
     todoman
   ];
-
 }

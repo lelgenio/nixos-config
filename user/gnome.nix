@@ -1,4 +1,10 @@
-{ pkgs, lib, inputs, ... }: lib.mkIf (pkgs.uservars.desktop == "gnome") {
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+lib.mkIf (pkgs.uservars.desktop == "gnome") {
 
   home.pointerCursor = {
     name = "Adwaita";
@@ -14,9 +20,7 @@
       cursor-theme = "Adwaita";
       # color-scheme = "default";
     };
-    "org/gnome/desktop/wm/preferences" = lib.mkForce {
-      button-layout = "appmenu:close";
-    };
+    "org/gnome/desktop/wm/preferences" = lib.mkForce { button-layout = "appmenu:close"; };
     "org/gnome/desktop/input-sources" = {
       xkb-options = [ "lv3:lsgt_switch" ];
     };
@@ -40,7 +44,9 @@
     qt6Packages.qtstyleplugin-kvantum
   ];
 
-  home.sessionVariables = { QT_QPA_PLATFORMTHEME = "qt5ct"; };
+  home.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+  };
 
   xdg.defaultApplications = {
     enable = true;

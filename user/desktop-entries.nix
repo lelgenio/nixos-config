@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   xdg.desktopEntries = {
     kak = {
       name = "Kakoune";
@@ -8,7 +14,10 @@
       terminal = true;
       type = "Application";
       icon = "kak.desktop";
-      categories = [ "Utility" "TextEditor" ];
+      categories = [
+        "Utility"
+        "TextEditor"
+      ];
       startupNotify = true;
       mimeType = [
         "text/english"
@@ -40,10 +49,15 @@
       terminal = true;
       type = "Application";
       icon = "mutt";
-      categories = [ "Network" "Email" ];
+      categories = [
+        "Network"
+        "Email"
+      ];
       startupNotify = false;
       mimeType = [ "x-scheme-handler/mailto" ];
-      settings = { Keywords = "Mail;E-mail;"; };
+      settings = {
+        Keywords = "Mail;E-mail;";
+      };
     };
     down_meme = {
       name = "DownMeme";

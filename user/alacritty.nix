@@ -1,6 +1,16 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
-  inherit (pkgs.uservars) key theme accent font;
+  inherit (pkgs.uservars)
+    key
+    theme
+    accent
+    font
+    ;
   inherit (theme) color;
 in
 {
@@ -10,7 +20,9 @@ in
       settings = {
         font = {
           size = font.size.small;
-          normal = { family = font.mono; };
+          normal = {
+            family = font.mono;
+          };
         };
         colors = {
           primary = {
@@ -40,31 +52,34 @@ in
 
         hints = {
           alphabet = key.hints;
-          enabled = [{
-            regex =
-              let
-                mimes =
-                  "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)";
-                # I fucking hate regex, look at this bullshit
-                delimiters = ''^\\u0000-\\u001F\\u007F-\\u009F<>"\\s{-}\\^⟨⟩`'';
-                # Kakoune uses these characters to represent whitespace,
-                # but alacritty doesn't know about them
-                whitespace_characters = ''¬·→'';
-              in
-              "${mimes}[${delimiters}${whitespace_characters}]+";
-            command = "xdg-open";
-            post_processing = true;
-            mouse = {
-              enabled = true;
-              mods = "None";
-            };
-            binding = {
-              key = "U";
-              mods = "Control|Shift";
-            };
-          }];
+          enabled = [
+            {
+              regex =
+                let
+                  mimes = "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)";
+                  # I fucking hate regex, look at this bullshit
+                  delimiters = ''^\\u0000-\\u001F\\u007F-\\u009F<>"\\s{-}\\^⟨⟩`'';
+                  # Kakoune uses these characters to represent whitespace,
+                  # but alacritty doesn't know about them
+                  whitespace_characters = ''¬·→'';
+                in
+                "${mimes}[${delimiters}${whitespace_characters}]+";
+              command = "xdg-open";
+              post_processing = true;
+              mouse = {
+                enabled = true;
+                mods = "None";
+              };
+              binding = {
+                key = "U";
+                mods = "Control|Shift";
+              };
+            }
+          ];
         };
-        mouse = { hide_when_typing = true; };
+        mouse = {
+          hide_when_typing = true;
+        };
         keyboard.bindings = [
           {
             key = lib.toUpper key.up;
@@ -141,7 +156,9 @@ in
       };
     };
 
-    home.sessionVariables = { TERMINAL = "alacritty"; };
+    home.sessionVariables = {
+      TERMINAL = "alacritty";
+    };
 
     # Look at this fucking bullshit:
     # https://gitlab.gnome.org/GNOME/glib/-/blob/20c4fcb2a7246a2b205649eae3ebda4296217afc/gio/gdesktopappinfo.c#L2702

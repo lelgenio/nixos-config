@@ -1,4 +1,11 @@
-{ config, pkgs, lib, inputs, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
   console = {
     font = "${pkgs.terminus_font}/share/consolefonts/ter-120n.psf.gz";
     packages = [ pkgs.terminus_font ];
@@ -38,9 +45,7 @@
       enable = true;
       theme = lib.mkIf (pkgs.uservars.desktop == "sway") "red_loader";
       themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "red_loader" ];
-        })
+        (adi1090x-plymouth-themes.override { selected_themes = [ "red_loader" ]; })
       ];
     };
   };

@@ -1,6 +1,21 @@
-{ config, pkgs, lib, ... }:
-let inherit (pkgs.uservars) key theme color accent font editor desktop;
-in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  inherit (pkgs.uservars)
+    key
+    theme
+    color
+    accent
+    font
+    editor
+    desktop
+    ;
+in
+{
   config = {
     programs.fish = {
       enable = true;
@@ -34,10 +49,12 @@ in {
       };
       shellAbbrs = {
         off = "shutdown now";
-        v = {
-          "helix" = "hx";
-          "kakoune" = "kak";
-        }.${editor};
+        v =
+          {
+            "helix" = "hx";
+            "kakoune" = "kak";
+          }
+          .${editor};
         ns = "nix develop --command $SHELL";
         wcf = "wl-copy-file";
         c = "cargo";
@@ -64,7 +81,9 @@ in {
         gr = "cd (git root)";
         gri = "git rebase --interactive FETCH_HEAD";
       };
-      functions = { fish_greeting = ""; };
+      functions = {
+        fish_greeting = "";
+      };
     };
     programs = {
       zoxide.enable = true;
@@ -85,13 +104,18 @@ in {
     };
     # programs.command-not-found.enable = true;
     programs.nix-index.enable = true;
-    home.packages = (with pkgs; with fishPlugins;[
-      trash-cli
-      wl-copy-file
-      foreign-env
-    ] ++ (lib.optionals (desktop == "sway") [
-      async-prompt
-      done
-    ]));
+    home.packages = (
+      with pkgs;
+      with fishPlugins;
+      [
+        trash-cli
+        wl-copy-file
+        foreign-env
+      ]
+      ++ (lib.optionals (desktop == "sway") [
+        async-prompt
+        done
+      ])
+    );
   };
 }

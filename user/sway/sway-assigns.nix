@@ -1,20 +1,18 @@
 { config, pkgs, ... }:
 let
-  # inherit (pkgs.uservars) key accent font theme;
-  # inherit (theme) color;
-  # inherit (pkgs) lib;
-
-  # mod = "Mod4";
-  # menu = "wlauncher";
-  # terminal = "alacritty";
-
-  # locked_binds =
-  #   lib.mapAttrs' (k: v: lib.nameValuePair "--locked ${k}" v);
-  # code_binds =
-  #   lib.mapAttrs' (k: v: lib.nameValuePair "--to-code ${k}" v);
-  # return_mode = lib.mapAttrs (k: v: "${v}; mode default");
-  # playerctl = "exec ${pkgs.playerctl}/bin/playerctl";
 in
+# inherit (pkgs.uservars) key accent font theme;
+# inherit (theme) color;
+# inherit (pkgs) lib;
+# mod = "Mod4";
+# menu = "wlauncher";
+# terminal = "alacritty";
+# locked_binds =
+#   lib.mapAttrs' (k: v: lib.nameValuePair "--locked ${k}" v);
+# code_binds =
+#   lib.mapAttrs' (k: v: lib.nameValuePair "--to-code ${k}" v);
+# return_mode = lib.mapAttrs (k: v: "${v}; mode default");
+# playerctl = "exec ${pkgs.playerctl}/bin/playerctl";
 {
   wayland.windowManager.sway.config = {
     assigns = {

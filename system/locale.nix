@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   time.timeZone = "America/Sao_Paulo";
   environment.variables.TZ = config.time.timeZone;
   i18n.defaultLocale = "pt_BR.utf8";

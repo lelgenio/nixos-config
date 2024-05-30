@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (pkgs.callPackage ./gitlab-runner.nix { }) mkNixRunner;
 in
@@ -15,7 +20,8 @@ in
       #   dockerPrivileged = true;
       # };
       thoreb_builder = {
-        registrationConfigFile = config.age.secrets.rainbow-gitlab-runner-thoreb-itinerario-registrationConfigFile.path;
+        registrationConfigFile =
+          config.age.secrets.rainbow-gitlab-runner-thoreb-itinerario-registrationConfigFile.path;
         dockerImage = "debian";
         dockerPrivileged = true;
       };

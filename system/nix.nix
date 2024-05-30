@@ -1,7 +1,13 @@
-{ lib, config, pkgs, inputs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
-  collectFlakeInputs = input:
-    [ input ] ++ lib.concatMap collectFlakeInputs (builtins.attrValues (input.inputs or { }));
+  collectFlakeInputs =
+    input: [ input ] ++ lib.concatMap collectFlakeInputs (builtins.attrValues (input.inputs or { }));
 in
 {
   system.extraDependencies = collectFlakeInputs inputs.self;
@@ -17,7 +23,10 @@ in
     optimise.automatic = true;
     settings = {
       auto-optimise-store = true;
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"

@@ -1,6 +1,17 @@
-{ config, pkgs, lib, font, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  font,
+  ...
+}:
 let
-  inherit (pkgs.uservars) key theme accent font;
+  inherit (pkgs.uservars)
+    key
+    theme
+    accent
+    font
+    ;
   inherit (theme) color;
 in
 {
@@ -42,14 +53,15 @@ in
           };
 
           "#window" = {
-            background-color = mkLiteral
-              "${color.bg}${lib.toHexString (theme.opacity * 255 / 100)}";
+            background-color = mkLiteral "${color.bg}${lib.toHexString (theme.opacity * 255 / 100)}";
             # children = map mkLiteral [ "prompt" "entry" ];
             border = mkLiteral "2px solid";
             border-color = mkLiteral accent.color;
             padding = 0;
           };
-          "#inputbar" = { margin = mkLiteral "10px"; };
+          "#inputbar" = {
+            margin = mkLiteral "10px";
+          };
           "#listview" = {
             # fixed-height=0;
             border = mkLiteral "2px solid 0px 0px";
@@ -78,9 +90,7 @@ in
             margin-right = mkLiteral "20px";
             size = 24;
           };
-
         };
-
     };
   };
 }

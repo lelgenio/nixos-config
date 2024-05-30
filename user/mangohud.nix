@@ -1,6 +1,20 @@
-{ config, pkgs, lib, font, ... }:
-let inherit (pkgs.uservars) key theme color accent font;
-in {
+{
+  config,
+  pkgs,
+  lib,
+  font,
+  ...
+}:
+let
+  inherit (pkgs.uservars)
+    key
+    theme
+    color
+    accent
+    font
+    ;
+in
+{
   config = {
     programs.mangohud = {
       enable = true;

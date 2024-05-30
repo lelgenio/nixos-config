@@ -1,4 +1,9 @@
-{ pkgs, lib, color, accent }:
+{
+  pkgs,
+  lib,
+  color,
+  accent,
+}:
 let
   colors = lib.mapAttrs (_: lib.replaceStrings [ "#" ] [ "rgb:" ]) {
     accent_fg = accent.fg;
@@ -94,8 +99,9 @@ with colors;
   face global InlayHint ${bg_light}+buif
 
   # Lsp
-'' + (
-  lib.concatStringsSep "\n" (lib.mapAttrsToList
+''
++ (lib.concatStringsSep "\n" (
+  lib.mapAttrsToList
     (name: color: ''
       face global HighlightDiagnostic${name} ${color},default+bu
       face global Diagnostic${name} ${color},default+bu
@@ -106,6 +112,5 @@ with colors;
       Error = "red";
       Warning = "yellow";
       Hint = "blue";
-    })
-)
-
+    }
+))

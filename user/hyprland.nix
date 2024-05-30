@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   config = lib.mkIf (pkgs.uservars.desktop == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = false;
@@ -122,6 +128,9 @@
       '';
     };
     home.file.".config/eww".source = ./eww;
-    home.packages = with pkgs; [ eww-wayland jq ];
+    home.packages = with pkgs; [
+      eww-wayland
+      jq
+    ];
   };
 }

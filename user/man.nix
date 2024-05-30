@@ -1,5 +1,20 @@
-{ config, pkgs, lib, inputs, ... }:
-let inherit (pkgs.uservars) key theme color accent font desktop editor;
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+let
+  inherit (pkgs.uservars)
+    key
+    theme
+    color
+    accent
+    font
+    desktop
+    editor
+    ;
   pagers = rec {
     kak = kakoune;
     kakoune = {

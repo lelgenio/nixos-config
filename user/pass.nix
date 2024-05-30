@@ -1,10 +1,15 @@
-{ config, pkgs, lib, inputs, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
   config = {
     programs.password-store = {
       enable = true;
-      package = pkgs.pass.withExtensions (ex: with ex; [
-        pass-otp
-      ]);
+      package = pkgs.pass.withExtensions (ex: with ex; [ pass-otp ]);
     };
     services = {
       pass-secret-service.enable = true;

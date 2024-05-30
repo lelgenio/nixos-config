@@ -1,8 +1,21 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
-  inherit (pkgs.uservars) key theme color accent font;
+  inherit (pkgs.uservars)
+    key
+    theme
+    color
+    accent
+    font
+    ;
 
-  make_direction_binds = lib.imap0 (idx: direction:
+  make_direction_binds = lib.imap0 (
+    idx: direction:
     let
       sign = if (idx < 2) then 1 else -1;
       axis = if ((lib.mod idx 2) != 0) then "y" else "x";
@@ -15,8 +28,8 @@ let
           montage_mode_shift_${axis}(${toString (sign * -1)})
         }
       }
-    '');
-
+    ''
+  );
 in
 {
   # My bemenu wrapper
@@ -45,7 +58,12 @@ in
       <Left> { goto_file_relative(-1) }
       <Right> { goto_file_relative(1); }
 
-      ${lib.concatStrings (make_direction_binds [ "left" "up" "right" "down" ])}
+      ${lib.concatStrings (make_direction_binds [
+        "left"
+        "up"
+        "right"
+        "down"
+      ])}
 
       ${key.tabL} { goto_file_relative(-1) }
       ${key.tabR} { goto_file_relative(1); }
@@ -54,10 +72,7 @@ in
       d { send_keys(6) }
       y { send_keys(8) }
 
-      ${if (key.layout == "colemak") then
-        "\n            t { toggle_scale_mode(0) }\n          "
-      else
-        ""}
+      ${if (key.layout == "colemak") then "\n            t { toggle_scale_mode(0) }\n          " else ""}
 
       # vim: ft=ini
     '';

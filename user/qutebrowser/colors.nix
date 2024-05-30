@@ -1,6 +1,18 @@
-{ config, pkgs, lib, font, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  font,
+  ...
+}:
 let
-  inherit (pkgs.uservars) key theme accent font browser;
+  inherit (pkgs.uservars)
+    key
+    theme
+    accent
+    font
+    browser
+    ;
   inherit (theme) color;
 in
 {
@@ -38,9 +50,12 @@ in
           };
         in
         {
-          bar = { bg = color.bg; };
+          bar = {
+            bg = color.bg;
+          };
           pinned = tabs_defaults;
-        } // tabs_defaults;
+        }
+        // tabs_defaults;
 
       ########################################################
       # Completion for urls and commands
@@ -48,10 +63,18 @@ in
 
       completion = {
         fg = color.txt;
-        even = { bg = color.bg; };
-        odd = { bg = color.bg; };
-        scrollbar = { bg = color.bg_dark; };
-        match = { fg = accent.color; };
+        even = {
+          bg = color.bg;
+        };
+        odd = {
+          bg = color.bg;
+        };
+        scrollbar = {
+          bg = color.bg_dark;
+        };
+        match = {
+          fg = accent.color;
+        };
         category = {
           fg = color.txt;
           bg = color.bg_dark;
@@ -68,7 +91,9 @@ in
               top = color.bg_dark;
               bottom = color.bg_dark;
             };
-            match = { fg = color.txt; };
+            match = {
+              fg = color.txt;
+            };
           };
         };
       };
@@ -102,10 +127,16 @@ in
         };
         url = {
           success = {
-            https = { fg = color.txt; };
-            http = { fg = color.normal.red; };
+            https = {
+              fg = color.txt;
+            };
+            http = {
+              fg = color.normal.red;
+            };
           };
-          hover = { fg = color.normal.cyan; };
+          hover = {
+            fg = color.normal.cyan;
+          };
         };
       };
       ########################################################
@@ -113,9 +144,15 @@ in
       ########################################################
 
       downloads = {
-        start = { bg = color.normal.blue; };
-        stop = { bg = color.normal.green; };
-        bar = { bg = color.bg; };
+        start = {
+          bg = color.normal.blue;
+        };
+        stop = {
+          bg = color.normal.green;
+        };
+        bar = {
+          bg = color.bg;
+        };
       };
 
       ########################################################
@@ -125,7 +162,9 @@ in
       hints = {
         fg = color.txt;
         bg = color.bg;
-        match = { fg = accent.color; };
+        match = {
+          fg = accent.color;
+        };
       };
 
       ########################################################
@@ -135,7 +174,9 @@ in
       keyhint = {
         fg = color.txt;
         bg = color.bg;
-        suffix = { fg = accent.color; };
+        suffix = {
+          fg = accent.color;
+        };
       };
 
       ########################################################
@@ -151,7 +192,9 @@ in
           fg = accent.fg;
           bg = accent.color;
         };
-        disabled = { fg = color.bg_light; };
+        disabled = {
+          fg = color.bg_light;
+        };
       };
 
       ########################################################
@@ -216,4 +259,3 @@ in
     '';
   };
 }
-

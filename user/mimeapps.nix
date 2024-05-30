@@ -1,4 +1,10 @@
-{ config, pkgs, lib, font, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  font,
+  ...
+}:
 let
   inherit (pkgs.uservars) browser;
   cfg = config.xdg.defaultApplications;
@@ -26,20 +32,21 @@ in
     xdg.mimeApps =
       let
 
-        createMimeAssociation = (mime_prefix: application: mime_suffix: {
-          "${mime_prefix}/${mime_suffix}" = application;
-        });
+        createMimeAssociation = (
+          mime_prefix: application: mime_suffix: { "${mime_prefix}/${mime_suffix}" = application; }
+        );
 
-        createMimeAssociations = (mime_prefix: application: mime_suffixes:
-          lib.foldAttrs (n: _: n) { }
-            (map (createMimeAssociation mime_prefix application) mime_suffixes));
+        createMimeAssociations = (
+          mime_prefix: application: mime_suffixes:
+          lib.foldAttrs (n: _: n) { } (map (createMimeAssociation mime_prefix application) mime_suffixes)
+        );
 
-        mimes = simple
+        mimes =
+          simple
           // (createMimeAssociations "text" cfg.text-editor text_suffixes)
           // (createMimeAssociations "image" cfg.image-viewer image_suffixes)
           // (createMimeAssociations "video" cfg.video-player video_suffixes)
-          // (createMimeAssociations "application" cfg.archive-manager archive-suffixes)
-        ;
+          // (createMimeAssociations "application" cfg.archive-manager archive-suffixes);
 
         simple = {
           "inode/directory" = cfg.file-manager;
@@ -421,7 +428,6 @@ in
           "x-theora+ogg"
         ];
 
-
         archive-suffixes = [
           "bzip2"
           "gzip"
@@ -487,6 +493,5 @@ in
         enable = true;
         defaultApplications = mimes;
       };
-
   };
 }

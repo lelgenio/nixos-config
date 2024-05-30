@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
@@ -12,17 +18,15 @@
   services.tumbler.enable = true;
 
   environment.systemPackages = [
-    (
-      pkgs.writeTextFile {
-        name = "thumbs";
-        text = ''
-          [Thumbnailer Entry]
-          TryExec=unzip
-          Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
-          MimeType=application/x-krita;
-        '';
-        destination = "/share/thumbnailers/kra.thumbnailer";
-      }
-    )
+    (pkgs.writeTextFile {
+      name = "thumbs";
+      text = ''
+        [Thumbnailer Entry]
+        TryExec=unzip
+        Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
+        MimeType=application/x-krita;
+      '';
+      destination = "/share/thumbnailers/kra.thumbnailer";
+    })
   ];
 }

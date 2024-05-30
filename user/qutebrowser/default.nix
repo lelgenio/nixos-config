@@ -1,4 +1,10 @@
-{ config, pkgs, lib, font, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  font,
+  ...
+}:
 let
   inherit (pkgs.uservars) key browser editor;
 in
@@ -59,7 +65,6 @@ in
 
           "${key.insertMode}" = "mode-enter insert";
         };
-
       };
       settings = {
         tabs.tree_tabs = true;
@@ -78,7 +83,8 @@ in
           {
             kakoune = "kak";
             helix = "hx";
-          }.${editor}
+          }
+          .${editor}
           "{file}"
           "+{line}"
         ];
@@ -112,7 +118,9 @@ in
           ExecStart = "${pkgs.qutebrowser}/bin/qutebrowser";
           Restart = "on-failure";
         };
-        Install = { WantedBy = [ "sway-session.target" ]; };
+        Install = {
+          WantedBy = [ "sway-session.target" ];
+        };
       };
     };
     home.file = {
@@ -149,4 +157,3 @@ in
     };
   };
 }
-

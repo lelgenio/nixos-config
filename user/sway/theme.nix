@@ -1,38 +1,53 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
   inherit (pkgs.uservars) theme font desktop;
-  inherit (theme) color gtk_theme icon_theme cursor_theme;
+  inherit (theme)
+    color
+    gtk_theme
+    icon_theme
+    cursor_theme
+    ;
 in
-lib.mkIf (desktop == "sway")
-{
+lib.mkIf (desktop == "sway") {
   home.pointerCursor = {
     name = cursor_theme;
     size = 24;
     package = pkgs.bibata-cursors;
     gtk.enable = true;
   };
-  gtk = {
-    enable = true;
-    font = {
-      name = font.interface;
-      size = font.size.small;
-    };
-    theme = {
-      name = gtk_theme;
-      package = pkgs.orchis_theme_compact;
-    };
-    iconTheme = {
-      name = icon_theme;
-      package = pkgs.papirus_red;
-    };
-  } // (
-    let
-      shared.extraConfig = {
-        gtk-decoration-layout = "menu:";
+  gtk =
+    {
+      enable = true;
+      font = {
+        name = font.interface;
+        size = font.size.small;
       };
-    in
-    { gtk4 = shared; gtk3 = shared; }
-  );
+      theme = {
+        name = gtk_theme;
+        package = pkgs.orchis_theme_compact;
+      };
+      iconTheme = {
+        name = icon_theme;
+        package = pkgs.papirus_red;
+      };
+    }
+    // (
+      let
+        shared.extraConfig = {
+          gtk-decoration-layout = "menu:";
+        };
+      in
+      {
+        gtk4 = shared;
+        gtk3 = shared;
+      }
+    );
   qt = {
     enable = true;
     platformTheme.name = "qtct";

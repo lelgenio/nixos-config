@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   config = {
     services.gpg-agent = {
       enable = true;
@@ -16,7 +22,9 @@
           PartOf = [ "graphical-session.target" ];
           After = [ "graphical-session.target" ];
         };
-        Service = { ExecStart = "${pkgs._gpg-unlock}/bin/_gpg-unlock"; };
+        Service = {
+          ExecStart = "${pkgs._gpg-unlock}/bin/_gpg-unlock";
+        };
       };
     };
     systemd.user.timers = {
@@ -31,9 +39,10 @@
           OnUnitActiveSec = "300";
           Unit = "gpg_unlock.service";
         };
-        Install = { WantedBy = [ "sway-session.target" ]; };
+        Install = {
+          WantedBy = [ "sway-session.target" ];
+        };
       };
     };
-
   };
 }

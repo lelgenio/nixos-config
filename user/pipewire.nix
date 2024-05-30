@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   # RNNoise is a noise supperssion neural network
   # Here we use it as a plugin for pipewire to create a virtual microphone
   config = {

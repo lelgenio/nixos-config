@@ -1,4 +1,12 @@
-{ config, pkgs, lib, inputs, osConfig, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  osConfig,
+  ...
+}:
+{
   imports = [
     ./controller.nix
     ./waybar
@@ -70,9 +78,7 @@
     comma
 
     # System monitors
-    (btop.override {
-      cudaSupport = true;
-    })
+    (btop.override { cudaSupport = true; })
     amdgpu_top
     inxi
     dmidecode
@@ -140,10 +146,11 @@
     };
   };
   home.sessionVariables = {
-    VOLUME_CHANGE_SOUND =
-      "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
+    VOLUME_CHANGE_SOUND = "${pkgs.sound-theme-freedesktop}/share/sounds/freedesktop/stereo/audio-volume-change.oga";
   };
-  programs.bash = { enable = true; };
+  programs.bash = {
+    enable = true;
+  };
 
   xdg.defaultApplications = {
     enable = true;
@@ -154,7 +161,8 @@
       {
         firefox = lib.mkDefault "firefox.desktop";
         qutebrowser = lib.mkDefault "org.qutebrowser.qutebrowser.desktop";
-      }.${pkgs.uservars.browser}
+      }
+      .${pkgs.uservars.browser}
     );
     document-viewer = lib.mkDefault "org.pwmt.zathura.desktop";
     file-manager = lib.mkDefault "thunar.desktop";
@@ -163,12 +171,14 @@
     torrent-client = lib.mkDefault "torrent.desktop";
   };
 
-  wayland.windowManager.sway.extraConfig = lib.optionalString (osConfig.networking.hostName or "" == "monolith") ''
-    exec steam
-    exec obs --startreplaybuffer --disable-shutdown-check
-    exec deluge-gtk
-    exec nicotine
-  '';
+  wayland.windowManager.sway.extraConfig =
+    lib.optionalString (osConfig.networking.hostName or "" == "monolith")
+      ''
+        exec steam
+        exec obs --startreplaybuffer --disable-shutdown-check
+        exec deluge-gtk
+        exec nicotine
+      '';
 
   systemd.user.services.rm-target = {
     Unit = {
@@ -182,12 +192,16 @@
     };
   };
   systemd.user.timers.rm-target = {
-    Unit = { Description = "Remove directories named 'target'"; };
+    Unit = {
+      Description = "Remove directories named 'target'";
+    };
     Timer = {
       OnCalendar = "weekly";
       Unit = "rm-target.service";
     };
-    Install = { WantedBy = [ "timers.target" ]; };
+    Install = {
+      WantedBy = [ "timers.target" ];
+    };
   };
 
   # This value determines the Home Manager release that your

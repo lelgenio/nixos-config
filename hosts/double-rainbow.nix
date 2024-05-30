@@ -1,13 +1,32 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 let
-  btrfs_options = [ "compress=zstd:3" "noatime" "x-systemd.device-timeout=0" ];
-  btrfs_ssd = [ "ssd" "discard=async" ];
+  btrfs_options = [
+    "compress=zstd:3"
+    "noatime"
+    "x-systemd.device-timeout=0"
+  ];
+  btrfs_ssd = [
+    "ssd"
+    "discard=async"
+  ];
 in
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+  ];
   boot.initrd.kernelModules = [ "i915" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -18,8 +37,7 @@ in
     options = [ "subvol=@" ] ++ btrfs_options ++ btrfs_ssd;
   };
 
-  boot.initrd.luks.devices."luks-d6573cf8-25f0-4ffc-8046-ac3a4db1e964".device =
-    "/dev/disk/by-uuid/d6573cf8-25f0-4ffc-8046-ac3a4db1e964";
+  boot.initrd.luks.devices."luks-d6573cf8-25f0-4ffc-8046-ac3a4db1e964".device = "/dev/disk/by-uuid/d6573cf8-25f0-4ffc-8046-ac3a4db1e964";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/97EB-7DB5";
@@ -37,8 +55,7 @@ in
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
-  hardware.cpu.intel.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   networking.hostName = "double-rainbow"; # Define your hostname.
 }

@@ -11,9 +11,7 @@ pkgs.stdenv.mkDerivation rec {
     wrapGAppsHook
   ];
 
-  makeFlags = [
-    "PRG=${pname}"
-  ];
+  makeFlags = [ "PRG=${pname}" ];
 
   installPhase = ''
     install -Dm 755 "$pname" "$out/bin/$pname"
@@ -21,4 +19,3 @@ pkgs.stdenv.mkDerivation rec {
     glib-compile-schemas "$out/share/glib-2.0/schemas/"
   '';
 }
-
