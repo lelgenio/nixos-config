@@ -128,7 +128,7 @@
     rust-analyzer # rust analyzer
 
     blade-formatter
-    nixpkgs-fmt
+    nixfmt-rfc-style
   ];
 
   fonts.fontconfig.enable = true;
