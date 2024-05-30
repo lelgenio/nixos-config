@@ -12,7 +12,7 @@ hook global WinSetOption filetype=c %{
 }
 
 hook global WinSetOption filetype=nix %{
-    set buffer formatcmd 'nixpkgs-fmt'
+    set buffer formatcmd 'nixfmt'
 }
 
 hook global BufCreate .*\.html %{
