@@ -1,6 +1,16 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
-  inherit (pkgs.uservars) key accent font theme;
+  inherit (pkgs.uservars)
+    key
+    accent
+    font
+    theme
+    ;
   inherit (theme) color;
 in
 {
@@ -42,7 +52,13 @@ in
             bg_color = color.bg_dark;
             alert = "#000000";
             client = border: background: text: indicator: childBorder: {
-              inherit border background text indicator childBorder;
+              inherit
+                border
+                background
+                text
+                indicator
+                childBorder
+                ;
             };
           in
           {
@@ -79,9 +95,7 @@ in
         };
         # setup cursor based on home.pointerCursor
         seat."*" = {
-          xcursor_theme = "${config.home.pointerCursor.name} ${
-              toString config.home.pointerCursor.size
-            }";
+          xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
           hide_cursor = "when-typing enable";
         };
       };
@@ -132,7 +146,10 @@ in
       grim
       swappy
       (tesseract5.override {
-        enableLanguages = [ "eng" "por" ];
+        enableLanguages = [
+          "eng"
+          "por"
+        ];
       })
     ];
   };

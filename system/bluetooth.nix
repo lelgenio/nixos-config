@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
@@ -8,7 +9,9 @@
         # Discoverable = true;
         AlwaysPairable = true;
       };
-      Policy = { AutoEnable = true; };
+      Policy = {
+        AutoEnable = true;
+      };
     };
   };
 }

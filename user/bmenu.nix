@@ -1,6 +1,17 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 let
-  inherit (pkgs.uservars) key theme accent font;
+  inherit (pkgs.uservars)
+    key
+    theme
+    accent
+    font
+    ;
   inherit (theme) color;
 in
 {

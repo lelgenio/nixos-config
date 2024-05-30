@@ -74,7 +74,9 @@ in
           g.n = "goto_line_start";
           g.o = "goto_line_end";
         };
-        keys.insert = { "A-k" = "normal_mode"; };
+        keys.insert = {
+          "A-k" = "normal_mode";
+        };
       };
       languages.language = [
         {
@@ -96,14 +98,29 @@ in
         my-theme = {
           "inherits" = "gruvbox";
           "ui.menu" = "none";
-          "ui.background" = { bg = "none"; };
+          "ui.background" = {
+            bg = "none";
+          };
           "ui.virtual.whitespace" = color.nontxt;
-          "ui.cursor.primary" = { fg = accent.fg; bg = accent.color; };
-          "ui.cursorline.primary" = { bg = color.bg_dark; };
-          "ui.cursorcolumn.primary" = { modifiers = [ "bold" ]; };
-          "ui.cursorline" = { bg = "none"; };
-          "ui.cursorcolumn" = { bg = "none"; };
-          "ui.linenr.selected" = { fg = color.txt; };
+          "ui.cursor.primary" = {
+            fg = accent.fg;
+            bg = accent.color;
+          };
+          "ui.cursorline.primary" = {
+            bg = color.bg_dark;
+          };
+          "ui.cursorcolumn.primary" = {
+            modifiers = [ "bold" ];
+          };
+          "ui.cursorline" = {
+            bg = "none";
+          };
+          "ui.cursorcolumn" = {
+            bg = "none";
+          };
+          "ui.linenr.selected" = {
+            fg = color.txt;
+          };
 
           function = color.normal.orange;
           module = color.normal.brown;
@@ -124,8 +141,6 @@ in
         };
       };
     };
-    home.sessionVariables = lib.mkIf (editor == "helix") {
-      EDITOR = "hx";
-    };
+    home.sessionVariables = lib.mkIf (editor == "helix") { EDITOR = "hx"; };
   };
 }

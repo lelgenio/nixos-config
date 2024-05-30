@@ -1,4 +1,10 @@
-{ lib, pkgs, config, ... }: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
   config = lib.mkIf (pkgs.uservars.desktop != "gnome") {
     services.mpd = {
       enable = true;

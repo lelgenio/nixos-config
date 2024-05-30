@@ -1,63 +1,71 @@
-{ config, pkgs, lib, font, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  font,
+  ...
+}:
 let
   inherit (pkgs.uservars) theme;
   inherit (theme) color;
 
   # ".config/qutebrowser/greasemonkey/darkreader.js".text =
-  darkThemeUserscript = enabled: pkgs.writeText "darkreader.js" ''
-    // ==UserScript==
-    // @name          Dark Reader (Unofficial)
-    // @icon          https://darkreader.org/images/darkreader-icon-256x256.png
-    // @namespace     DarkReader
-    // @description	  Inverts the brightness of pages to reduce eye strain
-    // @version       4.7.15
-    // @author        https://github.com/darkreader/darkreader#contributors
-    // @homepageURL   https://darkreader.org/ | https://github.com/darkreader/darkreader
-    // @run-at        document-end
-    // @grant         none
-    // @include       http*
-    // @require       https://cdn.jsdelivr.net/npm/darkreader/darkreader.min.js
-    // @noframes
-    // ==/UserScript==
+  darkThemeUserscript =
+    enabled:
+    pkgs.writeText "darkreader.js" ''
+      // ==UserScript==
+      // @name          Dark Reader (Unofficial)
+      // @icon          https://darkreader.org/images/darkreader-icon-256x256.png
+      // @namespace     DarkReader
+      // @description	  Inverts the brightness of pages to reduce eye strain
+      // @version       4.7.15
+      // @author        https://github.com/darkreader/darkreader#contributors
+      // @homepageURL   https://darkreader.org/ | https://github.com/darkreader/darkreader
+      // @run-at        document-end
+      // @grant         none
+      // @include       http*
+      // @require       https://cdn.jsdelivr.net/npm/darkreader/darkreader.min.js
+      // @noframes
+      // ==/UserScript==
 
-    DarkReader.setFetchMethod(window.fetch)
+      DarkReader.setFetchMethod(window.fetch)
 
-    if (${if enabled then "false" else "true"}) {
-      DarkReader.disable();
-      return;
-    }
+      if (${if enabled then "false" else "true"}) {
+        DarkReader.disable();
+        return;
+      }
 
-    const ignore_list = [
-      "askubuntu.com",
-      "mathoverflow.com",
-      "mathoverflow.net",
-      "serverfault.com",
-      "stackapps.com",
-      "stackexchange.com",
-      "stackoverflow.com",
-      "superuser.com",
-      "hub.docker.com",
-    ];
+      const ignore_list = [
+        "askubuntu.com",
+        "mathoverflow.com",
+        "mathoverflow.net",
+        "serverfault.com",
+        "stackapps.com",
+        "stackexchange.com",
+        "stackoverflow.com",
+        "superuser.com",
+        "hub.docker.com",
+      ];
 
-    for (let item of ignore_list) {
-        if (window.location.origin.indexOf(item) >= 0) {
-            console.log("URL matched dark-mode ignore list");
-            return;
-        }
-    }
+      for (let item of ignore_list) {
+          if (window.location.origin.indexOf(item) >= 0) {
+              console.log("URL matched dark-mode ignore list");
+              return;
+          }
+      }
 
-    DarkReader.enable({
-      brightness: 100,
-      contrast: 100,
-      sepia: 0,
+      DarkReader.enable({
+        brightness: 100,
+        contrast: 100,
+        sepia: 0,
 
-      darkSchemeBackgroundColor: "${color.bg}",
-      darkSchemeTextColor: "${color.txt}",
+        darkSchemeBackgroundColor: "${color.bg}",
+        darkSchemeTextColor: "${color.txt}",
 
-      lightSchemeBackgroundColor: "${color.bg}",
-      lightSchemeTextColor: "${color.txt}",
-    });
-  '';
+        lightSchemeBackgroundColor: "${color.bg}",
+        lightSchemeTextColor: "${color.txt}",
+      });
+    '';
 in
 {
   programs.qutebrowser.keyBindings = {
@@ -87,4 +95,3 @@ in
     '';
   };
 }
-

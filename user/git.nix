@@ -1,6 +1,13 @@
-{ config, pkgs, lib, ... }:
-let inherit (pkgs.uservars) username mail;
-in {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+let
+  inherit (pkgs.uservars) username mail;
+in
+{
   config = {
     programs.git = {
       enable = true;

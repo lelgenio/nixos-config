@@ -1,10 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   specialisation.dark-theme.configuration = {
-    nixpkgs.overlays = [
-      (final: prev: {
-        uservars = prev.uservars;
-      })
-    ];
+    nixpkgs.overlays = [ (final: prev: { uservars = prev.uservars; }) ];
   };
   specialisation.light-theme.configuration = {
     nixpkgs.overlays = [

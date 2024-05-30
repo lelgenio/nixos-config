@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   services.writefreely = {
     enable = true;
     acme.enable = true;
@@ -22,4 +28,3 @@
     };
   };
 }
-

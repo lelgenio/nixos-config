@@ -1,4 +1,11 @@
-{ config, pkgs, lib, inputs, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
   xdg.configFile = {
     "ranger/rc.conf".source = ./rc.conf;
     "ranger/rifle.conf".source = ./rifle.conf;

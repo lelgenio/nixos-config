@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   services.cachix-watch-store = {
     enable = true;
     cacheName = "lelgenio";

@@ -1,11 +1,12 @@
-{ lib
-, mkYarnPackage
-, fetchFromGitHub
-, fetchYarnDeps
-, testers
-, writeText
-, runCommand
-, blade-formatter
+{
+  lib,
+  mkYarnPackage,
+  fetchFromGitHub,
+  fetchYarnDeps,
+  testers,
+  writeText,
+  runCommand,
+  blade-formatter,
 }:
 
 mkYarnPackage rec {
@@ -40,15 +41,17 @@ mkYarnPackage rec {
             Hello world!
         @endif
       '';
-      actual = runCommand "actual"
-        {
-          nativeBuildInputs = [ blade-formatter ];
-          base = writeText "base" ''
-            @if(   true )  Hello world!   @endif
+      actual =
+        runCommand "actual"
+          {
+            nativeBuildInputs = [ blade-formatter ];
+            base = writeText "base" ''
+              @if(   true )  Hello world!   @endif
+            '';
+          }
+          ''
+            blade-formatter $base > $out
           '';
-        } ''
-        blade-formatter $base > $out
-      '';
     };
   };
 

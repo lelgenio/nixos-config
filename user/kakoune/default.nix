@@ -1,6 +1,17 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
-  inherit (pkgs.uservars) key dmenu editor theme accent;
+  inherit (pkgs.uservars)
+    key
+    dmenu
+    editor
+    theme
+    accent
+    ;
   inherit (theme) color;
   inherit (pkgs) kakounePlugins;
   inherit (pkgs.kakouneUtils) buildKakounePlugin;
@@ -74,26 +85,39 @@ in
         })
       ];
       extraConfig =
-        lib.concatStringsSep "\n"
-          (map (lib.readFile) ([
-            ./filetypes.kak
-            ./hooks.kak
-            ./indent.kak
-            ./keys.kak
-            ./lsp-config.kak
-            ./usermode.kak
-            ./git-mode.kak
-          ] ++ lib.optional (dmenu == "rofi") ./rofi-commands.kak)) + ''
+        lib.concatStringsSep "\n" (
+          map (lib.readFile) (
+            [
+              ./filetypes.kak
+              ./hooks.kak
+              ./indent.kak
+              ./keys.kak
+              ./lsp-config.kak
+              ./usermode.kak
+              ./git-mode.kak
+            ]
+            ++ lib.optional (dmenu == "rofi") ./rofi-commands.kak
+          )
+        )
+        + ''
 
-        set global scrolloff 10,20
-        set global autoreload yes
-        set global startup_info_version 99999999
+          set global scrolloff 10,20
+          set global autoreload yes
+          set global startup_info_version 99999999
 
-      '' + (import ./colors.nix {
-          inherit pkgs lib color accent;
+        ''
+        + (import ./colors.nix {
+          inherit
+            pkgs
+            lib
+            color
+            accent
+            ;
         });
     };
-    home.file = { ".config/kak-lsp/kak-lsp.toml".source = ./kak-lsp.toml; };
+    home.file = {
+      ".config/kak-lsp/kak-lsp.toml".source = ./kak-lsp.toml;
+    };
     home.packages = with pkgs; [
       terminal
       ranger
@@ -123,4 +147,3 @@ in
     };
   };
 }
-

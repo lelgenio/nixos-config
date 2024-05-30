@@ -68,11 +68,14 @@
     nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";
     nix-software-center.url = "github:vlinkz/nix-software-center";
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     let
       nixpkgsConfig = {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
         overlays = old_overlays.all;
       };
 
@@ -85,32 +88,37 @@
 
       old_overlays = (import ./overlays { inherit packages inputs; });
 
-      specialArgs = { inherit inputs; };
-      common_modules = [
-        { nixpkgs.pkgs = pkgs; }
-        ./system/configuration.nix
-        ./system/secrets.nix
-        ./system/specialisation.nix
-        ./system/greetd.nix
-        { login-manager.greetd.enable = desktop == "sway" || desktop == "hyprland"; }
+      specialArgs = {
+        inherit inputs;
+      };
+      common_modules =
+        [
+          { nixpkgs.pkgs = pkgs; }
+          ./system/configuration.nix
+          ./system/secrets.nix
+          ./system/specialisation.nix
+          ./system/greetd.nix
+          { login-manager.greetd.enable = desktop == "sway" || desktop == "hyprland"; }
 
-        inputs.agenix.nixosModules.default
-        inputs.hyprland.nixosModules.default
-        inputs.dzgui-nix.nixosModules.default
-        { programs.hyprland.enable = (desktop == "hyprland"); }
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.lelgenio = import ./user/home.nix;
-          home-manager.backupFileExtension = "bkp";
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
-          home-manager.extraSpecialArgs = { inherit inputs; };
-        }
-      ]
-      ++ lib.optional (desktop == "gnome") ./system/gnome.nix
-      ++ lib.optional (desktop == "kde") ./system/kde.nix;
+          inputs.agenix.nixosModules.default
+          inputs.hyprland.nixosModules.default
+          inputs.dzgui-nix.nixosModules.default
+          { programs.hyprland.enable = (desktop == "hyprland"); }
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.lelgenio = import ./user/home.nix;
+            home-manager.backupFileExtension = "bkp";
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
+          }
+        ]
+        ++ lib.optional (desktop == "gnome") ./system/gnome.nix
+        ++ lib.optional (desktop == "kde") ./system/kde.nix;
     in
     {
       nixosConfigurations = {
@@ -144,11 +152,16 @@
         };
         pixie = lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./hosts/pixie.nix ] ++ common_modules ++ [{
-            packages.media-packages.enable = lib.mkOverride 0 false;
-            programs.steam.enable = lib.mkOverride 0 false;
-            services.flatpak.enable = lib.mkOverride 0 false;
-          }];
+          modules =
+            [ ./hosts/pixie.nix ]
+            ++ common_modules
+            ++ [
+              {
+                packages.media-packages.enable = lib.mkOverride 0 false;
+                programs.steam.enable = lib.mkOverride 0 false;
+                services.flatpak.enable = lib.mkOverride 0 false;
+              }
+            ];
         };
         phantom = lib.nixosSystem {
           inherit system specialArgs;

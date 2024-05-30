@@ -1,6 +1,17 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
-  inherit (pkgs.uservars) key accent font theme desktop;
+  inherit (pkgs.uservars)
+    key
+    accent
+    font
+    theme
+    desktop
+    ;
 
   cfg = config.login-manager.greetd;
 in

@@ -1,4 +1,10 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [
     ./vpsadminos.nix
     inputs.agenix.nixosModules.default
@@ -49,7 +55,12 @@
     enable = true;
     dates = "04:40";
     operation = "switch";
-    flags = [ "--update-input" "nixpkgs" "--no-write-lock-file" "-L" ];
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--no-write-lock-file"
+      "-L"
+    ];
     flake = "git+https://git.lelgenio.com/lelgenio/nixos-config#phantom";
   };
 
@@ -57,4 +68,3 @@
 
   system.stateVersion = "23.05"; # Never change this
 }
-

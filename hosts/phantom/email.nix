@@ -1,10 +1,14 @@
-{ pkgs, inputs, config, ... }: {
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
+{
   # It's important to let Digital Ocean set the hostname so we get rDNS to work
   networking.hostName = "";
 
-  imports = [
-    inputs.nixos-mailserver.nixosModules.mailserver
-  ];
+  imports = [ inputs.nixos-mailserver.nixosModules.mailserver ];
 
   mailserver = {
     enable = true;
@@ -22,7 +26,11 @@
     loginAccounts = {
       "lelgenio@lelgenio.com" = {
         hashedPassword = "$2y$05$z5s7QCXcs5uTFsfyYpwNJeWzb3RmzgWxNgcPCr0zjSytkLFF/qZmS";
-        aliases = [ "postmaster@lelgenio.com" "lelgenio@lelgenio.xyz" "lelgenio@lelgenio.xyz" ];
+        aliases = [
+          "postmaster@lelgenio.com"
+          "lelgenio@lelgenio.xyz"
+          "lelgenio@lelgenio.xyz"
+        ];
       };
       "noreply@git.lelgenio.com" = {
         hashedPassword = "$2b$05$TmR1R7ZwXfec7yrOfeBL7u3ZtyXf0up5dEO6uMWSvb/O7LPEm.j0.";
@@ -50,5 +58,4 @@
       $config['plugins'] = [ "carddav", "archive" ];
     '';
   };
-
 }
