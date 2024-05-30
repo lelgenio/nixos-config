@@ -182,6 +182,6 @@
 
       packages.${system} = pkgs // packages;
 
-      formatter.${system} = pkgs.nixpkgs-fmt;
+      formatter.${system} = pkgs.nixfmt-rfc-style;
     };
 }
