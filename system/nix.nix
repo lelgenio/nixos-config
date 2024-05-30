@@ -11,8 +11,8 @@ in
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     gc = {
       automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 3d";
+      dates = "weekly";
+      options = "--delete-older-than 7d";
     };
     optimise.automatic = true;
     settings = {
