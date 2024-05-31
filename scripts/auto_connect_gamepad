@@ -1,0 +1,26 @@
+#!/bin/sh
+
+list_paired_controllers() {
+    bluetoothctl devices Paired | grep -i 'controller' | cut -d' ' -f2
+}
+
+count_connected_controllers() {
+    bluetoothctl devices Connected | grep -i 'controller' | wc -l
+}
+
+try_to_connect_to_all_controllers() {
+    list_paired_controllers | while read paired_controller; do
+        echo "Trying to connect to controller $paired_controller"
+        bluetoothctl connect "$paired_controller"
+    done
+}
+
+while true; do
+    echo "looping"
+    if test "$(count_connected_controllers)" -ne 0 ; then
+        echo "there is a controller connected, not attempting to connect to any other"
+        sleep 10s
+        continue
+    fi
+    try_to_connect_to_all_controllers
+done
