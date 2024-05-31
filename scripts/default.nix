@@ -125,6 +125,7 @@
       zbar
       wl-clipboard
     ];
+    auto_connect_gamepad = [ bluez ];
   }
   // lib.mapAttrs import_script {
     wdmenu = ./wdmenu.nix;
