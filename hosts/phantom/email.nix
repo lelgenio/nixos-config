@@ -22,11 +22,7 @@
     loginAccounts = {
       "lelgenio@lelgenio.com" = {
         hashedPassword = "$2y$05$z5s7QCXcs5uTFsfyYpwNJeWzb3RmzgWxNgcPCr0zjSytkLFF/qZmS";
-        aliases = [ "postmaster@lelgenio.com" ];
-      };
-      "lelgenio@lelgenio.xyz" = {
-        hashedPassword = "$2y$05$z5s7QCXcs5uTFsfyYpwNJeWzb3RmzgWxNgcPCr0zjSytkLFF/qZmS";
-        aliases = [ "postmaster@lelgenio.xyz" ];
+        aliases = [ "postmaster@lelgenio.com" "lelgenio@lelgenio.xyz" "lelgenio@lelgenio.xyz" ];
       };
       "noreply@git.lelgenio.com" = {
         hashedPassword = "$2b$05$TmR1R7ZwXfec7yrOfeBL7u3ZtyXf0up5dEO6uMWSvb/O7LPEm.j0.";
