@@ -166,10 +166,13 @@ in
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "monolith"; # Define your hostname.
 
-  # Fix broken suspend with Logitech USB dongle
-  # `lsusb | grep Logitech` will return "vendor:product"
   services.udev.extraRules = ''
+    # Fix broken suspend with Logitech USB dongle
+    # `lsusb | grep Logitech` will return "vendor:product"
     ACTION=="add" SUBSYSTEM=="usb" ATTR{idVendor}=="046d" ATTR{idProduct}=="c547" ATTR{power/wakeup}="disabled"
+    # Force all disks to use mq-deadline scheduler
+    # For some reason "noop" is used by default which is kinda bad when io is saturated
+    ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ATTR{../queue/scheduler}="mq-deadline"
   '';
 
   # swap
