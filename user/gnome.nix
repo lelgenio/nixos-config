@@ -49,15 +49,6 @@ lib.mkIf (pkgs.uservars.desktop == "gnome") {
   };
 
   xdg.defaultApplications = {
-    enable = true;
-    text-editor = "codium.desktop";
-    image-viewer = "org.gnome.eog.desktop";
-    video-player = "org.gnome.Totem.desktop";
-    web-browser = "firefox.desktop";
-    document-viewer = "org.gnome.Evince.desktop";
-    file-manager = "org.gnome.Nautilus.desktop";
-    archive-manager = "org.gnome.FileRoller.desktop;";
-    email-client = "thunderbird.desktop";
-    torrent-client = "torrent.desktop";
+    enable = lib.mkForce false;
   };
 }
