@@ -50,10 +50,6 @@ main() {
 }
 
 autotype(){
-    if pgrep qutebrowser >/dev/null; then
-        qutebrowser ":mode-enter insert"
-    fi
-
     env wtype -s 100 "$username"
     env wtype -s 100 -k tab
     env wtype -s 100 "$password"

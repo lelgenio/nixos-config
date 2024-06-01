@@ -19,7 +19,6 @@
     ./alacritty.nix
     ./git.nix
     ./ssh.nix
-    ./qutebrowser
     ./gpg.nix
     ./rofi.nix
     ./mpv.nix
@@ -157,13 +156,7 @@
     text-editor = lib.mkDefault "kak.desktop";
     image-viewer = lib.mkDefault "pqiv.desktop";
     video-player = lib.mkDefault "mpv.desktop";
-    web-browser = lib.mkDefault (
-      {
-        firefox = lib.mkDefault "firefox.desktop";
-        qutebrowser = lib.mkDefault "org.qutebrowser.qutebrowser.desktop";
-      }
-      .${pkgs.uservars.browser}
-    );
+    web-browser = lib.mkDefault "firefox.desktop";
     document-viewer = lib.mkDefault "org.pwmt.zathura.desktop";
     file-manager = lib.mkDefault "thunar.desktop";
     archive-manager = "engrampa.desktop";

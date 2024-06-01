@@ -17,8 +17,6 @@ in
   wayland.windowManager.sway.config = {
     assigns = {
       "2" = [
-        { class = "qutebrowser"; }
-        { app_id = "qutebrowser"; }
         { class = "firefox"; }
         { app_id = "firefox"; }
         { class = "Chromium"; }
