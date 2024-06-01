@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   services.xserver = {
     enable = true;
@@ -27,6 +27,8 @@
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
   };
+
+  hardware.opentabletdriver.enable = lib.mkForce false;
 
   # services.xserver.displayManager.autologin.user = "lelgenio";
   environment.systemPackages =
