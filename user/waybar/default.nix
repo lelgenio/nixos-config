@@ -137,7 +137,7 @@ in
             {
               format = "{stateIcon} {title} - {artist}";
               format-paused = "{stateIcon}";
-              format-stopped = "";
+              format-stopped = "{stateIcon}";
               state-icons = {
                 stopped = "";
                 paused = "";
