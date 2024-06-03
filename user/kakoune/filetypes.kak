@@ -93,6 +93,7 @@ hook global WinSetOption filetype=blade %[
     hook -once -always window WinSetOption filetype=.* %{ remove-hooks window blade-.+ }
 
     require-module php
+    require-module javascript
 
     add-highlighter buffer/blade regions
     add-highlighter buffer/blade/base default-region group
@@ -107,6 +108,9 @@ hook global WinSetOption filetype=blade %[
     add-highlighter buffer/blade/php  region '@php' '@endphp' group
     add-highlighter buffer/blade/php/ ref php
     add-highlighter buffer/blade/php/ regex '@((end)?php)' 1:block
+
+    add-highlighter buffer/blade/js  region '<script>' '</script>' group
+    add-highlighter buffer/blade/js/ ref javascript
 
     add-highlighter buffer/blade/expression region '\{\{(?!--)' '(?!--)\}\}' ref php
     add-highlighter buffer/blade/statement  region -recurse '\(' '@(if|foreach|for|section|yield|include)\s*\(' '\)' ref php
