@@ -40,7 +40,6 @@ in
     "zenpower"
   ];
   boot.kernelParams = [
-    "amdgpu.dcdebugmask=0x10" # amdgpu undervolting bug
     "video=DP-1:1920x1080@144"
     # hibernation
     "resume=LABEL=BTRFS_ROOT" # findmnt -o LABEL --noheadings /swap/
@@ -63,16 +62,6 @@ in
     rocm-opencl-runtime
     rocmPackages.rocm-smi
   ];
-
-  boot.kernelPackages = pkgs.linuxPackages_6_1;
-
-  programs.corectrl = {
-    enable = true;
-    gpuOverclock = {
-      enable = true;
-      ppfeaturemask = "0xffffffff";
-    };
-  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
