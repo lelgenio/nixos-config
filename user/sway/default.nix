@@ -69,7 +69,7 @@ in
           };
         output = {
           "*" = {
-            adaptive_sync = "enabled";
+            adaptive_sync = "off";
             bg = "${theme.background} fill";
             mode = "1920x1080@144.000Hz";
           };
@@ -114,6 +114,21 @@ in
     services.kdeconnect = {
       enable = true;
       indicator = true;
+    };
+
+    systemd.user.services.vrr-fullscreen = {
+      Unit = {
+        Description = "Enable VRR for fullscreen windows";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${lib.getExe pkgs.vrr-fullscreen}";
+        Restart = "on-failure";
+      };
+      Install = {
+        WantedBy = [ "sway-session.target" ];
+      };
     };
 
     xdg.configFile."OpenTabletDriver/settings.json".source = ./open-tablet-driver.json;

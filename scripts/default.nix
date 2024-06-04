@@ -126,6 +126,7 @@
       wl-clipboard
     ];
     auto_connect_gamepad = [ bluez ];
+    vrr-fullscreen = [ ];
   }
   // lib.mapAttrs import_script {
     wdmenu = ./wdmenu.nix;
