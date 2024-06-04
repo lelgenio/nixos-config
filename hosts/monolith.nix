@@ -64,6 +64,8 @@ in
     rocmPackages.rocm-smi
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_6_1;
+
   programs.corectrl = {
     enable = true;
     gpuOverclock = {
