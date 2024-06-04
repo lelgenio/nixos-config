@@ -24,8 +24,6 @@
     ./network.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   zramSwap.enable = true;
 
   programs.adb.enable = true;
