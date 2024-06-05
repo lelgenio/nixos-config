@@ -1,6 +1,11 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
-  inherit (pkgs.uservars) accent theme editor;
+  inherit (config.my) accent theme editor;
   inherit (theme) color;
 in
 {

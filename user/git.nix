@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs.uservars) username mail;
+  inherit (config.my) username mail;
 in
 {
   config = {

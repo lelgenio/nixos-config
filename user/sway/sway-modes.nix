@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  inherit (pkgs.uservars)
+  inherit (config.my)
     key
     accent
     font

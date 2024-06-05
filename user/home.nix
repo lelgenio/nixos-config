@@ -44,7 +44,10 @@
     ./xdg-dirs.nix
     inputs.hyprland.homeManagerModules.default
     inputs.nix-index-database.hmModules.nix-index
+    ../settings
   ];
+
+  my = import ./variables.nix;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.

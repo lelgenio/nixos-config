@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (pkgs.uservars) theme font desktop;
+  inherit (config.my) theme font desktop;
   inherit (theme)
     color
     gtk_theme

@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (pkgs.uservars)
+  inherit (config.my)
     key
     theme
     accent
