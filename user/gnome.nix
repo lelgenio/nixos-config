@@ -2,9 +2,10 @@
   pkgs,
   lib,
   inputs,
+  config,
   ...
 }:
-lib.mkIf (pkgs.uservars.desktop == "gnome") {
+lib.mkIf (config.my.desktop == "gnome") {
 
   home.pointerCursor = {
     name = "Adwaita";

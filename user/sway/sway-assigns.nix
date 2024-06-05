@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
 in
-# inherit (pkgs.uservars) key accent font theme;
+# inherit (config.my) key accent font theme;
 # inherit (theme) color;
 # inherit (pkgs) lib;
 # mod = "Mod4";

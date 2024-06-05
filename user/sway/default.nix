@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs.uservars)
+  inherit (config.my)
     key
     accent
     font
@@ -24,7 +24,7 @@ in
     ./swaylock.nix
     ./theme.nix
   ];
-  config = lib.mkIf (pkgs.uservars.desktop == "sway") {
+  config = lib.mkIf (config.my.desktop == "sway") {
     services.mako.enable = true;
     services.swayidle.enable = true;
     services.kanshi.enable = true;

@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (pkgs.uservars) browser;
+  inherit (config.my) browser;
   cfg = config.xdg.defaultApplications;
 in
 {

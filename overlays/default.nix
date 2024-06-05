@@ -6,7 +6,6 @@ rec {
     themes
     new-packages
     patches
-    variables
     lib_extended
   ];
 
@@ -79,8 +78,6 @@ rec {
       });
     }
   );
-
-  variables = (final: prev: { uservars = import ../user/variables.nix; });
 
   lib_extended = (
     final: prev: {

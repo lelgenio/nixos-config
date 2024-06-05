@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (pkgs.uservars) dmenu;
+  inherit (config.my) dmenu;
   available_menus = {
     bmenu = "bmenu run";
     rofi = "rofi -show drun -sort";

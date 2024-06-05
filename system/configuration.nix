@@ -22,7 +22,10 @@
     ./users.nix
     ./containers.nix
     ./network.nix
+    ../settings
   ];
+
+  my = import ../user/variables.nix;
 
   zramSwap.enable = true;
 

@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf (pkgs.uservars.desktop == "hyprland") {
+  config = lib.mkIf (config.my.desktop == "hyprland") {
     wayland.windowManager.hyprland = {
       enable = false;
       extraConfig = ''

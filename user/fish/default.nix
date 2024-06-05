@@ -5,15 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs.uservars)
-    key
-    theme
-    color
-    accent
-    font
-    editor
-    desktop
-    ;
+  inherit (config.my) accent editor desktop;
 in
 {
   config = {

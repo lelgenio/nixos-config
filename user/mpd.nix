@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf (pkgs.uservars.desktop != "gnome") {
+  config = lib.mkIf (config.my.desktop != "gnome") {
     services.mpd = {
       enable = true;
       musicDirectory = config.home.homeDirectory + "/Música";

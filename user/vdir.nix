@@ -1,6 +1,11 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
-  inherit (pkgs.uservars) nextcloud;
+  inherit (config.my) nextcloud;
   pass_cmd = (
     pkgs.writeShellScript "get_pass" ''
       pass "${nextcloud.pass}" | head -n1

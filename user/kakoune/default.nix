@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs.uservars)
+  inherit (config.my)
     key
     dmenu
     editor
