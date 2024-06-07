@@ -20,6 +20,8 @@
     ./forgejo.nix
   ];
 
+  networking.hostName = "phantom";
+
   services.nginx.virtualHosts."lelgenio.com" = {
     enableACME = true;
     forceSSL = true;
