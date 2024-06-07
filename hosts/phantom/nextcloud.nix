@@ -7,7 +7,7 @@
 {
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud27;
+    package = pkgs.nextcloud29;
     hostName = "cloud.lelgenio.com";
     https = true;
     config = {
