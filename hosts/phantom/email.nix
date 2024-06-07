@@ -5,9 +5,6 @@
   ...
 }:
 {
-  # It's important to let Digital Ocean set the hostname so we get rDNS to work
-  networking.hostName = "";
-
   imports = [ inputs.nixos-mailserver.nixosModules.mailserver ];
 
   mailserver = {
