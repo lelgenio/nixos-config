@@ -108,24 +108,8 @@ rec {
   mail = {
     personal = {
       from = "Leonardo Eugênio";
-      user = "lelgenio@disroot.org";
-      imap = "disroot.org";
-      smtp = "disroot.org";
-      pass = "disroot.org";
+      user = "lelgenio@lelgenio.com";
     };
-    work = {
-      from = "Leonardo Eugênio";
-      user = "leonardo@wopus.com.br";
-      imap = "imap.hostinger.com";
-      smtp = "smtp.hostinger.com";
-      pass = "Work/wopus_email";
-    };
-  };
-  nextcloud = {
-    name = "disroot";
-    user = "lelgenio";
-    host = "cloud.disroot.org";
-    pass = "disroot.org";
   };
 
   dmenu = "bmenu";

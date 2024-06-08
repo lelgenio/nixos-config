@@ -28,7 +28,6 @@
     ./desktop-entries.nix
     ./chat.nix
     ./syncthing.nix
-    ./vdir.nix
     ./bmenu.nix
     ./fzf.nix
     ./ranger
