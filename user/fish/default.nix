@@ -32,8 +32,6 @@ in
         set_color normal
 
         bind \cy 'commandline | wl-copy -n'
-
-        ${pkgs.todoman}/bin/todo list
       '';
       shellAliases = {
         rm = "trash";
@@ -85,10 +83,6 @@ in
     };
     xdg.configFile = {
       "fish/conf.d/prompt.fish".source = ./fish_prompt.fish;
-      "fish/completions/" = {
-        recursive = true;
-        source = ./completions;
-      };
       "fish/conf.d/" = {
         recursive = true;
         source = ./conf.d;
