@@ -125,7 +125,11 @@
       zbar
       wl-clipboard
     ];
-    auto_connect_gamepad = [ bluez ];
+    auto_connect_gamepad = [
+      bluez
+      coreutils
+      gnugrep
+    ];
     vrr-fullscreen = [ ];
   }
   // lib.mapAttrs import_script {
