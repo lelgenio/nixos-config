@@ -55,6 +55,12 @@ in
             hash = "sha256-xMuglNassZb9WqjfEGg6WeuhMACRuYqQor+iX1dEdsE=";
           })
           (pkgs.fetchFirefoxAddon {
+            name = "return_youtube_dislikes";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi";
+            hash = "sha256-oxqyNUmEa36rkqCU6S34NJBHtIu9gH8GnRKAg8Oyf2E=";
+          })
+
+          (pkgs.fetchFirefoxAddon {
             name = "mastodon_simplified_federation";
             url = "https://addons.mozilla.org/firefox/downloads/file/4215691/mastodon_simplified_federation-2.2.xpi";
             hash = "sha256-4iU25chpjsdsMTPaa0yQOTWc9V9q1qFz6YV0lYtNjLA=";
