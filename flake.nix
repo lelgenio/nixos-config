@@ -21,9 +21,6 @@
     plymouth-themes.url = "github:adi1090x/plymouth-themes";
     plymouth-themes.flake = false;
 
-    lipsum.url = "github:hannenz/lipsum";
-    lipsum.flake = false;
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
