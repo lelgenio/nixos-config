@@ -55,10 +55,6 @@
       url = "github:lelgenio/demoji";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    maildir-notify-daemon = {
-      url = "github:lelgenio/maildir-notify-daemon";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     wl-crosshair = {
       url = "github:lelgenio/wl-crosshair";
       inputs.nixpkgs.follows = "nixpkgs";
