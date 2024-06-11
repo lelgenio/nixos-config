@@ -2,7 +2,6 @@
 rec {
   all = [
     scripts
-    sway
     themes
     new-packages
     patches
@@ -10,8 +9,6 @@ rec {
   ];
 
   scripts = (import ../scripts);
-
-  sway = (import ./sway.nix);
 
   themes = (
     final: prev: {
