@@ -104,6 +104,7 @@ in
         exec ${pkgs.dbus-sway-environment}/bin/dbus-sway-environment
         exec swaymsg workspace 2
         exec_always systemctl --user restart waybar.service
+        exec corectrl --minimize-systray
       '';
     };
     services.gammastep = {
