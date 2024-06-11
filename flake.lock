@@ -544,22 +544,6 @@
         "type": "github"
       }
     },
-    "lipsum": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1630421397,
-        "narHash": "sha256-a6uv0tJulN9cAGWxvQr8B0PUJEY8Rx4e759xzS66Xlo=",
-        "owner": "hannenz",
-        "repo": "lipsum",
-        "rev": "0fb31e6ede10fbd78d7652f5fb21670cddd8e3ed",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hannenz",
-        "repo": "lipsum",
-        "type": "github"
-      }
-    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -788,7 +772,6 @@
         "dzgui-nix": "dzgui-nix",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
-        "lipsum": "lipsum",
         "nix-index-database": "nix-index-database",
         "nix-software-center": "nix-software-center",
         "nixos-conf-editor": "nixos-conf-editor",
