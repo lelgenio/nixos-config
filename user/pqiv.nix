@@ -32,7 +32,6 @@ let
   );
 in
 {
-  # My bemenu wrapper
   xdg.configFile = {
     "pqivrc".text = ''
       [options]

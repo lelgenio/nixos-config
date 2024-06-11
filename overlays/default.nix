@@ -56,12 +56,6 @@ rec {
 
   patches = (
     final: prev: {
-      bemenu = prev.bemenu.overrideAttrs (o: {
-        postPatch = ''
-          substituteInPlace lib/renderers/wayland/window.c \
-            --replace ZWLR_LAYER_SHELL_V1_LAYER_TOP ZWLR_LAYER_SHELL_V1_LAYER_OVERLAY
-        '';
-      });
       mySway = prev.sway.override {
         sway-unwrapped = prev.sway-unwrapped.overrideAttrs (old: {
           patches = old.patches ++ [ ../patches/sway/fix-hide_cursor-clearing-focus.patch ];
