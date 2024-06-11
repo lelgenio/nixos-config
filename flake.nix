@@ -19,15 +19,18 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-24_05.follows = "nixpkgs";
     };
 
     dzgui-nix = {
       url = "github:lelgenio/dzgui-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     tlauncher = {
@@ -50,8 +53,14 @@
     };
 
     # gnome stuff
-    nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";
-    nix-software-center.url = "github:vlinkz/nix-software-center";
+    nixos-conf-editor = {
+      url = "github:vlinkz/nixos-conf-editor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-software-center = {
+      url = "github:vlinkz/nix-software-center";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     inputs:
