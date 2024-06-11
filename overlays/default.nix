@@ -50,7 +50,6 @@ rec {
       dhist = inputs.dhist.packages.${prev.system}.dhist;
       demoji = inputs.demoji.packages.${prev.system}.default;
       tlauncher = inputs.tlauncher.packages.${prev.system}.tlauncher;
-      maildir-notify-daemon = inputs.maildir-notify-daemon.packages.${prev.system}.default;
       wl-crosshair = inputs.wl-crosshair.packages.${prev.system}.default;
     }
   );

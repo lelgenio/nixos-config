@@ -41,24 +41,6 @@
         TryExec = "kak";
       };
     };
-    neomutt = {
-      name = "Neomutt";
-      genericName = "Email Client";
-      comment = "View and Send Emails";
-      exec = "neomutt %U";
-      terminal = true;
-      type = "Application";
-      icon = "mutt";
-      categories = [
-        "Network"
-        "Email"
-      ];
-      startupNotify = false;
-      mimeType = [ "x-scheme-handler/mailto" ];
-      settings = {
-        Keywords = "Mail;E-mail;";
-      };
-    };
     down_meme = {
       name = "DownMeme";
       genericName = "Download memes";
