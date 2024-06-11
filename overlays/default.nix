@@ -61,14 +61,6 @@ rec {
           patches = old.patches ++ [ ../patches/sway/fix-hide_cursor-clearing-focus.patch ];
         });
       };
-      mangohud = prev.mangohud.overrideAttrs (o: {
-        patches = o.patches ++ [
-          (prev.fetchpatch {
-            url = "https://github.com/flightlessmango/MangoHud/commit/95141de657e02577f1d3fab0ca12122bfb68bc56.patch";
-            hash = "sha256-a2tESliGBkfF7uYQn8TDgeFt07A9FOioI4VcTT7DC7A=";
-          })
-        ];
-      });
     }
   );
 
