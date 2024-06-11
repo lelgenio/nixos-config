@@ -1,10 +1,18 @@
 { pkgs, ... }:
 {
   services.flatpak.enable = true;
-  virtualisation.docker.enable = true;
-  virtualisation.docker.autoPrune.enable = true;
-  virtualisation.docker.autoPrune.dates = "monthly";
-  virtualisation.docker.autoPrune.flags = [ "--all --volumes" ];
+
+  virtualisation.docker = {
+    enable = true;
+    autoPrune = {
+      enable = true;
+      dates = "monthly";
+      flags = [
+        "--all"
+        "--volumes"
+      ];
+    };
+  };
 
   programs.extra-container.enable = true;
 
