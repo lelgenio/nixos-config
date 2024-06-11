@@ -15,7 +15,6 @@
     ./vscode
     ./fish
     ./firefox.nix
-    ./hyprland.nix
     ./alacritty.nix
     ./git.nix
     ./ssh.nix
@@ -41,7 +40,6 @@
     ./gnome.nix
     ./thunar.nix
     ./xdg-dirs.nix
-    inputs.hyprland.homeManagerModules.default
     inputs.nix-index-database.hmModules.nix-index
     ../settings
   ];
