@@ -18,9 +18,6 @@
     ranger-icons.url = "github:alexanderjeurissen/ranger_devicons";
     ranger-icons.flake = false;
 
-    material-wifi-icons.url = "github:dcousens/material-wifi-icons";
-    material-wifi-icons.flake = false;
-
     plymouth-themes.url = "github:adi1090x/plymouth-themes";
     plymouth-themes.flake = false;
 
