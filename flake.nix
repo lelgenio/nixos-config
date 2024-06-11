@@ -10,11 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ranger-icons.url = "github:alexanderjeurissen/ranger_devicons";
     ranger-icons.flake = false;
 
@@ -88,12 +83,10 @@
           ./system/secrets.nix
           ./system/specialisation.nix
           ./system/greetd.nix
-          { login-manager.greetd.enable = desktop == "sway" || desktop == "hyprland"; }
+          { login-manager.greetd.enable = desktop == "sway"; }
 
           inputs.agenix.nixosModules.default
-          inputs.hyprland.nixosModules.default
           inputs.dzgui-nix.nixosModules.default
-          { programs.hyprland.enable = (desktop == "hyprland"); }
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
