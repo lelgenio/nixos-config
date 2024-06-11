@@ -560,22 +560,6 @@
         "type": "github"
       }
     },
-    "material-wifi-icons": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1703850449,
-        "narHash": "sha256-KykU5J7SdpBDG+6rkD//XeHd+6pK3qabe+88RduhwKc=",
-        "owner": "dcousens",
-        "repo": "material-wifi-icons",
-        "rev": "2daf6b3d96d65beb2a3e37a9a53556aab3826d97",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dcousens",
-        "repo": "material-wifi-icons",
-        "type": "github"
-      }
-    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -805,7 +789,6 @@
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "lipsum": "lipsum",
-        "material-wifi-icons": "material-wifi-icons",
         "nix-index-database": "nix-index-database",
         "nix-software-center": "nix-software-center",
         "nixos-conf-editor": "nixos-conf-editor",
