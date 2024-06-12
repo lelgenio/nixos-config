@@ -46,6 +46,12 @@ in
 
   swapDevices = [ ];
 
+  services.udev.extraRules = ''
+    # Force all disks to use mq-deadline scheduler
+    # For some reason "noop" is used by default which is kinda bad when io is saturated
+    ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ATTR{../queue/scheduler}="mq-deadline"
+  '';
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
