@@ -90,7 +90,6 @@
           { nixpkgs.pkgs = pkgs; }
           ./system/configuration.nix
           ./system/secrets.nix
-          ./system/specialisation.nix
           ./system/greetd.nix
           { login-manager.greetd.enable = desktop == "sway"; }
 
