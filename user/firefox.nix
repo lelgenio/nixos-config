@@ -93,6 +93,7 @@ in
             "devtools.theme" = "auto";
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
             "browser.tabs.inTitlebar" = if desktop == "sway" then 0 else 1;
+            "sidebar.position_start" = false; # Move sidebar to the right
 
             # enable media RDD to allow gpu acceleration
             "media.rdd-ffmpeg.enabled" = true;
