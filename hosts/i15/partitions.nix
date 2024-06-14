@@ -1,6 +1,12 @@
-{ disks ? [ "/dev/sda" ], ... }:
+{
+  disks ? [ "/dev/sda" ],
+  ...
+}:
 let
-  btrfs_options = [ "compress=zstd:3" "noatime" ];
+  btrfs_options = [
+    "compress=zstd:3"
+    "noatime"
+  ];
 in
 {
   disk.sda = {
@@ -18,7 +24,10 @@ in
           bootable = true;
           content = {
             type = "filesystem";
-            extraArgs = [ "-n" "BOOT_I15" ];
+            extraArgs = [
+              "-n"
+              "BOOT_I15"
+            ];
             format = "vfat";
             mountpoint = "/boot";
             # options = [ "defaults" ];
@@ -35,15 +44,26 @@ in
             keyFile = "/tmp/secret.key";
             content = {
               type = "btrfs";
-              extraArgs = [ "--label" "ROOT_I15" ];
-              subvolumes = let mountOptions = btrfs_options; in {
-                "/home" = { inherit mountOptions; };
-                "/nixos" = {
-                  inherit mountOptions;
-                  mountpoint = "/";
+              extraArgs = [
+                "--label"
+                "ROOT_I15"
+              ];
+              subvolumes =
+                let
+                  mountOptions = btrfs_options;
+                in
+                {
+                  "/home" = {
+                    inherit mountOptions;
+                  };
+                  "/nixos" = {
+                    inherit mountOptions;
+                    mountpoint = "/";
+                  };
+                  "/swap" = {
+                    inherit mountOptions;
+                  };
                 };
-                "/swap" = { inherit mountOptions; };
-              };
             };
           };
         }
