@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 pkgs.makeDiskoTest {
   name = "test-disko-i15";
   disko-config = ./partitions.nix;
