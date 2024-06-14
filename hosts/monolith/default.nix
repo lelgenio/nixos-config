@@ -20,7 +20,10 @@ let
   ];
 in
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ./partition.nix
+  ];
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
@@ -43,8 +46,8 @@ in
     "amdgpu.dcdebugmask=0x10" # amdgpu undervolting bug
     "video=DP-1:1920x1080@144"
     # hibernation
-    "resume=LABEL=BTRFS_ROOT" # findmnt -o LABEL --noheadings /swap/
-    "resume_offset=36709632" # btrfs inspect-internal map-swapfile -r /swap/swapfile
+    # "resume=LABEL=BTRFS_ROOT" # findmnt -o LABEL --noheadings /swap/
+    # "resume_offset=36709632" # btrfs inspect-internal map-swapfile -r /swap/swapfile
   ];
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=30s
@@ -74,73 +77,73 @@ in
     };
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/BTRFS_ROOT";
-    fsType = "btrfs";
-    options = [ "subvol=nixos" ] ++ btrfs_options ++ btrfs_ssd;
-  };
-  # boot.initrd.luks.reusePassphrases = true;
-  boot.initrd.luks.devices = {
-    "main" = {
-      bypassWorkqueues = true;
-      device = "/dev/disk/by-label/CRYPT_ROOT";
-    };
-    "data" = {
-      bypassWorkqueues = true;
-      device = "/dev/disk/by-label/CRYPT_DATA";
-    };
-    "bigboy" = {
-      bypassWorkqueues = true;
-      device = "/dev/disk/by-label/CRYPT_BIGBOY";
-    };
-  };
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-label/NIXBOOT";
-    fsType = "vfat";
-  };
-  fileSystems."/home" = {
-    device = "/dev/disk/by-label/BTRFS_ROOT";
-    fsType = "btrfs";
-    options = [ "subvol=home" ] ++ btrfs_options ++ btrfs_ssd;
-  };
-  fileSystems."/home/lelgenio/Games" = {
-    device = "/dev/disk/by-label/BTRFS_DATA";
-    fsType = "btrfs";
-    options = [
-      "subvol=@games"
-      "nofail"
-    ] ++ btrfs_options;
-  };
-  fileSystems."/home/lelgenio/Downloads/Torrents" = {
-    device = "/dev/disk/by-label/BTRFS_DATA";
-    fsType = "btrfs";
-    options = [
-      "subvol=@torrents"
-      "nofail"
-    ] ++ btrfs_options;
-  };
-  fileSystems."/home/lelgenio/Música" = {
-    device = "/dev/disk/by-label/BTRFS_DATA";
-    fsType = "btrfs";
-    options = [
-      "subvol=@music"
-      "nofail"
-    ] ++ btrfs_options;
-  };
-  fileSystems."/home/lelgenio/.local/mount/data" = {
-    device = "/dev/disk/by-label/BTRFS_DATA";
-    fsType = "btrfs";
-    options = [
-      "subvol=@data"
-      "nofail"
-    ] ++ btrfs_options;
-  };
-  fileSystems."/home/lelgenio/.local/mount/bigboy" = {
-    device = "/dev/disk/by-label/BTRFS_BIGBOY";
-    fsType = "btrfs";
-    options = [ "nofail" ] ++ btrfs_options ++ btrfs_ssd;
-  };
+  # fileSystems."/" = {
+  #   device = "/dev/disk/by-label/BTRFS_ROOT";
+  #   fsType = "btrfs";
+  #   options = [ "subvol=nixos" ] ++ btrfs_options ++ btrfs_ssd;
+  # };
+  # # boot.initrd.luks.reusePassphrases = true;
+  # boot.initrd.luks.devices = {
+  #   "main" = {
+  #     bypassWorkqueues = true;
+  #     device = "/dev/disk/by-label/CRYPT_ROOT";
+  #   };
+  #   "data" = {
+  #     bypassWorkqueues = true;
+  #     device = "/dev/disk/by-label/CRYPT_DATA";
+  #   };
+  #   "bigboy" = {
+  #     bypassWorkqueues = true;
+  #     device = "/dev/disk/by-label/CRYPT_BIGBOY";
+  #   };
+  # };
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # fileSystems."/boot/efi" = {
+  #   device = "/dev/disk/by-label/NIXBOOT";
+  #   fsType = "vfat";
+  # };
+  # fileSystems."/home" = {
+  #   device = "/dev/disk/by-label/BTRFS_ROOT";
+  #   fsType = "btrfs";
+  #   options = [ "subvol=home" ] ++ btrfs_options ++ btrfs_ssd;
+  # };
+  # fileSystems."/home/lelgenio/Games" = {
+  #   device = "/dev/disk/by-label/BTRFS_DATA";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@games"
+  #     "nofail"
+  #   ] ++ btrfs_options;
+  # };
+  # fileSystems."/home/lelgenio/Downloads/Torrents" = {
+  #   device = "/dev/disk/by-label/BTRFS_DATA";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@torrents"
+  #     "nofail"
+  #   ] ++ btrfs_options;
+  # };
+  # fileSystems."/home/lelgenio/Música" = {
+  #   device = "/dev/disk/by-label/BTRFS_DATA";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@music"
+  #     "nofail"
+  #   ] ++ btrfs_options;
+  # };
+  # fileSystems."/home/lelgenio/.local/mount/data" = {
+  #   device = "/dev/disk/by-label/BTRFS_DATA";
+  #   fsType = "btrfs";
+  #   options = [
+  #     "subvol=@data"
+  #     "nofail"
+  #   ] ++ btrfs_options;
+  # };
+  # fileSystems."/home/lelgenio/.local/mount/bigboy" = {
+  #   device = "/dev/disk/by-label/BTRFS_BIGBOY";
+  #   fsType = "btrfs";
+  #   options = [ "nofail" ] ++ btrfs_options ++ btrfs_ssd;
+  # };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -162,17 +165,17 @@ in
   '';
 
   # swap
-  fileSystems."/swap" = {
-    device = "/dev/disk/by-label/BTRFS_ROOT";
-    fsType = "btrfs";
-    # Note these options effect the entire BTRFS filesystem and not just this volume,
-    # with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
-    options = [ "subvol=swap" ] ++ btrfs_options ++ btrfs_ssd;
-  };
-  swapDevices = [
-    {
-      device = "/swap/swapfile";
-      size = (1024 * 16) + (1024 * 2); # RAM size + 2 GB
-    }
-  ];
+  # fileSystems."/swap" = {
+  #   device = "/dev/disk/by-label/BTRFS_ROOT";
+  #   fsType = "btrfs";
+  #   # Note these options effect the entire BTRFS filesystem and not just this volume,
+  #   # with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
+  #   options = [ "subvol=swap" ] ++ btrfs_options ++ btrfs_ssd;
+  # };
+  # swapDevices = [
+  #   {
+  #     device = "/swap/swapfile";
+  #     size = (1024 * 16) + (1024 * 2); # RAM size + 2 GB
+  #   }
+  # ];
 }
