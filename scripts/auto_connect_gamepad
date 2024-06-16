@@ -22,5 +22,6 @@ while true; do
         sleep 10s
         continue
     fi
+    sleep 1s
     try_to_connect_to_all_controllers
 done
