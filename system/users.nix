@@ -19,6 +19,7 @@
       "bluetooth"
       "corectrl"
       "vboxusers"
+      "input"
     ];
     shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
