@@ -74,26 +74,26 @@ in
     };
   };
 
-  # fileSystems."/" = {
-  #   device = "/dev/disk/by-label/BTRFS_ROOT";
-  #   fsType = "btrfs";
-  #   options = [ "subvol=nixos" ] ++ btrfs_options ++ btrfs_ssd;
-  # };
-  # # boot.initrd.luks.reusePassphrases = true;
-  # boot.initrd.luks.devices = {
-  #   "main" = {
-  #     bypassWorkqueues = true;
-  #     device = "/dev/disk/by-label/CRYPT_ROOT";
-  #   };
-  #   "data" = {
-  #     bypassWorkqueues = true;
-  #     device = "/dev/disk/by-label/CRYPT_DATA";
-  #   };
-  #   "bigboy" = {
-  #     bypassWorkqueues = true;
-  #     device = "/dev/disk/by-label/CRYPT_BIGBOY";
-  #   };
-  # };
+  fileSystems."/mnt/old" = {
+    device = "/dev/disk/by-label/BTRFS_ROOT";
+    fsType = "btrfs";
+    options = [ "nofail" ] ++ btrfs_options ++ btrfs_ssd;
+  };
+  # boot.initrd.luks.reusePassphrases = true;
+  boot.initrd.luks.devices = {
+    "old" = {
+      bypassWorkqueues = true;
+      device = "/dev/disk/by-label/CRYPT_ROOT";
+    };
+    "data" = {
+      bypassWorkqueues = true;
+      device = "/dev/disk/by-label/CRYPT_DATA";
+    };
+    # "bigboy" = {
+    #   bypassWorkqueues = true;
+    #   device = "/dev/disk/by-label/CRYPT_BIGBOY";
+    # };
+  };
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # fileSystems."/boot/efi" = {
   #   device = "/dev/disk/by-label/NIXBOOT";
@@ -104,38 +104,38 @@ in
   #   fsType = "btrfs";
   #   options = [ "subvol=home" ] ++ btrfs_options ++ btrfs_ssd;
   # };
-  # fileSystems."/home/lelgenio/Games" = {
-  #   device = "/dev/disk/by-label/BTRFS_DATA";
-  #   fsType = "btrfs";
-  #   options = [
-  #     "subvol=@games"
-  #     "nofail"
-  #   ] ++ btrfs_options;
-  # };
-  # fileSystems."/home/lelgenio/Downloads/Torrents" = {
-  #   device = "/dev/disk/by-label/BTRFS_DATA";
-  #   fsType = "btrfs";
-  #   options = [
-  #     "subvol=@torrents"
-  #     "nofail"
-  #   ] ++ btrfs_options;
-  # };
-  # fileSystems."/home/lelgenio/Música" = {
-  #   device = "/dev/disk/by-label/BTRFS_DATA";
-  #   fsType = "btrfs";
-  #   options = [
-  #     "subvol=@music"
-  #     "nofail"
-  #   ] ++ btrfs_options;
-  # };
-  # fileSystems."/home/lelgenio/.local/mount/data" = {
-  #   device = "/dev/disk/by-label/BTRFS_DATA";
-  #   fsType = "btrfs";
-  #   options = [
-  #     "subvol=@data"
-  #     "nofail"
-  #   ] ++ btrfs_options;
-  # };
+  fileSystems."/home/lelgenio/Games" = {
+    device = "/dev/disk/by-label/BTRFS_DATA";
+    fsType = "btrfs";
+    options = [
+      "subvol=@games"
+      "nofail"
+    ] ++ btrfs_options;
+  };
+  fileSystems."/home/lelgenio/Downloads/Torrents" = {
+    device = "/dev/disk/by-label/BTRFS_DATA";
+    fsType = "btrfs";
+    options = [
+      "subvol=@torrents"
+      "nofail"
+    ] ++ btrfs_options;
+  };
+  fileSystems."/home/lelgenio/Música" = {
+    device = "/dev/disk/by-label/BTRFS_DATA";
+    fsType = "btrfs";
+    options = [
+      "subvol=@music"
+      "nofail"
+    ] ++ btrfs_options;
+  };
+  fileSystems."/home/lelgenio/.local/mount/data" = {
+    device = "/dev/disk/by-label/BTRFS_DATA";
+    fsType = "btrfs";
+    options = [
+      "subvol=@data"
+      "nofail"
+    ] ++ btrfs_options;
+  };
   # fileSystems."/home/lelgenio/.local/mount/bigboy" = {
   #   device = "/dev/disk/by-label/BTRFS_BIGBOY";
   #   fsType = "btrfs";
