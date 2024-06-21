@@ -48,6 +48,8 @@ rec {
   patches = (
     final: prev: {
       mySway = prev.sway.override {
+        withBaseWrapper = true;
+        withGtkWrapper = true;
         sway-unwrapped = prev.sway-unwrapped.overrideAttrs (old: {
           patches = old.patches ++ [ ../patches/sway/fix-hide_cursor-clearing-focus.patch ];
         });
