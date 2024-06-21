@@ -146,6 +146,7 @@ in
       wdmenu
       wlauncher
       volumesh
+      brightnessctl
       showkeys
       pamixer
       libnotify
