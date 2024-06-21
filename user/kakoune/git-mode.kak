@@ -32,6 +32,7 @@ map global git 'N'     ': git-next-merge-conflict <ret>' -docstring 'next git me
 map global git 'P'     ': git-prev-merge-conflict <ret>' -docstring 'previous git merge conflict'
 map global git 'm'     ': git-merge-head <ret>' -docstring 'merge using head'
 map global git 'M'     ': git-merge-new <ret>' -docstring 'merge using new'
+map global git '<c-m>' ': git-merge-head-and-new <ret>' -docstring 'merge using both head and new'
 map global git '<a-m>' ': git-merge-original <ret>' -docstring 'merge using original'
 
 define-command -override git-next-merge-conflict %{
@@ -91,6 +92,19 @@ define-command -override git-merge-new %{
         execute-keys /^<gt>{4,}<ret>xd
     }
 } -docstring "merge using new"
+
+define-command -override git-merge-head-and-new %{
+    evaluate-commands -draft %{
+        # delete head marker
+        execute-keys <a-/>^<lt>{4,}<ret>xd
+        # select middle of conflict
+        execute-keys /^[|]{4,}<ret>x
+        # extendo to theirs marker
+        execute-keys ?^={4,}<ret>xd
+        # delete end marker
+        execute-keys /^<gt>{4,}<ret>xd
+    }
+} -docstring "merge using head and new"
 
 define-command -override git-graph %{
     try %{ delete-buffer '*git-graph*' }
