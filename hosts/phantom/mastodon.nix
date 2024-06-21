@@ -18,7 +18,7 @@
     };
     streamingProcesses = 2;
     extraConfig.SINGLE_USER_MODE = "true";
-    mediaAutoRemove.olderThanDays = 10;
+    mediaAutoRemove.olderThanDays = 5;
   };
 
   age.secrets.phantom-mastodon-mailer-password = {
