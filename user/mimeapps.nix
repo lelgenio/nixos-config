@@ -492,6 +492,7 @@ in
       {
         enable = true;
         defaultApplications = mimes;
+        associations.added = mimes;
       };
   };
 }
