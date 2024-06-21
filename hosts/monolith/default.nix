@@ -161,6 +161,11 @@ in
     ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ATTR{../queue/scheduler}="mq-deadline"
   '';
 
+  boot.tmp = {
+    cleanOnBoot = true;
+    useTmpfs = true;
+  };
+
   # swap
   # fileSystems."/swap" = {
   #   device = "/dev/disk/by-label/BTRFS_ROOT";
