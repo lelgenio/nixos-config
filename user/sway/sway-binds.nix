@@ -16,7 +16,6 @@ let
   _lock = pkgs.writeShellScriptBin "_lock" ''
     ${pkgs.sway}/bin/swaymsg mode default
     ${pkgs.swaylock}/bin/swaylock -f
-    systemctl --user start swayidle.service
   '';
   _suspend = pkgs.writeShellScriptBin "_suspend" ''
     ${pkgs.sway}/bin/swaymsg mode default
@@ -158,6 +157,12 @@ let
     "Control+Print" = "exec ${pkgs.screenshotsh}/bin/screenshotsh clip";
   };
 
+  screen_binds = {
+    "XF86MonBrightnessDown" = "exec brightnessctl --min-value=1 set 5%-";
+    "XF86MonBrightnessUp" = "exec brightnessctl --min-value=1 set 5%+";
+    "${mod}+l" = lib.getExe _lock;
+  };
+
   other_binds = {
     "${mod}+p" = "exec ${pkgs.wpass}/bin/wpass";
     "${mod}+s" = "exec ${menu}";
@@ -196,5 +201,6 @@ in
     system_binds
     parenting_binds
     screenshot_binds
+    screen_binds
   ];
 }
