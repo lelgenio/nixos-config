@@ -18,6 +18,7 @@
     ./writefreely.nix
     ./email.nix
     ./forgejo.nix
+    ./warthunder-leak-counter.nix
   ];
 
   networking.hostName = "phantom";

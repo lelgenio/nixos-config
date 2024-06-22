@@ -54,6 +54,10 @@
       url = "github:lelgenio/wl-crosshair";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    warthunder-leak-counter = {
+      url = "git+https://git.lelgenio.com/lelgenio/warthunder-leak-counter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # gnome stuff
     nixos-conf-editor = {

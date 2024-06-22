@@ -81,6 +81,27 @@
         "type": "github"
       }
     },
+    "crane_2": {
+      "inputs": {
+        "nixpkgs": [
+          "warthunder-leak-counter",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1718730147,
+        "narHash": "sha256-QmD6B6FYpuoCqu6ZuPJH896ItNquDkn0ulQlOn4ykN8=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "32c21c29b034d0a93fdb2379d6fabc40fc3d0e6c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -400,6 +421,24 @@
         "systems": "systems_8"
       },
       "locked": {
+        "lastModified": 1681202837,
+        "narHash": "sha256-H+Rh19JDwRtpVPAWp64F+rlEtxUWBAQW28eAi3SRSzg=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "cfacdce06f30d2b68473a46042957675eebb3401",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_7": {
+      "inputs": {
+        "systems": "systems_9"
+      },
+      "locked": {
         "lastModified": 1710146030,
         "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
         "owner": "numtide",
@@ -614,6 +653,7 @@
         "plymouth-themes": "plymouth-themes",
         "ranger-icons": "ranger-icons",
         "tlauncher": "tlauncher",
+        "warthunder-leak-counter": "warthunder-leak-counter",
         "wl-crosshair": "wl-crosshair"
       }
     },
@@ -804,6 +844,21 @@
         "type": "github"
       }
     },
+    "systems_9": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "tlauncher": {
       "inputs": {
         "flake-utils": "flake-utils_5",
@@ -861,9 +916,31 @@
         "type": "github"
       }
     },
+    "warthunder-leak-counter": {
+      "inputs": {
+        "crane": "crane_2",
+        "flake-utils": "flake-utils_6",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1719076817,
+        "narHash": "sha256-B6NTomYXL50j6fabZrAGvTPp3zv5oFxNUhwvLhDNoMw=",
+        "ref": "refs/heads/main",
+        "rev": "406d6646970191c016a375f25a35aa00dfa0d4aa",
+        "revCount": 4,
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/warthunder-leak-counter"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/warthunder-leak-counter"
+      }
+    },
     "wl-crosshair": {
       "inputs": {
-        "flake-utils": "flake-utils_6",
+        "flake-utils": "flake-utils_7",
         "nixpkgs": [
           "nixpkgs"
         ]
