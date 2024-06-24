@@ -39,6 +39,12 @@ in
             hash = "sha256-l5cWCQgZFxD/CFhTa6bcKeytmSPDCyrW0+XjcddZ5E0=";
           })
           (pkgs.fetchFirefoxAddon {
+            name = "user_agent_string_switcher";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4098688/user_agent_string_switcher-0.5.0.xpi";
+            hash = "sha256-ncjaPIxG1PBNEv14nGNQH6ai9QL4WbKGk5oJDbY+rjM=";
+          })
+
+          (pkgs.fetchFirefoxAddon {
             name = "i-still-dont-care-about-cookies";
             url = "https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies/releases/download/v1.1.4/istilldontcareaboutcookies-1.1.4.xpi";
             hash = "sha256-yt6yRiLTuaK4K/QwgkL9gCVGsSa7ndFOHqZvKqIGZ5U=";
