@@ -54,6 +54,11 @@
     identityPaths = [ "/root/.ssh/id_rsa" ];
   };
 
+  nix.settings = {
+    cores = 1;
+    max-jobs = 1;
+  };
+
   system.autoUpgrade = {
     enable = true;
     dates = "04:40";
@@ -62,7 +67,7 @@
       "--update-input"
       "nixpkgs"
       "--no-write-lock-file"
-      "-L"
+      "--print-build-logs"
     ];
     flake = "git+https://git.lelgenio.com/lelgenio/nixos-config#phantom";
   };
