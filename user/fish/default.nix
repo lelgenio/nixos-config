@@ -36,6 +36,7 @@ in
       shellAliases = {
         rm = "trash";
         tree = "eza -T";
+        kys = "shutdown now";
       };
       shellAbbrs = {
         off = "shutdown now";
