@@ -136,11 +136,11 @@ in
       "nofail"
     ] ++ btrfs_options;
   };
-  # fileSystems."/home/lelgenio/.local/mount/bigboy" = {
-  #   device = "/dev/disk/by-label/BTRFS_BIGBOY";
-  #   fsType = "btrfs";
-  #   options = [ "nofail" ] ++ btrfs_options ++ btrfs_ssd;
-  # };
+  fileSystems."/home/lelgenio/.local/mount/old" = {
+    device = "/dev/disk/by-label/BTRFS_ROOT";
+    fsType = "btrfs";
+    options = [ "nofail" ] ++ btrfs_options ++ btrfs_ssd;
+  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
