@@ -30,6 +30,8 @@
 
   hardware.opentabletdriver.enable = lib.mkForce false;
 
+  programs.gpaste.enable = true;
+
   # services.xserver.displayManager.autologin.user = "lelgenio";
   environment.systemPackages =
     with pkgs;
@@ -40,5 +42,6 @@
 
       chrome-gnome-shell
       gnomeExtensions.quick-settings-audio-devices-hider
+      gnome-pass-search-provider
     ];
 }

@@ -49,6 +49,8 @@ lib.mkIf (config.my.desktop == "gnome") {
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
+  services.gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
+
   xdg.defaultApplications = {
     enable = lib.mkForce false;
   };
