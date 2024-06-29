@@ -44,6 +44,8 @@ in
         { title = "Discord"; }
         { class = "WebCord"; }
         { app_id = "WebCord"; }
+        { class = "vesktop"; }
+        { app_id = "vesktop"; }
         { class = "Element"; }
         { app_id = "Element"; }
       ];
