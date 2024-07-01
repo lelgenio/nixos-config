@@ -1,11 +1,11 @@
 #!/bin/sh
 
 list_paired_controllers() {
-    bluetoothctl devices Paired | grep -i 'controller' | cut -d' ' -f2
+    bluetoothctl devices Paired | grep 'Controller' | cut -d' ' -f2
 }
 
 count_connected_controllers() {
-    bluetoothctl devices Connected | grep -i 'controller' | wc -l
+    bluetoothctl devices Connected | grep 'Controller' | wc -l
 }
 
 try_to_connect_to_all_controllers() {
