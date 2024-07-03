@@ -7,7 +7,7 @@
 }:
 let
   inherit (config.my) desktop browser;
-  bugfixedFirefox = pkgs.firefox-esr-unwrapped // {
+  bugfixedFirefox = pkgs.firefox-devedition-unwrapped // {
     requireSigning = false;
     allowAddonSideload = true;
   };
@@ -91,7 +91,7 @@ in
         ];
       };
       profiles = {
-        main = {
+        dev-edition-default = {
           isDefault = true;
           search.force = true;
           search.default = "DuckDuckGo";
