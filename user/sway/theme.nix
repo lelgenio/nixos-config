@@ -79,6 +79,13 @@ lib.mkIf (desktop == "sway") {
       # fixed=@Variant(\0\0\0@\0\0\0\x1c\0H\0\x61\0\x63\0k\0 \0N\0\x65\0r\0\x64\0 \0\x46\0o\0n\0t@(\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)
       # general=@Variant(\0\0\0@\0\0\0\x1e\0L\0i\0\x62\0\x65\0r\0\x61\0t\0i\0o\0n\0 \0S\0\x61\0n\0s@(\0\0\0\0\0\0\xff\xff\xff\xff\x5\x1\0\x32\x10)
     '';
+    "kdedefaults/kdeglobals".text = ''
+      [General]
+      ColorScheme=BreezeDark
+
+      [Icons]
+      Theme=${icon_theme}
+    '';
   };
   services.xsettingsd = {
     enable = true;
