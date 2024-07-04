@@ -35,8 +35,8 @@ in
           })
           (pkgs.fetchFirefoxAddon {
             name = "ublock-origin";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4198829/ublock_origin-1.54.0.xpi";
-            hash = "sha256-l5cWCQgZFxD/CFhTa6bcKeytmSPDCyrW0+XjcddZ5E0=";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4290466/ublock_origin-1.58.0.xpi";
+            hash = "sha256-RwxWmUpxdNshV4rc5ZixWKXcCXDIfFz+iJrGMr0wheo=";
           })
           (pkgs.fetchFirefoxAddon {
             name = "user_agent_string_switcher";
