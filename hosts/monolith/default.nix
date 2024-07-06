@@ -23,6 +23,7 @@ in
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./partition.nix
+    ./undervolt.nix
   ];
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -65,14 +66,6 @@ in
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_6_1;
-
-  programs.corectrl = {
-    enable = true;
-    gpuOverclock = {
-      enable = true;
-      ppfeaturemask = "0xffffffff";
-    };
-  };
 
   fileSystems."/mnt/old" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
