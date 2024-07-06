@@ -23,6 +23,7 @@ in
       gimp
       inkscape
       krita
+      kdePackages.breeze
       kdePackages.kdenlive
       pitivi
       blender-hip
