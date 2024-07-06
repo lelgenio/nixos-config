@@ -48,9 +48,11 @@ lib.mkIf (desktop == "sway") {
         gtk3 = shared;
       }
     );
+
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme.name = "gtk3";
+    style.name = "qt5ct";
   };
 
   dconf.settings = {
