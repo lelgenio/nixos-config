@@ -65,8 +65,6 @@ in
     rocmPackages.rocm-smi
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_1;
-
   fileSystems."/mnt/old" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
     fsType = "btrfs";
