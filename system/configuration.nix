@@ -22,6 +22,7 @@
     ./users.nix
     ./containers.nix
     ./network.nix
+    ./keyboard.nix
     ../settings
   ];
 
