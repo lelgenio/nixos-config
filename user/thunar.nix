@@ -10,6 +10,12 @@
     })
   ];
 
+  wayland.windowManager.sway = {
+    extraConfig = ''
+      exec_always systemctl --user import-environment PATH
+    '';
+  };
+
   xdg.configFile = {
     "Thunar/".source = ./thunar;
   };
