@@ -130,7 +130,6 @@
       coreutils
       gnugrep
     ];
-    vrr-fullscreen = [ ];
   }
   // lib.mapAttrs import_script {
     wdmenu = ./wdmenu.nix;
