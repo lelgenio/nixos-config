@@ -11,6 +11,7 @@
     recommendedTlsSettings = true;
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
+    clientMaxBodySize = "512M";
   };
 
   # Redirect *lelgenio.xyz -> *lelgenio.com
