@@ -61,14 +61,9 @@ in
             hash = "sha256-lKLX6IWWtliRdH1Ig33rVEB4DVfbeuMw0dfUPV/mSSI=";
           })
           (pkgs.fetchFirefoxAddon {
-            name = "unhook";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4050795/youtube_recommended_videos-1.6.2.xpi";
-            hash = "sha256-xMuglNassZb9WqjfEGg6WeuhMACRuYqQor+iX1dEdsE=";
-          })
-          (pkgs.fetchFirefoxAddon {
-            name = "return_youtube_dislikes";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi";
-            hash = "sha256-oxqyNUmEa36rkqCU6S34NJBHtIu9gH8GnRKAg8Oyf2E=";
+            name = "invidious_redirect";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4292924/invidious_redirect_2-1.16.xpi";
+            hash = "sha256-ApCc+MNmW9Wd/5seV6npePQVEaszT/rhD9EB7HGiUb8=";
           })
 
           (pkgs.fetchFirefoxAddon {
@@ -117,7 +112,7 @@ in
             "media.rdd-vpx.enabled" = true;
             "media.rdd-wav.enabled" = true;
 
-            "media.av1.enabled" = false;
+            "media.av1.enabled" = true;
             "media.ffmpeg.vaapi-drm-display.enabled" = true;
             "media.ffmpeg.vaapi.enabled" = true;
             "media.ffvpx.enabled" = true;
