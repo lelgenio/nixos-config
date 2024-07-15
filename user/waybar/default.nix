@@ -106,7 +106,7 @@ in
           };
           clock = {
             interval = 60;
-            format = "<b>{:%H:%M %a %d/%m}</b>";
+            format = "<b>{:L%H:%M %a %d/%m}</b>";
             tooltip-format = "<tt><small>{calendar}</small></tt>";
             calendar = {
               mode = "year";
