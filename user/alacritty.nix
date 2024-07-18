@@ -117,6 +117,12 @@ in
             action = "SearchNext";
           }
           {
+            key = lib.toUpper key.next;
+            mods = "Shift";
+            mode = "Vi|~Search";
+            action = "SearchPrevious";
+          }
+          {
             key = "Up";
             mods = "Control|Shift";
             mode = "~Alt";
