@@ -9,6 +9,11 @@
   # Open kde connect ports
   programs.kdeconnect.enable = true;
 
+  networking.firewall = {
+    enable = true;
+    logRefusedConnections = false;
+  };
+
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
