@@ -4,6 +4,9 @@
 
   virtualisation.docker = {
     enable = true;
+    daemon.settings = {
+      "iptables" = false;
+    };
     autoPrune = {
       enable = true;
       dates = "monthly";
