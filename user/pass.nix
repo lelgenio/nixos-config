@@ -26,6 +26,7 @@
       _gpg-unlock
       qtpass
       readQrCode
+      pass-export
     ];
   };
 }
