@@ -1,11 +1,11 @@
 { pkgs, lib, ... }:
 {
   mkNixRunner =
-    registrationConfigFile: with lib; rec {
+    authenticationTokenConfigFile: with lib; rec {
       # File should contain at least these two variables:
       # `CI_SERVER_URL`
       # `REGISTRATION_TOKEN`
-      inherit registrationConfigFile; # 2
+      inherit authenticationTokenConfigFile; # 2
       dockerImage = "alpine:3.18.2";
       dockerAllowedImages = [ dockerImage ];
       dockerVolumes = [
