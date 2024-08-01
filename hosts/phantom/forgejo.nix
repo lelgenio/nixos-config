@@ -34,7 +34,7 @@ in
       };
       mailer = {
         ENABLED = true;
-        SMTP_ADDR = "mail.lelgenio.com";
+        SMTP_ADDR = "lelgenio.com";
         FROM = "noreply@git.lelgenio.com";
         USER = "noreply@git.lelgenio.com";
       };
