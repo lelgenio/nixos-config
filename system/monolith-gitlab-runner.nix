@@ -14,18 +14,6 @@ in
     enable = true;
     settings.concurrent = 4;
     services = {
-      # ci_test = {
-      #   registrationConfigFile = "/srv/gitlab-runner/env/ci_test";
-      #   dockerImage = "debian";
-      #   dockerPrivileged = true;
-      # };
-      thoreb_builder = {
-        registrationConfigFile =
-          config.age.secrets.monolith-gitlab-runner-thoreb-itinerario-registrationConfigFile.path;
-        dockerImage = "debian";
-        dockerPrivileged = true;
-      };
-
       # runner for building in docker via host's nix-daemon
       # nix store will be readable in runner, might be insecure
       thoreb-telemetria-nix = mkNixRunner config.age.secrets.gitlab-runner-thoreb-telemetria-registrationConfigFile.path;
