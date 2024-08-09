@@ -6,7 +6,6 @@
 }:
 let
   inherit (config.my)
-    key
     dmenu
     editor
     theme
@@ -17,6 +16,7 @@ let
   inherit (pkgs.kakouneUtils) buildKakounePlugin;
 in
 {
+  imports = [ ./kak-tree-sitter.nix ];
   config = {
     programs.kakoune = {
       enable = true;
@@ -100,6 +100,9 @@ in
           )
         )
         + ''
+          try %{
+            eval %sh{ kak-tree-sitter -vvvv -dks --init $kak_session }
+          }
 
           set global scrolloff 10,20
           set global autoreload yes
@@ -118,11 +121,13 @@ in
     home.file = {
       ".config/kak-lsp/kak-lsp.toml".source = ./kak-lsp.toml;
     };
+
     home.packages = with pkgs; [
       terminal
       ranger
       bmenu
       kak-lsp
+      kak-tree-sitter
       kak-pager
       kak-man-pager
 
