@@ -28,9 +28,6 @@ lib.mkIf (config.my.desktop == "gnome") {
   };
 
   home.packages = with pkgs; [
-    inputs.nixos-conf-editor.packages.${pkgs.system}.nixos-conf-editor
-    inputs.nix-software-center.packages.${pkgs.system}.nix-software-center
-
     adw-gtk3
 
     newsflash

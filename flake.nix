@@ -58,16 +58,6 @@
       url = "git+https://git.lelgenio.com/lelgenio/warthunder-leak-counter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # gnome stuff
-    nixos-conf-editor = {
-      url = "github:vlinkz/nixos-conf-editor";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-software-center = {
-      url = "github:vlinkz/nix-software-center";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs =
     inputs:
