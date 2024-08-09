@@ -170,7 +170,9 @@ let
     "${mod}+c" = "exec ${pkgs.color_picker}/bin/color_picker";
     "${mod}+Return" = "exec ${terminal}";
     "${mod}+Ctrl+Return" = "exec thunar";
-    "${mod}+Shift+s" = "exec grim - | swappy -f -";
+    "${mod}+Shift+s" = ''
+      exec grim - | satty --filename - --fullscreen --output-filename "$(xdg-user-dir PICTURES)"/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+    '';
     "${mod}+Ctrl+v" = "exec wl-paste | tesseract -l por - - | wl-copy";
     "${mod}+k" = "exec showkeys";
     "${mod}+Alt+x" = "exec pkill wl-crosshair || exec wl-crosshair";
