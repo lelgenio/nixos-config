@@ -145,7 +145,8 @@ in
       wl-crosshair
 
       grim
-      swappy
+      satty
+      xdg-user-dirs
       (tesseract5.override {
         enableLanguages = [
           "eng"
