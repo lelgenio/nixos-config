@@ -7,7 +7,7 @@
 }:
 
 rustPlatform.buildRustPackage rec {
-  pname = "cargo-checkmate";
+  pname = "kak-tree-sitter";
   version = "1.1.2";
 
   src = fetchFromSourcehut {
