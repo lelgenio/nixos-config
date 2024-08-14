@@ -130,7 +130,7 @@ with colors;
   declare-option str black1         "rgb:202020"
   declare-option str black2         "rgb:272727"
   declare-option str black3         "rgb:3a3a3a"
-  declare-option str orange         "rgb:f5a97f"
+  declare-option str orange         ${orange}
   declare-option str teal           "rgb:8bd5ca"
   declare-option str flamingo       "rgb:f0c6c6"
   declare-option str gray0          "rgb:606060"
@@ -146,7 +146,7 @@ with colors;
   declare-option str overlay1       "rgb:9a9a9a"
 
   # Tree-sitter (<https://git.sr.ht/~hadronized/kak-tree-sitter>)
-  set-face global ts_attribute                    "%opt{blue}"
+  set-face global ts_attribute                    "%opt{cyan}"
   set-face global ts_comment                      "%opt{overlay0}+i"
   set-face global ts_conceal                      "%opt{mauve}+i"
   set-face global ts_constant                     "%opt{orange}"
@@ -208,7 +208,7 @@ with colors;
   set-face global ts_string_regexp                "%opt{orange}"
   set-face global ts_string_escape                "%opt{mauve}"
   set-face global ts_string_special               "%opt{blue}"
-  set-face global ts_string_special_path          "%opt{green}"
+  set-face global ts_string_special_path          "%opt{orange}"
   set-face global ts_string_special_symbol        "%opt{mauve}"
   set-face global ts_string_symbol                "%opt{red}"
   set-face global ts_tag                          "%opt{mauve}"
@@ -217,7 +217,7 @@ with colors;
   set-face global ts_text_title                   "%opt{mauve}"
   set-face global ts_type                         "%opt{yellow}"
   set-face global ts_type_enum_variant            "%opt{flamingo}"
-  set-face global ts_variable                     "%opt{white}"
+  set-face global ts_variable                     "%opt{blue}"
   set-face global ts_variable_builtin             "%opt{red}"
   set-face global ts_variable_other_member        "%opt{teal}"
   set-face global ts_variable_parameter           "%opt{maroon}+i"
