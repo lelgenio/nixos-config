@@ -6,23 +6,28 @@
 }:
 {
   programs.steam.enable = true;
-  programs.steam.package = pkgs.steam.override {
-    extraLibraries =
-      pkgs:
-      with config.hardware.opengl;
-      if pkgs.hostPlatform.is64bit then
-        [ package ] ++ extraPackages
-      else
-        [ package32 ] ++ extraPackages32;
+  programs.steam.extraPackages =
+    config.fonts.packages
+    ++ (with pkgs; [
+      capitaine-cursors
+      bibata-cursors
+      mangohud
+      xdg-user-dirs
+      gamescope
 
-    extraPkgs =
-      pkgs: with pkgs; [
-        capitaine-cursors
-        bibata-cursors
-        mangohud
-        xdg-user-dirs
-      ];
-  };
+      # gamescope compatibility??
+      xorg.libXcursor
+      xorg.libXi
+      xorg.libXinerama
+      xorg.libXScrnSaver
+      libpng
+      libpulseaudio
+      libvorbis
+      stdenv.cc.cc.lib
+      libkrb5
+      keyutils
+    ]);
+
   environment.systemPackages = with pkgs; [
     protontricks
     bottles
