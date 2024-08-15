@@ -18,6 +18,7 @@
     ./fonts.nix
     ./sound.nix
     ./bluetooth.nix
+    ./mouse.nix
     ./locale.nix
     ./users.nix
     ./containers.nix
