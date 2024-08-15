@@ -143,6 +143,8 @@ in
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   networking.hostName = "monolith"; # Define your hostname.
 
+  virtualisation.virtualbox.host.enable = true;
+
   services.udev.extraRules = ''
     # Fix broken suspend with Logitech USB dongle
     # `lsusb | grep Logitech` will return "vendor:product"
