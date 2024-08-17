@@ -1,34 +1,32 @@
 (
   final: prev:
-  with prev;
   let
-    import_script = (_: path: import (path) { inherit pkgs lib; });
-    create_script = (
-      name: text: runtimeInputs:
-      let
-        script_body = pkgs.writeTextFile {
-          inherit name;
-          executable = true;
-          text = ''
-            ${builtins.readFile text}
-          '';
-        };
-      in
-      (pkgs.writeShellApplication {
-        inherit name runtimeInputs;
-        text = ''exec ${script_body} "$@"'';
-        checkPhase = "";
-      })
-    );
-    create_scripts = lib.mapAttrs (name: deps: create_script name ./${name} deps);
+    lib = prev.lib;
 
-    pass = pkgs.pass.withExtensions (ex: with ex; [ pass-otp ]);
+    importScript = (_: path: import (path) { inherit (final) pkgs lib; });
+    wrapScript =
+      name: text: runtimeInputs:
+      final.runCommand name
+        {
+          nativeBuildInputs = [ final.makeWrapper ];
+          meta.mainProgram = name;
+        }
+        ''
+          mkdir -p $out/bin
+          cp ${text} $out/bin/${name}
+          wrapProgram $out/bin/${name} \
+              --suffix PATH : ${lib.makeBinPath runtimeInputs}
+        '';
+    createScripts = lib.mapAttrs (name: deps: wrapScript name ./${name} deps);
+
+    myPass = final.pass.withExtensions (ex: with ex; [ pass-otp ]);
   in
-  create_scripts {
+  with final;
+  createScripts {
     br = [ ];
     bmenu = [
-      final.bemenu
-      final.dhist
+      bemenu
+      dhist
       fish
       j4-dmenu-desktop
       jq
@@ -44,21 +42,21 @@
       fish
     ];
     _diffr = [ diffr ];
-    _thunar-terminal = [ final.terminal ];
-    _sway_idle_toggle = [ final.swayidle ];
+    _thunar-terminal = [ terminal ];
+    _sway_idle_toggle = [ swayidle ];
     kak-pager = [
       fish
-      final._diffr
+      _diffr
     ];
-    kak-man-pager = [ final.kak-pager ];
+    kak-man-pager = [ kak-pager ];
     helix-pager = [
       fish
-      final._diffr
+      _diffr
     ];
-    helix-man-pager = [ final.helix-pager ];
+    helix-man-pager = [ helix-pager ];
     musmenu = [
       mpc-cli
-      final.wdmenu
+      wdmenu
       trash-cli
       xdg-user-dirs
       libnotify
@@ -73,9 +71,9 @@
       gnupg
     ];
     wpass = [
-      final.wdmenu
+      wdmenu
       fd
-      pass
+      myPass
       sd
       wl-clipboard
       wtype
@@ -96,7 +94,7 @@
     pulse_sink = [
       pulseaudio
       pamixer
-      final.wdmenu
+      wdmenu
     ];
     color_picker = [
       grim
@@ -108,13 +106,13 @@
     dzadd = [
       procps
       libnotify
-      final.wdmenu
+      wdmenu
       jq
       mpv
       pqiv
       python3Packages.deemix
       mpc-cli
-      final.mpdDup
+      mpdDup
     ];
     mpdDup = [
       mpc-cli
@@ -128,15 +126,15 @@
     auto_connect_gamepad = [
       bluez
       coreutils
-      final.gnugrep
+      gnugrep
     ];
     powerplay-led-idle = [
-      final.bash
+      bash
       libinput
       libratbag
     ];
   }
-  // lib.mapAttrs import_script {
+  // lib.mapAttrs importScript {
     wdmenu = ./wdmenu.nix;
     wlauncher = ./wlauncher.nix;
     _gpg-unlock = ./_gpg-unlock.nix;
