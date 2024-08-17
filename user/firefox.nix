@@ -49,11 +49,6 @@ in
             url = "https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies/releases/download/v1.1.4/istilldontcareaboutcookies-1.1.4.xpi";
             hash = "sha256-yt6yRiLTuaK4K/QwgkL9gCVGsSa7ndFOHqZvKqIGZ5U=";
           })
-          (pkgs.fetchFirefoxAddon {
-            name = "github_no_more";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4293306/github_no_more-0.0.1.xpi";
-            hash = "sha256-1vzgo7z4K6aZAVAo5VqihYQi77mZ0rE68xbt7Oqz29s=";
-          })
 
           (pkgs.fetchFirefoxAddon {
             name = "vimium_ff";
