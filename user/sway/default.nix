@@ -23,6 +23,7 @@ in
     ./swayidle.nix
     ./swaylock.nix
     ./theme.nix
+    ./powerplay-led-idle.nix
   ];
   config = lib.mkIf (config.my.desktop == "sway") {
     services.mako.enable = true;
