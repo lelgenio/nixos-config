@@ -3,7 +3,7 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium-fhs;
+    package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
       github.github-vscode-theme
