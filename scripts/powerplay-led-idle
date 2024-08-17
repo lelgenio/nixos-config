@@ -4,7 +4,7 @@ set -e
 
 # Constants
 SECONDS_UNTIL_FADE=$(( 1 * 60))
-SECONDS_UNTIL_OFF=$(( 5 * 60))
+SECONDS_UNTIL_OFF=$(( 6 * 60))
 
 COLOR_ON=ff0000
 COLOR_FADE=880000
