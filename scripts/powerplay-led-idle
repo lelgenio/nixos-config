@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Constants
+SECONDS_UNTIL_FADE=$(( 1 * 60))
+SECONDS_UNTIL_OFF=$(( 5 * 60))
+
+COLOR_ON=ff0000
+COLOR_FADE=880000
+COLOR_OFF=000000
+
+# Logging
+
+if [[ "$1" = "debug" ]]; then
+    echo "Running with debugging" >&2
+    DEBUG="true"
+
+    SECONDS_UNTIL_FADE=$(( 3 ))
+    SECONDS_UNTIL_OFF=$(( 5 ))
+fi
+
+log() {
+    if [[ "$DEBUG" = "true" ]]; then
+        echo "$@" >&2
+    fi
+}
+
+# Implementation
+
+main() {
+    CURRENT_STATE="UNKNOWN"
+    LAST_POINTER_MOTION="$(date +%s)"
+
+    if [ "$(ratbagctl list | wc -l)" -ne 1 ]; then
+        echo "Not exactly one device found, exiting..."
+        exit 1
+    fi
+
+    DEVICE="$(ratbagctl list | cut -d: -f1)"
+
+    while true; do
+        while read line; do
+            LAST_POINTER_MOTION="$(date +%s)"
+            break
+        done < <(
+            timeout 5s \
+                libinput debug-events \
+                | grep POINTER_MOTION
+        )
+        TIME_SINCE_LAST=$(( "$(date +%s)" - "$LAST_POINTER_MOTION" ))
+        log "Last pointer motion was $TIME_SINCE_LAST seconds ago"
+        if [ "$TIME_SINCE_LAST" -gt "$SECONDS_UNTIL_OFF" ]; then
+            setState OFF "$COLOR_OFF"
+        elif [ "$TIME_SINCE_LAST" -gt "$SECONDS_UNTIL_FADE" ]; then
+            setState FADE "$COLOR_FADE"
+        else
+            setState ON "$COLOR_ON"
+        fi
+    done
+}
+
+setState() {
+    STATE="$1"
+    COLOR="$2"
+    MODE="$3"
+
+    if [[ "$STATE" = "$CURRENT_STATE" ]]; then
+        log "Already in $STATE state"
+        return
+    fi
+    log "Changing state to $STATE"
+    CURRENT_STATE="$STATE"
+
+    ratbagctl "$DEVICE" led 0 set mode on
+    ratbagctl "$DEVICE" led 0 set color "$COLOR"
+}
+
+main

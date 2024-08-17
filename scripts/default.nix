@@ -128,7 +128,12 @@
     auto_connect_gamepad = [
       bluez
       coreutils
-      gnugrep
+      final.gnugrep
+    ];
+    powerplay-led-idle = [
+      final.bash
+      libinput
+      libratbag
     ];
   }
   // lib.mapAttrs import_script {
