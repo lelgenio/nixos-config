@@ -34,7 +34,7 @@ lib.mkIf (config.my.desktop == "gnome") {
     foliate
     amberol
     pitivi
-    gnome-passwordsafe
+    keepassxc
 
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
