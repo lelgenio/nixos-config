@@ -42,10 +42,6 @@ lib.mkIf (config.my.desktop == "gnome") {
     qt6Packages.qtstyleplugin-kvantum
   ];
 
-  home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-  };
-
   services.gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
 
   xdg.defaultApplications = {
