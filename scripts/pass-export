@@ -8,3 +8,6 @@ pass2csv "$PASSWORD_STORE_DIR" "$HOME/passwords.csv" \
   -f User '(user|login)(:\s*)?' \
   -f TOTP 'otpauth(:)?' \
   -f URL 'url(:\s*)?'
+
+# Fix TOTP format for keepass
+sd '"//totp/.*?secret=(.*?)(&.*?)?"' '"$1"' "$HOME/passwords.csv"
