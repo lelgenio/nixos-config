@@ -42,6 +42,7 @@
     ./xdg-dirs.nix
     inputs.nix-index-database.hmModules.nix-index
     ../settings
+    ./powerplay-led-idle.nix
   ];
 
   my = import ./variables.nix;
