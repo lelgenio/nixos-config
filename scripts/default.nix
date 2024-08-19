@@ -69,6 +69,7 @@
     pass-export = [
       pass2csv
       gnupg
+      sd
     ];
     wpass = [
       wdmenu
