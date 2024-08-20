@@ -20,6 +20,7 @@
     ./forgejo.nix
     ./warthunder-leak-counter.nix
     ./invidious.nix
+    ./davi.nix
   ];
 
   networking.hostName = "phantom";
