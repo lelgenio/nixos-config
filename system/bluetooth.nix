@@ -6,7 +6,7 @@
     settings = {
       General = {
         DiscoverableTimeout = 0;
-        # Discoverable = true;
+        Discoverable = true;
         AlwaysPairable = true;
       };
       Policy = {

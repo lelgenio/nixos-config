@@ -124,11 +124,6 @@
       zbar
       wl-clipboard
     ];
-    auto_connect_gamepad = [
-      bluez
-      coreutils
-      gnugrep
-    ];
     powerplay-led-idle = [
       bash
       libinput

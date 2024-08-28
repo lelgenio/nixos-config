@@ -8,7 +8,6 @@
 }:
 {
   imports = [
-    ./controller.nix
     ./waybar
     ./helix.nix
     ./kakoune
