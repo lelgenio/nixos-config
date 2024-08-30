@@ -36,6 +36,8 @@ in
 
   hardware.opentabletdriver.enable = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [
