@@ -6,7 +6,7 @@ let
     echo "manual" > power_dpm_force_performance_level
     echo "1" > pp_power_profile_mode
     test -e pp_od_clk_voltage
-    echo "vo -100" > pp_od_clk_voltage
+    echo "vo -120" > pp_od_clk_voltage
     echo "c" > pp_od_clk_voltage
   '';
 in
