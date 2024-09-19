@@ -129,6 +129,7 @@
       libinput
       libratbag
     ];
+    vrr-fullscreen = [ ];
   }
   // lib.mapAttrs importScript {
     wdmenu = ./wdmenu.nix;
