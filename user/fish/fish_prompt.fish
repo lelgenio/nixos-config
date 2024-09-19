@@ -103,29 +103,29 @@ function fish_git_prompt
        _fish_prompt_warn "init"
     end
 
-    git rev-parse HEAD -- &>/dev/null
-    or return
+    # if we have at least one commit
+    if git rev-parse HEAD -- &>/dev/null
+        # print a "↑" if ahead of origin
+        test 0 -ne (git log --oneline "$git_remote_branch"..HEAD -- | wc -l)
+        and set -f _git_sync_ahead '↑'
 
-    # print a "↑" if ahead of origin
-    test 0 -ne (git log --oneline "$git_remote_branch"..HEAD -- | wc -l)
-    and set -f _git_sync_ahead '↑'
+        # print a "↓" if behind of origin
+        test 0 -lt (git log --oneline HEAD.."$git_remote_branch" -- | wc -l)
+        and set -l _git_sync_behind '↓'
 
-    # print a "↓" if behind of origin
-    test 0 -lt (git log --oneline HEAD.."$git_remote_branch" -- | wc -l)
-    and set -l _git_sync_behind '↓'
+        if set -q _git_sync_ahead _git_sync_behind
+            _fish_prompt_normal '⇅'
+        else if set -q _git_sync_ahead
+            _fish_prompt_normal '↑'
+        else if set -q _git_sync_behind
+            _fish_prompt_normal '↓'
+        end
 
-    if set -q _git_sync_ahead _git_sync_behind
-        _fish_prompt_normal '⇅'
-    else if set -q _git_sync_ahead
-        _fish_prompt_normal '↑'
-    else if set -q _git_sync_behind
-        _fish_prompt_normal '↓'
-    end
-
-    if test -n "$git_log_unpushed"
-        and not string match -qr "$git_branch" "$git_log_unpushed"
-        _fish_prompt_normal '↻'
-        _fish_prompt_warn $git_log_unpushed[1]
+        if test -n "$git_log_unpushed"
+            and not string match -qr "$git_branch" "$git_log_unpushed"
+            _fish_prompt_normal '↻'
+            _fish_prompt_warn $git_log_unpushed[1]
+        end
     end
 
     ############################################################
