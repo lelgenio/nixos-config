@@ -2,6 +2,7 @@
 rec {
   all = [
     scripts
+    unstable
     themes
     new-packages
     patches
@@ -10,6 +11,10 @@ rec {
   ];
 
   scripts = (import ../scripts);
+
+  unstable = final: prev: {
+    unstable = import inputs.nixpkgs-unstable { inherit (final) system config; };
+  };
 
   themes = (
     final: prev: {
