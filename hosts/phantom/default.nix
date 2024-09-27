@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ./vpsadminos.nix
+    inputs.vpsadminos.nixosConfigurations.container
     inputs.agenix.nixosModules.default
     ../../system/nix.nix
     ./hardware-config.nix
