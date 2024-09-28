@@ -54,9 +54,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    # home-manager
-
-    terminal # see flake.nix
+    terminal
 
     pulse_sink
     pulseaudio
@@ -81,7 +79,6 @@
     amdgpu_top
     inxi
     dmidecode
-    ncdu
 
     ## text manipulation
     sd
@@ -110,7 +107,6 @@
     ## Network
     speedtest-cli
     nmap
-    httpie
     miniupnpc
     deluge
     nicotine-plus
@@ -122,7 +118,6 @@
     # rustup
 
     docker-compose
-    gnumake
     mariadb
 
     nodePackages.intelephense
