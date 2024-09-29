@@ -36,7 +36,6 @@ in
       shellAliases = {
         rm = "trash";
         tree = "eza -T";
-        kill_yourself = "shutdown now";
       };
       shellAbbrs = {
         off = "shutdown now";
@@ -51,7 +50,7 @@ in
         c = "cargo";
         # system
         sv = "sudo systemct";
-        suv = "sudo systemct --user";
+        suv = "systemct --user";
         # docker abbrs
         d = "docker";
         dc = "docker-compose";
