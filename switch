@@ -4,10 +4,9 @@ nix fmt
 
 git --no-pager diff
 
-sudo nice ionice \
-    nixos-rebuild \
+nixos-rebuild \
     switch \
-    --verbose \
+    --use-remote-sudo \
     --print-build-logs \
     --flake .# \
     $@
