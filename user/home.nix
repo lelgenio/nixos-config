@@ -127,7 +127,7 @@
     clang-tools # c/c++ lsp server
     rust-analyzer # rust analyzer
 
-    blade-formatter
+    unstable.blade-formatter
     nixfmt-rfc-style
   ];
 
