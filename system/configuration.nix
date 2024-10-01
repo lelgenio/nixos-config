@@ -48,6 +48,15 @@
 
   services.geoclue2.enable = true;
 
+  # Workaround for nm-wait-online hanging??
+  # Ref: https://github.com/NixOS/nixpkgs/issues/180175
+  systemd.services.NetworkManager-wait-online = {
+    serviceConfig.ExecStart = [
+      ""
+      "${pkgs.networkmanager}/bin/nm-online -q"
+    ];
+  };
+
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=10s
   '';
