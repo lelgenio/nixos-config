@@ -3,7 +3,6 @@
 
 { pkgs, inputs }:
 rec {
-  blade-formatter = pkgs.callPackage ./blade-formatter { };
   cargo-checkmate = pkgs.callPackage ./cargo-checkmate.nix { };
   lipsum = pkgs.callPackage ./lipsum.nix { };
   emmet-cli = pkgs.callPackage ./emmet-cli.nix { };
