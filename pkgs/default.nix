@@ -9,5 +9,4 @@ rec {
   emmet-cli = pkgs.callPackage ./emmet-cli.nix { };
   material-wifi-icons = pkgs.callPackage ./material-wifi-icons.nix { };
   gnome-pass-search-provider = pkgs.callPackage ./gnome-pass-search-provider.nix { };
-  kak-tree-sitter = pkgs.callPackage ./kak-tree-sitter.nix { };
 }
