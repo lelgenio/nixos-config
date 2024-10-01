@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let
   hx-src = pkgs.helix.src;
-  kts-src = pkgs.kak-tree-sitter.src;
+  kts-src = pkgs.unstable.kak-tree-sitter-unwrapped.src;
   inherit (pkgs) fetchFromGitHub;
 in
 with pkgs.tree-sitter-grammars;
