@@ -33,7 +33,7 @@
     };
 
     dzgui-nix = {
-      url = "github:lelgenio/dzgui-nix/dzgui-4.1.0";
+      url = "github:lelgenio/dzgui-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
