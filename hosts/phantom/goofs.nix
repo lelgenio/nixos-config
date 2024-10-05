@@ -33,4 +33,9 @@
     forceSSL = true;
     root = inputs.tomater;
   };
+  services.nginx.virtualHosts."youre-wrong.lelgenio.com" = {
+    enableACME = true;
+    forceSSL = true;
+    root = inputs.youre-wrong;
+  };
 }
