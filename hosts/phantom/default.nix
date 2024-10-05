@@ -21,6 +21,7 @@
     ./warthunder-leak-counter.nix
     ./invidious.nix
     ./davi.nix
+    ./goofs.nix
   ];
 
   networking.hostName = "phantom";

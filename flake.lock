@@ -57,6 +57,22 @@
         "type": "gitlab"
       }
     },
+    "catboy-spinner": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1728098748,
+        "narHash": "sha256-FHM/a+wqctmg1LXf/XB6TcXowL0Wzbq1kSCGVnxGgL8=",
+        "ref": "refs/heads/main",
+        "rev": "c6fc11b0900826508f6a766c65cf92e0c7c4eab9",
+        "revCount": 4,
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/catboy-spinner"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/catboy-spinner"
+      }
+    },
     "crane": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -501,6 +517,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "catboy-spinner": "catboy-spinner",
         "demoji": "demoji",
         "dhist": "dhist",
         "disko": "disko",
@@ -513,6 +530,7 @@
         "plymouth-themes": "plymouth-themes",
         "ranger-icons": "ranger-icons",
         "tlauncher": "tlauncher",
+        "tomater": "tomater",
         "vpsadminos": "vpsadminos",
         "warthunder-leak-counter": "warthunder-leak-counter",
         "wl-crosshair": "wl-crosshair"
@@ -686,6 +704,22 @@
       "original": {
         "type": "git",
         "url": "https://git.lelgenio.xyz/lelgenio/tlauncher-nix"
+      }
+    },
+    "tomater": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1728089744,
+        "narHash": "sha256-WOz/qUKyao7lM2qcwqqcJDw4jI8mUJL6kNUNm0sxPKk=",
+        "ref": "refs/heads/main",
+        "rev": "efff561c745514a7874e3f5de95307a74efc7df9",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/tomater"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/tomater"
       }
     },
     "utils": {
