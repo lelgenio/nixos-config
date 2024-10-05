@@ -18,7 +18,6 @@
     ./writefreely.nix
     ./email.nix
     ./forgejo.nix
-    ./warthunder-leak-counter.nix
     ./invidious.nix
     ./davi.nix
     ./goofs.nix

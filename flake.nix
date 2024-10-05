@@ -74,6 +74,10 @@
       url = "git+https://git.lelgenio.com/lelgenio/tomater";
       flake = false;
     };
+    youre-wrong = {
+      url = "git+https://git.lelgenio.com/lelgenio/youre-wrong";
+      flake = false;
+    };
   };
   outputs =
     inputs:
