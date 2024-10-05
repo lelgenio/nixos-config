@@ -62,6 +62,14 @@
       url = "git+https://git.lelgenio.com/lelgenio/warthunder-leak-counter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catboy-spinner = {
+      url = "git+https://git.lelgenio.com/lelgenio/catboy-spinner";
+      flake = false;
+    };
+    tomater = {
+      url = "git+https://git.lelgenio.com/lelgenio/tomater";
+      flake = false;
+    };
   };
   outputs =
     inputs:
