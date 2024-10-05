@@ -27,6 +27,9 @@ in
         ENABLED = true;
         DEFAULT_ACTIONS_URL = "github";
       };
+      repository = {
+        ENABLE_PUSH_CREATE_USER = true;
+      };
       server = {
         DOMAIN = "git.lelgenio.com";
         HTTP_PORT = 3000;
