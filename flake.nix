@@ -78,6 +78,10 @@
       url = "git+https://git.lelgenio.com/lelgenio/youre-wrong";
       flake = false;
     };
+    hello-fonts = {
+      url = "git+https://git.lelgenio.com/lelgenio/hello-fonts";
+      flake = false;
+    };
   };
   outputs =
     inputs:

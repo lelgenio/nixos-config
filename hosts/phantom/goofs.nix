@@ -38,4 +38,9 @@
     forceSSL = true;
     root = inputs.youre-wrong;
   };
+  services.nginx.virtualHosts."hello-fonts.lelgenio.com" = {
+    enableACME = true;
+    forceSSL = true;
+    root = inputs.hello-fonts;
+  };
 }
