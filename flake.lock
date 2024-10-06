@@ -423,6 +423,22 @@
         "type": "github"
       }
     },
+    "hello-fonts": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1728232065,
+        "narHash": "sha256-1DUW1YqZALPFxBM7HYcNZiCZQvMqUiJ1m04NU4IIe3I=",
+        "ref": "refs/heads/main",
+        "rev": "10f7485fea930bb45e97fbda0cd68f199a7e8f59",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/hello-fonts"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/hello-fonts"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -583,6 +599,7 @@
         "dhist": "dhist",
         "disko": "disko",
         "dzgui-nix": "dzgui-nix",
+        "hello-fonts": "hello-fonts",
         "home-manager": "home-manager",
         "made-you-look": "made-you-look",
         "nix-index-database": "nix-index-database",
