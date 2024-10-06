@@ -879,11 +879,11 @@
     "youre-wrong": {
       "flake": false,
       "locked": {
-        "lastModified": 1728148764,
-        "narHash": "sha256-JhYA4YBS9Cpm4i80KK95Fg6doZhdydZ4W/bEG1M1FJU=",
+        "lastModified": 1728228087,
+        "narHash": "sha256-W40rQbQAo3lGrKlfenSA8JaGwZMSx/X4lP71enQtK7Y=",
         "ref": "refs/heads/main",
-        "rev": "b206caa7b7efbd2d4b68d3a8fc50c224f6629d39",
-        "revCount": 1,
+        "rev": "64e7876233e99ad7223cae29688374a1c1ff569a",
+        "revCount": 2,
         "type": "git",
         "url": "https://git.lelgenio.com/lelgenio/youre-wrong"
       },
