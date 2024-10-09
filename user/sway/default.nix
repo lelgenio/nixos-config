@@ -81,7 +81,7 @@ in
         # Ignore PS4 controller touchpad events
         input."1356:2508:Wireless_Controller_Touchpad".events = "disabled";
 
-        input."1133:16537:Logitech_G502_X_PLUS" = {
+        input."type:pointer" = {
           accel_profile = "flat";
           pointer_accel = "0";
         };
