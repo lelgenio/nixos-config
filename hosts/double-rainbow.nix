@@ -44,7 +44,7 @@ in
     fsType = "vfat";
   };
 
-  swapDevices = [ ];
+  swapDevices = [ { device = "/swapfile"; } ];
 
   services.udev.extraRules = ''
     # Force all disks to use mq-deadline scheduler
