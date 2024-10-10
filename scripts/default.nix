@@ -130,6 +130,7 @@
       libratbag
     ];
     vrr-fullscreen = [ ];
+    controller-battery = [ ];
   }
   // lib.mapAttrs importScript {
     wdmenu = ./wdmenu.nix;
