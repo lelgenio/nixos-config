@@ -1,0 +1,38 @@
+#!/bin/sh
+
+set -e
+
+CONTROLLER=$(find /sys/class/power_supply -maxdepth 1 -name '*controller*' || true)
+
+if test -z "$CONTROLLER"; then
+    echo
+    exit 0
+fi
+
+CAPACITY=$(cat "$CONTROLLER/capacity")
+
+echo -n '󰊴'
+
+if test "$CAPACITY" -ge 90; then
+    echo '󰁹'
+elif test "$CAPACITY" -ge 90; then
+    echo '󰂂'
+elif test "$CAPACITY" -ge 80; then
+    echo '󰂁'
+elif test "$CAPACITY" -ge 70; then
+    echo '󰂀'
+elif test "$CAPACITY" -ge 60; then
+    echo '󰁿'
+elif test "$CAPACITY" -ge 50; then
+    echo '󰁾'
+elif test "$CAPACITY" -ge 40; then
+    echo '󰁽'
+elif test "$CAPACITY" -ge 30; then
+    echo '󰁼'
+elif test "$CAPACITY" -ge 20; then
+    echo '󰁻'
+elif test "$CAPACITY" -ge 10; then
+    echo '󰁺'
+else
+    echo '󰂎'
+fi

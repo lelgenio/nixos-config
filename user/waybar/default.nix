@@ -35,6 +35,7 @@ in
             "mpd"
             "custom/playerctl"
             "tray"
+            "custom/controller-battery"
             "custom/caffeine"
             "pulseaudio"
             (lib.optional (osConfig.services.vpn.enable or false) "custom/vpn")
@@ -156,6 +157,12 @@ in
           };
           "sway/language" = {
             format = "{short} {variant}";
+          };
+          "custom/controller-battery" = {
+            format = "{}";
+            exec = lib.getExe pkgs.controller-battery;
+            interval = 1;
+            tooltip = false;
           };
           "custom/caffeine" = {
             format = "{}";
