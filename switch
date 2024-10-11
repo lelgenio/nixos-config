@@ -9,4 +9,4 @@ nixos-rebuild \
     --use-remote-sudo \
     --print-build-logs \
     --flake .# \
-    $@
+    "$@"
