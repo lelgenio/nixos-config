@@ -12,7 +12,7 @@ in
   virtualisation.docker.enable = true;
   services.gitlab-runner = {
     enable = true;
-    settings.concurrent = 4;
+    settings.concurrent = 12;
     services = {
       # runner for building in docker via host's nix-daemon
       # nix store will be readable in runner, might be insecure
