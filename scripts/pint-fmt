@@ -1,0 +1,7 @@
+#!/bin/sh
+
+file="$(mktemp --tmpdir=/dev/shm).php"
+cat - >"$file"
+./vendor/bin/pint --quiet "$file"
+cat "$file"
+rm "$file"

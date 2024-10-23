@@ -124,6 +124,7 @@
       zbar
       wl-clipboard
     ];
+    pint-fmt = [ ];
     powerplay-led-idle = [
       bash
       libinput
