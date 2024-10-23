@@ -30,6 +30,10 @@ hook global WinSetOption filetype=angular %[
     add-highlighter buffer/angular ref html
 ]
 
+hook global BufCreate .*\.php %{
+    set buffer formatcmd 'pint-fmt'
+}
+
 hook global BufCreate .*\.js %{
     set buffer formatcmd 'prettier --parser babel'
 }

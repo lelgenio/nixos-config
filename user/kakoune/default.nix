@@ -133,6 +133,7 @@ in
 
       emmet-cli
       nodePackages.prettier
+      pint-fmt
 
       aspell
       aspellDicts.en
