@@ -154,7 +154,10 @@
         };
         double-rainbow = lib.nixosSystem {
           inherit system specialArgs;
-          modules = [ ./hosts/double-rainbow.nix ] ++ common_modules;
+          modules = [
+            ./hosts/double-rainbow.nix
+            ./system/rainbow-gitlab-runner.nix
+          ] ++ common_modules;
         };
         pixie = lib.nixosSystem {
           inherit system specialArgs;
