@@ -1,6 +1,6 @@
 #!/bin/sh
 
-file="$(mktemp --tmpdir=/dev/shm).php"
+file="$(mktemp)"
 cat - >"$file"
 ./vendor/bin/pint --quiet "$file"
 cat "$file"
