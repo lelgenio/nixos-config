@@ -23,7 +23,7 @@ in
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./partition.nix
-    ./undervolt.nix
+    ./amdgpu.nix
   ];
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -52,27 +52,11 @@ in
     "amdgpu"
     "zenpower"
   ];
-  boot.kernelParams = [
-    "amdgpu.dcdebugmask=0x10" # amdgpu undervolting bug
-    "video=DP-1:1920x1080@144"
-  ];
+
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=30s
     SuspendState=mem
   '';
-
-  hardware.opengl.driSupport = true;
-  # # For 32 bit applications
-  hardware.opengl.driSupport32Bit = true;
-
-  hardware.opengl.extraPackages = with pkgs; [
-    libva
-    libvdpau
-    vaapiVdpau
-    rocm-opencl-icd
-    rocm-opencl-runtime
-    rocmPackages.rocm-smi
-  ];
 
   fileSystems."/mnt/old" = {
     device = "/dev/disk/by-label/BTRFS_ROOT";
