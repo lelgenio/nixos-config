@@ -14,11 +14,11 @@
     lan = true;
     openFirewall = true;
     admins = [ "lelgenio" ];
-    extraSettingsFile = config.age.secrets.phantom-factorio-settings.path;
+    extraSettingsFile = config.age.secrets.factorio-settings.path;
   };
 
-  age.secrets.phantom-factorio-settings = {
-    file = ../../secrets/phantom-factorio-settings.age;
+  age.secrets.factorio-settings = {
+    file = ../../secrets/factorio-settings.age;
     mode = "777";
   };
 }
