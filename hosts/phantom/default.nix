@@ -21,6 +21,7 @@
     ./invidious.nix
     ./davi.nix
     ./goofs.nix
+    ./factorio-server.nix
   ];
 
   networking.hostName = "phantom";
