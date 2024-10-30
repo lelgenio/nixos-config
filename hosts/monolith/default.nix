@@ -24,6 +24,7 @@ in
     (modulesPath + "/installer/scan/not-detected.nix")
     ./partition.nix
     ./amdgpu.nix
+    ./factorio-server.nix
   ];
   boot.initrd.availableKernelModules = [
     "nvme"

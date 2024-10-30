@@ -12,7 +12,7 @@ in
   "monolith-forgejo-runner-token.age".publicKeys = [ main_ssh_public_key ];
   "lelgenio-cachix.age".publicKeys = [ main_ssh_public_key ];
   "monolith-nix-serve-privkey.age".publicKeys = [ main_ssh_public_key ];
-  "phantom-factorio-settings.age".publicKeys = [ main_ssh_public_key ];
+  "factorio-settings.age".publicKeys = [ main_ssh_public_key ];
   "phantom-nextcloud.age".publicKeys = [ main_ssh_public_key ];
   "phantom-writefreely.age".publicKeys = [ main_ssh_public_key ];
   "phantom-renawiki.age".publicKeys = [ main_ssh_public_key ];
