@@ -8,5 +8,4 @@ rec {
   emmet-cli = pkgs.callPackage ./emmet-cli.nix { };
   material-wifi-icons = pkgs.callPackage ./material-wifi-icons.nix { };
   gnome-pass-search-provider = pkgs.callPackage ./gnome-pass-search-provider.nix { };
-  linux-bluetooth = pkgs.callPackage ./linux-bluetooth.nix { };
 }
