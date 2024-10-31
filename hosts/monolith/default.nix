@@ -39,13 +39,7 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    zenpower
-    (pkgs.linux-bluetooth.override {
-      kernel = config.boot.kernelPackages.kernel;
-      patches = [ ../../patches/linux/v2-Bluetooth-btusb-Fix-regression-with-CSR-controllers.diff ];
-    })
-  ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [
