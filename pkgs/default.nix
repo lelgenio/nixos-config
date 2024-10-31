@@ -8,4 +8,7 @@ rec {
   emmet-cli = pkgs.callPackage ./emmet-cli.nix { };
   material-wifi-icons = pkgs.callPackage ./material-wifi-icons.nix { };
   gnome-pass-search-provider = pkgs.callPackage ./gnome-pass-search-provider.nix { };
+  factorio-headless = pkgs.callPackage ./factorio-headless {
+    inherit (pkgs.unstable) factorio-headless;
+  };
 }
