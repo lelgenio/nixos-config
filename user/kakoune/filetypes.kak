@@ -38,6 +38,10 @@ hook global BufCreate .*\.js %{
     set buffer formatcmd 'prettier --parser babel'
 }
 
+hook global BufCreate .*\.scss %{
+    set buffer formatcmd 'prettier --parser scss'
+}
+
 hook global BufCreate .*\.vue %{
     set buffer formatcmd 'prettier --parser vue'
     hook buffer InsertCompletionHide {
