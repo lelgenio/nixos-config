@@ -85,6 +85,7 @@
     ripgrep
     translate-shell
     lipsum
+    python3Packages.python-slugify
     par
 
     mate.engrampa
