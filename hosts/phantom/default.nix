@@ -11,6 +11,7 @@
     ../../system/nix.nix
     ./hardware-config.nix
     ./mastodon.nix
+    ./lemmy.nix
     ./nextcloud.nix
     ./nginx.nix
     ./syncthing.nix
