@@ -35,7 +35,11 @@ in
     "sd_mod"
   ];
 
-  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver = {
+    enable = true;
+    # TODO: remove this once otd gets updated
+    package = pkgs.unstable.opentabletdriver;
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 

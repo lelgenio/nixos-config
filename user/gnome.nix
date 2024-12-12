@@ -10,7 +10,7 @@ lib.mkIf (config.my.desktop == "gnome") {
   home.pointerCursor = {
     name = "Adwaita";
     size = 24;
-    package = pkgs.gnome.adwaita-icon-theme;
+    package = pkgs.adwaita-icon-theme;
     gtk.enable = true;
   };
 
@@ -42,7 +42,7 @@ lib.mkIf (config.my.desktop == "gnome") {
     qt6Packages.qtstyleplugin-kvantum
   ];
 
-  services.gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
+  services.gpg-agent.pinentryPackage = pkgs.pinentry-gnome;
 
   xdg.defaultApplications = {
     enable = lib.mkForce false;

@@ -31,7 +31,6 @@
   environment.systemPackages = with pkgs; [
     protontricks
     bottles
+    inputs.dzgui-nix.packages.${pkgs.system}.default
   ];
-
-  programs.dzgui.enable = true;
 }

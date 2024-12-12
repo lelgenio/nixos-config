@@ -43,7 +43,7 @@
     glib # gsettings
     usbutils
     # dracula-theme # gtk theme
-    gnome3.adwaita-icon-theme # default gnome cursors
+    adwaita-icon-theme # default gnome cursors
   ];
 
   services.geoclue2.enable = true;

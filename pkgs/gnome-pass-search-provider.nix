@@ -5,7 +5,6 @@
   wrapGAppsHook,
   gtk3,
   gobject-introspection,
-  gnome,
 }:
 
 let
