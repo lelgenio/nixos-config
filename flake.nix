@@ -1,10 +1,10 @@
 {
   description = "My system config";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     vpsadminos.url = "github:vpsfreecz/vpsadminos";
@@ -27,45 +27,29 @@
     };
 
     nixos-mailserver = {
-      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-24.05";
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-24_05.follows = "nixpkgs";
     };
 
-    dzgui-nix = {
-      url = "github:lelgenio/dzgui-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    dzgui-nix.url = "github:lelgenio/dzgui-nix";
 
     tlauncher = {
       url = "git+https://git.lelgenio.xyz/lelgenio/tlauncher-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # my stuff
-    dhist = {
-      url = "github:lelgenio/dhist";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    demoji = {
-      url = "github:lelgenio/demoji";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    wl-crosshair = {
-      url = "github:lelgenio/wl-crosshair";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    warthunder-leak-counter = {
-      url = "git+https://git.lelgenio.com/lelgenio/warthunder-leak-counter";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    made-you-look = {
-      url = "git+https://git.lelgenio.com/lelgenio/made-you-look";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    dhist.url = "github:lelgenio/dhist";
+    demoji.url = "github:lelgenio/demoji";
+    wl-crosshair.url = "github:lelgenio/wl-crosshair";
+    warthunder-leak-counter.url = "git+https://git.lelgenio.com/lelgenio/warthunder-leak-counter";
+    made-you-look.url = "git+https://git.lelgenio.com/lelgenio/made-you-look";
     catboy-spinner = {
       url = "git+https://git.lelgenio.com/lelgenio/catboy-spinner";
       flake = false;
@@ -115,7 +99,6 @@
           { login-manager.greetd.enable = desktop == "sway"; }
 
           inputs.agenix.nixosModules.default
-          inputs.dzgui-nix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           inputs.disko.nixosModules.disko
           {

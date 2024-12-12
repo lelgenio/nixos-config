@@ -123,6 +123,7 @@ in
             if desktop == "sway" then
               ''
                 #titlebar { display: none !important; }
+                #TabsToolbar { display: none !important; }
                 #sidebar-header { display: none !important; }
               ''
             else

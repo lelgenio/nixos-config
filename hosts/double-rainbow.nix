@@ -37,7 +37,8 @@ in
     options = [ "subvol=@" ] ++ btrfs_options ++ btrfs_ssd;
   };
 
-  boot.initrd.luks.devices."luks-d6573cf8-25f0-4ffc-8046-ac3a4db1e964".device = "/dev/disk/by-uuid/d6573cf8-25f0-4ffc-8046-ac3a4db1e964";
+  boot.initrd.luks.devices."luks-d6573cf8-25f0-4ffc-8046-ac3a4db1e964".device =
+    "/dev/disk/by-uuid/d6573cf8-25f0-4ffc-8046-ac3a4db1e964";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/97EB-7DB5";

@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   services.lemmy = {
     enable = true;
@@ -7,6 +8,8 @@
     database.createLocally = true;
     nginx.enable = true;
   };
+
+  services.pict-rs.package = pkgs.pict-rs;
 
   services.nginx.virtualHosts."lemmy.lelgenio.com" = {
     enableACME = true;

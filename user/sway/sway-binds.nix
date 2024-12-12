@@ -166,7 +166,8 @@ let
   other_binds = {
     "${mod}+p" = "exec ${pkgs.wpass}/bin/wpass";
     "${mod}+s" = "exec ${menu}";
-    "${mod}+g" = "exec ${pkgs.demoji}/bin/demoji --lang pt --fallback --copy -- ${pkgs.wdmenu}/bin/wdmenu";
+    "${mod}+g" =
+      "exec ${pkgs.demoji}/bin/demoji --lang pt --fallback --copy -- ${pkgs.wdmenu}/bin/wdmenu";
     "${mod}+c" = "exec ${pkgs.color_picker}/bin/color_picker";
     "${mod}+Return" = "exec ${terminal}";
     "${mod}+Ctrl+Return" = "exec thunar";

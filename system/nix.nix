@@ -44,7 +44,7 @@ in
       ];
     };
     extraOptions = ''
-      experimental-features = nix-command flakes repl-flake
+      experimental-features = nix-command flakes
     '';
   };
 }
