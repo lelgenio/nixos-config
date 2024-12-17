@@ -125,6 +125,12 @@
       zbar
       wl-clipboard
     ];
+    git_clean_remote_deleted = [
+      git
+      gnugrep
+      gawk
+      findutils
+    ];
     pint-fmt = [ ];
     powerplay-led-idle = [
       bash
