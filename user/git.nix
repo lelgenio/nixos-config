@@ -36,8 +36,13 @@ in
         alias = {
           graph = "log --graph --oneline --branches";
           root = "rev-parse --show-toplevel";
+          clean-deleted-remotes = "!" + (lib.getExe pkgs.git_clean_remote_deleted);
         };
       };
     };
+
+    home.packages = with pkgs; [
+      git_clean_remote_deleted
+    ];
   };
 }
