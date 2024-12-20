@@ -9,14 +9,14 @@
   wayland.windowManager.sway = {
     extraConfig = ''
       exec thunderbird
-      exec vesktop
+      exec discordcanary
       exec telegram-desktop
     '';
   };
 
   home.packages = with pkgs; [
     tdesktop
-    vesktop
+    discord-canary
     thunderbird
     element-desktop-wayland
   ];
