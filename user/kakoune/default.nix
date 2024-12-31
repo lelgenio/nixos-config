@@ -127,7 +127,7 @@ in
       ranger
       bmenu
       kak-lsp
-      unstable.kak-tree-sitter
+      kak-tree-sitter
       kak-pager
       kak-man-pager
 

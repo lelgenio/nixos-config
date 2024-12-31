@@ -29,7 +29,6 @@
     nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-24_05.follows = "nixpkgs";
     };
 
     dzgui-nix.url = "github:lelgenio/dzgui-nix";
