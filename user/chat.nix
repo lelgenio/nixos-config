@@ -18,6 +18,6 @@
     tdesktop
     discord-canary
     thunderbird
-    element-desktop-wayland
+    element-desktop
   ];
 }
