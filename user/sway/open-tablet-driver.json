@@ -10,8 +10,8 @@
       "Filters": [],
       "AbsoluteModeSettings": {
         "Display": {
-          "Width": 960.0,
-          "Height": 540.0,
+          "Width": 1920.0,
+          "Height": 1080.0,
           "X": 960.0,
           "Y": 540.0,
           "Rotation": 0.0
@@ -76,7 +76,7 @@
             "Settings": [
               {
                 "Property": "Keys",
-                "Value": "Control+O"
+                "Value": "Control+Shift+Z"
               }
             ],
             "Enable": true
