@@ -58,7 +58,6 @@ in
         { app_id = "wdisplays"; }
         { app_id = "pavucontrol"; }
         { app_id = ".*[Hh]elvum.*"; }
-        { workspace = "9"; }
       ];
     };
   };
