@@ -21,6 +21,10 @@ in
     script = ''
       ${lib.getExe pkgs.amd-fan-control} /sys/class/drm/card1/device 60 85
     '';
+    serviceConfig = {
+      Restart = "always";
+      RestartSec = 10;
+    };
     wantedBy = [ "multi-user.target" ];
   };
 
