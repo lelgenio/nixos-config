@@ -13,7 +13,6 @@ in
 {
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
-    "amdgpu.dcdebugmask=0x10" # amdgpu undervolting bug
     "video=DP-1:1920x1080@144"
     "amdgpu.ppfeaturemask=0xfffd7fff" # enable undervolting
   ];
@@ -29,10 +28,6 @@ in
 
   hardware.graphics.extraPackages = with pkgs; [
     libva
-    libvdpau
-    vaapiVdpau
-    rocmPackages.clr
-    rocmPackages.rocm-smi
   ];
 
   services.udev.extraRules = ''
