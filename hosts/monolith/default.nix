@@ -41,8 +41,6 @@ in
     package = pkgs.unstable.opentabletdriver;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
