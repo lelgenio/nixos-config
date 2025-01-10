@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Create the DOCKER-USER chain if it doesn't exist
+iptables -N DOCKER-USER || true
+
+# Flush existing rules in the DOCKER-USER chain
+iptables -F DOCKER-USER
+
+# Get all external network interfaces
+interfaces=$(
+    ip -o -f inet addr show |
+    awk '{print $2}' |
+    grep -E '^(enp|eth|wlan|wlp)' |
+    sort -u
+)
+
+for iface in $interfaces; do
+    # Allow traffic from LAN
+    iptables -A DOCKER-USER -i "$iface" -s 127.0.0.1 -j ACCEPT
+    iptables -A DOCKER-USER -i "$iface" -s 10.0.0.0/8 -j ACCEPT
+    iptables -A DOCKER-USER -i "$iface" -s 192.168.0.0/16 -j ACCEPT
+
+    # Allow established and related connections
+    iptables -A DOCKER-USER -i "$iface" -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+    # Drop all other traffic
+    iptables -A DOCKER-USER -i "$iface" -j DROP
+
+    echo "iptables rules have been set up for interface: $iface"
+done
+
+# Return to the previous chain
+iptables -A DOCKER-USER -j RETURN

@@ -139,6 +139,12 @@
     ];
     vrr-fullscreen = [ ];
     controller-battery = [ ];
+    _docker-block-external-connections = [
+      iptables
+      gawk
+      gnugrep
+      iproute2
+    ];
   }
   // lib.mapAttrs importScript {
     wdmenu = ./wdmenu.nix;

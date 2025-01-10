@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   services.flatpak.enable = true;
 
@@ -21,6 +21,8 @@
       };
     };
   };
+
+  networking.firewall.extraCommands = lib.getExe pkgs._docker-block-external-connections;
 
   programs.extra-container.enable = true;
 
