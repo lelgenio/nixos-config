@@ -43,6 +43,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+
     # my stuff
     dhist.url = "github:lelgenio/dhist";
     demoji.url = "github:lelgenio/demoji";
@@ -176,6 +178,7 @@
 
       packages.${system} = pkgs // packages;
 
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      # formatter.${system} = pkgs.nixfmt-rfc-style;
+      formatter.${system} = (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper;
     };
 }
