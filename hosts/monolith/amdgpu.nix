@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   undervoltGpu = pkgs.writeShellScript "undervolt-gpu" ''
     set -xe
@@ -16,17 +16,6 @@ in
     "video=DP-1:1920x1080@144"
     "amdgpu.ppfeaturemask=0xfffd7fff" # enable undervolting
   ];
-
-  systemd.services.amd-fan-control = {
-    script = ''
-      ${lib.getExe pkgs.amd-fan-control} /sys/class/drm/card1/device 60 100
-    '';
-    serviceConfig = {
-      Restart = "always";
-      RestartSec = 10;
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
 
   hardware.graphics.enable32Bit = true;
 
