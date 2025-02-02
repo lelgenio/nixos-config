@@ -23,6 +23,7 @@
   in
   with final;
   createScripts {
+    amd-fan-control = [ bash ];
     br = [ ];
     bmenu = [
       bemenu
