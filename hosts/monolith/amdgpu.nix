@@ -19,7 +19,7 @@ in
 
   systemd.services.amd-fan-control = {
     script = ''
-      ${lib.getExe pkgs.amd-fan-control} /sys/class/drm/card1/device 60 100
+      ${lib.getExe pkgs.amd-fan-control} /sys/class/drm/card1/device 60 85
     '';
     serviceConfig = {
       Restart = "always";
