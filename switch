@@ -1,12 +1,25 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 nix fmt
 
 git --no-pager diff
 
-nixos-rebuild \
-    switch \
-    --use-remote-sudo \
-    --print-build-logs \
-    --flake .# \
-    "$@"
+run() {
+    nixos-rebuild \
+        switch \
+        --use-remote-sudo \
+        --print-build-logs \
+        --flake .# \
+        "$@"
+}
+
+if which nom >/dev/null; then
+    run --verbose \
+        --log-format internal-json \
+        "$@" \
+    |& nom --json
+else
+    run "$@"
+fi

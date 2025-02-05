@@ -44,6 +44,8 @@
     usbutils
     # dracula-theme # gtk theme
     adwaita-icon-theme # default gnome cursors
+
+    nix-output-monitor
   ];
 
   services.geoclue2.enable = true;
