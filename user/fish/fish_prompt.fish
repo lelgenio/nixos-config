@@ -51,6 +51,7 @@ end
 function _fish_prompt_git_unpushed_branches
     timeout 5s git log \
       --branches \
+      --decorate-refs-exclude=refs/tags \
       --simplify-by-decoration \
       --not \
       --remotes \
