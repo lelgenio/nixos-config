@@ -43,6 +43,9 @@ in
 
     home.packages = with pkgs; [
       git_clean_remote_deleted
+
+      gh
+      glab
     ];
   };
 }
