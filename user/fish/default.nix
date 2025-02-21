@@ -6,9 +6,12 @@
 }:
 let
   inherit (config.my) accent editor desktop;
+  cfg = config.my.fish;
 in
 {
-  config = {
+  options.my.fish.enable = lib.mkEnableOption { };
+
+  config = lib.mkIf cfg.enable {
     programs.fish = {
       enable = true;
       shellInit = ''

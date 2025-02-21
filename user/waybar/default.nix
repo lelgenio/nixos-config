@@ -14,9 +14,13 @@ let
     font
     ;
   inherit (theme) color;
+
+  cfg = config.my.waybar;
 in
 {
-  config = {
+  options.my.waybar.enable = lib.mkEnableOption { };
+
+  config = lib.mkIf cfg.enable {
     programs.waybar = {
       enable = true;
       systemd.enable = true;

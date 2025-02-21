@@ -7,9 +7,13 @@
 let
   inherit (config.my) accent theme editor;
   inherit (theme) color;
+
+  cfg = config.my.helix;
 in
 {
-  config = {
+  options.my.helix.enable = lib.mkEnableOption "Enable helix config";
+
+  config = lib.mkIf cfg.enable {
     programs.helix = {
       enable = true;
       settings = {

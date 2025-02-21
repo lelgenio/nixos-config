@@ -1,20 +1,12 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 let
-  inherit (config.my)
-    key
-    accent
-    font
-    theme
-    ;
-  inherit (theme) color;
+  cfg = config.my.kanshi;
 in
 {
-  services.kanshi = {
+  options.my.kanshi.enable = lib.mkEnableOption { };
+
+  config.services.kanshi = lib.mkIf cfg.enable {
+    enable = true;
     settings = [
       {
         profile = {

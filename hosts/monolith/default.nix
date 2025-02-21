@@ -41,6 +41,8 @@ in
     package = pkgs.unstable.opentabletdriver;
   };
 
+  my.gaming.enable = true;
+
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];

@@ -1,20 +1,14 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, lib, ... }:
 let
-  inherit (config.my)
-    key
-    accent
-    font
-    theme
-    ;
+  inherit (config.my) accent font theme;
   inherit (theme) color;
+
+  cfg = config.my.swaylock;
 in
 {
-  programs.swaylock.settings = {
+  options.my.swaylock.enable = lib.mkEnableOption { };
+
+  config.programs.swaylock.settings = lib.mkIf cfg.enable {
     image = toString theme.background;
     font = font.interface;
     font-size = font.size.medium;

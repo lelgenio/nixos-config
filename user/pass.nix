@@ -2,11 +2,15 @@
   config,
   pkgs,
   lib,
-  inputs,
   ...
 }:
+let
+  cfg = config.my.pass;
+in
 {
-  config = {
+  options.my.pass.enable = lib.mkEnableOption { };
+
+  config = lib.mkIf cfg.enable {
     programs.password-store = {
       enable = true;
       package = pkgs.pass.withExtensions (
