@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+set -e
+
+DEVICE="$1" # eg: /sys/class/drm/card1/device
+HWMON=$(echo "$DEVICE"/hwmon/hwmon*)
+
+exit() {
+    echo "Setting controll to auto" >&2
+    echo 2 > "$HWMON/pwm1_enable"
+}
+
+trap exit EXIT INT
+
+bail() {
+    echo "Error: $@" >&2
+    echo "Exiting..." >&2
+    exit 1
+}
+
+if ! [ -d "$HWMON" ]; then
+    bail "Invalid HWMON"
+fi
+
+TEMP_INPUT="$HWMON/temp2_input"
+
+if ! [ -f $TEMP_INPUT ]; then
+    bail "Invalid TEMP_INPUT"
+fi
+
+TEMP_MIN="$2"
+TEMP_MAX="$3"
+
+if [ -z "$TEMP_MIN" ];then
+  bail "No minimum temperature provided"
+fi
+
+if [ -z "$TEMP_MAX" ];then
+  bail "No maximum temperature provided"
+fi
+
+PWM_MIN=0
+PWM_MAX=255
+
+echo "Running..." >&2
+while true; do
+    TEMPERATURE_RAW=$(cat "$TEMP_INPUT")
+    TEMPERATURE="$(( $TEMPERATURE_RAW / 1000 ))"
+    # Remap from a number between 60_000..90_000 to 0..255
+    PWM=$(( ($TEMPERATURE - $TEMP_MIN) * $PWM_MAX / ($TEMP_MAX - $TEMP_MIN) ))
+
+    if [ "$PWM" -gt $PWM_MAX ]; then
+        PWM=$PWM_MAX
+    elif [ "$PWM" -lt $PWM_MIN ]; then
+        PWM=$PWM_MIN
+    fi
+
+    echo 1 > "$HWMON/pwm1_enable"
+    echo "$PWM" > "$HWMON/pwm1"
+    sleep .1s
+done
