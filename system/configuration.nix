@@ -10,7 +10,6 @@
 {
   imports = [
     ./gamemode.nix
-    ./cachix.nix
     ./media-packages.nix
     ./boot.nix
     ./thunar.nix
