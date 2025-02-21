@@ -122,21 +122,6 @@ in
       indicator = true;
     };
 
-    systemd.user.services.vrr-fullscreen = {
-      Unit = {
-        Description = "Enable VRR for fullscreen windows";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${lib.getExe pkgs.vrr-fullscreen}";
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "sway-session.target" ];
-      };
-    };
-
     services.gpg-agent.pinentryPackage = pkgs.pinentry-all;
 
     xdg.configFile."OpenTabletDriver/settings.json".source = ./open-tablet-driver.json;

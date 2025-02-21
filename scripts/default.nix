@@ -137,7 +137,6 @@
       libinput
       libratbag
     ];
-    vrr-fullscreen = [ ];
     controller-battery = [ ];
     _docker-block-external-connections = [
       iptables
