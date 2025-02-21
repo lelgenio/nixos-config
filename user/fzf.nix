@@ -2,16 +2,10 @@
   config,
   pkgs,
   lib,
-  inputs,
   ...
 }:
 let
-  inherit (config.my)
-    key
-    theme
-    accent
-    font
-    ;
+  inherit (config.my) theme accent;
   inherit (theme) color;
 
   colors = {

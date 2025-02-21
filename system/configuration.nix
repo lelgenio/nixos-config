@@ -1,15 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
-    ./gamemode.nix
+    ./android.nix
+    ./gaming.nix
     ./media-packages.nix
     ./boot.nix
     ./thunar.nix
@@ -25,38 +21,26 @@
     ../settings
   ];
 
-  my = import ../user/variables.nix;
+  my = import ../user/variables.nix // {
+    android.enable = true;
+    media-packages.enable = true;
+    containers.enable = true;
+  };
 
   zramSwap.enable = true;
-
-  programs.adb.enable = true;
-  services.udev.packages = [ pkgs.android-udev-rules ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  packages.media-packages.enable = true;
   environment.systemPackages = with pkgs; [
     pavucontrol
 
     glib # gsettings
     usbutils
-    # dracula-theme # gtk theme
     adwaita-icon-theme # default gnome cursors
-
-    nix-output-monitor
   ];
 
   services.geoclue2.enable = true;
-
-  # Workaround for nm-wait-online hanging??
-  # Ref: https://github.com/NixOS/nixpkgs/issues/180175
-  systemd.services.NetworkManager-wait-online = {
-    serviceConfig.ExecStart = [
-      ""
-      "${pkgs.networkmanager}/bin/nm-online -q"
-    ];
-  };
 
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=10s

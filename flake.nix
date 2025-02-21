@@ -102,17 +102,25 @@
           inputs.agenix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           inputs.disko.nixosModules.disko
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.lelgenio = import ./user/home.nix;
-            home-manager.backupFileExtension = "bkp";
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-            };
-          }
+          (
+            { config, ... }:
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.lelgenio = {
+                my = config.my;
+                imports = [
+                  ./user/home.nix
+                ];
+              };
+              home-manager.backupFileExtension = "bkp";
+              # Optionally, use home-manager.extraSpecialArgs to pass
+              # arguments to home.nix
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+              };
+            }
+          )
         ]
         ++ lib.optional (desktop == "gnome") ./system/gnome.nix
         ++ lib.optional (desktop == "kde") ./system/kde.nix;
@@ -133,7 +141,6 @@
             ./system/monolith-gitlab-runner.nix
             ./system/monolith-forgejo-runner.nix
             ./system/nix-serve.nix
-            ./system/steam.nix
           ] ++ common_modules;
         };
         double-rainbow = lib.nixosSystem {
@@ -151,7 +158,6 @@
             ++ [
               {
                 packages.media-packages.enable = lib.mkOverride 0 false;
-                programs.steam.enable = lib.mkOverride 0 false;
                 services.flatpak.enable = lib.mkOverride 0 false;
               }
             ];

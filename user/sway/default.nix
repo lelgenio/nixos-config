@@ -5,13 +5,10 @@
   ...
 }:
 let
-  inherit (config.my)
-    key
-    accent
-    font
-    theme
-    ;
+  inherit (config.my) accent font theme;
   inherit (theme) color;
+
+  cfg = config.my.sway;
 in
 {
   imports = [
@@ -24,10 +21,17 @@ in
     ./swaylock.nix
     ./theme.nix
   ];
-  config = lib.mkIf (config.my.desktop == "sway") {
-    services.mako.enable = true;
-    services.swayidle.enable = true;
-    services.kanshi.enable = true;
+
+  options.my.sway.enable = lib.mkEnableOption { };
+
+  config = lib.mkIf cfg.enable {
+    my.mako.enable = true;
+    my.kanshi.enable = true;
+    my.swayidle.enable = true;
+    my.swaylock.enable = true;
+    my.mpd.enable = true;
+    my.zathura.enable = true;
+    my.waybar.enable = true;
 
     wayland.windowManager.sway = {
       enable = true;
@@ -36,7 +40,7 @@ in
         bars = [ ];
 
         floating.modifier = "Mod4";
-        terminal = pkgs.alacritty.executable;
+        terminal = lib.getExe pkgs.alacritty;
 
         window.titlebar = false;
         gaps = {
@@ -69,7 +73,7 @@ in
           };
         output = {
           "*" = {
-            adaptive_sync = "off";
+            adaptive_sync = "on";
             bg = "${theme.background} fill";
             mode = "1920x1080@144.000Hz";
           };
@@ -132,7 +136,6 @@ in
       swaylock
       wdisplays
 
-      waybar
       dhist
       demoji
       bmenu

@@ -5,18 +5,15 @@
   ...
 }:
 let
-  inherit (config.my)
-    key
-    accent
-    font
-    theme
-    ;
-  inherit (theme) color;
-
   asScript = filename: text: toString (pkgs.writeShellScript filename text);
+
+  cfg = config.my.swayidle;
 in
 {
-  services.swayidle = {
+  options.my.swayidle.enable = lib.mkEnableOption { };
+
+  config.services.swayidle = {
+    enable = cfg.enable;
     timeouts = [
       {
         timeout = 360;

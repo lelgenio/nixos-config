@@ -8,6 +8,7 @@
 }:
 {
   imports = [
+    ./dummy.nix
     ./waybar
     ./helix.nix
     ./kakoune
@@ -21,6 +22,7 @@
     ./rofi.nix
     ./mpv.nix
     ./mangohud.nix
+    ./gaming.nix
     ./pipewire.nix
     ./mimeapps.nix
     ./desktop-entries.nix
@@ -44,7 +46,11 @@
     ./powerplay-led-idle.nix
   ];
 
-  my = import ./variables.nix;
+  my = import ./variables.nix // {
+    sway.enable = true;
+    pass.enable = true;
+    fish.enable = true;
+  };
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -91,14 +97,6 @@
     mate.engrampa
     # gnome.nautilus
 
-    ## games
-    # lutris-unwrapped
-    # steam # It's enabled in the system config
-    tlauncher
-    gamescope
-    glxinfo
-    vulkan-tools
-
     ## Theming
     orchis_theme_compact
     papirus_red
@@ -130,6 +128,8 @@
 
     unstable.blade-formatter
     nixfmt-rfc-style
+
+    nix-output-monitor
   ];
 
   fonts.fontconfig.enable = true;

@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  font,
-  ...
-}:
+{ config, lib, ... }:
 let
   inherit (config.my)
     key
@@ -13,56 +7,62 @@ let
     theme
     ;
   inherit (theme) color;
+
+  cfg = config.my.zathura;
 in
 {
-  config = {
-    programs.zathura.enable = true;
-    programs.zathura.options = {
-      font = "${font.mono} ${toString font.size.small}";
-      guioptions = "s";
+  options.my.zathura.enable = lib.mkEnableOption { };
 
-      selection-clipboard = "clipboard";
+  config = lib.mkIf cfg.enable {
+    programs.zathura = {
+      enable = true;
+      options = {
+        font = "${font.mono} ${toString font.size.small}";
+        guioptions = "s";
 
-      recolor = true;
-      # Turn images grayscale, so they don't look weird
-      recolor-keephue = false;
-      recolor-lightcolor = "rgba(0,0,0,0)";
-      recolor-darkcolor = color.txt;
+        selection-clipboard = "clipboard";
 
-      default-bg = color.bg_dark;
+        recolor = true;
+        # Turn images grayscale, so they don't look weird
+        recolor-keephue = false;
+        recolor-lightcolor = "rgba(0,0,0,0)";
+        recolor-darkcolor = color.txt;
 
-      inputbar-bg = color.bg_dark;
-      inputbar-fg = color.txt;
+        default-bg = color.bg_dark;
 
-      statusbar-bg = color.bg;
-      statusbar-fg = color.txt;
+        inputbar-bg = color.bg_dark;
+        inputbar-fg = color.txt;
 
-      completion-bg = color.bg;
-      completion-fg = color.txt;
+        statusbar-bg = color.bg;
+        statusbar-fg = color.txt;
 
-      completion-group-bg = color.bg_dark;
-      completion-group-fg = color.txt;
+        completion-bg = color.bg;
+        completion-fg = color.txt;
 
-      completion-highlight-bg = accent.color;
-      completion-highlight-fg = accent.fg;
+        completion-group-bg = color.bg_dark;
+        completion-group-fg = color.txt;
 
-      index-active-bg = accent.color;
-      index-active-fg = accent.fg;
-    };
-    programs.zathura.mappings = {
-      "<C-b>" = "toggle_statusbar";
-      ${key.left} = "scroll left";
-      ${key.down} = "scroll down";
-      ${key.up} = "scroll up";
-      ${key.right} = "scroll right";
-      "[index] ${key.left}" = "navigate_index collapse";
-      "[index] ${key.down}" = "navigate_index down";
-      "[index] ${key.up}" = "navigate_index up";
-      "[index] ${key.right}" = "navigate_index expand";
-      ${lib.toUpper key.down} = "navigate next";
-      ${lib.toUpper key.up} = "navigate previous";
-      ${key.next} = "search forward";
-      ${lib.toUpper key.next} = "search backward";
+        completion-highlight-bg = accent.color;
+        completion-highlight-fg = accent.fg;
+
+        index-active-bg = accent.color;
+        index-active-fg = accent.fg;
+      };
+      mappings = {
+        "<C-b>" = "toggle_statusbar";
+        ${key.left} = "scroll left";
+        ${key.down} = "scroll down";
+        ${key.up} = "scroll up";
+        ${key.right} = "scroll right";
+        "[index] ${key.left}" = "navigate_index collapse";
+        "[index] ${key.down}" = "navigate_index down";
+        "[index] ${key.up}" = "navigate_index up";
+        "[index] ${key.right}" = "navigate_index expand";
+        ${lib.toUpper key.down} = "navigate next";
+        ${lib.toUpper key.up} = "navigate previous";
+        ${key.next} = "search forward";
+        ${lib.toUpper key.next} = "search backward";
+      };
     };
   };
 }

@@ -5,10 +5,10 @@
   ...
 }:
 let
-  cfg = config.packages.media-packages;
+  cfg = config.my.media-packages;
 in
 {
-  options.packages.media-packages = {
+  options.my.media-packages = {
     enable = lib.mkEnableOption "media packages";
   };
   config = lib.mkIf cfg.enable {

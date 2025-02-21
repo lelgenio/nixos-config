@@ -4,8 +4,13 @@
   config,
   ...
 }:
+let
+  cfg = config.my.mpd;
+in
 {
-  config = lib.mkIf (config.my.desktop != "gnome") {
+  options.my.mpd.enable = lib.mkEnableOption { };
+
+  config = lib.mkIf cfg.enable {
     services.mpd = {
       enable = true;
       musicDirectory = config.home.homeDirectory + "/Música";
