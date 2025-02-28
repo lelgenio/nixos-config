@@ -14,7 +14,6 @@ in
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelParams = [
     "video=DP-1:1920x1080@144"
-    "amdgpu.ppfeaturemask=0xfffd7fff" # enable undervolting
   ];
 
   systemd.services.amd-fan-control = {
