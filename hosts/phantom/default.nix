@@ -2,12 +2,16 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 {
   imports = [
     inputs.vpsadminos.nixosConfigurations.container
     inputs.agenix.nixosModules.default
+    inputs.sops-nix.nixosModules.default
+
+    ../../system/sops.nix
     ../../system/nix.nix
     ./hardware-config.nix
     ./mastodon.nix
@@ -55,6 +59,15 @@
 
   age = {
     identityPaths = [ "/root/.ssh/id_rsa" ];
+  };
+
+  sops = {
+    secrets.hello = { };
+    defaultSopsFile = lib.mkForce ../../secrets/phantom/default.yaml;
+  };
+
+  environment.etc."teste-sops" = {
+    text = config.sops.secrets.hello.path;
   };
 
   virtualisation.docker = {
