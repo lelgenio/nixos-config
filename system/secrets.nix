@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   age = {
     identityPaths = [ "/root/.ssh/id_rsa" ];

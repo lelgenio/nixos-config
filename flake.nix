@@ -26,6 +26,11 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -96,10 +101,12 @@
           { nixpkgs.pkgs = pkgs; }
           ./system/configuration.nix
           ./system/secrets.nix
+          ./system/sops.nix
           ./system/greetd.nix
           { login-manager.greetd.enable = desktop == "sway"; }
 
           inputs.agenix.nixosModules.default
+          inputs.sops-nix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           inputs.disko.nixosModules.disko
           (

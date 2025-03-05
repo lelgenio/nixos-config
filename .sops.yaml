@@ -1,0 +1,18 @@
+keys:
+  - &lelgenio-gpg 0FECE8316E74BA6F44EFC21A2F8F21CE8721456B
+  - &lelgenio-ssh ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCxR/w+38b2lX90yNBqhq3mUmkn1WGu6GAPhN1tVp2ZjYRJNV/+5gWCnTtOWYtDx35HmK/spQ2Qy8X9ttkzORa24fysNx1Iqn/TiXhD7eIJjbGPnrOpIKTkW5/uB3SD/P5NBSa06//BaqJU4sBlG79hoXRpod052hQtdpTVDiMCIV+iboWPKqopmJJfWdBtVnHXs9rep0htPRExxGslImFk7Z6xjcaHyCpIQZPlOGf+sGsmUU7jRqzvZFV8ucIdbnAlMHrU4pepNFhuraESyZVTa/bi9sw0iozXp5Q5+5thMebEslmT1Z771kI4sieDy+O4r8c0Sx2/VY1UAzcpq1faggc3YB01MTh+tiEC6xdMvZLrQGL1NBWjHleMyL53GU5ERluC0vXJF3Hv3BGGBDfXWbrEm5n06DHr2apRVJGC0LwiQ7Woud1X4V4X1pKSusxCVMjT2lmcOwV6YhKhB2sowJc1OdMx4+tL0UWE+YKSZgBHfolwk6ml0F4EO9nnUHc= lelgenio@i15
+  - &monolith-ssh age1ecyynwv93lfu7crjjp8l47defv07quzfzaktwurpep7jc9eha5pscg7lrw
+  - &phantom-ssh age1m4mqcd2kmuhfr8a22rvh02c68jkakhdfmuqgtusuv0czk4jvna7sz79p3y
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *lelgenio-gpg
+      age:
+      - *lelgenio-ssh
+      - *monolith-ssh
+  - path_regex: secrets/phantom/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *phantom-ssh
