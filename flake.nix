@@ -146,6 +146,7 @@
           modules = [
             ./hosts/monolith
             ./system/monolith-gitlab-runner.nix
+            ./system/monolith-bitbucket-runner.nix
             ./system/monolith-forgejo-runner.nix
             ./system/nix-serve.nix
           ] ++ common_modules;
