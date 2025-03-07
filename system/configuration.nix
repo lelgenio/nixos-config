@@ -29,14 +29,6 @@
 
   zramSwap.enable = true;
 
-  sops = {
-    secrets.hello = { };
-  };
-
-  environment.etc."teste-sops" = {
-    text = config.sops.secrets.hello.path;
-  };
-
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 

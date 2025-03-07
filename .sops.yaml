@@ -12,7 +12,17 @@ creation_rules:
       age:
       - *lelgenio-ssh
       - *monolith-ssh
+  - path_regex: secrets/monolith/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - pgp:
+      - *lelgenio-gpg
+      age:
+      - *lelgenio-ssh
+      - *monolith-ssh
   - path_regex: secrets/phantom/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-    - age:
+    - pgp:
+      - *lelgenio-gpg
+      age:
+      - *lelgenio-ssh
       - *phantom-ssh
