@@ -28,6 +28,7 @@ let
       cursor_theme = "Bibata-Modern-Classic";
 
       background = ./backgrounds/nixos-dark-pattern.png;
+      backgroundPath = "~/.local/share/backgrounds/nixos-dark-pattern.png";
       opacity = 95;
       opacityHex = "ee";
       color = {
@@ -59,6 +60,7 @@ let
       cursor_theme = "Bibata-Modern-Classic";
 
       background = ./backgrounds/nixos-light-pattern.png;
+      backgroundPath = "~/.local/share/backgrounds/nixos-light-pattern.png";
       opacity = 95;
       opacityHex = "ee";
       color = {

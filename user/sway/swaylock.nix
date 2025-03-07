@@ -9,7 +9,7 @@ in
   options.my.swaylock.enable = lib.mkEnableOption { };
 
   config.programs.swaylock.settings = lib.mkIf cfg.enable {
-    image = toString theme.background;
+    image = theme.backgroundPath;
     font = font.interface;
     font-size = font.size.medium;
     indicator-thickness = 20;
