@@ -18,15 +18,40 @@ in
           email = mail.personal.user;
         };
         init.defaultBranch = "main";
+        core = {
+          fsmonitor = true;
+          untrackedCache = true;
+        };
         commit.verbose = true;
-        push.autoSetupRemote = true;
+        fetch = {
+          prune = true;
+          pruneTags = true;
+          all = true;
+        };
+        push = {
+          autoSetupRemote = true;
+          default = "simple";
+          followTags = true;
+        };
         pull.rebase = true;
-        merge.conflictStyle = "diff3";
-        rerere.enabled = true;
+        tag.sort = "version:refname";
+        merge.conflictStyle = "zdiff3";
+        rerere = {
+          enabled = true;
+          autoupdate = true;
+        };
+        branch.sort = "-committerdate";
+        diff = {
+          algorithm = "histogram";
+          colorMoved = "plain";
+          mnemonicPrefix = true;
+          renames = true;
+        };
         rebase = {
           abbreviateCommands = true;
           autoSquash = true;
           autoStash = true;
+          updateRefs = true;
         };
         pager = {
           log = "${pkgs._diffr}/bin/_diffr | ${pkgs.kak-pager}/bin/kak-pager";
