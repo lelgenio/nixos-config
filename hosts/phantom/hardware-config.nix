@@ -5,7 +5,7 @@
     options = [ "nofail" ];
   };
   fileSystems."/var/lib/mastodon" = {
-    device = "172.16.130.7:/nas/5749/mastodon";
+    device = "172.16.131.19:/nas/5749/mastodon";
     fsType = "nfs";
     options = [ "nofail" ];
   };
