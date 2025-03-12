@@ -39,10 +39,31 @@ if [ -z "$TEMP_MAX" ];then
   bail "No maximum temperature provided"
 fi
 
-PWM_MIN=0
-PWM_MAX=255
+PWM_MIN_PCT="$4"
+PWM_MAX_PCT="$5"
+
+if [ -z "$PWM_MIN_PCT" ];then
+  bail "No minimum fan speed % not provided"
+fi
+
+if [ -z "$PWM_MAX_PCT" ];then
+  bail "No maximum fan speed % not provided"
+fi
+
+PWM_MIN="$(( $PWM_MIN_PCT * 255 / 100))"
+PWM_MAX="$(( $PWM_MAX_PCT * 255 / 100))"
 
 echo "Running..." >&2
+
+echo "TEMP_MIN=$TEMP_MIN°C"
+echo "TEMP_MAX=$TEMP_MAX°C"
+echo "FAN_MIN=$PWM_MIN_PCT%"
+echo "FAN_MAX=$PWM_MAX_PCT%"
+
+echo 1 > "$HWMON/pwm1_enable"
+
+PREV=0
+
 while true; do
     TEMPERATURE_RAW=$(cat "$TEMP_INPUT")
     TEMPERATURE="$(( $TEMPERATURE_RAW / 1000 ))"
@@ -55,7 +76,11 @@ while true; do
         PWM=$PWM_MIN
     fi
 
-    echo 1 > "$HWMON/pwm1_enable"
-    echo "$PWM" > "$HWMON/pwm1"
+    AVG="$(( ($PWM * 20 + $PREV * 80) / 100 ))"
+
+    echo "$AVG"
+
+    echo "$AVG" > "$HWMON/pwm1"
+    PREV="$AVG"
     sleep .1s
 done
