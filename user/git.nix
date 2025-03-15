@@ -16,13 +16,17 @@ in
         user = {
           name = username;
           email = mail.personal.user;
+          signingkey = "2F8F21CE8721456B";
         };
         init.defaultBranch = "main";
         core = {
           fsmonitor = true;
           untrackedCache = true;
         };
-        commit.verbose = true;
+        commit = {
+          verbose = true;
+          gpgsign = true;
+        };
         fetch = {
           prune = true;
           pruneTags = true;
