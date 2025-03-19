@@ -9,6 +9,7 @@
 
   config = lib.mkIf config.my.containers.enable {
     services.flatpak.enable = true;
+    programs.appimage.enable = true;
 
     virtualisation.docker = {
       enable = true;
