@@ -42,6 +42,7 @@ in
   };
 
   my.gaming.enable = true;
+  my.nix-ld.enable = true;
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
 

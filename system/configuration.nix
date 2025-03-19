@@ -17,6 +17,7 @@
     ./locale.nix
     ./users.nix
     ./containers.nix
+    ./nix-ld.nix
     ./network.nix
     ../settings
   ];
