@@ -35,6 +35,7 @@ lib.mkIf (config.my.desktop == "gnome") {
     amberol
     pitivi
     keepassxc
+    menulibre
 
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
