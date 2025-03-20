@@ -19,6 +19,8 @@ in
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+  my.nix-ld.enable = true;
+
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "ahci"
