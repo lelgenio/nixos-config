@@ -127,46 +127,7 @@ in
                 #sidebar-header { display: none !important; }
               ''
             else
-              ''
-                /* Element | chrome://browser/content/browser.xhtml */
-
-                #navigator-toolbox {
-                  display: grid;
-                  grid-template-columns: 1fr 50px;
-                  overflow: hidden;
-                }
-
-                /* Element | chrome://browser/content/browser.xhtml */
-
-                #nav-bar {
-                  flex: 1;
-                  width: 100%;
-                  grid-column: 1 / 3;
-                  grid-row: 1;
-                  z-index: 0;
-                  padding-right: 29px !important;
-                }
-
-                /* Element | chrome://browser/content/browser.xhtml */
-
-                .toolbar-items {
-                  display: none;
-                }
-
-                /* Element | chrome://browser/content/browser.xhtml */
-
-                #TabsToolbar {
-                  max-width: 50px;
-                }
-
-                /* Element | chrome://browser/content/browser.xhtml */
-
-                #titlebar {
-                  max-width: 50px;
-                  grid-area: 1 / 2;
-                  z-index: 10;
-                }
-              '';
+              "";
         };
       };
     };
