@@ -56,6 +56,10 @@
     wl-crosshair.url = "github:lelgenio/wl-crosshair";
     warthunder-leak-counter.url = "git+https://git.lelgenio.com/lelgenio/warthunder-leak-counter";
     made-you-look.url = "git+https://git.lelgenio.com/lelgenio/made-you-look";
+    contador-da-viagem = {
+      url = "git+https://git.lelgenio.com/lelgenio/contador-da-viagem";
+      flake = false;
+    };
     catboy-spinner = {
       url = "git+https://git.lelgenio.com/lelgenio/catboy-spinner";
       flake = false;

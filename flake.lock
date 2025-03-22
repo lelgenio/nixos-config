@@ -73,6 +73,22 @@
         "url": "https://git.lelgenio.com/lelgenio/catboy-spinner"
       }
     },
+    "contador-da-viagem": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742597480,
+        "narHash": "sha256-aN+Kioc4AWPMyJxfz/zFCo2YdP4YxcPqoUcp46z9KcA=",
+        "ref": "refs/heads/main",
+        "rev": "29dde9d1965b1f8c1b870185a95859c050ba847d",
+        "revCount": 3,
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/contador-da-viagem"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.lelgenio.com/lelgenio/contador-da-viagem"
+      }
+    },
     "crane": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -709,6 +725,7 @@
       "inputs": {
         "agenix": "agenix",
         "catboy-spinner": "catboy-spinner",
+        "contador-da-viagem": "contador-da-viagem",
         "demoji": "demoji",
         "dhist": "dhist",
         "disko": "disko",

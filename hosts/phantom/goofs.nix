@@ -43,4 +43,9 @@
     forceSSL = true;
     root = inputs.hello-fonts;
   };
+  services.nginx.virtualHosts."contador-da-viagem.lelgenio.com" = {
+    enableACME = true;
+    forceSSL = true;
+    root = inputs.contador-da-viagem;
+  };
 }
