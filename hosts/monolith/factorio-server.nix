@@ -23,11 +23,12 @@
   systemd.services.factorio-backup-save = {
     description = "Backup factorio saves";
     script = ''
+      FILENAME="space-age-$(date --iso=seconds | tr ':' '_').zip"
       ${lib.getExe pkgs.rsync} \
         -av  \
         --chown=lelgenio \
         /var/lib/factorio/saves/default.zip \
-        ~lelgenio/Documentos/GameSaves/factorio_saves/space-age-$(date --iso=seconds).zip
+        ~lelgenio/Documentos/GameSaves/factorio_saves/$FILENAME
     '';
     serviceConfig.Type = "oneshot";
     wantedBy = [ "multi-user.target" ];
