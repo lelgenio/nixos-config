@@ -9,6 +9,7 @@
 {
   imports = [
     ./dummy.nix
+    ./home-manager.nix
     ./waybar
     ./helix.nix
     ./kakoune
@@ -58,8 +59,6 @@
   home.username = "lelgenio";
   home.homeDirectory = "/home/lelgenio";
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
   home.packages = with pkgs; [
     terminal
 
