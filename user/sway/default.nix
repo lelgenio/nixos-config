@@ -20,6 +20,7 @@ in
     ./swayidle.nix
     ./swaylock.nix
     ./theme.nix
+    ./gammastep.nix
   ];
 
   options.my.sway.enable = lib.mkEnableOption { };
@@ -32,6 +33,7 @@ in
     my.mpd.enable = true;
     my.zathura.enable = true;
     my.waybar.enable = true;
+    my.gammastep.enable = true;
 
     wayland.windowManager.sway = {
       enable = true;
@@ -114,10 +116,6 @@ in
         exec swaymsg workspace 2
         exec_always systemctl --user restart waybar.service
       '';
-    };
-    services.gammastep = {
-      enable = true;
-      provider = "geoclue2";
     };
 
     services.kdeconnect = {
