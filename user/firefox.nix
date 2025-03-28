@@ -2,15 +2,22 @@
   config,
   pkgs,
   lib,
-  font,
   ...
 }:
 let
-  inherit (config.my) desktop browser;
+  inherit (config.my) desktop;
+  inherit (config.my.theme) color;
+
   bugfixedFirefox = pkgs.firefox-devedition-unwrapped // {
     requireSigning = false;
     allowAddonSideload = true;
   };
+
+  swayCustomization = ''
+    #titlebar { display: none !important; }
+    #TabsToolbar { display: none !important; }
+    #sidebar-header { display: none !important; }
+  '';
 in
 {
   config = {
@@ -119,15 +126,17 @@ in
             "devtools.chrome.enabled" = true;
             "devtools.debugger.remote-enabled" = true;
           };
-          userChrome =
-            if desktop == "sway" then
-              ''
-                #titlebar { display: none !important; }
-                #TabsToolbar { display: none !important; }
-                #sidebar-header { display: none !important; }
-              ''
-            else
-              "";
+          userChrome = ''
+            ${lib.optionalString (desktop == "sway") swayCustomization}
+
+            #sidebar-main {
+              background-color: ${color.bg};
+            }
+
+            #tabbrowser-tabbox {
+              outline-width: 0 !important;
+            }
+          '';
         };
       };
     };
