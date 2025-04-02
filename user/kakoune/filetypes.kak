@@ -15,6 +15,14 @@ hook global WinSetOption filetype=nix %{
     set buffer formatcmd 'nixfmt'
 }
 
+hook global BufCreate .*\.json %{
+    set buffer formatcmd 'prettier --parser json'
+}
+
+hook global BufCreate .*\.ya?ml %{
+    set buffer formatcmd 'prettier --parser yaml'
+}
+
 hook global BufCreate .*\.html %{
     set buffer formatcmd 'prettier --parser html'
 }
