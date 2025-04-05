@@ -82,6 +82,9 @@ in
             rev = "1cc6baeb14b773916eb9209469aa77b3cfa67a0a";
             sha256 = "sha256-3PLxG9UtT0MMSibvTviXQIgTH3rApZ3WSbNCEH3c7HE=";
           };
+          buildInputs = with pkgs; [
+            python3Minimal
+          ];
         })
       ];
       extraConfig =
