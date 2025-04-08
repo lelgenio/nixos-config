@@ -114,8 +114,6 @@ in
             "media.ffmpeg.vaapi.enabled" = true;
             "media.ffvpx.enabled" = true;
 
-            "gfx.webrender.all" = true;
-
             # Enable installing non signed extensions
             "extensions.langpacks.signatures.required" = false;
             "xpinstall.signatures.required" = false;
@@ -144,10 +142,6 @@ in
       extraConfig = ''
         exec firefox
       '';
-    };
-    home.sessionVariables = {
-      MOZ_ENABLE_WAYLAND = "1";
-      MOZ_DISABLE_RDD_SANDBOX = "1";
     };
   };
 }
