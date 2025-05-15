@@ -16,15 +16,15 @@ hook global WinSetOption filetype=nix %{
 }
 
 hook global BufCreate .*\.json %{
-    set buffer formatcmd 'prettier --parser json'
+    set buffer formatcmd "prettier --stdin-filepath=%val{buffile}"
 }
 
 hook global BufCreate .*\.ya?ml %{
-    set buffer formatcmd 'prettier --parser yaml'
+    set buffer formatcmd "prettier --stdin-filepath=%val{buffile}"
 }
 
 hook global BufCreate .*\.html %{
-    set buffer formatcmd 'prettier --parser html'
+    set buffer formatcmd "prettier --stdin-filepath=%val{buffile}"
 }
 
 hook global BufCreate .*\.component\.html %{
@@ -43,11 +43,15 @@ hook global BufCreate .*\.php %{
 }
 
 hook global BufCreate .*\.js %{
-    set buffer formatcmd 'prettier --parser babel'
+    set buffer formatcmd "prettier --stdin-filepath=%val{buffile}"
+}
+
+hook global BufCreate .*\.ts %{
+    set buffer formatcmd "prettier --stdin-filepath=%val{buffile}"
 }
 
 hook global BufCreate .*\.scss %{
-    set buffer formatcmd 'prettier --parser scss'
+    set buffer formatcmd "prettier --stdin-filepath=%val{buffile}"
 }
 
 hook global BufCreate .*\.vue %{
