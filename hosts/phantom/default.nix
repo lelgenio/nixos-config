@@ -53,7 +53,7 @@
   # Set your time zone.
   time.timeZone = "America/Sao_Paulo";
   # Select internationalisation properties.
-  i18n.defaultLocale = "pt_BR.utf8";
+  i18n.defaultLocale = "pt_BR.UTF-8";
 
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
 
