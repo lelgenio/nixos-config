@@ -23,7 +23,7 @@ in
         dev-edition-default = {
           isDefault = true;
           search.force = true;
-          search.default = "DuckDuckGo";
+          search.default = "ddg";
           settings = {
             "devtools.theme" = "auto";
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
