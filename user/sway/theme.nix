@@ -92,7 +92,6 @@ lib.mkIf (desktop == "sway") {
     hack-font
     font-awesome_5
     fira-code
-    nerdfonts_fira_hack
     material-wifi-icons
   ];
 }

@@ -5,6 +5,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
-    nerdfonts_fira_hack
+    nerd-fonts.fira-code
+    nerd-fonts.hack
   ];
 }

@@ -28,14 +28,6 @@ rec {
           ];
         }
       );
-      nerdfonts_fira_hack = (
-        final.nerdfonts.override {
-          fonts = [
-            "FiraCode"
-            "Hack"
-          ];
-        }
-      );
     }
   );
 
