@@ -34,12 +34,13 @@ in
 
       defaultTimeout = 10000;
 
-      extraConfig = ''
-        [app-name=volumesh]
-        default-timeout=5000
-        group-by=app-name
-        format=<b>%s</b>\n%b
-      '';
+      settings = {
+        "app-name=volumesh" = {
+          "default-timeout" = "5000";
+          "group-by" = "app-name";
+          "format" = "<b>%s</b>\\n%b";
+        };
+      };
 
       # # {{@@ header() @@}}
       # # text
