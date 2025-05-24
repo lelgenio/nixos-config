@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -11,6 +10,7 @@
     hostName = "cloud.lelgenio.com";
     https = true;
     config = {
+      dbtype = "sqlite"; # TODO: move to single postgres db
       adminpassFile = config.age.secrets.phantom-nextcloud.path;
     };
   };
