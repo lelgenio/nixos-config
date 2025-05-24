@@ -125,7 +125,10 @@ in
 
     services.gpg-agent.pinentryPackage = pkgs.pinentry-all;
 
-    xdg.configFile."OpenTabletDriver/settings.json".source = ./open-tablet-driver.json;
+    xdg.configFile."OpenTabletDriver/settings.json" = {
+      force = true;
+      source = ./open-tablet-driver.json;
+    };
 
     home.packages = with pkgs; [
       mySway
