@@ -8,11 +8,6 @@ let
   inherit (config.my) desktop;
   inherit (config.my.theme) color;
 
-  bugfixedFirefox = pkgs.firefox-devedition-unwrapped // {
-    requireSigning = false;
-    allowAddonSideload = true;
-  };
-
   swayCustomization = ''
     #titlebar { display: none !important; }
     #TabsToolbar { display: none !important; }
@@ -23,70 +18,7 @@ in
   config = {
     programs.firefox = {
       enable = true;
-      package = pkgs.wrapFirefox bugfixedFirefox {
-        nixExtensions = [
-          (pkgs.fetchFirefoxAddon {
-            name = "darkreader";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4205543/darkreader-4.9.73.xpi";
-            hash = "sha256-fDmf8yVhiGu4Da0Mr6+PYpeSsLcf8e/PEmZ+BaKzjxo=";
-          })
-          (pkgs.fetchFirefoxAddon {
-            name = "sponsorblock";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4202411/sponsorblock-5.4.29.xpi";
-            hash = "sha256-7Xqc8cyQNylMe5/dgDOx1f2QDVmz3JshDlTueu6AcSg=";
-          })
-          (pkgs.fetchFirefoxAddon {
-            name = "tree-style-tab";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4197314/tree_style_tab-3.9.19.xpi";
-            hash = "sha256-u2f0elVPj5N/QXa+5hRJResPJAYwuT9z0s/0nwmFtVo=";
-          })
-          (pkgs.fetchFirefoxAddon {
-            name = "ublock-origin";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4290466/ublock_origin-1.58.0.xpi";
-            hash = "sha256-RwxWmUpxdNshV4rc5ZixWKXcCXDIfFz+iJrGMr0wheo=";
-          })
-          (pkgs.fetchFirefoxAddon {
-            name = "user_agent_string_switcher";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4098688/user_agent_string_switcher-0.5.0.xpi";
-            hash = "sha256-ncjaPIxG1PBNEv14nGNQH6ai9QL4WbKGk5oJDbY+rjM=";
-          })
-
-          (pkgs.fetchFirefoxAddon {
-            name = "i-still-dont-care-about-cookies";
-            url = "https://github.com/OhMyGuus/I-Still-Dont-Care-About-Cookies/releases/download/v1.1.4/istilldontcareaboutcookies-1.1.4.xpi";
-            hash = "sha256-yt6yRiLTuaK4K/QwgkL9gCVGsSa7ndFOHqZvKqIGZ5U=";
-          })
-
-          (pkgs.fetchFirefoxAddon {
-            name = "vimium_ff";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4191523/vimium_ff-2.0.6.xpi";
-            hash = "sha256-lKLX6IWWtliRdH1Ig33rVEB4DVfbeuMw0dfUPV/mSSI=";
-          })
-          (pkgs.fetchFirefoxAddon {
-            name = "invidious_redirect";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4292924/invidious_redirect_2-1.16.xpi";
-            hash = "sha256-ApCc+MNmW9Wd/5seV6npePQVEaszT/rhD9EB7HGiUb8=";
-          })
-
-          (pkgs.fetchFirefoxAddon {
-            name = "substitoot";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4236602/substitoot-0.7.2.0.xpi";
-            hash = "sha256-1auSqEjkebwRSbmAVUsYwy77dl7TQCOnqgozpoVnqgI=";
-          })
-
-          # Locale
-          (pkgs.fetchFirefoxAddon {
-            name = "firefox_br";
-            url = "https://addons.mozilla.org/firefox/downloads/file/4144369/firefox_br-115.0.20230726.201356.xpi";
-            hash = "sha256-8zkqfdW0lX0b62+gAJeq4FFlQ06nXGFAexpH+wg2Cr0=";
-          })
-          (pkgs.fetchFirefoxAddon {
-            name = "corretor";
-            url = "https://addons.mozilla.org/firefox/downloads/file/1176165/corretor-65.2018.12.8.xpi";
-            hash = "sha256-/rFQtJHdgemMkGAd+KWuWxVA/BwSIkn6sk0XZE0LrGk=";
-          })
-        ];
-      };
+      package = pkgs.firefox-devedition;
       profiles = {
         dev-edition-default = {
           isDefault = true;
