@@ -1,18 +1,10 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }:
 let
-  inherit (config.my) desktop;
   inherit (config.my.theme) color;
-
-  swayCustomization = ''
-    #titlebar { display: none !important; }
-    #TabsToolbar { display: none !important; }
-    #sidebar-header { display: none !important; }
-  '';
 in
 {
   config = {
@@ -27,7 +19,6 @@ in
           settings = {
             "devtools.theme" = "auto";
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            "browser.tabs.inTitlebar" = if desktop == "sway" then 0 else 1;
             "sidebar.position_start" = false; # Move sidebar to the right
 
             # enable media RDD to allow gpu acceleration
@@ -57,8 +48,6 @@ in
             "devtools.debugger.remote-enabled" = true;
           };
           userChrome = ''
-            ${lib.optionalString (desktop == "sway") swayCustomization}
-
             #sidebar-main {
               background-color: ${color.bg};
             }
