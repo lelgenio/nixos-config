@@ -116,6 +116,6 @@ rec {
 
   dmenu = "bmenu";
   desktop = "sway";
-  browser = "firefox";
+  browser = "firefox-devedition";
   editor = "kakoune";
 }

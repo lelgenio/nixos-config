@@ -61,7 +61,7 @@ in
     };
     wayland.windowManager.sway = {
       extraConfig = ''
-        exec firefox
+        exec firefox-devedition
       '';
     };
   };
