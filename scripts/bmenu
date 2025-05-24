@@ -8,13 +8,10 @@
 if test "$argv[1]" = "run"
     test -n "$argv[2]" && set t "$argv[2]" || set t "terminal"
 
-    test -n "$i3SOCK" && set wrapper 'i3-msg exec --'
-    test -n "$SWAYSOCK" && set wrapper 'swaymsg exec --'
-
     exec j4-dmenu-desktop \
         --dmenu="bmenu start -p Iniciar:" \
         --term "$t" \
-        --wrapper="$wrapper" \
+        --i3-ipc \
         --no-generic
 end
 
